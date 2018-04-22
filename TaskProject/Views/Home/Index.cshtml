@@ -1,0 +1,176 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html lang="ru">
+
+<head>
+    <title>Spacewander</title>
+    <link rel="shortcut icon" href="~/assets/img/logo.png" type="image/x-icon">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="description" content="">
+    <!-- VENDOR CSS -->
+    <link rel="stylesheet" href="/assets/vendor/font-awesome/css/font-awesome.min.css">
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="/assets/css/main_landing.css">
+    <link rel="stylesheet" href="~/assets/css/media.css" />
+    <!-- ICONS -->
+    <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/assets/img/favicon.png">
+</head>
+
+<body>
+    <!-- Header -->
+    <header id="header" class="alt">
+        <h1><a href="@Url.Action("Index","Home")">Spacewander</a></h1>
+        <nav>
+            <a href="#menu">Меню</a>
+        </nav>
+    </header>
+
+    <!-- Menu -->
+    <nav id="menu">
+        <div class="inner">
+            <h2>Меню</h2>
+            <ul class="links">
+                <li><a href="@Url.Action("Login","Account")">Вход</a></li>
+                <li><a href="@Url.Action("Register","Account")">Регистрация</a></li>
+            </ul>
+            <a href="#" class="close">Close</a>
+        </div>
+    </nav>
+
+    <!-- Page Wrapper -->
+    <div id="page-wrapper">
+        <!-- Banner -->
+        <section id="banner">
+            <div class="inner">
+                <div class="logo"><img src="~/assets/img/logo-original.png"></div>
+                <p>Путешествие вглубь космоса еще никогда не было таким интересным</p>
+            </div>
+        </section>
+
+        <!-- Wrapper -->
+        <section id="wrapper">
+
+            <!-- One -->
+            <section id="one" class="wrapper spotlight style1">
+                <div class="inner">
+                    <a href="#" class="image"><img src="~/assets/img/spaceicons/earth.png" alt="" /></a>
+                    <div class="content">
+                        <h2 class="major">Наша история</h2>
+                        <p>
+                            Земля, как много в этом слове. Когда-то она была нашим домом, но теперь все
+                            изменилось. Наш корабль отправился вглубь космоса к далекой планете, в пути наш ждет множество
+                            опасностей, которые нам с гордо поднятой головой предстоит преодолеть.
+                        </p>
+                        <a href="#" class="special">Узнать больше</a>
+                    </div>
+                </div>
+            </section>
+
+
+
+            <!-- Two -->
+            <section id="two" class="wrapper alt spotlight style2">
+                <div class="inner">
+                    <a href="#" class="image"><img src="~/assets/img/spaceicons/space_shuttle.png" alt="" /></a>
+                    <div class="content">
+                        <h2 class="major">Наша команда</h2>
+                        <p>
+                            Наша команда включает в себя специалистов различных квалификаций и нам всегда требуются новые люди для поддержания
+                            нашей священной миссии. Здесь вы можете найти статистику по нашей миссии и количеству людей, уже участвующих в ней.
+                        </p>
+                        <a href="#" class="special">Узнать больше</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Three -->
+            <section id="three" class="wrapper spotlight style3">
+                <div class="inner">
+                    <a href="#" class="image"><img src="~/assets/img/spaceicons/robot.png" alt="" /></a>
+                    <div class="content">
+                        <h2 class="major">Наше руководство</h2>
+                        <p>
+                            Руководство нашим кораблем отдано в руки искусственного интеллекта, который руководит всеми процессами, от назначения
+                            человека на должность, до работы щитов и лазерного оружия. Здесь вы можете найти информацию о нем.
+                        </p>
+                        <a href="#" class="special">Узнать больше</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Four -->
+            <section id="four" class="wrapper alt style1">
+                <div class="inner">
+                    <h2 class="major">Наш блог</h2>
+                    <p></p>
+                    <section class="features">
+                        <article>
+                            <a href="#" class="image"><img src="~/assets/img/spaceicons/alien.png" alt="" /></a>
+                            <h3 class="major">Новость</h3>
+                            <p>Вау.</p>
+                            <a href="#" class="special">Узнать больше</a>
+                        </article>
+                        <article>
+                            <a href="#" class="image"><img src="~/assets/img/spaceicons/alien_grin.png" alt="" /></a>
+                            <h3 class="major">Новость</h3>
+                            <p>Ух.</p>
+                            <a href="#" class="special">Узнать больше</a>
+                        </article>
+                    </section>
+                    <ul class="actions">
+                        <li><a href="#" class="button">Показать все</a></li>
+                    </ul>
+                </div>
+            </section>
+
+        </section>
+
+        <!-- Footer -->
+        <section id="footer">
+            <div class="inner">
+                <h2 class="major">Обратная связь</h2>
+                <p>Просим вас отправлять нам сообщения по вопросам технической поддержки и сотрудничества.</p>
+                <form method="post" action="#">
+                    <div class="field">
+                        <label for="name">Ваше имя</label>
+                        <input type="text" name="name" id="name" />
+                    </div>
+                    <div class="field">
+                        <label for="email">Ваш EMAIL</label>
+                        <input type="email" name="email" id="email" />
+                    </div>
+                    <div class="field">
+                        <label for="message">Сообщение</label>
+                        <textarea name="message" id="message" rows="4"></textarea>
+                    </div>
+                    <ul class="actions">
+                        <li><input type="submit" value="Отправить сообщение" /></li>
+                    </ul>
+                </form>
+                <ul class="contact">
+                    <li class="fa-phone">+7(982) 335-8234</li>
+                    <li class="fa-envelope"><a href="#">help@spacewander.ru</a></li>
+                    <li class="fa-twitter"><a href="#">twitter.com/spacewander</a></li>
+                    <li class="fa-vk"><a href="#">vk.com/spacewander</a></li>
+                </ul>
+                <ul class="copyright">
+                    <li>&copy; Spacewander Inc. All rights reserved.</li>
+                </ul>
+            </div>
+        </section>
+
+        <script src="~/assets/vendor/jquery/jquery.min.js"></script>
+        <script src="~/assets/vendor/jquery.scrollex/jquery.scrollex.min.js"></script>
+        <script src="~/assets/js/skel.min.js"></script>
+        <script src="~/assets/js/util.js"></script>
+        @Scripts.Render("~/bundles/main")
+    </div>
+</body>
+</html>

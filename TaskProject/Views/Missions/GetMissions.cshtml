@@ -1,0 +1,40 @@
+﻿@using TaskLibrary
+@model List<MissionsCondition>
+
+<div class="sw_missions container">
+    @foreach (MissionsCondition MissionCondition in Model)
+    {
+
+        <div class="sw_mission row">
+            <div class="sw_mission_img col-md-2">
+                <img src="~/img/quest.png" alt="" />
+            </div>
+            <div class="sw_mission_name col-md-6">
+                <div><b>@MissionCondition.Mission.Name</b></div>
+                <div>@MissionCondition.Mission.Description</div>
+            </div>
+            <div class="sw_mission_accept col-md-4">
+                @if(MissionCondition.Character.CurrentLevel < MissionCondition.Mission.LevelUnlock)
+                {
+                    <div class="sw_mission_state">Задание недоступно, необходим @MissionCondition.Mission.LevelUnlock уровень</div>
+                }
+                else if (MissionCondition.IsComplete)
+                {
+                    if (MissionCondition.IsAccepted)
+                    {
+                        <div class="sw_mission_state">Задание уже выполняется</div>
+                    }
+                    else
+                    {
+                        <div class="sw_mission_state">Задание выполнено</div>
+                    }
+                }
+                else
+                {
+                    <a href="@Url.Action("StartMission","Missions",new {id = MissionCondition.MissionConditionId })" class="btn btn-primary">Начать выполнять задание</a>
+                }
+            </div>
+        </div>
+    }
+
+</div>

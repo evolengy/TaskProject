@@ -1,0 +1,110 @@
+﻿@model TaskLibrary.Goal
+
+@{
+    Layout = null;
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.CharacterTaskId)
+        @Html.HiddenFor(model => model.IsComplete)
+        @Html.HiddenFor(model => model.CharacterId)
+        <div class="form-group">
+            <div class="col-md-offset-1 col-md-3">
+                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label", required="required" })
+            </div>
+            <div class="col-md-7">
+                @Html.TextBoxFor(model => model.Name, new { @class = "form-control"})
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-1 col-md-3">
+                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label" })
+            </div>
+            <div class="col-md-7">
+                @Html.TextAreaFor(model => model.Description, new { @class = "form-control", rows = "10", style = "resize:none;" })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-1 col-md-3">
+                @Html.LabelFor(model => model.TaskStart, htmlAttributes: new { @class = "control-label" })
+            </div>
+            <div class="col-md-7">
+                <input type="date" name="TaskStart" min="@Model.TaskStart.ToString("yyyy-MM-dd")" value="@Model.TaskStart.ToString("yyyy-MM-dd")" />
+                @Html.ValidationMessageFor(model => model.TaskEnd, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-1 col-md-3">
+                @Html.LabelFor(model => model.RepeatId, "Повторение", htmlAttributes: new { @class = "control-label" })
+            </div>
+            <div class="col-md-7">
+                @Html.DropDownList("RepeatId")
+                @Html.ValidationMessageFor(model => model.RepeatId)
+            </div>
+        </div>
+
+        <div class="form-group taskend">
+            <div class="col-md-offset-1 col-md-3">
+                @Html.LabelFor(model => model.TaskEnd, htmlAttributes: new { @class = "control-label" })
+            </div>
+            <div class="col-md-7">
+                <input type="date" name="TaskEnd" min="@Model.TaskStart.ToString("yyyy-MM-dd")" value="@Model.TaskStart.ToString("yyyy-MM-dd")" />
+                @Html.ValidationMessageFor(model => model.TaskEnd, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-1 col-md-3">
+                @Html.LabelFor(model => model.ComplicationId, "Сложность", htmlAttributes: new { @class = "control-label" })
+            </div>
+            <div class="col-md-7">
+                @Html.DropDownList("ComplicationId")
+                @Html.ValidationMessageFor(model => model.ComplicationId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-1 col-md-3">
+                @Html.LabelFor(model => model.AtributeId, "Характеристика", htmlAttributes: new { @class = "control-label" })
+            </div>
+            <div class="col-md-7">
+                @Html.DropDownList("AtributeId")
+                @Html.ValidationMessageFor(model => model.AtributeId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12 text-center">
+                <input type="submit" value="Редактировать задачу" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+<script>
+    $(document).ready(function () {
+        if ($('#RepeatId').val() === "1") {
+            $(".taskend").css("display", "block");
+        }
+        else {
+            $(".taskend").css("display", "none");
+        };
+        $('#RepeatId').change(function () {
+            if ($(this).val() === "1") {
+                $(".taskend").css("display", "block");
+            }
+            else {
+                $(".taskend").css("display", "none");
+            }
+        });
+    });
+</script>

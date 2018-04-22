@@ -1,0 +1,87 @@
+﻿@model IEnumerable<TaskLibrary.Goal>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row" style="text-align:center;">
+    <a class="btn btn-success btn-sm" href="#" onclick="addtask()">Добавить новую задачу</a>
+    @if (ViewBag.Complete)
+    {
+        <a class="btn btn-default btn-sm" href="@Url.Action("Index", new {iscomplete = false })">Скрыть завершенные задачи</a>
+    }
+    else
+    {
+        <a class="btn btn-default btn-sm" href="@Url.Action("Index", new {iscomplete = true })">Показать завершенные задачи</a>
+    }
+</div>
+
+<br />
+
+<table class="sw_datatable table">
+    <thead>
+        <tr>
+            <th>
+
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Complication.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Atribute.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TaskEnd)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr @if (item.IsComplete) { <text> class="sw_complete_goal" </text> }>
+                <td>
+                    <a href="@Url.Action("CompleteGoal","Goals",new { area = "HabitsAndTasks" , id = item.CharacterTaskId})" class="btn btn-xs"><i class=" fa fa-check"></i></a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Complication.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Atribute.Name)
+                </td>
+                <td>
+                    @if (item.TaskEnd != null)
+                    {
+                        if (item.TaskEnd < DateTime.Now.Date)
+                        {
+                            <span class="badge bg-danger">@item.TaskEnd.Value.ToShortDateString()</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-success">@item.TaskEnd.Value.ToShortDateString()</span>
+                        }
+                    }
+                </td>
+                <td>
+                    <div class="pull-right">
+                        <button class="btn btn-primary btn-xs" onclick="edittask(@item.CharacterTaskId)"><i class="far fa-edit"></i></button>
+                        <button class="btn btn-danger btn-xs" onclick="deletetask(@item.CharacterTaskId)"><i class="far fa-trash-alt"></i></button>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

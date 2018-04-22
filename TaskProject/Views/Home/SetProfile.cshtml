@@ -1,0 +1,59 @@
+﻿@using TaskLibrary
+@model ViewSetProfileModel
+
+<div class="form-central">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-offset-3 col-sm-6 text-center">
+                <h3>
+                    Для более подробного отображения информации о вас, необходимо заполнить
+                    некоторую информацию.
+                </h3>
+                <p> Пожалуйста, уделите на это пару минут</p>
+            </div>
+        </div>
+        @using (Html.BeginForm("SetProfile", "Home", FormMethod.Post, new { @class = "form-horizontal form-profile", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-group">
+                @Html.LabelFor(m => m.Sex, new { @class = "col-sm-6 control-label" })
+                <div class="col-sm-6">
+                    @Html.DropDownListFor(m => m.Sex, Model.SexSelect)
+                    @Html.ValidationMessageFor(m => m.Sex, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Age, new { @class = "col-sm-6 control-label" })
+                <div class="col-sm-6">
+                    @Html.TextBoxFor(m => m.Age)
+                    @Html.ValidationMessageFor(m => m.Age, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Growth, new { @class = "col-sm-6 control-label" })
+                <div class="col-sm-6">
+                    @Html.TextBoxFor(m => m.Growth)
+                    @Html.ValidationMessageFor(m => m.Growth, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Weight, new { @class = "col-sm-6 control-label" })
+                <div class="col-sm-6">
+                    @Html.TextBoxFor(m => m.Weight)
+                    @Html.ValidationMessageFor(m => m.Weight, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+
+                <div class="col-sm-offset-3 col-sm-6 text-center">
+                    <button type="submit" class="button special">Сохранить изменения</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+

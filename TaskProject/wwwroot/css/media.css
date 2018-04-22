@@ -1,0 +1,135 @@
+/*==========  Desktop First Method  ==========*/
+
+@media screen and (max-width: 1680px) {
+
+    body, input, select, textarea {
+        font-size: 13pt;
+    }
+}
+
+@media screen and (max-width: 1280px) {
+
+
+    body, input, select, textarea {
+        font-size: 12pt;
+    }
+}
+
+@media screen and (max-width: 980px) {
+
+
+    body, input, select, textarea {
+        font-size: 12pt;
+    }
+}
+
+@media screen and (max-width: 736px) {
+
+    body, input, select, textarea {
+        font-size: 12pt;
+    }
+
+    .content {
+        padding-top: 2.75em;
+    }
+
+    .auth-box .logo img {
+        width: 250px;
+    }
+
+    #banner .logo img {
+        height: 55px;
+    }
+
+    .sw_skill .sw_skill_value {
+        margin: 0px 10px 0px;
+        flex-basis: 70px;
+    }
+
+    .sw_skill .sw_skill_progress span {
+        left: 30%;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    html, body {
+        min-width: 320px;
+    }
+
+    body, input, select, textarea {
+        font-size: 12pt;
+    }
+}
+
+@media screen and (max-width: 360px) {
+}
+
+
+
+/* Large Devices, Wide Screens */
+@media only screen and (max-width : 1200px) {
+}
+
+
+/* Medium Devices, Desktops */
+@media only screen and (max-width : 992px) {
+}
+
+/* Small Devices, Tablets */
+@media only screen and (max-width : 768px) {
+
+    /*Disable Animation on Mobile Devices*/
+    .animated {
+        /*CSS transitions*/
+        -o-transition-property: none !important;
+        -moz-transition-property: none !important;
+        -ms-transition-property: none !important;
+        -webkit-transition-property: none !important;
+        transition-property: none !important;
+        /*CSS transforms*/
+        -o-transform: none !important;
+        -moz-transform: none !important;
+        -ms-transform: none !important;
+        -webkit-transform: none !important;
+        transform: none !important;
+        /*CSS animations*/
+        -webkit-animation: none !important;
+        -moz-animation: none !important;
+        -o-animation: none !important;
+        -ms-animation: none !important;
+        animation: none !important;
+    }
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width : 480px) {
+}
+
+/* Custom, iPhone Retina */
+@media only screen and (max-width : 320px) {
+}
+
+
+/*==========  Mobile First Method  ==========*/
+
+/* Custom, iPhone Retina */
+@media only screen and (min-width : 320px) {
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (min-width : 480px) {
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+}

@@ -1,0 +1,226 @@
+﻿@model TaskLibrary.Character
+
+<div class="sw_row row">
+    <div class="col-md-3">
+        <section class="task-panel tasks-widget">
+            <div class="panel-heading">
+                <div class="pull-left"><h5><i class="fa fa-tasks"></i> Мои характеристики</h5></div>
+                <br>
+            </div>
+            <div class="panel-body">
+                <div class="sw_stats">
+                    <i class="fas fa-lg fa-user"></i>
+                    <span>
+                        Уровень @Html.DisplayFor(m => m.CurrentLevel)
+                        @if (!string.IsNullOrEmpty(Model.Class.Name))
+                        {
+                            <text> , </text>@Model.Class.Name;
+                        }
+                    </span>
+                </div>
+                <div class="sw_stats">
+                    <i class="fas fa-lg fa-medkit"></i>
+                    <div class="progress">
+                        <span>
+                            @Html.DisplayFor(m => m.CurrentHealth)/@Html.DisplayFor(m => m.MaxHealth)
+                        </span>
+                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="@(100 * Model.CurrentHealth / Model.MaxHealth)"
+                             aria-valuemin="0" aria-valuemax="100" style="width:@(100 * Model.CurrentHealth / Model.MaxHealth)%">
+                        </div>
+                    </div>
+                </div>
+                <div class="sw_stats">
+                    <i class="fas fa-lg fa-flask"></i>
+                    <div class="progress">
+                        <span>@Html.DisplayFor(m => m.CurrentExp)/@Html.DisplayFor(m => m.MaxExp)</span>
+                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="@(100 * Model.CurrentExp / Model.MaxExp)"
+                             aria-valuemin="0" aria-valuemax="100" style="width:@(100 * Model.CurrentExp / Model.MaxExp)%">
+                        </div>
+                    </div>
+                </div>
+                <div class="sw_stats">
+                    <i class="fas fa-lg fa-money-bill-alt"></i>
+                    <span>
+                        @Html.DisplayFor(m => m.CurrentGold) кредитов
+                    </span>
+                </div>
+            </div>
+
+            <input hidden class="sw_dead" value="@Model.IsDead.ToString()">
+        </section>
+    </div>
+    <div class="col-md-4">
+        <section class="task-panel tasks-widget">
+            <div class="panel-heading">
+                <div class="pull-left"><h5><i class="fa fa-tasks"></i> Мои навыки</h5></div>
+                <br>
+            </div>
+            <div class="panel-body">
+                @foreach (var Atribute in Model.Atributes)
+                {
+                    <div class="sw_skill">
+                        <div class="sw_skill_name">
+                            @Atribute.Atribute.Name
+                        </div>
+                        <div class="sw_skill_value">
+                            @Atribute.Value / @Atribute.MaxValue
+                        </div>
+                        <div class="sw_skill_progress progress">
+                            <span>@Atribute.CurrentExp/@Atribute.MaxExp</span>
+                            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="@(100*Atribute.CurrentExp/Atribute.MaxExp)"
+                                 aria-valuemin="0" aria-valuemax="100" style="width:@(100*Atribute.CurrentExp/Atribute.MaxExp)%">
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </section>
+    </div>
+</div>
+
+<div class="sw_row row">
+    <div class="col-md-12">
+        <section class="task-panel tasks-widget">
+            <div class="panel-heading">
+                <div class="pull-left"><h5><i class="fa fa-tasks"></i> Мои привычки</h5></div>
+                <br>
+            </div>
+            <div class="panel-body">
+                <div class="task-content">
+                    <ul class="task-list">
+                        @foreach (var Habit in Model.Habits)
+                        {
+                            <li>
+                                <div class="pull-left">
+                                    <a href="@Url.Action("CompleteHabit","Habits", new {area = "HabitsAndTasks", id = Habit.HabitId })" class="btn btn-xs"><i class=" fa fa-check"></i></a>
+                                </div>
+                                <div class="task-title">
+                                    <span class="task-title-sp">@Habit.Name</span>
+                                    <div>
+                                        @switch (Habit.WarningCount)
+                                        {
+                                            case 1:
+                                                {
+                                                    <span class="badge bg-info">
+                                                        День: @Habit.DayCount
+                                                        (Пропуски: @Habit.WarningCount)
+                                                    </span>
+                                                    break;
+                                                }
+                                            case 2:
+                                                {
+                                                    <span class="badge bg-warning">
+                                                        День: @Habit.DayCount
+                                                        (Пропуски: @Habit.WarningCount)
+                                                    </span>
+                                                    break;
+                                                }
+                                            case 3:
+                                                {
+                                                    <span class="badge bg-danger">
+                                                        День: @Habit.DayCount
+                                                        (Пропуски: @Habit.WarningCount)
+                                                    </span>
+                                                    break;
+                                                }
+                                            default:
+                                                {
+                                                    <span class="badge bg-success">
+                                                        День: @Habit.DayCount
+                                                        (Пропуски: @Habit.WarningCount)
+                                                    </span>
+                                                    break;
+                                                }
+                                        }
+                                    </div>
+                                    <div class="pull-right hidden-phone">
+                                        <button class="btn btn-primary btn-xs" onclick="edithabit(@Habit.HabitId)"><i class="far fa-edit"></i></button>
+                                        <button class="btn btn-danger btn-xs" onclick="deletehabit(@Habit.HabitId)"><i class="far fa-trash-alt"></i></button>
+                                    </div>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                </div>
+
+                <div class=" add-task-row">
+                    <a class="btn btn-success btn-xs pull-left" onclick="addhabit()">Добавить привычку</a>
+                    <a class="btn btn-default btn-xs pull-right" href="@Url.Action("Index","Goals", new {area = "HabitsAndTasks"})">Посмотреть все привычки</a>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<div class="sw_row row">
+    <div class="col-md-12">
+        <section class="task-panel tasks-widget">
+            <div class="panel-heading">
+                <div class="pull-left"><h5><i class="fa fa-tasks"></i> Задачи на сегодня</h5></div>
+                <br>
+            </div>
+            <div class="panel-body">
+                <div class="task-content">
+                    <ul class="task-list">
+                        @foreach (var Goal in Model.Goals.Where(g => g.IsComplete == false).Where(g=>g.TaskEnd == DateTime.Now.Date))
+                        {
+                            <li>
+                                <div class="pull-left">
+                                    <a href="@Url.Action("CompleteGoal","Goals",new { area = "HabitsAndTasks" , id = Goal.CharacterTaskId})" class="btn btn-xs"><i class=" fa fa-check"></i></a>
+                                </div>
+                                <div class="task-title">
+                                    @Goal.Name
+                                    <div class="pull-right">
+                                        <button class="btn btn-primary btn-xs" onclick="edittask(@Goal.CharacterTaskId)"><i class="far fa-edit"></i></button>
+                                        <button class="btn btn-danger btn-xs" onclick="deletetask(@Goal.CharacterTaskId)"><i class="far fa-trash-alt"></i></button>
+                                    </div>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                </div>
+                <div class=" add-task-row">
+                    <button class="btn btn-success btn-xs pull-left" onclick="addtask()">Добавить задачу</button>
+                    <a class="btn btn-default btn-xs pull-right" href="@Url.Action("Index","Goals", new {area = "HabitsAndTasks"})">Посмотреть все задачи</a>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<div class="sw_row row">
+    <div class="col-md-12">
+        <section class="task-panel task-widget">
+            <div class="panel-heading">
+                <div class="pull-left"><h5><i class="fa fa-tasks"></i> Мои миссии</h5></div>
+                <br>
+            </div>
+            <div class="panel-body">
+                <div class="task-content">
+                    <ul class="task-list">
+                        @foreach (var Mission in Model.Missions.Where(m => m.IsAccepted == true))
+                        {
+                            <li>
+                                <div class="pull-left">
+                                    <a href="@Url.Action("CompleteMission", "Missions", new { id = Mission.MissionConditionId })" class="btn btn-success btn-xs"><i class=" fa fa-check"></i></a>
+                                </div>
+                                <div class="task-title">
+                                    <span class="task-title-sp">@Mission.Mission.Guild.Name - @Mission.Mission.Name</span>
+                                    @if (Mission.IsComplete)
+                                    {
+                                        <span class="badge bg-info">Выполняется</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-theme">Выполнено</span>
+                                    }
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
