@@ -1,6 +1,6 @@
 using System;
 
-namespace TaskLibrary
+namespace TaskProject.Models
 {
     public class ErrorViewModel
     {

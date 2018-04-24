@@ -14,8 +14,10 @@ namespace TaskProject.Controllers
     {
         private ApplicationDbContext db;
 
-        public ActionResult Index()
+        public ActionResult Index(ApplicationDbContext _db)
         {
+            db = _db;
+
             if (User.Identity.IsAuthenticated)
             {
                 return RedirectToAction("GameRoom");

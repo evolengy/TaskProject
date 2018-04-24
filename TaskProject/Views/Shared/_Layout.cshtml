@@ -20,8 +20,16 @@
         </div>
     </div>
 
+    @if (User.Identity.IsAuthenticated)
+    {
+
+
+    }
     <!-- WRAPPER -->
     <div id="wrapper">
+
+        @if (User.Identity.IsAuthenticated)
+    {
         <!-- NAVBAR -->
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid">
@@ -30,7 +38,7 @@
                 </div>
                 <!-- logo -->
                 <div class="navbar-brand">
-                    <a href="@Url.Action("Index", "Home", new {area = "" })"><img src="/assets/img/logo.png" alt="Spacewander" class="img-responsive logo"></a>
+                    <a href="@Url.Action("Index", "Home", new {area = "" })"><img src="/img/logo.png" alt="Spacewander" class="img-responsive logo"></a>
                 </div>
                 <!-- end logo -->
                 <div class="navbar-right">
@@ -125,7 +133,7 @@
             </button>
             <div class="sidebar-scroll">
                 <div class="user-account">
-                    <img src="~/assets/img/user.png" class="img-responsive img-circle user-photo" alt="User Profile Picture">
+                    <img src="~/img/user.png" class="img-responsive img-circle user-photo" alt="User Profile Picture">
                     <div class="dropdown">
                         <a href="#" class="dropdown-toggle user-name" data-toggle="dropdown">Изменить <i class="fa fa-caret-down"></i></a>
                         <ul class="dropdown-menu dropdown-menu-right account">
@@ -168,23 +176,36 @@
             </div>
         </div>
         <!-- END MAIN CONTENT -->
+        }
+
+        else
+        {
+            @RenderBody()
+
+        }
 
     </div>
     <!-- END WRAPPER -->
     <!-- Javascript -->
-    <script src="/assets/vendor/jquery/jquery.min.js"></script>
-    <script src="/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script src="/assets/vendor/metisMenu/metisMenu.js"></script>
-    <script src="/assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-    <script src="/assets/vendor/jquery-sparkline/js/jquery.sparkline.min.js"></script>
-    <script src="/assets/vendor/bootstrap-progressbar/js/bootstrap-progressbar.min.js"></script>
-    <script src="/assets/vendor/chartist/js/chartist.min.js"></script>
-    <script src="/assets/vendor/chartist-plugin-tooltip/chartist-plugin-tooltip.min.js"></script>
-    <script src="/assets/vendor/chartist-plugin-axistitle/chartist-plugin-axistitle.min.js"></script>
-    <script src="/assets/vendor/chartist-plugin-legend-latest/chartist-plugin-legend.js"></script>
-    <script src="/assets/vendor/toastr/toastr.js"></script>
-    <script src="/assets/scripts/common.js"></script>
-    <script src="~/assets/vendor/datatables/datatables.min.js"></script>
+    <!-- Scripts -->
+    <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/js/skel.min.js"></script>
+    <script src="~/vendor/modernizr/modernizr-2.8.3.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/vendor/metisMenu/metisMenu.js"></script>
+    <script src="/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="/vendor/jquery-sparkline/js/jquery.sparkline.min.js"></script>
+    <script src="/vendor/bootstrap-progressbar/js/bootstrap-progressbar.min.js"></script>
+    <script src="/vendor/chartist/js/chartist.min.js"></script>
+    <script src="/vendor/chartist-plugin-tooltip/chartist-plugin-tooltip.min.js"></script>
+    <script src="/vendor/chartist-plugin-axistitle/chartist-plugin-axistitle.min.js"></script>
+    <script src="/vendor/chartist-plugin-legend-latest/chartist-plugin-legend.js"></script>
+    <script src="/vendor/toastr/toastr.js"></script>
+    <script src="/scripts/common.js"></script>
+    <script src="~/vendor/datatables/datatables.min.js"></script>
+    <script src="~/js/main.js"></script>
 
 
     <script>
@@ -275,7 +296,7 @@
                 })
         }
 
-  
+
     function post_addtask(model) {
             $.post({
                 url: '@Url.Action("AddGoal","Goals",new { area = "HabitsAndTasks"})',
@@ -310,16 +331,8 @@
             })
         }
     </script>
-    <!-- Scripts -->
-    <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-    <script src="/assets/js/skel.min.js"></script>
-    @Scripts.Render("~/bundles/modernizr")
-    @*@Scripts.Render("~/bundles/jquery")*@
-    @Scripts.Render("~/bundles/jqueryval")
-    @*<script src="~/assets/js/jquery.min.js"></script>*@
-    @*<script src="~/assets/js/jquery.scrollex.min.js"></script>*@
-    @*@Scripts.Render("~/bundles/bootstrap")*@
-    @Scripts.Render("~/bundles/main")
+
+
     @RenderSection("Scripts", false)
 </body>
 </html>

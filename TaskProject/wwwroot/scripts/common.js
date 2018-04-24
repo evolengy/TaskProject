@@ -84,9 +84,9 @@ $(document).ready(function() {
 
 	$(window).on('load resize', function() {
 		if($(window).innerWidth() < 360) {
-			$('.navbar-brand img.logo').attr('src', '/assets/img/logo.png');
+			$('.navbar-brand img.logo').attr('src', '/img/logo.png');
 		} else {
-			$('.navbar-brand img.logo').attr('src', '/assets/img/logo.png');
+			$('.navbar-brand img.logo').attr('src', '/img/logo.png');
 		}
 	});
 

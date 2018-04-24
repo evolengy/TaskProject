@@ -25,7 +25,14 @@ namespace TaskProject
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
+            services.AddIdentity<ApplicationUser, IdentityRole>(options => options.Password = new PasswordOptions()
+            {
+                RequireDigit = true,
+                RequiredLength = 8,
+                RequireNonAlphanumeric = false,
+                RequireLowercase = false,
+                RequireUppercase = false
+            })
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 

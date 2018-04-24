@@ -2,10 +2,59 @@
 @using System.Linq
 @using Microsoft.AspNetCore.Http
 @using Microsoft.AspNetCore.Http.Authentication
+@using TaskLibrary
 @model LoginViewModel
 @inject SignInManager<ApplicationUser> SignInManager
 
-@{
+
+<div class="vertical-align-wrap">
+    <div class="vertical-align-middle">
+        <div class="auth-box">
+            <div class="content">
+                <div class="header">
+                    <div class="logo text-center"><img src="~/img/logo-original.png" alt="Spacewander"></div>
+                    <p class="lead">Войдите в ваш аккаунт</p>
+                </div>
+                @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "form-auth-small", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Email, new { @class = "control-label sr-only" })
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Password, new { @class = "control-label sr-only" })
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Пароль" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group clearfix">
+                        <label class="fancy-checkbox element-left">
+                            <input type="checkbox">
+                            <span>Запомнить меня</span>
+                        </label>
+                        <span class="helper-text element-right">Нет аккаунта? @Html.ActionLink("Регистрация", "Register")</span>
+                    </div>
+                    <div class="separator-linethrough"><span>ИЛИ</span></div>
+                    <button class="btn btn-signin-social"><i class="fa fa-facebook-official facebook-color"></i> Sign in with Facebook</button>
+                    <button class="btn btn-signin-social"><i class="fa fa-twitter twitter-color"></i> Sign in with Twitter</button>
+                    @*<div class="col-md-12">
+                            <section id="socialLoginForm">
+                                @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+                            </section>
+                        </div>*@
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">ВОЙТИ</button>
+                    <div class="bottom">
+                        <span class="helper-text"><i class="fa fa-lock"></i> @Html.ActionLink("Забыли пароль?", "ForgotPassword")</span>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@*@{
     ViewData["Title"] = "Log in";
 }
 
@@ -80,8 +129,4 @@
             }
         </section>
     </div>
-</div>
-
-@section Scripts {
-    @await Html.PartialAsync("_ValidationScriptsPartial")
-}
+</div>*@
