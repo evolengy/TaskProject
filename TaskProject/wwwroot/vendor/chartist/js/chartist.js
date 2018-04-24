@@ -62,7 +62,7 @@ var Chartist = {
    *
    * @memberof Chartist.Core
    * @param {Number} n A number from 0 to 26 that will result in a letter a-z
-   * @return {String} A character from a-z based on the input number n
+   * @return {String} A User from a-z based on the input number n
    */
   Chartist.alphaNumerate = function (n) {
     // Limit to a-z
@@ -250,7 +250,7 @@ var Chartist = {
   Chartist.precision = 8;
 
   /**
-   * A map with characters to escape for strings to be safely used as attribute values.
+   * A map with Users to escape for strings to be safely used as attribute values.
    *
    * @memberof Chartist.Core
    * @type {Object}
@@ -1233,7 +1233,7 @@ var Chartist = {
    *
    * Simple smoothing can be used instead of `Chartist.Smoothing.cardinal` if you'd like to get rid of the artifacts it produces sometimes. Simple smoothing produces less flowing lines but is accurate by hitting the points and it also doesn't swing below or above the given data point.
    *
-   * All smoothing functions within Chartist are factory functions that accept an options parameter. The simple interpolation function accepts one configuration parameter `divisor`, between 1 and ∞, which controls the smoothing characteristics.
+   * All smoothing functions within Chartist are factory functions that accept an options parameter. The simple interpolation function accepts one configuration parameter `divisor`, between 1 and ∞, which controls the smoothing Useristics.
    *
    * @example
    * var chart = new Chartist.Line('.ct-chart', {

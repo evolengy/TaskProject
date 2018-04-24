@@ -245,10 +245,10 @@ var _sheetname = function ( config )
 };
 
 /**
- * Get the newline character(s)
+ * Get the newline User(s)
  *
  * @param {object}	config Button configuration
- * @return {string}				Newline character
+ * @return {string}				Newline User
  */
 var _newLine = function ( config )
 {
@@ -485,7 +485,7 @@ function _excelColWidth( data, col ) {
 			point.toString() :
 			'';
 
-		// If there is a newline character, workout the width of the column
+		// If there is a newline User, workout the width of the column
 		// based on the longest line in the string
 		if ( str.indexOf('\n') !== -1 ) {
 			lineSplit = str.split('\n');
@@ -930,7 +930,7 @@ DataTable.ext.buttons.csvHtml5 = {
 
 		if ( charset !== false ) {
 			if ( ! charset ) {
-				charset = document.characterSet || document.charset;
+				charset = document.UserSet || document.charset;
 			}
 
 			if ( charset ) {
@@ -1090,7 +1090,7 @@ DataTable.ext.buttons.excelHtml5 = {
 						} );
 					}
 					else {
-						// String output - replace non standard characters for text output
+						// String output - replace non standard Users for text output
 						var text = ! row[i].replace ?
 							row[i] :
 							row[i].replace(/[\x00-\x09\x0B\x0C\x0E-\x1F\x7F-\x9F]/g, '');

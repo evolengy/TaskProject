@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace TaskLibrary
 {
-    public class CharacterAtribute
+    public class UserAtribute
     {
-        public int CharacterAtributeId { get; set; }
-        [ForeignKey("Character")]
-        public int CharacterId { get; set; }
-        public Character Character { get; set; }
+        public int UserAtributeId { get; set; }
+        [ForeignKey("User")]
+        public string UserId { get; set; }
+        public ApplicationUser User { get; set; }
 
         [ForeignKey("Atribute")]
         public int AtributeId { get; set; }

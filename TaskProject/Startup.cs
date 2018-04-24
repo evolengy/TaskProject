@@ -4,8 +4,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using TaskLibrary;
+using TaskProject.Models;
 using TaskProject.Services;
+using TaskLibrary;
 
 namespace TaskProject
 {

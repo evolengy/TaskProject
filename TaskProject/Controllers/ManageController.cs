@@ -11,7 +11,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using TaskLibrary;
-using TaskLibrary.ManageViewModels;
+using TaskProject.Models;
+using TaskProject.Models.ManageViewModels;
 using TaskProject.Services;
 
 namespace TaskProject.Controllers

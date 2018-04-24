@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TaskLibrary.Goal>
+﻿@model IEnumerable<TaskProject.Models.Goal>
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -47,7 +47,7 @@
         {
             <tr @if (item.IsComplete) { <text> class="sw_complete_goal" </text> }>
                 <td>
-                    <a href="@Url.Action("CompleteGoal","Goals",new { area = "HabitsAndTasks" , id = item.CharacterTaskId})" class="btn btn-xs"><i class=" fa fa-check"></i></a>
+                    <a href="@Url.Action("CompleteGoal","Goals",new { area = "HabitsAndTasks" , id = item.UserTaskId})" class="btn btn-xs"><i class=" fa fa-check"></i></a>
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Name)
@@ -76,8 +76,8 @@
                 </td>
                 <td>
                     <div class="pull-right">
-                        <button class="btn btn-primary btn-xs" onclick="edittask(@item.CharacterTaskId)"><i class="far fa-edit"></i></button>
-                        <button class="btn btn-danger btn-xs" onclick="deletetask(@item.CharacterTaskId)"><i class="far fa-trash-alt"></i></button>
+                        <button class="btn btn-primary btn-xs" onclick="edittask(@item.UserTaskId)"><i class="far fa-edit"></i></button>
+                        <button class="btn btn-danger btn-xs" onclick="deletetask(@item.UserTaskId)"><i class="far fa-trash-alt"></i></button>
                     </div>
                 </td>
             </tr>

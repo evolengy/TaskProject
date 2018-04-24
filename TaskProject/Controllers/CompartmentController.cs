@@ -2,6 +2,7 @@
 using System;
 using System.Linq;
 using System.Net;
+using TaskProject.Models;
 using TaskLibrary;
 
 namespace Spacewander.Controllers
@@ -15,34 +16,34 @@ namespace Spacewander.Controllers
         {
             db = _db;
             int result;
-            if (!Int32.TryParse(HttpContext.Request.Cookies["CharacterId"].ToString(), out result))
+            if (!Int32.TryParse(HttpContext.Request.Cookies["UserId"].ToString(), out result))
             {
                 return new StatusCodeResult(400);
             }
 
-            int id = Int32.Parse(HttpContext.Request.Cookies["CharacterId"].ToString());
+            string id = HttpContext.Request.Cookies["UserId"];
 
-            Character Character = db.Characters.Where(c => c.CharacterId == id).FirstOrDefault();
-            return View(Character);
+            ApplicationUser User = db.Users.Where(c => c.Id == id).FirstOrDefault();
+            return View(User);
         }
 
         public ActionResult GetCare()
         {
             int result;
-            if (!Int32.TryParse(HttpContext.Request.Cookies["CharacterId"].ToString(), out result))
+            if (!Int32.TryParse(HttpContext.Request.Cookies["UserId"].ToString(), out result))
             {
                 return new StatusCodeResult(400);
             }
 
-            int id = Int32.Parse(HttpContext.Request.Cookies["CharacterId"].ToString());
+            string id = HttpContext.Request.Cookies["UserId"];
 
-            Character Character = db.Characters.Where(c => c.CharacterId == id).FirstOrDefault();
+            ApplicationUser User = db.Users.Where(c => c.Id == id).FirstOrDefault();
 
-            Character.CurrentGold = Character.CurrentGold - (Character.MaxHealth - Character.CurrentHealth)*2;
-            Character.CurrentHealth = Character.MaxHealth;
-            if (Character.IsDead)
+            User.CurrentGold = User.CurrentGold - (User.MaxHealth - User.CurrentHealth)*2;
+            User.CurrentHealth = User.MaxHealth;
+            if (User.IsDead)
             {
-                Character.IsDead = false;
+                User.IsDead = false;
             }
 
             db.SaveChanges();

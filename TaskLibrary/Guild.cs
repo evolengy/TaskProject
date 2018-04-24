@@ -24,9 +24,9 @@ namespace TaskLibrary
         [Key]
         public int GuildReputationId { get; set; }
 
-        [ForeignKey("Character")]
-        public int CharacterId { get; set; }
-        public virtual Character Character { get; set; }
+        [ForeignKey("User")]
+        public string UserId { get; set; }
+        public virtual ApplicationUser User { get; set; }
 
         [ForeignKey("Guild")]
         public int GuildId { get; set; }

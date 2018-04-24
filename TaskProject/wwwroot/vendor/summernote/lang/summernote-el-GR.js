@@ -139,7 +139,7 @@
         redo: 'Επαναληψη'
       },
       specialChar: {
-        specialChar: 'SPECIAL CHARACTERS',
+        specialChar: 'SPECIAL UserS',
         select: 'Επιλέξτε ειδικούς χαρακτήρες'
       }
     }

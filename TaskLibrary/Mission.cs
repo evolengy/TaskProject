@@ -27,9 +27,9 @@ namespace TaskLibrary
         [Key]
         public int MissionConditionId { get; set; }
 
-        [ForeignKey("Character")]
-        public int CharacterId { get; set; }
-        public virtual Character Character { get; set; }
+        [ForeignKey("User")]
+        public string UserId { get; set; }
+        public virtual ApplicationUser User { get; set; }
 
         [ForeignKey("Mission")]
         public int MissionId { get; set; }

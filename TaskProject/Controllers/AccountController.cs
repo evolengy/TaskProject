@@ -11,7 +11,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using TaskLibrary;
-using TaskLibrary.AccountViewModels;
+using TaskProject.Models;
+using TaskProject.Models.AccountViewModels;
 using TaskProject.Services;
 
 namespace TaskProject.Controllers

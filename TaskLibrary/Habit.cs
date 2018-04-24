@@ -27,9 +27,9 @@ namespace TaskLibrary
         [Display(Name = "Дата следующей проверки привычки"), Column(TypeName = "Date")]
         public DateTime HabitEnd { get; set; }
 
-        [ForeignKey("Character")]
-        public int CharacterId { get; set; }
-        public virtual Character Character { get; set; }
+        [ForeignKey("User")]
+        public string UserId { get; set; }
+        public virtual ApplicationUser User { get; set; }
         [ForeignKey("Complication")]
         public int ComplicationId { get; set; }
         [Display(Name = "Сложность")]

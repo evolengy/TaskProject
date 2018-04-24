@@ -11,7 +11,5 @@ namespace TaskLibrary
         public string Name { get; set; }
         public string Description { get; set; }
         public string LinkImage { get; set; }
-
-        public List<Character> Character { get; set; }
     }
 }

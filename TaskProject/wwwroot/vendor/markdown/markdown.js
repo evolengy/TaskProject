@@ -820,7 +820,7 @@ Markdown.dialects.Gruber.inline = {
       return out;
     },
 
-    // These characters are intersting elsewhere, so have rules for them so that
+    // These Users are intersting elsewhere, so have rules for them so that
     // chunks of plain text blocks don't include them
     "]": function () {},
     "}": function () {},
@@ -1111,7 +1111,7 @@ Markdown.DialectHelpers.inline_until_char = function( text, want ) {
 
   while ( true ) {
     if ( text.charAt( consumed ) == want ) {
-      // Found the character we were looking for
+      // Found the User we were looking for
       consumed++;
       return [ consumed, nodes ];
     }
@@ -1323,7 +1323,7 @@ Markdown.dialects.Maruku.block.definition_list = function definition_list( block
   return [ list ];
 };
 
-// splits on unescaped instances of @ch. If @ch is not a character the result
+// splits on unescaped instances of @ch. If @ch is not a User the result
 // can be unpredictable
 
 Markdown.dialects.Maruku.block.table = function table (block, next) {

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using TaskLibrary;
+using TaskProject.Models;
 
 namespace TaskProject.Controllers
 {
@@ -43,13 +44,13 @@ namespace TaskProject.Controllers
             if (ModelState.IsValid)
             {
                 int result;
-                if (!Int32.TryParse(HttpContext.Request.Cookies["CharacterId"].ToString(), out result))
+                if (!Int32.TryParse(HttpContext.Request.Cookies["UserId"].ToString(), out result))
                 {
                     return new StatusCodeResult(400);
                 }
-                int id = Int32.Parse(HttpContext.Request.Cookies["CharacterId"].ToString());
-                Character Character = db.Characters.Where(c => c.CharacterId == id).SingleOrDefault();
-                goal.CharacterId = id;
+                string id = HttpContext.Request.Cookies["UserId"];
+                ApplicationUser user = db.Users.Where(c => c.Id == id).SingleOrDefault();
+                goal.UserId = id;
 
                 switch (goal.RepeatId)
                 {
@@ -64,7 +65,7 @@ namespace TaskProject.Controllers
                         }
                 }
 
-                Character.Goals.Add(goal);
+                user.Goals.Add(goal);
                 db.SaveChanges();
                 return PartialView("_Success");
             }
@@ -160,23 +161,23 @@ namespace TaskProject.Controllers
                         break;
                     }
             }
-            goal.Character.CurrentExp = goal.Character.CurrentExp + goal.Complication.Exp;
-            goal.Character.CurrentGold = goal.Character.CurrentGold + goal.Complication.Gold;
+            goal.User.CurrentExp = goal.User.CurrentExp + goal.Complication.Exp;
+            goal.User.CurrentGold = goal.User.CurrentGold + goal.Complication.Gold;
 
 
-            goal.Character.CurrentHealth = goal.Character.CurrentHealth + goal.Complication.Damage;
-            if (goal.Character.CurrentHealth > goal.Character.MaxHealth)
+            goal.User.CurrentHealth = goal.User.CurrentHealth + goal.Complication.Damage;
+            if (goal.User.CurrentHealth > goal.User.MaxHealth)
             {
-                goal.Character.CurrentHealth = goal.Character.MaxHealth;
+                goal.User.CurrentHealth = goal.User.MaxHealth;
             }
 
-            if (goal.Character.CurrentExp >= goal.Character.MaxExp)
+            if (goal.User.CurrentExp >= goal.User.MaxExp)
             {
-                goal.Character.CurrentLevel++;
-                goal.Character.CurrentExp = 0;
+                goal.User.CurrentLevel++;
+                goal.User.CurrentExp = 0;
             }
 
-            CharacterAtribute Atribute = goal.Character.Atributes.Where(s => s.AtributeId == goal.AtributeId).FirstOrDefault();
+            UserAtribute Atribute = goal.User.Atributes.Where(s => s.AtributeId == goal.AtributeId).FirstOrDefault();
             if (Atribute != null)
             {
                 Atribute.CurrentExp = Atribute.CurrentExp + goal.Complication.Exp;

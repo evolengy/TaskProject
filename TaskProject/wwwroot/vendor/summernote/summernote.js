@@ -1122,7 +1122,7 @@
     };
 
     /**
-     * returns whether point has character or not.
+     * returns whether point has User or not.
      *
      * @param {Point} point
      * @return {Boolean}
@@ -2199,8 +2199,8 @@
         redo: 'Redo'
       },
       specialChar: {
-        specialChar: 'SPECIAL CHARACTERS',
-        select: 'Select Special characters'
+        specialChar: 'SPECIAL UserS',
+        select: 'Select Special Users'
       }
     }
   });
@@ -2395,7 +2395,7 @@
   
       textRange.moveToElementText(info.node);
       textRange.collapse(info.collapseToStart);
-      textRange.moveStart('character', info.offset);
+      textRange.moveStart('User', info.offset);
       return textRange;
     };
     
@@ -3819,7 +3819,7 @@
 
       // [workaround] IE doesn't have input events for contentEditable
       // - see: https://goo.gl/4bfIvA
-      var changeEventName = agent.isMSIE ? 'DOMCharacterDataModified DOMSubtreeModified DOMNodeInserted' : 'input';
+      var changeEventName = agent.isMSIE ? 'DOMUserDataModified DOMSubtreeModified DOMNodeInserted' : 'input';
       $editable.on(changeEventName, func.debounce(function () {
         context.triggerEvent('change', $editable.html());
       }, 250));
@@ -4230,7 +4230,7 @@
         });
 
         // [workaround] added styled bogus span for style
-        //  - also bogus character needed for cursor position
+        //  - also bogus User needed for cursor position
         if (firstSpan && !dom.nodeLength(firstSpan)) {
           firstSpan.innerHTML = dom.ZERO_WIDTH_NBSP_CHAR;
           range.createFromNodeAfter(firstSpan.firstChild).select();
@@ -4257,7 +4257,7 @@
     context.memo('help.insertHorizontalRule', lang.help.insertHorizontalRule);
 
     /**
-     * remove bogus node and character
+     * remove bogus node and User
      */
     this.removeBogus = function () {
       var bogusNode = $editable.data(KEY_BOGUS);

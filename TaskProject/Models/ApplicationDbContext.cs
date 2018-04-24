@@ -6,17 +6,16 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using TaskLibrary;
 
-namespace TaskLibrary
+namespace TaskProject.Models
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Complication> Complications { get; set; }
-        public DbSet<Character> Characters { get; set; }
         public DbSet<Class> Classes { get; set; }
         public DbSet<Habit> Habits { get; set; }
         public DbSet<Attainment> Attainments { get; set; }
         public DbSet<Goal> Goals { get; set; }
-        public DbSet<CharacterAtribute> CharacterAtributes { get; set; }
+        public DbSet<UserAtribute> UserAtributes { get; set; }
         public DbSet<Atribute> Atributes { get; set; }
         public DbSet<Repeat> Repeats { get; set; }
         public DbSet<Mission> Missions { get; set; }
@@ -37,6 +36,12 @@ namespace TaskLibrary
             // Customize the ASP.NET Identity model and override the defaults if needed.
             // For example, you can rename the ASP.NET Identity table names and more.
             // Add your customizations after calling base.OnModelCreating(builder);
+
+            //builder.Entity<ApplicationUser>(entity =>
+            //{
+            //    entity.ToTable(name: "AspNetUser", schema: "Security");
+            //    entity.Property(e => e.Id).HasColumnName("UserId");
+            //});
         }
     }
 }

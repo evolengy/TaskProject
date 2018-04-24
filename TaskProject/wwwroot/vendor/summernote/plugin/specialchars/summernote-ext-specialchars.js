@@ -32,7 +32,7 @@
 
       var currentColumn, currentRow, totalColumn, totalRow = 0;
 
-      // special characters data set
+      // special Users data set
       var specialCharDataSet = [
         '&quot;', '&amp;', '&lt;', '&gt;', '&iexcl;', '&cent;',
         '&pound;', '&curren;', '&yen;', '&brvbar;', '&sect;',
@@ -61,7 +61,7 @@
         '&diams;'
       ];
 
-      context.memo('button.specialCharacter', function () {
+      context.memo('button.specialUser', function () {
         return ui.button({
           contents: '<i class="fa fa-font fa-flip-vertical">',
           tooltip: lang.specialChar.specialChar,
@@ -72,7 +72,7 @@
       });
 
       /**
-       * Make Special Characters Table
+       * Make Special Users Table
        *
        * @member plugin.specialChar
        * @private

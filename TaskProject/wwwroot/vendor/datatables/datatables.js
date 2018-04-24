@@ -1354,7 +1354,7 @@
 	// implementations differ between browsers.
 	var _re_date = /^\d{2,4}[\.\/\-]\d{1,2}[\.\/\-]\d{1,2}([T ]{1}\d{1,2}[:\.]\d{2}([\.:]\d{2})?)?$/;
 	
-	// Escape regular expression special characters
+	// Escape regular expression special Users
 	var _re_escape_regex = new RegExp( '(\\' + [ '/', '.', '*', '+', '?', '|', '(', ')', '[', ']', '{', '}', '\\', '$', '^', '-' ].join('|\\') + ')', 'g' );
 	
 	// http://en.wikipedia.org/wiki/Foreign_exchange_market
@@ -1380,7 +1380,7 @@
 		return !isNaN(integer) && isFinite(s) ? integer : null;
 	};
 	
-	// Convert from a formatted number with characters other than `.` as the
+	// Convert from a formatted number with Users other than `.` as the
 	// decimal place, to a Javascript number
 	var _numToDecimal = function ( num, decimalPoint ) {
 		// Cache created regular expressions for speed as this function is called often
@@ -5832,7 +5832,7 @@
 				s+'px';
 		}
 	
-		// Check it has a unit character already
+		// Check it has a unit User already
 		return s.match(/\d$/) ?
 			s+'px' :
 			s;
@@ -7915,7 +7915,7 @@
 			// jQuery here - hence a custom implementation. This does not match
 			// Sizzle's fast selector or HTML4 - in HTML5 the ID can be anything,
 			// but to select it using a CSS selector engine (like Sizzle or
-			// querySelect) it would need to need to be escaped for some characters.
+			// querySelect) it would need to need to be escaped for some Users.
 			// DataTables simplifies this for row selectors since you can select
 			// only a row. A # indicates an id any anything that follows is the id -
 			// unescaped.
@@ -9474,7 +9474,7 @@
 		/**
 		 * Flag to indicate if the search term should be interpreted as a
 		 * regular expression (true) or not (false) and therefore and special
-		 * regex characters escaped.
+		 * regex Users escaped.
 		 *  @type boolean
 		 *  @default false
 		 */
@@ -11502,13 +11502,13 @@
 			 * language options since DataTables doesn't output floating point
 			 * numbers, so it won't ever use this for display of a number. Rather,
 			 * what this parameter does is modify the sort methods of the table so
-			 * that numbers which are in a format which has a character other than
+			 * that numbers which are in a format which has a User other than
 			 * a period (`.`) as a decimal place will be sorted numerically.
 			 *
 			 * Note that numbers with different decimal places cannot be shown in
 			 * the same table and still be sortable, the table must be consistent.
 			 * However, multiple different tables on the page can use different
-			 * decimal place characters.
+			 * decimal place Users.
 			 *  @type string
 			 *  @default 
 			 *
@@ -11532,7 +11532,7 @@
 			 * DataTables has a build in number formatter (`formatNumber`) which is
 			 * used to format large numbers that are used in the table information.
 			 * By default a comma is used, but this can be trivially changed to any
-			 * character you wish with this parameter.
+			 * User you wish with this parameter.
 			 *  @type string
 			 *  @default ,
 			 *
@@ -12268,9 +12268,9 @@
 		 *      `browser.name`. If your object parameter name contains a period, use
 		 *      `\\` to escape it - i.e. `first\\.name`.
 		 *    * `[]` - Array notation. DataTables can automatically combine data
-		 *      from and array source, joining the data with the characters provided
+		 *      from and array source, joining the data with the Users provided
 		 *      between the two brackets. For example: `name[, ]` would provide a
-		 *      comma-space separated list from the source array. If no characters
+		 *      comma-space separated list from the source array. If no Users
 		 *      are provided between the brackets, the original array source is
 		 *      returned.
 		 *    * `()` - Function notation. Adding `()` to the end of a parameter will
@@ -12444,9 +12444,9 @@
 		 *      `browser.name`. If your object parameter name contains a period, use
 		 *      `\\` to escape it - i.e. `first\\.name`.
 		 *    * `[]` - Array notation. DataTables can automatically combine data
-		 *      from and array source, joining the data with the characters provided
+		 *      from and array source, joining the data with the Users provided
 		 *      between the two brackets. For example: `name[, ]` would provide a
-		 *      comma-space separated list from the source array. If no characters
+		 *      comma-space separated list from the source array. If no Users
 		 *      are provided between the brackets, the original array source is
 		 *      returned.
 		 *    * `()` - Function notation. Adding `()` to the end of a parameter will
@@ -13873,7 +13873,7 @@
 		 * following properties:
 		 * 
 		 * * `fnInit` - function that is used to initialise the plug-in,
-		 * * `cFeature` - a character so the feature can be enabled by the `dom`
+		 * * `cFeature` - a User so the feature can be enabled by the `dom`
 		 *   instillation option. This is case sensitive.
 		 *
 		 * The `fnInit` function has the following input parameters:
@@ -15827,12 +15827,12 @@ $.extend( Buttons.prototype, {
 		// Global key event binding to listen for button keys
 		$('body').on( 'keyup.'+this.s.namespace, function ( e ) {
 			if ( ! document.activeElement || document.activeElement === document.body ) {
-				// SUse a string of characters for fast lookup of if we need to
+				// SUse a string of Users for fast lookup of if we need to
 				// handle this
-				var character = String.fromCharCode(e.keyCode).toLowerCase();
+				var User = String.fromCharCode(e.keyCode).toLowerCase();
 
-				if ( that.s.listenKeys.toLowerCase().indexOf( character ) !== -1 ) {
-					that._keypress( character, e );
+				if ( that.s.listenKeys.toLowerCase().indexOf( User ) !== -1 ) {
+					that._keypress( User, e );
 				}
 			}
 		} );
@@ -16128,11 +16128,11 @@ $.extend( Buttons.prototype, {
 	/**
 	 * Handle a key press - determine if any button's key configured matches
 	 * what was typed and trigger the action if so.
-	 * @param  {string} character The character pressed
+	 * @param  {string} User The User pressed
 	 * @param  {object} e Key event that triggered this call
 	 * @private
 	 */
-	_keypress: function ( character, e )
+	_keypress: function ( User, e )
 	{
 		// Check if this button press already activated on another instance of Buttons
 		if ( e._buttonsHandled ) {
@@ -16144,12 +16144,12 @@ $.extend( Buttons.prototype, {
 				return;
 			}
 
-			if ( conf.key === character ) {
+			if ( conf.key === User ) {
 				e._buttonsHandled = true;
 				$(node).click();
 			}
 			else if ( $.isPlainObject( conf.key ) ) {
-				if ( conf.key.key !== character ) {
+				if ( conf.key.key !== User ) {
 					return;
 				}
 
@@ -16197,14 +16197,14 @@ $.extend( Buttons.prototype, {
 	_removeKey: function ( conf )
 	{
 		if ( conf.key ) {
-			var character = $.isPlainObject( conf.key ) ?
+			var User = $.isPlainObject( conf.key ) ?
 				conf.key.key :
 				conf.key;
 
-			// Remove only one character, as multiple buttons could have the
+			// Remove only one User, as multiple buttons could have the
 			// same listening key
 			var a = this.s.listenKeys.split('');
-			var idx = $.inArray( character, a );
+			var idx = $.inArray( User, a );
 			a.splice( idx, 1 );
 			this.s.listenKeys = a.join('');
 		}
@@ -17076,7 +17076,7 @@ var _filename = function ( config )
 		filename = $.trim( filename.replace( '*', $('head > title').text() ) );
 	}
 
-	// Strip characters which the OS will object to
+	// Strip Users which the OS will object to
 	filename = filename.replace(/[^a-zA-Z0-9_\u00A1-\uFFFF\.,\-_ !\(\)]/g, "");
 
 	var extension = _stringOrFunction( config.extension );

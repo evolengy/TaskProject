@@ -5,6 +5,7 @@ using System;
 using System.Linq;
 using System.Net;
 using TaskLibrary;
+using TaskProject.Models;
 
 namespace Spacewander.Areas.HabitsAndTasks.Controllers
 {
@@ -15,7 +16,7 @@ namespace Spacewander.Areas.HabitsAndTasks.Controllers
         public ActionResult Index(ApplicationDbContext _db)
         {
             db = _db;
-            var habits = db.Habits.Include(h => h.Character).Include(h => h.Complication).Include(h => h.Atribute);
+            var habits = db.Habits.Include(h => h.User).Include(h => h.Complication).Include(h => h.Atribute);
             return View(habits.ToList());
         }
 
@@ -33,15 +34,18 @@ namespace Spacewander.Areas.HabitsAndTasks.Controllers
             if (ModelState.IsValid)
             {
                 int result;
-                if(!Int32.TryParse(HttpContext.Request.Cookies["CharacterId"].ToString(), out result))
+                if(!Int32.TryParse(HttpContext.Request.Cookies["UserId"].ToString(), out result))
                 {
                     return new StatusCodeResult(400);
                 }
-                int id = Int32.Parse(HttpContext.Request.Cookies["CharacterId"].ToString());
+                string id = HttpContext.Request.Cookies["UserId"];
+
                 habit.HabitStart = DateTime.Now.Date;
                 habit.HabitEnd = DateTime.Now.Date;
-                Character Character = db.Characters.Where(c => c.CharacterId == id).SingleOrDefault();
-                Character.Habits.Add(habit);
+
+                ApplicationUser User = db.Users.Where(c => c.Id == id).SingleOrDefault();
+
+                User.Habits.Add(habit);
                 db.SaveChanges();
                 return RedirectToAction("GameRoom", "Home", new { area = "" });
             }
@@ -120,22 +124,22 @@ namespace Spacewander.Areas.HabitsAndTasks.Controllers
             {
                 Habit.IsAccepted = true;
             }
-            Habit.Character.CurrentExp = Habit.Character.CurrentExp + Habit.Complication.Exp;
-            Habit.Character.CurrentGold = Habit.Character.CurrentGold + Habit.Complication.Gold;
+            Habit.User.CurrentExp = Habit.User.CurrentExp + Habit.Complication.Exp;
+            Habit.User.CurrentGold = Habit.User.CurrentGold + Habit.Complication.Gold;
 
-            Habit.Character.CurrentHealth = Habit.Character.CurrentHealth + Habit.Complication.Damage;
-            if (Habit.Character.CurrentHealth > Habit.Character.MaxHealth)
+            Habit.User.CurrentHealth = Habit.User.CurrentHealth + Habit.Complication.Damage;
+            if (Habit.User.CurrentHealth > Habit.User.MaxHealth)
             {
-                Habit.Character.CurrentHealth = Habit.Character.MaxHealth;
+                Habit.User.CurrentHealth = Habit.User.MaxHealth;
             }
 
-            if (Habit.Character.CurrentExp >= Habit.Character.MaxExp)
+            if (Habit.User.CurrentExp >= Habit.User.MaxExp)
             {
-                Habit.Character.CurrentLevel++;
-                Habit.Character.CurrentExp = 0;
+                Habit.User.CurrentLevel++;
+                Habit.User.CurrentExp = 0;
             }
 
-            CharacterAtribute Atribute = Habit.Character.Atributes.Where(s => s.AtributeId == Habit.AtributeId).FirstOrDefault();
+            UserAtribute Atribute = Habit.User.Atributes.Where(s => s.AtributeId == Habit.AtributeId).FirstOrDefault();
             if(Atribute != null)
             {
                 Atribute.CurrentExp = Atribute.CurrentExp + Habit.Complication.Exp;

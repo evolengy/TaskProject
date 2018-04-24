@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using TaskLibrary;
+using TaskProject.Models;
 using System.Net;
 using Microsoft.AspNetCore.Mvc;
+using TaskLibrary;
 
 namespace Spacewander.Controllers
 {
@@ -18,16 +19,16 @@ namespace Spacewander.Controllers
             List<Attainment> GlobalAttainments = db.Attainments.ToList();
 
             int result;
-            if (!Int32.TryParse(HttpContext.Request.Cookies["CharacterId"].ToString(), out result))
+            if (!Int32.TryParse(HttpContext.Request.Cookies["UserId"].ToString(), out result))
             {
                 return new StatusCodeResult(400);
             }
-            int id = Int32.Parse(HttpContext.Request.Cookies["CharacterId"].ToString());
-            Character Character = db.Characters.Where(c => c.CharacterId == id).SingleOrDefault();
+            string id = HttpContext.Request.Cookies["UserId"];
+            ApplicationUser User = db.Users.Where(c => c.Id == id).SingleOrDefault();
 
             foreach(Attainment GlobalAttainment in GlobalAttainments)
             {
-                if (!Character.Attainments.Contains(GlobalAttainment))
+                if (!User.Attainments.Contains(GlobalAttainment))
                 {
                     GlobalAttainment.LinkImage = "/img/attainment/secret.png";
                 }

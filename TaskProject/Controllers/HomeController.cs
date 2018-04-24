@@ -6,17 +6,16 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TaskLibrary;
+using TaskProject.Models;
 
 namespace TaskProject.Controllers
 {
     public class HomeController : Controller
     {
         private ApplicationDbContext db;
-        private Character Character { get; set; }
 
-        public ActionResult Index(ApplicationDbContext _db)
+        public ActionResult Index()
         {
-            db = _db;
             if (User.Identity.IsAuthenticated)
             {
                 return RedirectToAction("GameRoom");
@@ -26,42 +25,37 @@ namespace TaskProject.Controllers
 
         public ActionResult GameRoom()
         {
-
             if (!User.Identity.IsAuthenticated)
             {
                 return View("Index");
             }
 
             var user = db.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
-            Character = db.Characters.Where(c => c.UserId == user.Id).FirstOrDefault();
 
-            if (Character == null)
+            if (user.IsSetDescr)
             {
-                Character = new Character() { UserId = user.Id };
-                db.Characters.Add(Character);
-                db.SaveChanges();
 
-                HttpContext.Response.Cookies["CharacterId"].Value = Character.CharacterId.ToString();
+                Response.Cookies.Append("UserId" , user.Id.ToString());
                 ViewSetProfileModel view = new ViewSetProfileModel();
                 return View("SetProfile", view);
             }
 
-            CheckHabits();
-            CheckGoals();
+            CheckHabits(user);
+            CheckGoals(user);
 
-            if (Character.IsDead || Character.CurrentHealth <= 0)
+            if (user.IsDead || user.CurrentHealth <= 0)
             {
-                Character.CurrentHealth = 0;
-                Character.IsDead = true;
+                user.CurrentHealth = 0;
+                user.IsDead = true;
                 db.SaveChanges();
             }
 
-            Character.Class = GetClass(Character.Atributes);
+            user.Class = GetClass(user.Atributes);
             db.SaveChanges();
 
 
-            HttpContext.Response.Cookies["CharacterId"].Value = Character.CharacterId.ToString();
-            return View(Character);
+            Response.Cookies.Append("UserId" , user.Id.ToString());
+            return View(user);
         }
 
         [HttpPost]
@@ -71,34 +65,34 @@ namespace TaskProject.Controllers
             if (ModelState.IsValid)
             {
                 int result;
-                if (!Int32.TryParse(HttpContext.Request.Cookies["CharacterId"].ToString(), out result))
+                if (!Int32.TryParse(HttpContext.Request.Cookies["UserId"].ToString(), out result))
                 {
                     return RedirectToAction("LogOff", "Account");
                 }
 
-                int id = Int32.Parse(HttpContext.Request.Cookies["CharacterId"].ToString());
+                string id = HttpContext.Request.Cookies["UserId"];
 
-                    Character Character = db.Characters.Where(c => c.CharacterId == id).SingleOrDefault();
-                    db.Entry(Character).State = EntityState.Modified;
-                    Character.Age = view.Age;
-                    Character.Weight = view.Weight;
-                    Character.Growth = view.Growth;
-                    Character.Sex = view.Sex;
+                    ApplicationUser User = db.Users.Where(c => c.Id == id).SingleOrDefault();
+                    db.Entry(User).State = EntityState.Modified;
+                    User.Age = view.Age;
+                    User.Weight = view.Weight;
+                    User.Growth = view.Growth;
+                    User.Sex = view.Sex;
                     db.SaveChanges();
 
                     List<Atribute> DefaultAtributes = db.Atributes.ToList();
-                    List<CharacterAtribute> Atributes = new List<CharacterAtribute>();
+                    List<UserAtribute> Atributes = new List<UserAtribute>();
                     foreach (var DefaultAtribute in DefaultAtributes)
                     {
                         if (DefaultAtribute.Name != "Без характеристики")
                         {
-                            CharacterAtribute CharacterAtribute = new CharacterAtribute()
+                            UserAtribute UserAtribute = new UserAtribute()
                             {
                                 Atribute = DefaultAtribute,
                                 AtributeId = DefaultAtribute.AtributeId
 
                             };
-                            Atributes.Add(CharacterAtribute);
+                            Atributes.Add(UserAtribute);
                         }
                     }
                     return View("SetAtributes", Atributes);
@@ -108,25 +102,25 @@ namespace TaskProject.Controllers
         }
 
         [HttpPost]
-        public ActionResult SetAtributes(List<CharacterAtribute> Atributes)
+        public ActionResult SetAtributes(List<UserAtribute> Atributes)
         {
             int result;
-            if (!Int32.TryParse(HttpContext.Request.Cookies["CharacterId"].ToString(), out result))
+            if (!Int32.TryParse(HttpContext.Request.Cookies["UserId"].ToString(), out result))
             {
                 return RedirectToAction("LogOff", "Account");
             }
 
-            foreach (CharacterAtribute Atribute in Atributes)
+            foreach (UserAtribute Atribute in Atributes)
             {
                 Atribute.CurrentExp = 0;
                 Atribute.MaxExp = Atribute.Value * 1000;
             }
-            int id = Int32.Parse(HttpContext.Request.Cookies["CharacterId"].ToString());
+            string id = HttpContext.Request.Cookies["UserId"];
 
-                Character Character = db.Characters.Where(c => c.CharacterId == id).SingleOrDefault();
-                db.Entry(Character).State = EntityState.Modified;
-                Character.Atributes = Atributes;
-                Character.Class = GetClass(Character.Atributes);
+                ApplicationUser User = db.Users.Where(c => c.Id == id).SingleOrDefault();
+                db.Entry(User).State = EntityState.Modified;
+                User.Atributes = Atributes;
+                User.Class = GetClass(User.Atributes);
                 db.SaveChanges();
             
             return RedirectToAction("GameRoom", "Home");
@@ -137,16 +131,16 @@ namespace TaskProject.Controllers
             return PartialView();
         }
 
-        private Class GetClass(List<CharacterAtribute> Atributes)
+        private Class GetClass(List<UserAtribute> atributes)
         {
             Class Class = new Class();
-            CharacterAtribute Strong = new CharacterAtribute();
-            CharacterAtribute Charisma = new CharacterAtribute();
-            CharacterAtribute Intelligence = new CharacterAtribute();
-            CharacterAtribute Professionalism = new CharacterAtribute();
-            CharacterAtribute Psychic = new CharacterAtribute();
+            UserAtribute Strong = new UserAtribute();
+            UserAtribute Charisma = new UserAtribute();
+            UserAtribute Intelligence = new UserAtribute();
+            UserAtribute Professionalism = new UserAtribute();
+            UserAtribute Psychic = new UserAtribute();
 
-            foreach (CharacterAtribute Atribute in Atributes)
+            foreach (UserAtribute Atribute in atributes)
             {
                 if (Atribute.AtributeId == 1)
                 {
@@ -226,20 +220,20 @@ namespace TaskProject.Controllers
             return Class;
         }
 
-        private void CheckHabits()
+        private void CheckHabits(ApplicationUser user)
         {
-            foreach (var Habit in Character.Habits)
+            foreach (var habit in user.Habits)
             {
-                while (Habit.HabitEnd < DateTime.Now.Date)
+                while (habit.HabitEnd < DateTime.Now.Date)
                 {
-                    Character.CurrentHealth = Character.CurrentHealth - Habit.Complication.Damage;
-                    Habit.HabitEnd = Habit.HabitEnd.AddDays(1);
-                    Habit.WarningCount++;
+                    user.CurrentHealth = user.CurrentHealth - habit.Complication.Damage;
+                    habit.HabitEnd = habit.HabitEnd.AddDays(1);
+                    habit.WarningCount++;
 
-                    CharacterAtribute Atribute = Character.Atributes.Where(a => a.AtributeId == Habit.AtributeId).SingleOrDefault();
+                    UserAtribute Atribute = user.Atributes.Where(a => a.AtributeId == habit.AtributeId).SingleOrDefault();
                     if (Atribute != null)
                     {
-                        Atribute.CurrentExp = Atribute.CurrentExp - Habit.Complication.Exp;
+                        Atribute.CurrentExp = Atribute.CurrentExp - habit.Complication.Exp;
                         if (Atribute.CurrentExp < 0)
                         {
                             if (Atribute.Value > 0)
@@ -252,33 +246,33 @@ namespace TaskProject.Controllers
                     }
                 }
 
-                if (Habit.DayCount >= 21)
+                if (habit.DayCount >= 21)
                 {
-                    Habit.IsAccepted = true;
+                    habit.IsAccepted = true;
                 }
 
-                if (Habit.WarningCount >= 3)
+                if (habit.WarningCount >= 3)
                 {
-                    Habit.DayCount = 0;
-                    Habit.IsAccepted = false;
+                    habit.DayCount = 0;
+                    habit.IsAccepted = false;
                 }
                 db.SaveChanges();
             }
         }
 
-        private void CheckGoals()
+        private void CheckGoals(ApplicationUser user)
         {
-            foreach (var Goal in Character.Goals)
+            foreach (var goal in user.Goals)
             {
-                if (Goal.TaskEnd < DateTime.Now && Goal.IsComplete == false && (Goal.TaskEnd.Value.Day - Goal.TaskStart.Day) > TimeSpan.FromDays(1).Days)
+                if (goal.TaskEnd < DateTime.Now && goal.IsComplete == false && (goal.TaskEnd.Value.Day - goal.TaskStart.Day) > TimeSpan.FromDays(1).Days)
                 {
-                    CharacterAtribute Atribute = Character.Atributes.Where(s => s.AtributeId == Goal.AtributeId).SingleOrDefault();
+                    UserAtribute Atribute = user.Atributes.Where(s => s.AtributeId == goal.AtributeId).SingleOrDefault();
                     do
                     {
-                        Character.CurrentHealth = Character.CurrentHealth - Goal.Complication.Damage;
+                        user.CurrentHealth = user.CurrentHealth - goal.Complication.Damage;
                         if (Atribute != null)
                         {
-                            Atribute.CurrentExp = Atribute.CurrentExp - Goal.Complication.Exp;
+                            Atribute.CurrentExp = Atribute.CurrentExp - goal.Complication.Exp;
                             if (Atribute.CurrentExp < 0)
                             {
                                 if (Atribute.Value > 0)
@@ -291,43 +285,34 @@ namespace TaskProject.Controllers
                             }
                         }
 
-                        switch (Goal.RepeatId)
+                        switch (goal.RepeatId)
                         {
                             case 2:
                                 {
-                                    Goal.TaskEnd = null;
+                                    goal.TaskEnd = null;
                                     break;
                                 }
                             case 3:
                                 {
-                                    Goal.TaskEnd = Goal.TaskEnd.Value.AddDays(1);
+                                    goal.TaskEnd = goal.TaskEnd.Value.AddDays(1);
                                     break;
                                 }
                             case 5:
                                 {
-                                    Goal.TaskEnd = Goal.TaskEnd.Value.AddMonths(1);
+                                    goal.TaskEnd = goal.TaskEnd.Value.AddMonths(1);
                                     break;
                                 }
                             case 6:
                                 {
-                                    Goal.TaskEnd = Goal.TaskEnd.Value.AddYears(1);
+                                    goal.TaskEnd = goal.TaskEnd.Value.AddYears(1);
                                     break;
                                 }
                         }
                     }
-                    while (Goal.TaskEnd < DateTime.Now);
+                    while (goal.TaskEnd < DateTime.Now);
                     db.SaveChanges();
                 }
             }
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
         }
     }
 }

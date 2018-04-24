@@ -1,4 +1,4 @@
-﻿@using TaskLibrary
+﻿@using TaskProject.Models
 @model List<MissionsCondition>
 
 <div class="sw_missions container">
@@ -14,7 +14,7 @@
                 <div>@MissionCondition.Mission.Description</div>
             </div>
             <div class="sw_mission_accept col-md-4">
-                @if(MissionCondition.Character.CurrentLevel < MissionCondition.Mission.LevelUnlock)
+                @if(MissionCondition.User.CurrentLevel < MissionCondition.Mission.LevelUnlock)
                 {
                     <div class="sw_mission_state">Задание недоступно, необходим @MissionCondition.Mission.LevelUnlock уровень</div>
                 }

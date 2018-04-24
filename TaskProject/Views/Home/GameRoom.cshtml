@@ -1,4 +1,4 @@
-﻿@model TaskLibrary.Character
+﻿@model TaskProject.Models.User
 
 <div class="sw_row row">
     <div class="col-md-3">
@@ -166,13 +166,13 @@
                         {
                             <li>
                                 <div class="pull-left">
-                                    <a href="@Url.Action("CompleteGoal","Goals",new { area = "HabitsAndTasks" , id = Goal.CharacterTaskId})" class="btn btn-xs"><i class=" fa fa-check"></i></a>
+                                    <a href="@Url.Action("CompleteGoal","Goals",new { area = "HabitsAndTasks" , id = Goal.UserTaskId})" class="btn btn-xs"><i class=" fa fa-check"></i></a>
                                 </div>
                                 <div class="task-title">
                                     @Goal.Name
                                     <div class="pull-right">
-                                        <button class="btn btn-primary btn-xs" onclick="edittask(@Goal.CharacterTaskId)"><i class="far fa-edit"></i></button>
-                                        <button class="btn btn-danger btn-xs" onclick="deletetask(@Goal.CharacterTaskId)"><i class="far fa-trash-alt"></i></button>
+                                        <button class="btn btn-primary btn-xs" onclick="edittask(@Goal.UserTaskId)"><i class="far fa-edit"></i></button>
+                                        <button class="btn btn-danger btn-xs" onclick="deletetask(@Goal.UserTaskId)"><i class="far fa-trash-alt"></i></button>
                                     </div>
                                 </div>
                             </li>

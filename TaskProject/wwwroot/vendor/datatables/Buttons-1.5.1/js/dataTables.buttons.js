@@ -386,12 +386,12 @@ $.extend( Buttons.prototype, {
 		// Global key event binding to listen for button keys
 		$('body').on( 'keyup.'+this.s.namespace, function ( e ) {
 			if ( ! document.activeElement || document.activeElement === document.body ) {
-				// SUse a string of characters for fast lookup of if we need to
+				// SUse a string of Users for fast lookup of if we need to
 				// handle this
-				var character = String.fromCharCode(e.keyCode).toLowerCase();
+				var User = String.fromCharCode(e.keyCode).toLowerCase();
 
-				if ( that.s.listenKeys.toLowerCase().indexOf( character ) !== -1 ) {
-					that._keypress( character, e );
+				if ( that.s.listenKeys.toLowerCase().indexOf( User ) !== -1 ) {
+					that._keypress( User, e );
 				}
 			}
 		} );
@@ -687,11 +687,11 @@ $.extend( Buttons.prototype, {
 	/**
 	 * Handle a key press - determine if any button's key configured matches
 	 * what was typed and trigger the action if so.
-	 * @param  {string} character The character pressed
+	 * @param  {string} User The User pressed
 	 * @param  {object} e Key event that triggered this call
 	 * @private
 	 */
-	_keypress: function ( character, e )
+	_keypress: function ( User, e )
 	{
 		// Check if this button press already activated on another instance of Buttons
 		if ( e._buttonsHandled ) {
@@ -703,12 +703,12 @@ $.extend( Buttons.prototype, {
 				return;
 			}
 
-			if ( conf.key === character ) {
+			if ( conf.key === User ) {
 				e._buttonsHandled = true;
 				$(node).click();
 			}
 			else if ( $.isPlainObject( conf.key ) ) {
-				if ( conf.key.key !== character ) {
+				if ( conf.key.key !== User ) {
 					return;
 				}
 
@@ -756,14 +756,14 @@ $.extend( Buttons.prototype, {
 	_removeKey: function ( conf )
 	{
 		if ( conf.key ) {
-			var character = $.isPlainObject( conf.key ) ?
+			var User = $.isPlainObject( conf.key ) ?
 				conf.key.key :
 				conf.key;
 
-			// Remove only one character, as multiple buttons could have the
+			// Remove only one User, as multiple buttons could have the
 			// same listening key
 			var a = this.s.listenKeys.split('');
-			var idx = $.inArray( character, a );
+			var idx = $.inArray( User, a );
 			a.splice( idx, 1 );
 			this.s.listenKeys = a.join('');
 		}
@@ -1635,7 +1635,7 @@ var _filename = function ( config )
 		filename = $.trim( filename.replace( '*', $('head > title').text() ) );
 	}
 
-	// Strip characters which the OS will object to
+	// Strip Users which the OS will object to
 	filename = filename.replace(/[^a-zA-Z0-9_\u00A1-\uFFFF\.,\-_ !\(\)]/g, "");
 
 	var extension = _stringOrFunction( config.extension );

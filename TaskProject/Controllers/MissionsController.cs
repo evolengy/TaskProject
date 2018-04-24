@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using TaskProject.Models;
 using TaskLibrary;
 
 namespace Spacewander.Controllers
@@ -16,64 +17,65 @@ namespace Spacewander.Controllers
             db = _db;
             List<Guild> Guilds = db.Guilds.ToList();
             int result;
-            if (!Int32.TryParse(HttpContext.Request.Cookies["CharacterId"].ToString(), out result))
+            if (!Int32.TryParse(HttpContext.Request.Cookies["UserId"].ToString(), out result))
             {
                 return RedirectToAction("LogOff","Account");
             }
-            int characterid = Int32.Parse(HttpContext.Request.Cookies["CharacterId"].ToString());
-            Character Character = db.Characters.Where(c => c.CharacterId == characterid).SingleOrDefault();
+            string id = HttpContext.Request.Cookies["UserId"];
+            ApplicationUser User = db.Users.Where(c => c.Id == id).SingleOrDefault();
 
             foreach (Guild Guild in Guilds)
             {
-                if(!Character.GuildsRep.Exists(g => g.GuildId == Guild.GuildId))
+                if(!User.GuildsRep.Exists(g => g.GuildId == Guild.GuildId))
                 {
                     GuildsReputation GuildRep = new GuildsReputation()
                     {
                         GuildId = Guild.GuildId
                     };
-                    Character.GuildsRep.Add(GuildRep);
+                    User.GuildsRep.Add(GuildRep);
                     db.SaveChanges();
                 }
             }
-            return View(Character.GuildsRep);
+            return View(User.GuildsRep);
         }
 
-        public ActionResult GetMissions(int id)
+        public ActionResult GetMissions(int missionid)
         {
-            List<Mission> Missions = db.Missions.Where(m => m.GuildId == id).ToList();
+            List<Mission> Missions = db.Missions.Where(m => m.GuildId == missionid).ToList();
 
             int result;
-            if (!Int32.TryParse(HttpContext.Request.Cookies["CharacterId"].ToString(), out result))
+            if (!Int32.TryParse(HttpContext.Request.Cookies["UserId"].ToString(), out result))
             {
                 return RedirectToAction("LogOff", "Account");
             }
-            int characterid = Int32.Parse(HttpContext.Request.Cookies["CharacterId"].ToString());
-            Character Character = db.Characters.Where(c => c.CharacterId == characterid).SingleOrDefault();
+            string userid = HttpContext.Request.Cookies["UserId"];
+            ApplicationUser User = db.Users.Where(c => c.Id == userid).SingleOrDefault();
 
             foreach(Mission Mission in Missions)
             {
-                if (!Character.Missions.Exists(m => m.MissionId == Mission.MissionId))
+                if (!User.Missions.Exists(m => m.MissionId == Mission.MissionId))
                 {
-                    Character.Missions.Add(new MissionsCondition()
+                    User.Missions.Add(new MissionsCondition()
                     {
                         MissionId = Mission.MissionId
                     });
                     db.SaveChanges();
                 }
             }
-            return View(Character.Missions);
+            return View(User.Missions);
         }
 
         public ActionResult StartMission(int id)
         {
             int result;
-            if (!Int32.TryParse(HttpContext.Request.Cookies["CharacterId"].ToString(), out result))
+            if (!Int32.TryParse(HttpContext.Request.Cookies["UserId"].ToString(), out result))
             {
                 return RedirectToAction("LogOff", "Account");
             }
-            int characterid = Int32.Parse(HttpContext.Request.Cookies["CharacterId"].ToString());
-            Character Character = db.Characters.Where(c => c.CharacterId == characterid).SingleOrDefault();
-            MissionsCondition MissionCondition = Character.Missions.Where(m => m.MissionConditionId == id).SingleOrDefault();
+            string userid = HttpContext.Request.Cookies["UserId"];
+
+            ApplicationUser User = db.Users.Where(c => c.Id == userid).SingleOrDefault();
+            MissionsCondition MissionCondition = User.Missions.Where(m => m.MissionConditionId == id).SingleOrDefault();
             MissionCondition.IsAccepted = true;
             db.SaveChanges();
             return RedirectToAction("GameRoom", "Home");
@@ -94,11 +96,11 @@ namespace Spacewander.Controllers
             mission.IsComplete = true;
             mission.IsAccepted = false;
 
-            mission.Character.CurrentExp = mission.Character.CurrentExp + mission.Mission.LevelUp;
-            if (mission.Character.CurrentExp >= mission.Character.MaxExp)
+            mission.User.CurrentExp = mission.User.CurrentExp + mission.Mission.LevelUp;
+            if (mission.User.CurrentExp >= mission.User.MaxExp)
             {
-                mission.Character.CurrentLevel++;
-                mission.Character.CurrentExp = 0;
+                mission.User.CurrentLevel++;
+                mission.User.CurrentExp = 0;
             }
 
             GuildsReputation guild = db.GuildsReputations.Where(g => g.GuildId == mission.Mission.GuildId).SingleOrDefault();

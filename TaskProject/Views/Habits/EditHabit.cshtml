@@ -1,9 +1,9 @@
-﻿@model TaskLibrary.Habit
+﻿@model TaskProject.Models.Habit
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    @Html.HiddenFor(model => model.CharacterId)
+    @Html.HiddenFor(model => model.UserId)
     @Html.HiddenFor(model => model.HabitId)
     @Html.HiddenFor(model => model.IsAccepted)
     @Html.HiddenFor(model => model.HabitStart)
