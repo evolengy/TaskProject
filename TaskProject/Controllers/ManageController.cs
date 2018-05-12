@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using TaskLibrary;
+using TaskProject;
 using TaskProject.Models;
 using TaskProject.Models.ManageViewModels;
 using TaskProject.Services;

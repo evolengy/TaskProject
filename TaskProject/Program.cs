@@ -18,7 +18,7 @@ namespace TaskProject
         {
             //BuildWebHost(args).Run();
 
-            // Добавляем данные в базу данных 
+            // Добавляем первоначальные значения в базу данных 
             var host = BuildWebHost(args);
 
             using(var scope = host.Services.CreateScope())
@@ -26,7 +26,7 @@ namespace TaskProject
                 var services = scope.ServiceProvider;
                 try
                 {
-                    var context = services.GetRequiredService<ApplicationDbContext>();
+                    var context = services.GetRequiredService<ApplicationDbContext>();      
                     ApplicationStore.Initialize(context);
                 }
                 catch(Exception ex)

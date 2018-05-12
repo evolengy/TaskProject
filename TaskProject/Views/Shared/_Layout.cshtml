@@ -29,153 +29,150 @@
     <div id="wrapper">
 
         @if (User.Identity.IsAuthenticated)
-    {
-        <!-- NAVBAR -->
-        <nav class="navbar navbar-default navbar-fixed-top">
-            <div class="container-fluid">
-                <div class="navbar-btn">
-                    <button type="button" class="btn-toggle-offcanvas"><i class="lnr lnr-menu"></i></button>
-                </div>
-                <!-- logo -->
-                <div class="navbar-brand">
-                    <a href="@Url.Action("Index", "Home", new {area = "" })"><img src="/img/logo.png" alt="Spacewander" class="img-responsive logo"></a>
-                </div>
-                <!-- end logo -->
-                <div class="navbar-right">
-                    <!-- search form -->
-                    <form id="navbar-search" class="navbar-form search-form">
-                        <input value="" class="form-control" placeholder="Поиск..." type="text">
-                        <button type="button" class="btn btn-default"><i class="fa fa-search"></i></button>
-                    </form>
-                    <!-- end search form -->
-                    <!-- navbar menu -->
-                    <div id="navbar-menu">
-                        <ul class="nav navbar-nav">
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle icon-menu" data-toggle="dropdown">
-                                    <i class="lnr lnr-alarm"></i>
-                                    <span class="notification-dot"></span>
-                                </a>
-                                <!--Исправить-->
-                                <ul class="dropdown-menu notifications">
-                                    <li class="header"><strong>You have 7 new notifications</strong></li>
-                                    <li>
-                                        <a href="#">
-                                            <div class="media">
-                                                <div class="media-left">
-                                                    <i class="fa fa-fw fa-flag-checkered text-muted"></i>
-                                                </div>
-                                                <div class="media-body">
-                                                    <p class="text">Your campaign <strong>Holiday Sale</strong> is starting to engage potential customers.</p>
-                                                    <span class="timestamp">24 minutes ago</span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <div class="media">
-                                                <div class="media-left">
-                                                    <i class="fa fa-fw fa-exclamation-triangle text-warning"></i>
-                                                </div>
-                                                <div class="media-body">
-                                                    <p class="text">Campaign <strong>Holiday Sale</strong> is nearly reach budget limit.</p>
-                                                    <span class="timestamp">2 hours ago</span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li class="footer"><a href="#" class="more">See all notifications</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle icon-menu" data-toggle="dropdown">
-                                    <i class="lnr lnr-question-circle"></i>
-                                </a>
-                                <ul class="dropdown-menu user-menu">
-                                    <li>
-                                        <form class="search-form help-search-form">
-                                            <input value="" class="form-control" placeholder="Как вам помочь?" type="text">
-                                            <button type="button" class="btn btn-default"><i class="fa fa-search"></i></button>
-                                        </form>
-                                    </li>
-                                    <li class="menu-heading">Помощь</li>
-                                    <li><a href="@Url.Action("FAQ", "Info", new { area = "" })">Руководство</a></li>
-                                    <li><a href="@Url.Action("Report", "Info", new { area = "" })">Сообщить о проблеме</a></li>
-                                    <li><a href="@Url.Action("QuestionAndSuggestion", "Info", new { area = "" })">Вопросы и предложения</a></li>
-                                    <li class="menu-button">
-                                        <a href="#" class="btn btn-primary"><i class="fa fa-question-circle"></i> Центр поддержки</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle icon-menu" data-toggle="dropdown">
-                                    <i class="lnr lnr-cog"></i>
-                                </a>
-                                <ul class="dropdown-menu user-menu menu-icon">
-                                    <li class="menu-heading">Управление</li>
-                                    <li><a href="@Url.Action("Index", "Manage", new { area = "" })">Настройки</a></li>
-                                    <li><a href="@Url.Action("LogOff", "Account", new { area = "" })">Выход</a></li>
-                                </ul>
-                            </li>
-                        </ul>
+        {
+            <!-- NAVBAR -->
+            <nav class="navbar navbar-default navbar-fixed-top">
+                <div class="container-fluid">
+                    <div class="navbar-btn">
+                        <button type="button" class="btn-toggle-offcanvas"><i class="lnr lnr-menu"></i></button>
                     </div>
-                    <!-- end navbar menu -->
-                </div>
-            </div>
-        </nav>
-        <!-- END NAVBAR -->
-        <!-- LEFT SIDEBAR -->
-        <div id="left-sidebar" class="sidebar">
-            <button type="button" class="btn btn-xs btn-link btn-toggle-fullwidth">
-                <span class="sr-only">Toggle Fullwidth</span>
-                <i class="fa fa-angle-left"></i>
-            </button>
-            <div class="sidebar-scroll">
-                <div class="user-account">
-                    <img src="~/img/user.png" class="img-responsive img-circle user-photo" alt="User Profile Picture">
-                    <div class="dropdown">
-                        <a href="#" class="dropdown-toggle user-name" data-toggle="dropdown">Изменить <i class="fa fa-caret-down"></i></a>
-                        <ul class="dropdown-menu dropdown-menu-right account">
-                            <li><a href="#">Мой профиль</a></li>
-                            <li><a href="#">Сообщения</a></li>
-                            <li><a href="@Url.Action("Index", "Manage", new { area = "" })">Настройки</a></li>
-                            <li class="divider"></li>
-                            <li><a href="@Url.Action("LogOff", "Account", new { area = "" })">Выйти</a></li>
-                        </ul>
+                    <!-- logo -->
+                    <div class="navbar-brand">
+                        <a href="@Url.Action("Index", "Home", new {area = "" })"><img src="/img/logo.png" alt="Spacewander" class="img-responsive logo"></a>
+                    </div>
+                    <!-- end logo -->
+                    <div class="navbar-right">
+                        <!-- search form -->
+                        <form id="navbar-search" class="navbar-form search-form">
+                            <input value="" class="form-control" placeholder="Поиск..." type="text">
+                            <button type="button" class="btn btn-default"><i class="fa fa-search"></i></button>
+                        </form>
+                        <!-- end search form -->
+                        <!-- navbar menu -->
+                        <div id="navbar-menu">
+                            <ul class="nav navbar-nav">
+                                @*<li class="dropdown">
+                                        <a href="#" class="dropdown-toggle icon-menu" data-toggle="dropdown">
+                                            <i class="lnr lnr-alarm"></i>
+                                            <span class="notification-dot"></span>
+                                        </a>
+                                        <ul class="dropdown-menu notifications">
+                                            <li class="header"><strong>You have 7 new notifications</strong></li>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="media">
+                                                        <div class="media-left">
+                                                            <i class="fa fa-fw fa-flag-checkered text-muted"></i>
+                                                        </div>
+                                                        <div class="media-body">
+                                                            <p class="text">Your campaign <strong>Holiday Sale</strong> is starting to engage potential customers.</p>
+                                                            <span class="timestamp">24 minutes ago</span>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="media">
+                                                        <div class="media-left">
+                                                            <i class="fa fa-fw fa-exclamation-triangle text-warning"></i>
+                                                        </div>
+                                                        <div class="media-body">
+                                                            <p class="text">Campaign <strong>Holiday Sale</strong> is nearly reach budget limit.</p>
+                                                            <span class="timestamp">2 hours ago</span>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="footer"><a href="#" class="more">See all notifications</a></li>
+                                        </ul>
+                                    </li>*@
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle icon-menu" data-toggle="dropdown">
+                                        <i class="lnr lnr-question-circle"></i>
+                                    </a>
+                                    <ul class="dropdown-menu user-menu">
+                                        <li>
+                                            <form class="search-form help-search-form">
+                                                <input value="" class="form-control" placeholder="Как вам помочь?" type="text">
+                                                <button type="button" class="btn btn-default"><i class="fa fa-search"></i></button>
+                                            </form>
+                                        </li>
+                                        <li class="menu-heading">Помощь</li>
+                                        <li><a href="@Url.Action("FAQ", "Info", new { area = "" })">Руководство</a></li>
+                                        <li><a href="@Url.Action("Report", "Info", new { area = "" })">Сообщить о проблеме</a></li>
+                                        <li><a href="@Url.Action("QuestionAndSuggestion", "Info", new { area = "" })">Вопросы и предложения</a></li>
+                                        <li class="menu-button">
+                                            <a href="#" class="btn btn-primary"><i class="fa fa-question-circle"></i> Центр поддержки</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle icon-menu" data-toggle="dropdown">
+                                        <i class="lnr lnr-cog"></i>
+                                    </a>
+                                    <ul class="dropdown-menu user-menu menu-icon">
+                                        <li class="menu-heading">Управление</li>
+                                        <li><a href="@Url.Action("Index", "Manage", new { area = "" })">Настройки</a></li>
+                                        <li><a href="@Url.Action("Logout", "Account", new { area = "" })">Выход</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- end navbar menu -->
                     </div>
                 </div>
-                <nav id="left-sidebar-nav" class="sidebar-nav">
-                    <ul id="main-menu" class="metismenu">
-                        <li class="active"><a href="@Url.Action("GameRoom", "Home", new { area = "" })"><i class="lnr lnr-home"></i> <span>Главная страница</span></a></li>
-                        <li class="">
-                            <a href="#person" class="has-arrow" aria-expanded="false"><i class="lnr lnr-chart-bars"></i> <span>Персонаж</span></a>
-                            <ul aria-expanded="true">
-                                <li class=""><a href="@Url.Action("Index","Goals", new {area = "HabitsAndTasks"})">Мои задачи</a></li>
-                                <li class=""><a href="@Url.Action("Index", "Habits", new {area = "HabitsAndTasks"})">Мои привычки</a></li>
-                                <li class=""><a href="@Url.Action("Index", "Achievments", new { area = "" })">Достижения</a></li>
+            </nav>
+            <!-- END NAVBAR -->
+            <!-- LEFT SIDEBAR -->
+            <div id="left-sidebar" class="sidebar">
+                <button type="button" class="btn btn-xs btn-link btn-toggle-fullwidth">
+                    <span class="sr-only">Toggle Fullwidth</span>
+                    <i class="fa fa-angle-left"></i>
+                </button>
+                <div class="sidebar-scroll">
+                    <div class="user-account">
+                        <img src="~/img/user.png" class="img-responsive img-circle user-photo" alt="User Profile Picture">
+                        <div class="dropdown">
+                            <a href="#" class="dropdown-toggle user-name" data-toggle="dropdown">Изменить <i class="fa fa-caret-down"></i></a>
+                            <ul class="dropdown-menu dropdown-menu-right account">
+                                <li><a href="#">Мой профиль</a></li>
+                                <li><a href="#">Сообщения</a></li>
+                                <li><a href="@Url.Action("Index", "Manage", new { area = "" })">Настройки</a></li>
+                                <li class="divider"></li>
+                                <li><a href="@Url.Action("Logout", "Account", new { area = "" })">Выйти</a></li>
                             </ul>
-                        </li>
-                        <li class="">
-                            <a href="#compartment" class="has-arrow" aria-expanded="false"><i class="lnr lnr-file-empty"></i> <span>Отсеки корабля</span></a>
-                            <ul aria-expanded="true">
-                                <li><a href="@Url.Action("Medical", "Compartment", new { area = "" })">Медицинский отсек</a></li>
-                                <li><a href="@Url.Action("Technical", "Compartment", new { area = "" })">Технический отсек</a></li>
-                            </ul>
-                        </li>
-                        <li class=""><a href="@Url.Action("Guilds", "Missions", new { area = "" })"><i class="lnr lnr-magic-wand"></i><span>Гильдии</span></a></li>
-                    </ul>
-                </nav>
+                        </div>
+                    </div>
+                    <nav id="left-sidebar-nav" class="sidebar-nav">
+                        <ul id="main-menu" class="metismenu">
+                            <li class="active"><a href="@Url.Action("GameRoom", "Home", new { area = "" })"><i class="lnr lnr-home"></i> <span>Главная страница</span></a></li>
+                            <li class="">
+                                <a href="#person" class="has-arrow" aria-expanded="false"><i class="lnr lnr-chart-bars"></i> <span>Персонаж</span></a>
+                                <ul aria-expanded="true">
+                                    <li class=""><a href="@Url.Action("Index","Goals", new {area = "HabitsAndTasks"})">Мои задачи</a></li>
+                                </ul>
+                            </li>
+                            <li class="">
+                                <a href="#compartment" class="has-arrow" aria-expanded="false"><i class="lnr lnr-file-empty"></i> <span>Отсеки корабля</span></a>
+                                <ul aria-expanded="true">
+                                    <li><a href="@Url.Action("Medical", "Compartment", new { area = "" })">Медицинский отсек</a></li>
+                                    <li><a href="@Url.Action("Technical", "Compartment", new { area = "" })">Технический отсек</a></li>
+                                </ul>
+                            </li>
+                            <li class=""><a href="@Url.Action("Guilds", "Missions", new { area = "" })"><i class="lnr lnr-magic-wand"></i><span>Гильдии</span></a></li>
+                        </ul>
+                    </nav>
+                </div>
             </div>
-        </div>
-        <!-- END LEFT SIDEBAR -->
+            <!-- END LEFT SIDEBAR -->
 
-        <div id="main-content">
-            <div class="container-fluid">
-                @RenderBody()
+            <div id="main-content">
+                <div class="container-fluid">
+                    @RenderBody()
+                </div>
             </div>
-        </div>
-        <!-- END MAIN CONTENT -->
+            <!-- END MAIN CONTENT -->
         }
 
         else
@@ -185,27 +182,27 @@
         }
 
     </div>
+
     <!-- END WRAPPER -->
     <!-- Javascript -->
     <!-- Scripts -->
     <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 
-    <script src="/vendor/jquery/jquery.min.js"></script>
-    <script src="/js/skel.min.js"></script>
-    <script src="~/vendor/modernizr/modernizr-2.8.3.js"></script>
-    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script src="/vendor/metisMenu/metisMenu.js"></script>
-    <script src="/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-    <script src="/vendor/jquery-sparkline/js/jquery.sparkline.min.js"></script>
-    <script src="/vendor/bootstrap-progressbar/js/bootstrap-progressbar.min.js"></script>
-    <script src="/vendor/chartist/js/chartist.min.js"></script>
-    <script src="/vendor/chartist-plugin-tooltip/chartist-plugin-tooltip.min.js"></script>
-    <script src="/vendor/chartist-plugin-axistitle/chartist-plugin-axistitle.min.js"></script>
-    <script src="/vendor/chartist-plugin-legend-latest/chartist-plugin-legend.js"></script>
-    <script src="/vendor/toastr/toastr.js"></script>
-    <script src="/scripts/common.js"></script>
-    <script src="~/vendor/datatables/datatables.min.js"></script>
-    <script src="~/js/main.js"></script>
+    <script src="~/libs/jquery/jquery.min.js"></script>
+    <script src="~/libs/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="~/libs/jquery-sparkline/jquery.sparkline.min.js"></script>
+    <script src="~/libs/metismenu/metisMenu.min.js"></script>
+    <script src="~/libs/modernizr/src/Modernizr.js"></script>
+    <script src="~/libs/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/libs/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <script src="~/libs/chartist/chartist.min.js"></script>
+    <script src="~/libs/chartist-plugin-tooltip/chartist-plugin-tooltip.js"></script>
+    <script src="~/libs/chartist-plugin-axistitle/chartist-plugin-axistitle.min.js"></script>
+    <script src="~/libs/chartist-plugin-legend/chartist-plugin-legend.js"></script>
+    <script src="~/libs/toastr/toastr.js"></script>
+    <script src="~/libs/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="~/js/skel.min.js"></script>
+    <script src="~/js/main.min.js"></script>
 
 
     <script>

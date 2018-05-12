@@ -6,7 +6,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TaskProject.Models;
 using TaskProject.Services;
-using TaskLibrary;
+using TaskProject;
+using Microsoft.Extensions.FileProviders;
+using System.IO;
 
 namespace TaskProject
 {
@@ -39,6 +41,7 @@ namespace TaskProject
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
 
+
             services.AddMvc();
         }
 
@@ -56,8 +59,20 @@ namespace TaskProject
                 app.UseExceptionHandler("/Home/Error");
             }
 
+            // Поддержка статических файлов
             app.UseStaticFiles();
 
+            // добавляем поддержку каталога node_modules
+            app.UseFileServer(new FileServerOptions()
+            {
+                FileProvider = new PhysicalFileProvider(
+                    Path.Combine(env.ContentRootPath, "node_modules")
+                ),
+                RequestPath = "/node_modules",
+                EnableDirectoryBrowsing = false
+            });
+
+            // Поддержка аутентификации
             app.UseAuthentication();
 
             app.UseMvc(routes =>

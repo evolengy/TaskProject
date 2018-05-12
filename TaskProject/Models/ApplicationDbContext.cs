@@ -4,25 +4,20 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using TaskLibrary;
 
 namespace TaskProject.Models
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Complication> Complications { get; set; }
-        public DbSet<Class> Classes { get; set; }
-        public DbSet<Habit> Habits { get; set; }
-        public DbSet<Attainment> Attainments { get; set; }
         public DbSet<Goal> Goals { get; set; }
         public DbSet<UserAtribute> UserAtributes { get; set; }
         public DbSet<Atribute> Atributes { get; set; }
         public DbSet<Repeat> Repeats { get; set; }
-        public DbSet<Mission> Missions { get; set; }
-        public DbSet<MissionsCondition> MissionsConditions { get; set; }
-        public DbSet<Guild> Guilds { get; set; }
-        public DbSet<GuildsReputation> GuildsReputations { get; set; }
         public DbSet<Message> Messages { get; set; }
+        public DbSet<Rating> Ratings { get; set; }
+        public DbSet<Skill> Skills { get; set; }
+        public DbSet<Aligment> Aligments { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)

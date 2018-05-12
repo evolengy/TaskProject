@@ -1,4 +1,4 @@
-﻿@model TaskLibrary.ApplicationUser
+﻿@model TaskProject.Models.ApplicationUser
 
 <div class="sw_row row">
     <div class="col-md-3">
@@ -12,10 +12,6 @@
                     <i class="fas fa-lg fa-user"></i>
                     <span>
                         Уровень @Html.DisplayFor(m => m.CurrentLevel)
-                        @if (!string.IsNullOrEmpty(Model.Class.Name))
-                        {
-                            <text> , </text>@Model.Class.Name;
-                        }
                     </span>
                 </div>
                 <div class="sw_stats">
@@ -188,39 +184,4 @@
     </div>
 </div>
 
-<div class="sw_row row">
-    <div class="col-md-12">
-        <section class="task-panel task-widget">
-            <div class="panel-heading">
-                <div class="pull-left"><h5><i class="fa fa-tasks"></i> Мои миссии</h5></div>
-                <br>
-            </div>
-            <div class="panel-body">
-                <div class="task-content">
-                    <ul class="task-list">
-                        @foreach (var Mission in Model.Missions.Where(m => m.IsAccepted == true))
-                        {
-                            <li>
-                                <div class="pull-left">
-                                    <a href="@Url.Action("CompleteMission", "Missions", new { id = Mission.MissionConditionId })" class="btn btn-success btn-xs"><i class=" fa fa-check"></i></a>
-                                </div>
-                                <div class="task-title">
-                                    <span class="task-title-sp">@Mission.Mission.Guild.Name - @Mission.Mission.Name</span>
-                                    @if (Mission.IsComplete)
-                                    {
-                                        <span class="badge bg-info">Выполняется</span>
-                                    }
-                                    else
-                                    {
-                                        <span class="badge bg-theme">Выполнено</span>
-                                    }
-                                </div>
-                            </li>
-                        }
-                    </ul>
-                </div>
-            </div>
-        </section>
-    </div>
-</div>
 

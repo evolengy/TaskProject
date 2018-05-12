@@ -2,18 +2,21 @@
 using System;
 using Microsoft.AspNetCore.Mvc;
 using TaskProject.Services;
-using TaskLibrary;
+using TaskProject;
 
 namespace Spacewander.Controllers
 {
     public class InfoController : Controller
     {
-        private ApplicationDbContext db;
+        private readonly ApplicationDbContext db;
 
-
-        public ActionResult FAQ(ApplicationDbContext _db)
+        public InfoController(ApplicationDbContext _db)
         {
             db = _db;
+        }
+
+        public ActionResult FAQ()
+        {
             Message message = new Message();
             return View(message);
         }
@@ -42,9 +45,8 @@ namespace Spacewander.Controllers
             return RedirectToAction("GameRoom","Home");
         }
 
-        public ActionResult QuestionAndSuggestion(ApplicationDbContext _db)
+        public ActionResult QuestionAndSuggestion()
         {
-            db = _db;
             return View();
         }
 

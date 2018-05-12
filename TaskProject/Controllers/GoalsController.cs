@@ -5,7 +5,7 @@ using System.Net;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using TaskLibrary;
+using TaskProject;
 using TaskProject.Models;
 
 namespace TaskProject.Controllers
@@ -14,9 +14,13 @@ namespace TaskProject.Controllers
     {
         private ApplicationDbContext db;
 
-        public ActionResult Index(ApplicationDbContext _db,bool iscomplete = false)
+        public GoalsController(ApplicationDbContext _db)
         {
             db = _db;
+        }
+
+        public ActionResult Index(bool iscomplete = false)
+        {
             ViewBag.Complete = true;
             if (!iscomplete)
             {
@@ -71,7 +75,6 @@ namespace TaskProject.Controllers
             }
             ViewBag.RepeatId = new SelectList(db.Repeats, "RepeatId", "Name");
             ViewBag.ComplicationId = new SelectList(db.Complications, "ComplicationId", "Name", goal.ComplicationId);
-            ViewBag.AtributeId = new SelectList(db.Atributes, "AtributeId", "Name", goal.AtributeId);
             return PartialView(goal);
         }
 
@@ -89,7 +92,6 @@ namespace TaskProject.Controllers
                 }
                 ViewBag.RepeatId = new SelectList(db.Repeats, "RepeatId", "Name", goal.RepeatId);
                 ViewBag.ComplicationId = new SelectList(db.Complications, "ComplicationId", "Name", goal.ComplicationId);
-                ViewBag.AtributeId = new SelectList(db.Atributes, "AtributeId", "Name", goal.AtributeId);
                 return View(goal);
         }
 
@@ -105,7 +107,6 @@ namespace TaskProject.Controllers
             }
             ViewBag.RepeatId = new SelectList(db.Repeats, "RepeatId", "Name");
             ViewBag.ComplicationId = new SelectList(db.Complications, "ComplicationId", "Name", goal.ComplicationId);
-            ViewBag.AtributeId = new SelectList(db.Atributes, "AtributeId", "Name", goal.AtributeId);
             return View(goal);
         }
 
@@ -177,18 +178,6 @@ namespace TaskProject.Controllers
                 goal.User.CurrentExp = 0;
             }
 
-            UserAtribute Atribute = goal.User.Atributes.Where(s => s.AtributeId == goal.AtributeId).FirstOrDefault();
-            if (Atribute != null)
-            {
-                Atribute.CurrentExp = Atribute.CurrentExp + goal.Complication.Exp;
-
-                if (Atribute.CurrentExp > Atribute.MaxExp)
-                {
-                    Atribute.Value++;
-                    Atribute.CurrentExp = 0;
-                    Atribute.MaxExp = Atribute.Value * 1000;
-                }
-            }
             db.SaveChanges();
             return RedirectToAction("GameRoom", "Home", new { area = "" });
         }

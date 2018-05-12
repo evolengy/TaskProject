@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using TaskLibrary;
+using TaskProject;
 using TaskProject.Models;
 using TaskProject.Models.AccountViewModels;
 using TaskProject.Services;
@@ -242,8 +242,7 @@ namespace TaskProject.Controllers
             return View(model);
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        [HttpGet]
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
