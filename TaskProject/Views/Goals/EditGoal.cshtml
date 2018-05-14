@@ -35,11 +35,11 @@
 
         <div class="form-group">
             <div class="col-md-offset-1 col-md-3">
-                @Html.LabelFor(model => model.TaskStart, htmlAttributes: new { @class = "control-label" })
+                @Html.LabelFor(model => model.GoalStart, htmlAttributes: new { @class = "control-label" })
             </div>
             <div class="col-md-7">
-                <input type="date" name="TaskStart" min="@Model.TaskStart.ToString("yyyy-MM-dd")" value="@Model.TaskStart.ToString("yyyy-MM-dd")" />
-                @Html.ValidationMessageFor(model => model.TaskEnd, "", new { @class = "text-danger" })
+                <input type="date" name="GoalStart" min="@Model.GoalStart.ToString("yyyy-MM-dd")" value="@Model.GoalStart.ToString("yyyy-MM-dd")" />
+                @Html.ValidationMessageFor(model => model.GoalEnd, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -53,13 +53,13 @@
             </div>
         </div>
 
-        <div class="form-group taskend">
+        <div class="form-group GoalEnd">
             <div class="col-md-offset-1 col-md-3">
-                @Html.LabelFor(model => model.TaskEnd, htmlAttributes: new { @class = "control-label" })
+                @Html.LabelFor(model => model.GoalEnd, htmlAttributes: new { @class = "control-label" })
             </div>
             <div class="col-md-7">
-                <input type="date" name="TaskEnd" min="@Model.TaskStart.ToString("yyyy-MM-dd")" value="@Model.TaskStart.ToString("yyyy-MM-dd")" />
-                @Html.ValidationMessageFor(model => model.TaskEnd, "", new { @class = "text-danger" })
+                <input type="date" name="GoalEnd" min="@Model.GoalStart.ToString("yyyy-MM-dd")" value="@Model.GoalStart.ToString("yyyy-MM-dd")" />
+                @Html.ValidationMessageFor(model => model.GoalEnd, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -93,17 +93,17 @@
 <script>
     $(document).ready(function () {
         if ($('#RepeatId').val() === "1") {
-            $(".taskend").css("display", "block");
+            $(".GoalEnd").css("display", "block");
         }
         else {
-            $(".taskend").css("display", "none");
+            $(".GoalEnd").css("display", "none");
         };
         $('#RepeatId').change(function () {
             if ($(this).val() === "1") {
-                $(".taskend").css("display", "block");
+                $(".GoalEnd").css("display", "block");
             }
             else {
-                $(".taskend").css("display", "none");
+                $(".GoalEnd").css("display", "none");
             }
         });
     });

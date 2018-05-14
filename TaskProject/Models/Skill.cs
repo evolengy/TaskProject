@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
@@ -12,8 +13,10 @@ namespace TaskProject.Models
             RatingId = 1;
             CurrentExp = 0;
             MaxExp = 100;
+            Lvl = 1;
         }
 
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int SkillId { get; set; }
 
         public virtual ApplicationUser User { get; set; }
@@ -24,7 +27,7 @@ namespace TaskProject.Models
         public int CurrentExp { get; set; }
         public int MaxExp { get; set; }
 
-        public virtual UserAtribute Atribute { get; set; }
+        public virtual Atribute Atribute { get; set; }
 
         [ForeignKey("Rating")]
         public int RatingId { get; set; }

@@ -80,7 +80,7 @@
                     success: function (data) {
                         $('.sw_modal_result').html(data);
                         document.getElementById('modal-header').style.display = "none";
-                        $('.sw_modal_tasks').modal({
+                        $('.sw_modal_goals').modal({
                             backdrop: 'static',
                             keyboard: false
                         });
@@ -94,7 +94,7 @@
                     url: '@Url.Action("AddGoal", "Goals")',
                     success: function (data) {
                         $('.sw_modal_result').html(data);
-                        $(".sw_modal_tasks").modal('show');
+                        $(".sw_modal").modal('show');
                     }
                 })
         }
@@ -107,7 +107,7 @@
                 datatype: "json",
                 success: function (data) {
                     $('.sw_modal_result').html(data);
-                    $('.sw_modal_tasks').modal('show');
+                    $('.sw_modal').modal('show');
                 }
             })
         }
@@ -118,7 +118,7 @@
                 data: { id : taskid },
                 success: function (data) {
                     $('.sw_modal_result').html(data);
-                    $('.sw_modal_tasks').modal('show');
+                    $('.sw_modal').modal('show');
                 }
             })
         }

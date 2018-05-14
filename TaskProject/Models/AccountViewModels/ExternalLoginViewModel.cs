@@ -10,6 +10,7 @@ namespace TaskProject.Models.AccountViewModels
     {
         [Required]
         [EmailAddress]
+        [Display(Name = "Ёлектронна€ почта")]
         public string Email { get; set; }
     }
 }

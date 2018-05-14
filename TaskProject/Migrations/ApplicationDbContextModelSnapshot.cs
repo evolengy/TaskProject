@@ -226,13 +226,24 @@ namespace TaskProject.Migrations
 
             modelBuilder.Entity("TaskProject.Models.Atribute", b =>
                 {
-                    b.Property<int>("AtributeId");
+                    b.Property<int>("AtributeId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("CurrentExp");
 
                     b.Property<string>("Description");
 
+                    b.Property<int>("Lvl");
+
+                    b.Property<int>("MaxExp");
+
                     b.Property<string>("Name");
 
+                    b.Property<string>("UserId");
+
                     b.HasKey("AtributeId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Atributes");
                 });
@@ -256,12 +267,16 @@ namespace TaskProject.Migrations
 
             modelBuilder.Entity("TaskProject.Models.Goal", b =>
                 {
-                    b.Property<int>("CharacterTaskId")
+                    b.Property<int>("GoalId")
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("ComplicationId");
 
                     b.Property<string>("Description");
+
+                    b.Property<DateTime?>("GoalEnd");
+
+                    b.Property<DateTime>("GoalStart");
 
                     b.Property<bool>("IsComplete");
 
@@ -272,13 +287,9 @@ namespace TaskProject.Migrations
 
                     b.Property<int?>("SkillId");
 
-                    b.Property<DateTime?>("TaskEnd");
-
-                    b.Property<DateTime>("TaskStart");
-
                     b.Property<string>("UserId");
 
-                    b.HasKey("CharacterTaskId");
+                    b.HasKey("GoalId");
 
                     b.HasIndex("ComplicationId");
 
@@ -341,7 +352,7 @@ namespace TaskProject.Migrations
                     b.Property<int>("SkillId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("AtributeUserAtributeId");
+                    b.Property<int?>("AtributeId");
 
                     b.Property<int>("CurrentExp");
 
@@ -357,37 +368,13 @@ namespace TaskProject.Migrations
 
                     b.HasKey("SkillId");
 
-                    b.HasIndex("AtributeUserAtributeId");
+                    b.HasIndex("AtributeId");
 
                     b.HasIndex("RatingId");
 
                     b.HasIndex("UserId");
 
                     b.ToTable("Skills");
-                });
-
-            modelBuilder.Entity("TaskProject.Models.UserAtribute", b =>
-                {
-                    b.Property<int>("UserAtributeId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("AtributeId");
-
-                    b.Property<int>("CurrentExp");
-
-                    b.Property<int>("Lvl");
-
-                    b.Property<int>("MaxExp");
-
-                    b.Property<string>("UserId");
-
-                    b.HasKey("UserAtributeId");
-
-                    b.HasIndex("AtributeId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("UserAtributes");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -442,6 +429,13 @@ namespace TaskProject.Migrations
                         .HasForeignKey("AligmentId");
                 });
 
+            modelBuilder.Entity("TaskProject.Models.Atribute", b =>
+                {
+                    b.HasOne("TaskProject.Models.ApplicationUser", "User")
+                        .WithMany("Atributes")
+                        .HasForeignKey("UserId");
+                });
+
             modelBuilder.Entity("TaskProject.Models.Goal", b =>
                 {
                     b.HasOne("TaskProject.Models.Complication", "Complication")
@@ -465,9 +459,9 @@ namespace TaskProject.Migrations
 
             modelBuilder.Entity("TaskProject.Models.Skill", b =>
                 {
-                    b.HasOne("TaskProject.Models.UserAtribute", "Atribute")
+                    b.HasOne("TaskProject.Models.Atribute", "Atribute")
                         .WithMany()
-                        .HasForeignKey("AtributeUserAtributeId");
+                        .HasForeignKey("AtributeId");
 
                     b.HasOne("TaskProject.Models.Rating", "Rating")
                         .WithMany()
@@ -476,18 +470,6 @@ namespace TaskProject.Migrations
 
                     b.HasOne("TaskProject.Models.ApplicationUser", "User")
                         .WithMany("Skills")
-                        .HasForeignKey("UserId");
-                });
-
-            modelBuilder.Entity("TaskProject.Models.UserAtribute", b =>
-                {
-                    b.HasOne("TaskProject.Models.Atribute", "Atribute")
-                        .WithMany()
-                        .HasForeignKey("AtributeId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("TaskProject.Models.ApplicationUser", "User")
-                        .WithMany("Atributes")
                         .HasForeignKey("UserId");
                 });
 #pragma warning restore 612, 618

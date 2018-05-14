@@ -11,34 +11,40 @@ namespace TaskProject.Models
     {
         public Goal()
         {
-            TaskStart = DateTime.Now;
+            GoalStart = DateTime.Now;
+            GoalEnd = null;
+            IsComplete = false;
+            Skill = null;
         }
 
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int CharacterTaskId { get; set; }
+        public int GoalId { get; set; }
         [Required]
         [Display(Name = "Название задачи")]
         public string Name { get; set; }
         [Display(Name = "Описание")]
         public string Description { get; set; }
         [Display(Name = "Начало выполнения задачи")]
-        public DateTime TaskStart { get; set; }
+        public DateTime GoalStart { get; set; }
         [Display(Name = "Окончания задачи")]
-        public DateTime? TaskEnd { get; set; } = null;
+        public DateTime? GoalEnd { get; set; }
         [Display(Name = "Выполнение")]
-        public bool IsComplete { get; set; } = false;
+        public bool IsComplete { get; set; } 
 
 
         [ForeignKey("Repeat")]
         public int RepeatId { get; set; }
         public virtual Repeat Repeat { get; set; }
+
         [ForeignKey("User")]
         public string UserId { get; set; }
         public virtual ApplicationUser User { get; set; }
+
         [ForeignKey("Complication")]
         public int ComplicationId { get; set; }
         [Display(Name = "Сложность")]
         public virtual Complication Complication { get; set; }
+
         [Display(Name = "Навыки")]
         public virtual Skill Skill { get; set; }
     }

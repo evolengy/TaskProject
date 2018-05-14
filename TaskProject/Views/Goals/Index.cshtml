@@ -37,7 +37,7 @@
                 @Html.DisplayNameFor(model => model.Atribute.Name)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TaskEnd)
+                @Html.DisplayNameFor(model => model.GoalEnd)
             </th>
             <th></th>
         </tr>
@@ -62,15 +62,15 @@
                     @Html.DisplayFor(modelItem => item.Atribute.Name)
                 </td>
                 <td>
-                    @if (item.TaskEnd != null)
+                    @if (item.GoalEnd != null)
                     {
-                        if (item.TaskEnd < DateTime.Now.Date)
+                        if (item.GoalEnd < DateTime.Now.Date)
                         {
-                            <span class="badge bg-danger">@item.TaskEnd.Value.ToShortDateString()</span>
+                            <span class="badge bg-danger">@item.GoalEnd.Value.ToShortDateString()</span>
                         }
                         else
                         {
-                            <span class="badge bg-success">@item.TaskEnd.Value.ToShortDateString()</span>
+                            <span class="badge bg-success">@item.GoalEnd.Value.ToShortDateString()</span>
                         }
                     }
                 </td>

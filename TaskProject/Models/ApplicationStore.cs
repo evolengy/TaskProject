@@ -67,42 +67,6 @@ namespace TaskProject.Models
                     );
             }
 
-            if (!context.Atributes.Any())
-            {
-                context.Atributes.AddRange(
-                    new Atribute
-                    {
-                        AtributeId = 1,
-                        Name = "Сила и выносливость",
-                        Description = "Характеристики, отвечающие за общее физическое здоровье персонажа"
-                    },
-                    new Atribute
-                    {
-                        AtributeId = 2,
-                        Name = "Харизма",
-                        Description = "Характеристика, отвечающая за навыки взаимодействия с другими людьми"
-                    },
-                    new Atribute
-                    {
-                        AtributeId = 3,
-                        Name = "Интеллект",
-                        Description = "Характеристика, отвечающая за умственное развитие персонажа"
-                    },
-                    new Atribute
-                    {
-                        AtributeId = 4,
-                        Name = "Известность",
-                        Description = "Характеристика, отвечающая за влияние персонажа в обществе"
-                    },
-                    new Atribute
-                    {
-                        AtributeId = 5,
-                        Name = "Психика",
-                        Description = "Характеристика, отвечающая за стрессоустойчивость персонажа и его психическое состояние"
-                    }
-                    );
-            }
-
             if (!context.Ratings.Any())
             {
                 context.Ratings.AddRange(

@@ -9,12 +9,12 @@ namespace TaskProject.Models.AccountViewModels
     public class LoginWith2faViewModel
     {
         [Required]
-        [StringLength(7, ErrorMessage = "The {0} must be at least {2} and at max {1} Users long.", MinimumLength = 6)]
+        [StringLength(7, ErrorMessage = "{0} должен быть не менее {2} и максимум {1} длины.", MinimumLength = 6)]
         [DataType(DataType.Text)]
-        [Display(Name = "Authenticator code")]
+        [Display(Name = "Код аутентификации")]
         public string TwoFactorCode { get; set; }
 
-        [Display(Name = "Remember this machine")]
+        [Display(Name = "Запомнить эту машину")]
         public bool RememberMachine { get; set; }
 
         public bool RememberMe { get; set; }

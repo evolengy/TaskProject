@@ -1,4 +1,10 @@
 ﻿@model TaskProject.Models.ApplicationUser
+
+<div class="modal-content sw_modal">
+    <span class="close"></span>
+    <div class="sw_modal_result"></div>
+</div>
+
 <!-- Content Header (Page header) -->
 <div class="content-header">
     <div class="container-fluid">
@@ -15,6 +21,7 @@
         </div><!-- /.row -->
     </div><!-- /.container-fluid -->
 </div>
+
 <!-- /.content-header -->
 <!-- Main content -->
 <section class="content">
@@ -55,6 +62,29 @@
                 </div>
                 <!-- /.card -->
             </div>
+
+            <div class="col-12 col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Состояние персонажа</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        @foreach (Atribute atribute in Model.Atributes)
+                        {
+                            <div class="progress-group">
+                                @atribute.Name
+                                <span class="float-right">Уровень @atribute.Lvl</span>
+                                <div class="progress progress-sm">
+                                    <div class="progress-bar bg-info" style="width:  @(100 * atribute.CurrentExp / atribute.MaxExp)%"></div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
         </div>
 
         <div class="row">
@@ -66,19 +96,19 @@
                             Задачи
                         </h3>
                         @*<div class="card-tools">
-                            <ul class="pagination pagination-sm">
-                                <li class="page-item"><a href="#" class="page-link">«</a></li>
-                                <li class="page-item"><a href="#" class="page-link">1</a></li>
-                                <li class="page-item"><a href="#" class="page-link">2</a></li>
-                                <li class="page-item"><a href="#" class="page-link">3</a></li>
-                                <li class="page-item"><a href="#" class="page-link">»</a></li>
-                            </ul>
-                        </div>*@
+                                <ul class="pagination pagination-sm">
+                                    <li class="page-item"><a href="#" class="page-link">«</a></li>
+                                    <li class="page-item"><a href="#" class="page-link">1</a></li>
+                                    <li class="page-item"><a href="#" class="page-link">2</a></li>
+                                    <li class="page-item"><a href="#" class="page-link">3</a></li>
+                                    <li class="page-item"><a href="#" class="page-link">»</a></li>
+                                </ul>
+                            </div>*@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
                         <ul class="todo-list ui-sortable">
-                            @foreach (var Goal in Model.Goals.Where(g => g.IsComplete == false).Where(g => g.TaskEnd == DateTime.Now.Date))
+                            @foreach (var Goal in Model.Goals.Where(g => g.IsComplete == false).OrderByDescending(g => g.GoalEnd))
                             {
                                 <li>
                                     <!-- drag handle -->
@@ -87,15 +117,15 @@
                                         <i class="fa fa-ellipsis-v"></i>
                                     </span>
                                     <!-- checkbox -->
-                                    <a href="@Url.Action("CompleteGoal","Goals",new { id = Goal.CharacterTaskId})" class="btn btn-xs"><i class=" fa fa-check"></i></a>
+                                    <a href="@Url.Action("CompleteGoal","Goals",new { id = Goal.GoalId})" class="btn btn-xs"><i class=" fa fa-check"></i></a>
                                     <!-- todo text -->
                                     <span class="text">@Goal.Name</span>
                                     <!-- Emphasis label -->
-                                    <small class="badge badge-danger"><i class="fa fa-clock-o"></i> 2 mins</small>
+                                    <small class="badge badge-danger"><i class="fa fa-clock-o"></i> @Goal.GoalEnd</small>
                                     <!-- General tools such as edit or delete-->
                                     <div class="tools">
-                                        <i class="fa fa-edit" onclick="edittask(@Goal.CharacterTaskId)"></i>
-                                        <i class="fa fa-trash-o" onclick="deletetask(@Goal.CharacterTaskId)"></i>
+                                        <i class="fa fa-edit" onclick="edittask(@Goal.GoalId)"></i>
+                                        <i class="fa fa-trash-o" onclick="deletetask(@Goal.GoalId)"></i>
                                     </div>
                                 </li>
                             }

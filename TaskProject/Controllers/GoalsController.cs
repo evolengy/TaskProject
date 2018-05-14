@@ -64,7 +64,7 @@ namespace TaskProject.Controllers
                         }
                     default:
                         {
-                            goal.TaskEnd = goal.TaskStart;
+                            goal.GoalEnd = goal.GoalStart;
                             break;
                         }
                 }
@@ -148,17 +148,17 @@ namespace TaskProject.Controllers
                     }
                 case 2:
                     {
-                        goal.TaskEnd = goal.TaskEnd.Value.AddDays(1);
+                        goal.GoalEnd = goal.GoalEnd.Value.AddDays(1);
                         break;
                     }
                 case 3:
                     {
-                        goal.TaskEnd = goal.TaskEnd.Value.AddMonths(1);
+                        goal.GoalEnd = goal.GoalEnd.Value.AddMonths(1);
                         break;
                     }
                 case 4:
                     {
-                        goal.TaskEnd = goal.TaskEnd.Value.AddYears(1);
+                        goal.GoalEnd = goal.GoalEnd.Value.AddYears(1);
                         break;
                     }
             }

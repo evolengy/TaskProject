@@ -12,12 +12,8 @@ namespace TaskProject.Models
     // Add profile data for application users by adding properties to the ApplicationUser class
     public class ApplicationUser : IdentityUser
     {
-        public ApplicationUser():base()
+        public ApplicationUser() : base()
         {
-            Goals = new List<Goal>();
-            Atributes = new List<UserAtribute>();
-            Skills = new List<Skill>();
-
             CurrentLevel = 1;
             CurrentExp = 0;
             CurrentGold = 0;
@@ -45,15 +41,15 @@ namespace TaskProject.Models
         public long CurrentExp { get; set; }
         public int CurrentLevel { get; set; }
         public int CurrentGold { get; set; }
-        public int CurrentHealth { get; set; } 
+        public int CurrentHealth { get; set; }
         public long MaxExp { get; set; }
         public int MaxHealth { get; set; }
 
         public virtual Aligment Aligment { get; set; }
 
-        public virtual List<Goal> Goals { get; set; }
-        public virtual List<UserAtribute> Atributes { get; set; }
-        public virtual List<Skill> Skills { get; set; }
+        public List<Goal> Goals { get; set; }
+        public List<Atribute> Atributes { get; set; }
+        public List<Skill> Skills { get; set; }
 
         public bool IsDead { get; set; }
         public bool IsSetDescr { get; set; }
@@ -63,7 +59,7 @@ namespace TaskProject.Models
     {
         public ViewSetProfileModel()
         {
-            UserAtributes = new List<UserAtribute>();
+            Atributes = new List<Atribute>();
         }
 
         [Display(Name = "Ваш возраст: (в г.)"), Range(1, 150, ErrorMessage = "Укажите верный возраст")]
@@ -82,8 +78,7 @@ namespace TaskProject.Models
                     }, "Value", "Text"
                     );
 
-        public List<UserAtribute> UserAtributes { get; set; }
-
+        public List<Atribute> Atributes { get; set; }
     }
 }
 

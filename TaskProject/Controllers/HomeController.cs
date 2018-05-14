@@ -35,11 +35,95 @@ namespace TaskProject.Controllers
         {
 
             var user = await usermanager.GetUserAsync(User);
+
             if (user == null)
             {
                 return View("Index");
             }
 
+            if(user.IsSetDescr == false)
+            {
+                user.Atributes = new List<Atribute>()
+                {
+                     new Atribute
+                        {
+                            Name = "Сила",
+                            Description = "Характеристика, отвечающая за общее физическое развитие персонажа"
+                        },
+                        new Atribute
+                        {
+                            Name = "Здоровье",
+                            Description = "Характеристика, отвечающая за физическое состояние персонажа"
+                        },
+                        new Atribute
+                        {
+                            Name = "Харизма",
+                            Description = "Характеристика, отвечающая за навыки взаимодействия с другими людьми"
+                        },
+                        new Atribute
+                        {
+                            Name = "Профессионализм",
+                            Description = "Характеристика, отвечающая за умственное развитие персонажа"
+                        },
+                        new Atribute
+                        {
+                            Name = "Интеллект",
+                            Description = "Характеристика, отвечающая за умственное развитие персонажа"
+                        },
+                        new Atribute
+                        {
+                            Name = "Известность",
+                            Description = "Характеристика, отвечающая за влияние персонажа в обществе"
+                        },
+                        new Atribute
+                        {
+                            Name = "Психика",
+                            Description = "Характеристика, отвечающая за стрессоустойчивость персонажа и его психическое состояние"
+                        }
+                };
+                user.Skills = new List<Skill>()
+            {
+                new Skill
+                {
+                    Name = "Владение холодным оружием",
+                    Atribute = user.Atributes.Where(c=> c.Name == "Сила").Single()
+                },
+                new Skill
+                {
+                    Name = "Дрессировка собак",
+                    Atribute = user.Atributes.Where(c => c.Name == "Профессионализм").Single()
+                },
+                new Skill
+                {
+                    Name = "Чтение",
+                    Atribute = user.Atributes.Where(c => c.Name == "Интеллект").Single()
+                }
+            };
+                user.Goals = new List<Goal>()
+            {
+                new Goal
+                {
+                    Name = "Сходить в кино с друзьями",
+                    Description = "",
+                    GoalEnd = DateTime.Now.AddDays(1),
+                    RepeatId = 1,
+                    ComplicationId = 1
+                },
+                new Goal
+                {
+                    Name = "Прочитать \" Горе от ума\"",
+                    Description = "",
+                    GoalEnd = DateTime.Now.AddDays(5),
+                    RepeatId = 1,
+                    ComplicationId = 2,
+                    Skill = user.Skills.Where( c => c.Name == "Чтение").Single()
+                }
+            };
+                user.IsSetDescr = true;
+                db.SaveChanges();
+            }
+
+            var sd = db.Users.Include("Goals");
             //if (!user.IsSetDescr)
             //{
             //    ViewSetProfileModel view = new ViewSetProfileModel();
@@ -65,6 +149,7 @@ namespace TaskProject.Controllers
                 user.IsDead = true;
                 db.SaveChanges();
             }
+
             db.SaveChanges();
 
             return View(user);
@@ -93,7 +178,7 @@ namespace TaskProject.Controllers
         //        user.Growth = view.Growth;
         //        user.Sex = view.Sex;
         //        db.SaveChanges();
-                
+
         //        return View("GameRoom","Home");
 
         //    }
@@ -109,7 +194,7 @@ namespace TaskProject.Controllers
         {
             foreach (var goal in user.Goals)
             {
-                if (goal.TaskEnd < DateTime.Now && goal.IsComplete == false && (goal.TaskEnd.Value.Day - goal.TaskStart.Day) > TimeSpan.FromDays(1).Days)
+                if (goal.GoalEnd < DateTime.Now && goal.IsComplete == false && (goal.GoalEnd.Value.Day - goal.GoalStart.Day) > TimeSpan.FromDays(1).Days)
                 {
                     do
                     {
@@ -118,27 +203,27 @@ namespace TaskProject.Controllers
                         {
                             case 2:
                                 {
-                                    goal.TaskEnd = null;
+                                    goal.GoalEnd = null;
                                     break;
                                 }
                             case 3:
                                 {
-                                    goal.TaskEnd = goal.TaskEnd.Value.AddDays(1);
+                                    goal.GoalEnd = goal.GoalEnd.Value.AddDays(1);
                                     break;
                                 }
                             case 5:
                                 {
-                                    goal.TaskEnd = goal.TaskEnd.Value.AddMonths(1);
+                                    goal.GoalEnd = goal.GoalEnd.Value.AddMonths(1);
                                     break;
                                 }
                             case 6:
                                 {
-                                    goal.TaskEnd = goal.TaskEnd.Value.AddYears(1);
+                                    goal.GoalEnd = goal.GoalEnd.Value.AddYears(1);
                                     break;
                                 }
                         }
                     }
-                    while (goal.TaskEnd < DateTime.Now);
+                    while (goal.GoalEnd < DateTime.Now);
                     db.SaveChanges();
                 }
             }

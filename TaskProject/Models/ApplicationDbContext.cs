@@ -11,7 +11,6 @@ namespace TaskProject.Models
     {
         public DbSet<Complication> Complications { get; set; }
         public DbSet<Goal> Goals { get; set; }
-        public DbSet<UserAtribute> UserAtributes { get; set; }
         public DbSet<Atribute> Atributes { get; set; }
         public DbSet<Repeat> Repeats { get; set; }
         public DbSet<Message> Messages { get; set; }

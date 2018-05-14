@@ -7,36 +7,28 @@ using System.Threading.Tasks;
 
 namespace TaskProject.Models
 {
-    public class UserAtribute
+    public class Atribute
     {
-        public UserAtribute()
+        public Atribute()
         {
             Lvl = 1;
             CurrentExp = 0;
             MaxExp = 500;
         }
 
-        public int UserAtributeId { get; set; }
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int AtributeId { get; set; }
+        [Display(Name = "Навык")]
+        public string Name { get; set; }
+        public string Description { get; set; }
+
         [ForeignKey("User")]
         public string UserId { get; set; }
         public ApplicationUser User { get; set; }
-
-        [ForeignKey("Atribute")]
-        public int AtributeId { get; set; }
-        public virtual Atribute Atribute { get; set; }
 
         public int Lvl { get; set; }
 
         public int CurrentExp { get; set; }
         public int MaxExp { get; set; }
-
-    }
-    public class Atribute
-    {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int AtributeId { get; set; }
-        [Display(Name = "Навык")]
-        public string Name { get; set; }
-        public string Description { get; set; }
     }
 }

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace TaskProject.Migrations
 {
-    public partial class initial : Migration
+    public partial class v001 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -34,19 +34,6 @@ namespace TaskProject.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetRoles", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Atributes",
-                columns: table => new
-                {
-                    AtributeId = table.Column<int>(nullable: false),
-                    Description = table.Column<string>(nullable: true),
-                    Name = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Atributes", x => x.AtributeId);
                 });
 
             migrationBuilder.CreateTable(
@@ -258,67 +245,23 @@ namespace TaskProject.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Goals",
+                name: "Atributes",
                 columns: table => new
                 {
-                    CharacterTaskId = table.Column<int>(nullable: false)
+                    AtributeId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    ComplicationId = table.Column<int>(nullable: false),
+                    CurrentExp = table.Column<int>(nullable: false),
                     Description = table.Column<string>(nullable: true),
-                    IsComplete = table.Column<bool>(nullable: false),
-                    Name = table.Column<string>(nullable: false),
-                    RepeatId = table.Column<int>(nullable: false),
-                    TaskEnd = table.Column<DateTime>(nullable: true),
-                    TaskStart = table.Column<DateTime>(nullable: false),
+                    Lvl = table.Column<int>(nullable: false),
+                    MaxExp = table.Column<int>(nullable: false),
+                    Name = table.Column<string>(nullable: true),
                     UserId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Goals", x => x.CharacterTaskId);
+                    table.PrimaryKey("PK_Atributes", x => x.AtributeId);
                     table.ForeignKey(
-                        name: "FK_Goals_Complications_ComplicationId",
-                        column: x => x.ComplicationId,
-                        principalTable: "Complications",
-                        principalColumn: "ComplicationId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Goals_Repeats_RepeatId",
-                        column: x => x.RepeatId,
-                        principalTable: "Repeats",
-                        principalColumn: "RepeatId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Goals_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "UserAtributes",
-                columns: table => new
-                {
-                    UserAtributeId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    AtributeId = table.Column<int>(nullable: false),
-                    CurrentExp = table.Column<int>(nullable: false),
-                    MaxExp = table.Column<int>(nullable: false),
-                    MaxValue = table.Column<int>(nullable: false),
-                    UserId = table.Column<string>(nullable: true),
-                    Value = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_UserAtributes", x => x.UserAtributeId);
-                    table.ForeignKey(
-                        name: "FK_UserAtributes_Atributes_AtributeId",
-                        column: x => x.AtributeId,
-                        principalTable: "Atributes",
-                        principalColumn: "AtributeId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_UserAtributes_AspNetUsers_UserId",
+                        name: "FK_Atributes_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
@@ -333,7 +276,6 @@ namespace TaskProject.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     AtributeId = table.Column<int>(nullable: true),
                     CurrentExp = table.Column<int>(nullable: false),
-                    GoalCharacterTaskId = table.Column<int>(nullable: true),
                     Lvl = table.Column<int>(nullable: false),
                     MaxExp = table.Column<int>(nullable: false),
                     Name = table.Column<string>(nullable: true),
@@ -350,12 +292,6 @@ namespace TaskProject.Migrations
                         principalColumn: "AtributeId",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Skills_Goals_GoalCharacterTaskId",
-                        column: x => x.GoalCharacterTaskId,
-                        principalTable: "Goals",
-                        principalColumn: "CharacterTaskId",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
                         name: "FK_Skills_Ratings_RatingId",
                         column: x => x.RatingId,
                         principalTable: "Ratings",
@@ -363,6 +299,51 @@ namespace TaskProject.Migrations
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Skills_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Goals",
+                columns: table => new
+                {
+                    GoalId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    ComplicationId = table.Column<int>(nullable: false),
+                    Description = table.Column<string>(nullable: true),
+                    GoalEnd = table.Column<DateTime>(nullable: true),
+                    GoalStart = table.Column<DateTime>(nullable: false),
+                    IsComplete = table.Column<bool>(nullable: false),
+                    Name = table.Column<string>(nullable: false),
+                    RepeatId = table.Column<int>(nullable: false),
+                    SkillId = table.Column<int>(nullable: true),
+                    UserId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Goals", x => x.GoalId);
+                    table.ForeignKey(
+                        name: "FK_Goals_Complications_ComplicationId",
+                        column: x => x.ComplicationId,
+                        principalTable: "Complications",
+                        principalColumn: "ComplicationId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Goals_Repeats_RepeatId",
+                        column: x => x.RepeatId,
+                        principalTable: "Repeats",
+                        principalColumn: "RepeatId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Goals_Skills_SkillId",
+                        column: x => x.SkillId,
+                        principalTable: "Skills",
+                        principalColumn: "SkillId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Goals_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
@@ -414,6 +395,11 @@ namespace TaskProject.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Atributes_UserId",
+                table: "Atributes",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Goals_ComplicationId",
                 table: "Goals",
                 column: "ComplicationId");
@@ -422,6 +408,11 @@ namespace TaskProject.Migrations
                 name: "IX_Goals_RepeatId",
                 table: "Goals",
                 column: "RepeatId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Goals_SkillId",
+                table: "Goals",
+                column: "SkillId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Goals_UserId",
@@ -434,11 +425,6 @@ namespace TaskProject.Migrations
                 column: "AtributeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Skills_GoalCharacterTaskId",
-                table: "Skills",
-                column: "GoalCharacterTaskId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Skills_RatingId",
                 table: "Skills",
                 column: "RatingId");
@@ -446,16 +432,6 @@ namespace TaskProject.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Skills_UserId",
                 table: "Skills",
-                column: "UserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_UserAtributes_AtributeId",
-                table: "UserAtributes",
-                column: "AtributeId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_UserAtributes_UserId",
-                table: "UserAtributes",
                 column: "UserId");
         }
 
@@ -477,31 +453,28 @@ namespace TaskProject.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Messages");
-
-            migrationBuilder.DropTable(
-                name: "Skills");
-
-            migrationBuilder.DropTable(
-                name: "UserAtributes");
-
-            migrationBuilder.DropTable(
-                name: "AspNetRoles");
-
-            migrationBuilder.DropTable(
                 name: "Goals");
 
             migrationBuilder.DropTable(
-                name: "Ratings");
+                name: "Messages");
 
             migrationBuilder.DropTable(
-                name: "Atributes");
+                name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "Complications");
 
             migrationBuilder.DropTable(
                 name: "Repeats");
+
+            migrationBuilder.DropTable(
+                name: "Skills");
+
+            migrationBuilder.DropTable(
+                name: "Atributes");
+
+            migrationBuilder.DropTable(
+                name: "Ratings");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
