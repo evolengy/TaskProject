@@ -24,7 +24,7 @@ namespace TaskProject.Models
         public int CurrentExp { get; set; }
         public int MaxExp { get; set; }
 
-        public virtual Atribute Atribute { get; set; }
+        public virtual UserAtribute Atribute { get; set; }
 
         [ForeignKey("Rating")]
         public int RatingId { get; set; }

@@ -6,9 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Models\Migrations\**" />
     <Compile Remove="wwwroot\vendor\**" />
+    <Content Remove="Models\Migrations\**" />
     <Content Remove="wwwroot\vendor\**" />
+    <EmbeddedResource Remove="Models\Migrations\**" />
     <EmbeddedResource Remove="wwwroot\vendor\**" />
+    <None Remove="Models\Migrations\**" />
     <None Remove="wwwroot\vendor\**" />
   </ItemGroup>
 
@@ -23,10 +27,6 @@
     <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.1" />
     <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="2.0.0" />
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.2" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Models\Migrations\" />
   </ItemGroup>
 
 </Project>

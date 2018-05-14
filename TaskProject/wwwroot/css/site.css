@@ -1,0 +1,110 @@
+
+/* Goals */
+
+tr.sw_complete_goal {
+    background-color:lightgrey;
+}
+
+/*Div Footer*/
+.sw_gameroom_footer {
+    background-color: #2d2d30;
+    height: 100px;
+    color: white;
+}
+
+/*Div Medical*/
+.sw_medical {
+    margin-top: 200px;
+    border: 2px solid;
+    border-radius: 9px;
+}
+
+/*Div Attainment*/
+.sw_attainment {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sw_attainment_img img {
+    height: 60px;
+    width: 60px;
+}
+
+.sw_attainment_img {
+    display: inline-block; /* Строчно-блочный элемент */
+    position: relative; /* Относительное позиционирование */
+}
+
+    .sw_attainment_img:hover::after {
+        content: attr(data-title); /* Выводим текст */
+        position: absolute; /* Абсолютное позиционирование */
+        top: 30%; /* Положение подсказки */
+        z-index: 1; /* Отображаем подсказку поверх других элементов */
+        background-color: #fff; /* Полупрозрачный цвет фона */
+        border-radius: 3px;
+        padding: 5px 10px; /* Поля */
+        content: attr(data-title);
+    }
+
+/*Div Missions*/
+
+.sw_missions {
+    padding-top: 100px;
+}
+
+.sw_mission {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.sw_mission_img {
+}
+
+    .sw_mission_img img {
+        height: 80px;
+        width: 90px;
+    }
+
+.sw_mission_name {
+    display: flex;
+    flex-direction: column;
+}
+
+.sw_mission_accept {
+    text-align: center;
+}
+
+.sw_mission_state {
+    border: 1px solid;
+    border-radius: 10px;
+}
+
+/* Div Guilds */
+.sw_guilds {
+    padding-top: 100px;
+}
+
+.sw_guild {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sw_guild_img {
+}
+
+    .sw_guild_img img {
+        height: 80px;
+        width: 90px;
+    }
+
+.sw_guild_name {
+    display: flex;
+    flex-direction: column;
+}
+
+.sw_guild_getmissions {
+}

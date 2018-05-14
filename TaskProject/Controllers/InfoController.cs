@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using TaskProject.Services;
 using TaskProject;
 
-namespace Spacewander.Controllers
+namespace TaskProject.Controllers
 {
     public class InfoController : Controller
     {

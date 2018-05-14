@@ -12,7 +12,6 @@ namespace TaskProject.Models
         public Goal()
         {
             TaskStart = DateTime.Now;
-            Skills = new List<Skill>();
         }
 
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -41,7 +40,7 @@ namespace TaskProject.Models
         [Display(Name = "Сложность")]
         public virtual Complication Complication { get; set; }
         [Display(Name = "Навыки")]
-        public virtual List<Skill> Skills { get; set; }
+        public virtual Skill Skill { get; set; }
     }
 
     public class Repeat

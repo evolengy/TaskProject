@@ -15,93 +15,45 @@ var gulp = require("gulp"),
 
 var paths = {
     webroot: "./wwwroot/",
-    libs: "./wwwroot/libs"
+    theme: "./node_modules/admin-lte/dist/"
 };
 
 var deps = {
-
-    "bootstrap": {
-        "dist/**/*": ""
-    },
-    "bootstrap-datepicker": {
-        "dist/**/*": ""
-    },
-    "bootstrap-markdown": {
-        "**/*": ""
-    },
-    "bootstrap-multiselect": {
-        "dist/**/*":""
-    },
-    "bootstrap-progressbar": {
-        "**/*":""
-    },
-    "chartist": {
-        "/dist/**/*":""
-    },
-    "chartist-plugin-axistitle": {
-        "/dist/**/*": ""
-    },
-    "chartist-plugin-tooltip": {
-        "/**/*": ""
-    },
-    "chartist-plugin-legend": {
-        "/**/*": ""
-    },
-    "datatables": {
-        "/media/**/*": ""
-    },
-    "font-awesome": {
-        "/**/*":""
-    },
-    "jquery": {
-        "dist/*": ""
-    },
-    "jquery.maskedinput": {
-        "/src/**/*": ""
-    },
-    "jquery.scrollex": {
-        "*.js": ""
-    },
-    "jquery-slimscroll": {
-        "*.js": ""
-    },
-    "jquery-sparkline": {
-        "*.js": ""
-    },
-    "linearicons": {
-        "/dist/**/*": ""
-    },
-    "markdown": {
-        "/lib/**/*": ""
-    },
-    "metismenu": {
-        "/dist/**/*": ""
-    },
-    "modernizr": {
-        "/**/*": ""
-    },
-    "parsleyjs": {
-        "/dist/**/*": ""
-    },
-    "toastr": {
-        "/**/*": ""
-    },
-    "to-markdown": {
-        "/dist/**/*": ""
+    "admin-lte": {
+        "/plugins/**/*": ""
     }
 };
-                       
+
+var plugs = {
+    "magnific-popup": {
+        "/dist/**/*": ""
+    },
+
+    "jquery-easing": {
+        "/dist/**/*": ""
+    }
+}
+
 paths.js = paths.webroot + "js/**/*.js";
 paths.minJs = paths.webroot + "js/**/*.min.js";
+
 paths.css = paths.webroot + "css/**/*.css";
 paths.minCss = paths.webroot + "css/**/*.min.css";
 
+paths.libs = paths.webroot + "plugins";
+
 paths.landingcss = paths.webroot + "css/landing.css";
+paths.landingjs = paths.webroot + "js/landing.js";
 
 paths.concatCssDest = paths.webroot + "css/main.min.css";
 paths.concatJsDest = paths.webroot + "js/main.min.js";
 
+
+paths.themecss = paths.theme + "css/adminlte.css";
+paths.themejs = paths.theme + "js/adminlte.js";
+
 // Задачи удаления ненужный файлов
+
 gulp.task("clean:js", function (cb) {
     rimraf(paths.concatJsDest, cb);
 });
@@ -110,45 +62,81 @@ gulp.task("clean:css", function (cb) {
     rimraf(paths.concatCssDest, cb);
 });
 
-gulp.task("clean:libs", function (cb) {
+gulp.task("clean:plugins", function (cb) {
     rimraf(paths.libs, cb);
 });
 
 gulp.task("clean", ["clean:js", "clean:css"]);
 
 // Задачи минификации файлов
-gulp.task("min:js", function () {
-    return gulp.src([paths.js, "!" + paths.minJs], { base: "." })
-        .pipe(concat(paths.concatJsDest))
+
+gulp.task("landing:minjs", function () {
+    return gulp.src([paths.landingjs])
         .pipe(uglify())
-        .pipe(gulp.dest("."));
+        .pipe(rename({ suffix: '.min' }))
+        .pipe(gulp.dest("./wwwroot/js"));
 });
 
-gulp.task("min:landingcss", function () {
+gulp.task("landing:mincss", function () {
     return gulp.src([paths.landingcss])
         .pipe(cssnano())
         .pipe(rename({ suffix: '.min' }))
         .pipe(gulp.dest("./wwwroot/css"));
 });
 
-gulp.task("min:css", ["min:landingcss"], function () {
+gulp.task("main:minjs", function () {
+    return gulp.src([paths.js, "!" + paths.minJs], { base: "." })
+        .pipe(concat(paths.concatJsDest))
+        .pipe(uglify())
+        .pipe(gulp.dest("."));
+});
+
+
+gulp.task("main:mincss", function () {
     return gulp.src([paths.css, "!" + paths.minCss, "!" + paths.landingcss])
         .pipe(concat(paths.concatCssDest))
         .pipe(cssnano())
         .pipe(gulp.dest("."));
 });
 
-gulp.task("min", ["min:js", "min:css"]);
+gulp.task("min", ["main:minjs", "main:mincss" , "landing:minjs", "landing:mincss"]);
 
 
-gulp.task("scripts", ["clean:libs"], function () {
+// Копирование плагинов
+
+gulp.task("copy:plugins", ["theme:copyplugins"], function () {
+    var streams = [];
+
+    for (var prop in plugs) {
+        for (var itemProp in plugs[prop]) {
+            streams.push(gulp.src("node_modules/" + prop + "/" + itemProp)
+                .pipe(gulp.dest("wwwroot/plugins/" + prop + "/" + plugs[prop][itemProp])));
+        }
+    }
+
+    return merge(streams);
+})
+
+// Задачи копирования темы
+
+gulp.task("theme:copycss", function () {
+    return gulp.src([paths.themecss])
+        .pipe(gulp.dest("./wwwroot/css"));
+});
+
+gulp.task("theme:copyjs", function () {
+    return gulp.src([paths.themejs])
+        .pipe(gulp.dest("./wwwroot/js"));
+});
+
+gulp.task("theme:copyplugins", function () {
 
     var streams = [];
 
     for (var prop in deps) {
         for (var itemProp in deps[prop]) {
             streams.push(gulp.src("node_modules/" + prop + "/" + itemProp)
-                .pipe(gulp.dest("wwwroot/libs/" + prop + "/" + deps[prop][itemProp])));
+                .pipe(gulp.dest("wwwroot/plugins/" + deps[prop][itemProp])));
         }
     }
 

@@ -40,22 +40,22 @@ namespace TaskProject.Controllers
                 return View("Index");
             }
 
-            if (!user.IsSetDescr)
-            {
-                ViewSetProfileModel view = new ViewSetProfileModel();
+            //if (!user.IsSetDescr)
+            //{
+            //    ViewSetProfileModel view = new ViewSetProfileModel();
 
-                List<Atribute> DefaultAtributes = db.Atributes.ToList();
+            //    List<Atribute> DefaultAtributes = db.Atributes.ToList();
 
-                foreach (var DefaultAtribute in DefaultAtributes)
-                {
-                        view.UserAtributes.Add(new UserAtribute()
-                        {
-                            Atribute = DefaultAtribute,
-                            AtributeId = DefaultAtribute.AtributeId,                          
-                        });
-                }
-                return View("SetProfile", view);
-            }
+            //    foreach (var DefaultAtribute in DefaultAtributes)
+            //    {
+            //            view.UserAtributes.Add(new UserAtribute()
+            //            {
+            //                Atribute = DefaultAtribute,
+            //                AtributeId = DefaultAtribute.AtributeId,                          
+            //            });
+            //    }
+            //    return View("SetProfile", view);
+            //}
 
             CheckGoals(user);
 
@@ -70,35 +70,35 @@ namespace TaskProject.Controllers
             return View(user);
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> SetProfile(ViewSetProfileModel view)
-        {
-            if (ModelState.IsValid)
-            {
-                var user = await usermanager.GetUserAsync(User);
-                if (user == null)
-                {
-                    return View("Index");
-                }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<ActionResult> SetProfile(ViewSetProfileModel view)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        var user = await usermanager.GetUserAsync(User);
+        //        if (user == null)
+        //        {
+        //            return View("Index");
+        //        }
 
-                foreach (UserAtribute atribute in view.UserAtributes)
-                {
-                    atribute.MaxExp = atribute.Value * 1000;
-                }
+        //        foreach (UserAtribute atribute in view.UserAtributes)
+        //        {
+        //            atribute.MaxExp = atribute.Value * 1000;
+        //        }
 
-                db.Entry(user).State = EntityState.Modified;
-                user.Age = view.Age;
-                user.Weight = view.Weight;
-                user.Growth = view.Growth;
-                user.Sex = view.Sex;
-                db.SaveChanges();
+        //        db.Entry(user).State = EntityState.Modified;
+        //        user.Age = view.Age;
+        //        user.Weight = view.Weight;
+        //        user.Growth = view.Growth;
+        //        user.Sex = view.Sex;
+        //        db.SaveChanges();
                 
-                return View("GameRoom","Home");
+        //        return View("GameRoom","Home");
 
-            }
-            return View(view);
-        }
+        //    }
+        //    return View(view);
+        //}
 
         public ActionResult Dead()
         {

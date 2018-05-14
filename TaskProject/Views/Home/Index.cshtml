@@ -3,173 +3,417 @@
 }
 
 <!DOCTYPE html>
-
 <html lang="ru">
 
 <head>
-    <title>Spacewander</title>
-    <link rel="shortcut icon" href="~/img/logo.png" type="image/x-icon">
+
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
-    <!-- VENDOR CSS -->
-    <link rel="stylesheet" href="~/libs/font-awesome/css/font-awesome.min.css">
-    <!-- MAIN CSS -->
-    <link rel="stylesheet" href="~/css/landing.min.css">
-    <link rel="stylesheet" href="~/css/media.css" />
-    <!-- ICONS -->
-    <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-icon.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="/img/favicon.png">
+    <meta name="author" content="">
+
+    <title>TaskProject</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="~/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="~/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- Plugin CSS -->
+    <link href="~/plugins/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
+
+    <!-- Custom styles for this template -->
+    <link href="~/css/landing.min.css" rel="stylesheet">
+
 </head>
 
-<body>
-    <!-- Header -->
-    <header id="header" class="alt">
-        <h1><a href="@Url.Action("Index","Home")">Spacewander</a></h1>
-        <nav>
-            <a href="#menu">Меню</a>
-        </nav>
-    </header>
+<body id="page-top">
 
-    <!-- Menu -->
-    <nav id="menu">
-        <div class="inner">
-            <h2>Меню</h2>
-            <ul class="links">
-                <li><a href="@Url.Action("Login","Account")">Вход</a></li>
-                <li><a href="@Url.Action("Register","Account")">Регистрация</a></li>
-            </ul>
-            <a href="#" class="close">Close</a>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand js-scroll-trigger" href="#page-top">TaskProject</a>
+            <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Меню
+                <i class="fa fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item mx-0 mx-lg-1">
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#portfolio">Возможности</a>
+                    </li>
+                    <li class="nav-item mx-0 mx-lg-1">
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about">О сайте</a>
+                    </li>
+                    <li class="nav-item mx-0 mx-lg-1">
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">Контактная форма</a>
+                    </li>
+                    <li class="mb-3"><hr/></li>
+                    <li class="nav-item mx-0 mx-lg-1">
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="@Url.Action("Login","Account")">Войти</a>
+                    </li>
+                    <li class="nav-item mx-0 mx-lg-1">
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="@Url.Action("Register","Account")">Зарегистрироваться</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
 
-    <!-- Page Wrapper -->
-    <div id="page-wrapper">
-        <!-- Banner -->
-        <section id="banner">
-            <div class="inner">
-                <div class="logo"><img src="~/img/logo-original.png"></div>
-                <p>Путешествие вглубь космоса еще никогда не было таким интересным</p>
+    <!-- Header -->
+    <header class="masthead bg-primary text-white text-center">
+        <div class="container">
+            <img class="img-fluid mb-5 d-block mx-auto" src="img/profile.png" alt="">
+            <h1 class="text-uppercase mb-0">TaskProject</h1>
+            <hr class="star-light">
+            <h2 class="font-weight-light mb-0">Сайт для людей, которые готовы менять себя.</h2>
+        </div>
+    </header>
+
+    <!-- Portfolio Grid Section -->
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <h2 class="text-center text-uppercase text-secondary mb-0">Возможности</h2>
+            <hr class="star-dark mb-5">
+            <div class="row">
+                <div class="col-md-6 col-lg-4">
+                    <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-1">
+                        <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
+                            <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img class="img-fluid" src="img/portfolio/cabin.png" alt="">
+                    </a>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-2">
+                        <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
+                            <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img class="img-fluid" src="img/portfolio/cake.png" alt="">
+                    </a>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-3">
+                        <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
+                            <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img class="img-fluid" src="img/portfolio/circus.png" alt="">
+                    </a>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-4">
+                        <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
+                            <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img class="img-fluid" src="img/portfolio/game.png" alt="">
+                    </a>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-5">
+                        <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
+                            <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img class="img-fluid" src="img/portfolio/safe.png" alt="">
+                    </a>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-6">
+                        <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
+                            <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img class="img-fluid" src="img/portfolio/submarine.png" alt="">
+                    </a>
+                </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Wrapper -->
-        <section id="wrapper">
-
-            <!-- One -->
-            <section id="one" class="wrapper spotlight style1">
-                <div class="inner">
-                    <a href="#" class="image"><img src="~/img/spaceicons/earth.png" alt="" /></a>
-                    <div class="content">
-                        <h2 class="major">Наша история</h2>
-                        <p>
-                            Земля, как много в этом слове. Когда-то она была нашим домом, но теперь все
-                            изменилось. Наш корабль отправился вглубь космоса к далекой планете, в пути наш ждет множество
-                            опасностей, которые нам с гордо поднятой головой предстоит преодолеть.
-                        </p>
-                        <a href="#" class="special">Узнать больше</a>
-                    </div>
+    <!-- About Section -->
+    <section class="bg-primary text-white mb-0" id="about">
+        <div class="container">
+            <h2 class="text-center text-uppercase text-white">О сайте</h2>
+            <hr class="star-light mb-5">
+            <div class="row">
+                <div class="col-lg-12 ml-auto">
+                    <p class="lead">Сайт находится в разработке, поэтому описание еще неполное. Я буду и дальше работать над наполнением сайта.</p>
                 </div>
-            </section>
+                @*<div class="col-lg-4 mr-auto">
+                    <p class="lead">Whether you're a student looking to showcase your work, a professional looking to attract clients, or a graphic artist looking to share your projects, this template is the perfect starting point!</p>
+                </div>*@
+            </div>
+            <div class="text-center mt-4">
+                <a class="btn btn-xl btn-outline-light" href="@Url.Action("Register","Account")">
+                    ЗАРЕГИСТРИРОВАТЬСЯ
+                </a>
+            </div>
+        </div>
+    </section>
 
-
-
-            <!-- Two -->
-            <section id="two" class="wrapper alt spotlight style2">
-                <div class="inner">
-                    <a href="#" class="image"><img src="~/img/spaceicons/space_shuttle.png" alt="" /></a>
-                    <div class="content">
-                        <h2 class="major">Наша команда</h2>
-                        <p>
-                            Наша команда включает в себя специалистов различных квалификаций и нам всегда требуются новые люди для поддержания
-                            нашей священной миссии. Здесь вы можете найти статистику по нашей миссии и количеству людей, уже участвующих в ней.
-                        </p>
-                        <a href="#" class="special">Узнать больше</a>
-                    </div>
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="text-center text-uppercase text-secondary mb-0">Контактная форма</h2>
+            <hr class="star-dark mb-5">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
+                    <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
+                    <form name="sentMessage" id="contactForm" novalidate="novalidate">
+                        <div class="control-group">
+                            <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                                <label>Имя</label>
+                                <input class="form-control" id="name" type="text" placeholder="Имя" required="required" data-validation-required-message="Please enter your name.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                                <label>Электронная почта</label>
+                                <input class="form-control" id="email" type="email" placeholder="Электронная почта" required="required" data-validation-required-message="Please enter your email address.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                                <label>Телефонный номер</label>
+                                <input class="form-control" id="phone" type="tel" placeholder="Телефонный номер" required="required" data-validation-required-message="Please enter your phone number.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                                <label>Сообщение</label>
+                                <textarea class="form-control" id="message" rows="5" placeholder="Сообщение" required="required" data-validation-required-message="Please enter a message."></textarea>
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <br>
+                        <div id="success"></div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-xl" id="sendMessageButton">Отправить</button>
+                        </div>
+                    </form>
                 </div>
-            </section>
+            </div>
+        </div>
+    </section>
 
-            <!-- Three -->
-            <section id="three" class="wrapper spotlight style3">
-                <div class="inner">
-                    <a href="#" class="image"><img src="~/img/spaceicons/robot.png" alt="" /></a>
-                    <div class="content">
-                        <h2 class="major">Наше руководство</h2>
-                        <p>
-                            Руководство нашим кораблем отдано в руки искусственного интеллекта, который руководит всеми процессами, от назначения
-                            человека на должность, до работы щитов и лазерного оружия. Здесь вы можете найти информацию о нем.
-                        </p>
-                        <a href="#" class="special">Узнать больше</a>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Four -->
-            <section id="four" class="wrapper alt style1">
-                <div class="inner">
-                    <h2 class="major">Наш блог</h2>
-                    <p></p>
-                    <section class="features">
-                        <article>
-                            <a href="#" class="image"><img src="~/img/spaceicons/alien.png" alt="" /></a>
-                            <h3 class="major">Новость</h3>
-                            <p>Вау.</p>
-                            <a href="#" class="special">Узнать больше</a>
-                        </article>
-                        <article>
-                            <a href="#" class="image"><img src="~/img/spaceicons/alien_grin.png" alt="" /></a>
-                            <h3 class="major">Новость</h3>
-                            <p>Ух.</p>
-                            <a href="#" class="special">Узнать больше</a>
-                        </article>
-                    </section>
-                    <ul class="actions">
-                        <li><a href="#" class="button">Показать все</a></li>
+    <!-- Footer -->
+    <footer class="footer text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 mb-2 mb-lg-0">
+                    <h4 class="text-uppercase mb-4">В социальных сетях</h4>
+                    <ul class="list-inline mb-0">
+                        <li class="list-inline-item">
+                            <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
+                                <i class="fa fa-fw fa-facebook"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
+                                <i class="fa fa-fw fa-google-plus"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
+                                <i class="fa fa-fw fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
+                                <i class="fa fa-fw fa-linkedin"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
+                                <i class="fa fa-fw fa-dribbble"></i>
+                            </a>
+                        </li>
                     </ul>
                 </div>
-            </section>
-
-        </section>
-
-        <!-- Footer -->
-        <section id="footer">
-            <div class="inner">
-                <h2 class="major">Обратная связь</h2>
-                <p>Просим вас отправлять нам сообщения по вопросам технической поддержки и сотрудничества.</p>
-                <form method="post" action="#">
-                    <div class="field">
-                        <label for="name">Ваше имя</label>
-                        <input type="text" name="name" id="name" />
-                    </div>
-                    <div class="field">
-                        <label for="email">Ваш EMAIL</label>
-                        <input type="email" name="email" id="email" />
-                    </div>
-                    <div class="field">
-                        <label for="message">Сообщение</label>
-                        <textarea name="message" id="message" rows="4"></textarea>
-                    </div>
-                    <ul class="actions">
-                        <li><input type="submit" value="Отправить сообщение" /></li>
-                    </ul>
-                </form>
-                <ul class="contact">
-                    <li class="fa-phone">+7(982) 335-8234</li>
-                    <li class="fa-envelope"><a href="#">help@spacewander.ru</a></li>
-                    <li class="fa-twitter"><a href="#">twitter.com/spacewander</a></li>
-                    <li class="fa-vk"><a href="#">vk.com/spacewander</a></li>
-                </ul>
-                <ul class="copyright">
-                    <li>&copy; Spacewander Inc. All rights reserved.</li>
-                </ul>
             </div>
-        </section>
+        </div>
+    </footer>
 
-        <script src="~/libs/jquery/jquery.min.js"></script>
-        <script src="~/libs/jquery.scrollex/jquery.scrollex.min.js"></script>
-        <script src="~/js/skel.min.js"></script>
-        <script src="~/js/main.min.js"></script>
+    <div class="copyright py-4 text-center text-white">
+        <div class="container">
+            <small>Copyright &copy; TaskProject 2018</small>
+        </div>
     </div>
+
+    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+    <div class="scroll-to-top d-lg-none position-fixed ">
+        <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top">
+            <i class="fa fa-chevron-up"></i>
+        </a>
+    </div>
+
+    <!-- Portfolio Modals -->
+    <!-- Portfolio Modal 1 -->
+    <div class="portfolio-modal mfp-hide" id="portfolio-modal-1">
+        <div class="portfolio-modal-dialog bg-white">
+            <a class="close-button d-none d-md-block portfolio-modal-dismiss" href="#">
+                <i class="fa fa-3x fa-times"></i>
+            </a>
+            <div class="container text-center">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <h2 class="text-secondary text-uppercase mb-0">Project Name</h2>
+                        <hr class="star-dark mb-5">
+                        <img class="img-fluid mb-5" src="img/portfolio/cabin.png" alt="">
+                        <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
+                        <a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" href="#">
+                            <i class="fa fa-close"></i>
+                            Close Project
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Portfolio Modal 2 -->
+    <div class="portfolio-modal mfp-hide" id="portfolio-modal-2">
+        <div class="portfolio-modal-dialog bg-white">
+            <a class="close-button d-none d-md-block portfolio-modal-dismiss" href="#">
+                <i class="fa fa-3x fa-times"></i>
+            </a>
+            <div class="container text-center">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <h2 class="text-secondary text-uppercase mb-0">Project Name</h2>
+                        <hr class="star-dark mb-5">
+                        <img class="img-fluid mb-5" src="img/portfolio/cake.png" alt="">
+                        <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
+                        <a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" href="#">
+                            <i class="fa fa-close"></i>
+                            Close Project
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Portfolio Modal 3 -->
+    <div class="portfolio-modal mfp-hide" id="portfolio-modal-3">
+        <div class="portfolio-modal-dialog bg-white">
+            <a class="close-button d-none d-md-block portfolio-modal-dismiss" href="#">
+                <i class="fa fa-3x fa-times"></i>
+            </a>
+            <div class="container text-center">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <h2 class="text-secondary text-uppercase mb-0">Project Name</h2>
+                        <hr class="star-dark mb-5">
+                        <img class="img-fluid mb-5" src="img/portfolio/circus.png" alt="">
+                        <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
+                        <a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" href="#">
+                            <i class="fa fa-close"></i>
+                            Close Project
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Portfolio Modal 4 -->
+    <div class="portfolio-modal mfp-hide" id="portfolio-modal-4">
+        <div class="portfolio-modal-dialog bg-white">
+            <a class="close-button d-none d-md-block portfolio-modal-dismiss" href="#">
+                <i class="fa fa-3x fa-times"></i>
+            </a>
+            <div class="container text-center">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <h2 class="text-secondary text-uppercase mb-0">Project Name</h2>
+                        <hr class="star-dark mb-5">
+                        <img class="img-fluid mb-5" src="img/portfolio/game.png" alt="">
+                        <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
+                        <a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" href="#">
+                            <i class="fa fa-close"></i>
+                            Close Project
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Portfolio Modal 5 -->
+    <div class="portfolio-modal mfp-hide" id="portfolio-modal-5">
+        <div class="portfolio-modal-dialog bg-white">
+            <a class="close-button d-none d-md-block portfolio-modal-dismiss" href="#">
+                <i class="fa fa-3x fa-times"></i>
+            </a>
+            <div class="container text-center">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <h2 class="text-secondary text-uppercase mb-0">Project Name</h2>
+                        <hr class="star-dark mb-5">
+                        <img class="img-fluid mb-5" src="img/portfolio/safe.png" alt="">
+                        <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
+                        <a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" href="#">
+                            <i class="fa fa-close"></i>
+                            Close Project
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Portfolio Modal 6 -->
+    <div class="portfolio-modal mfp-hide" id="portfolio-modal-6">
+        <div class="portfolio-modal-dialog bg-white">
+            <a class="close-button d-none d-md-block portfolio-modal-dismiss" href="#">
+                <i class="fa fa-3x fa-times"></i>
+            </a>
+            <div class="container text-center">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <h2 class="text-secondary text-uppercase mb-0">Project Name</h2>
+                        <hr class="star-dark mb-5">
+                        <img class="img-fluid mb-5" src="img/portfolio/submarine.png" alt="">
+                        <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
+                        <a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" href="#">
+                            <i class="fa fa-close"></i>
+                            Close Project
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="~/plugins/jquery/jquery.min.js"></script>
+    <script src="~/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="~/plugins/jquery-easing/jquery.easing.1.3.umd.min.js"></script>
+    <script src="~/plugins/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="~/js/landing.min.js"></script>
+
 </body>
+
 </html>

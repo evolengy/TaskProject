@@ -11,9 +11,9 @@ namespace TaskProject.Models
     {
         public UserAtribute()
         {
-            Value = 0;
-            MaxValue = 10;
+            Lvl = 1;
             CurrentExp = 0;
+            MaxExp = 500;
         }
 
         public int UserAtributeId { get; set; }
@@ -25,9 +25,7 @@ namespace TaskProject.Models
         public int AtributeId { get; set; }
         public virtual Atribute Atribute { get; set; }
 
-        public int Value { get; set; }
-        [Range(0, 10)]
-        public int MaxValue { get; set; }
+        public int Lvl { get; set; }
 
         public int CurrentExp { get; set; }
         public int MaxExp { get; set; }

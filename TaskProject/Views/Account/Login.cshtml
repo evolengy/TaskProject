@@ -6,127 +6,49 @@
 @model LoginViewModel
 @inject SignInManager<ApplicationUser> SignInManager
 
+<div class="register-box">
+    <div class="register-logo">
+        TaskProject
+    </div>
+    <div class="card">
+        <div class="card-body register-card-body">
+            <p class="login-box-msg">Войти в аккаунт</p>
+            @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "form-auth-small", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-group">
+            @Html.LabelFor(m => m.Email, new { @class = "control-label sr-only" })
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email" })
+            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Password, new { @class = "control-label sr-only" })
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Пароль" })
+            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+        </div>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-<div class="vertical-align-wrap">
-    <div class="vertical-align-middle">
-        <div class="auth-box">
-            <div class="content">
-                <div class="header">
-                    <div class="logo text-center"><img src="~/img/logo-original.png" alt="Spacewander"></div>
-                    <p class="lead">Войдите в ваш аккаунт</p>
-                </div>
-                @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "form-auth-small", role = "form" }))
-                {
-                    @Html.AntiForgeryToken()
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.Email, new { @class = "control-label sr-only" })
-                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email" })
-                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
-                    </div>
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.Password, new { @class = "control-label sr-only" })
-                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Пароль" })
-                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                    </div>
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    <div class="form-group clearfix">
-                        <label class="fancy-checkbox element-left">
-                            <input type="checkbox">
-                            <span>Запомнить меня</span>
-                        </label>
-                        <span class="helper-text element-right">Нет аккаунта? @Html.ActionLink("Регистрация", "Register")</span>
-                    </div>
-                    @*<div class="separator-linethrough"><span>ИЛИ</span></div>
-                    <button class="btn btn-signin-social"><i class="fa fa-facebook-official facebook-color"></i> Sign in with Facebook</button>
-                    <button class="btn btn-signin-social"><i class="fa fa-twitter twitter-color"></i> Sign in with Twitter</button>
-                    <div class="col-md-12">
-                            <section id="socialLoginForm">
-                                @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
-                            </section>
-                        </div>*@
-                    <button type="submit" class="btn btn-primary btn-lg btn-block">ВОЙТИ</button>
-                    <div class="bottom">
-                        <span class="helper-text"><i class="fa fa-lock"></i> @Html.ActionLink("Забыли пароль?", "ForgotPassword")</span>
-                    </div>
-                }
-            </div>
+        <button type="submit" class="btn btn-primary btn-lg btn-block">ВОЙТИ</button>
+
+        <div class="social-auth-links text-center mb-3">
+            <p>- ИЛИ -</p>
+            <a href="#" class="btn btn-block btn-primary">
+                <i class="fa fa-facebook mr-2"></i> Войти с помощью Facebook
+            </a>
+            <a href="#" class="btn btn-block btn-danger">
+                <i class="fa fa-google-plus mr-2"></i> Войти с помощью Google+
+            </a>
+        </div>
+        <!-- /.social-auth-links -->
+
+        <p class="mb-1">
+            <a href="@Url.Action("ForgotPassword","Account")">Забыли пароль?</a>
+        </p>
+        <p class="mb-0">
+            <a href="@Url.Action("Register", "Account")" class="text-center">Регистрация нового аккаунта</a>
+        </p>
+}
         </div>
     </div>
 </div>
 
-@*@{
-    ViewData["Title"] = "Log in";
-}
-
-<h2>@ViewData["Title"]</h2>
-<div class="row">
-    <div class="col-md-4">
-        <section>
-            <form asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
-                <h4>Use a local account to log in.</h4>
-                <hr />
-                <div asp-validation-summary="All" class="text-danger"></div>
-                <div class="form-group">
-                    <label asp-for="Email"></label>
-                    <input asp-for="Email" class="form-control" />
-                    <span asp-validation-for="Email" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Password"></label>
-                    <input asp-for="Password" class="form-control" />
-                    <span asp-validation-for="Password" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <div class="checkbox">
-                        <label asp-for="RememberMe">
-                            <input asp-for="RememberMe" />
-                            @Html.DisplayNameFor(m => m.RememberMe)
-                        </label>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-default">Log in</button>
-                </div>
-                <div class="form-group">
-                    <p>
-                        <a asp-action="ForgotPassword">Forgot your password?</a>
-                    </p>
-                    <p>
-                        <a asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]">Register as a new user?</a>
-                    </p>
-                </div>
-            </form>
-        </section>
-    </div>
-    <div class="col-md-6 col-md-offset-2">
-        <section>
-            <h4>Use another service to log in.</h4>
-            <hr />
-            @{
-                var loginProviders = (await SignInManager.GetExternalAuthenticationSchemesAsync()).ToList();
-                if (loginProviders.Count == 0)
-                {
-                    <div>
-                        <p>
-                            There are no external authentication services configured. See <a href="https://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
-                            for details on setting up this ASP.NET application to support logging in via external services.
-                        </p>
-                    </div>
-                }
-                else
-                {
-                    <form asp-action="ExternalLogin" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
-                        <div>
-                            <p>
-                                @foreach (var provider in loginProviders)
-                                {
-                                    <button type="submit" class="btn btn-default" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.Name</button>
-                                }
-                            </p>
-                        </div>
-                    </form>
-                }
-            }
-        </section>
-    </div>
-</div>*@
