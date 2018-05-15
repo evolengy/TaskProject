@@ -274,7 +274,7 @@ namespace TaskProject.Migrations
                 {
                     SkillId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    AtributeId = table.Column<int>(nullable: true),
+                    AtributeId = table.Column<int>(nullable: false),
                     CurrentExp = table.Column<int>(nullable: false),
                     Lvl = table.Column<int>(nullable: false),
                     MaxExp = table.Column<int>(nullable: false),
@@ -290,7 +290,7 @@ namespace TaskProject.Migrations
                         column: x => x.AtributeId,
                         principalTable: "Atributes",
                         principalColumn: "AtributeId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Skills_Ratings_RatingId",
                         column: x => x.RatingId,

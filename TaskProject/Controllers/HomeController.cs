@@ -41,7 +41,7 @@ namespace TaskProject.Controllers
                 return View("Index");
             }
 
-            if(user.IsSetDescr == false)
+            if (user.IsSetDescr == false)
             {
                 user.Atributes = new List<Atribute>()
                 {
@@ -119,11 +119,13 @@ namespace TaskProject.Controllers
                     Skill = user.Skills.Where( c => c.Name == "Чтение").Single()
                 }
             };
+                user.Aligment = db.Aligments.Where(a => a.AligmentId == 5).Single();
                 user.IsSetDescr = true;
-                db.SaveChanges();
+                await db.SaveChangesAsync();
             }
 
-            var sd = db.Users.Include("Goals");
+            var dbuser = db.Users.Where(u => u.Id == user.Id).Include(u => u.Goals).Include(u => u.Skills).Include(u => u.Atributes).Include(u => u.Aligment).Single();
+
             //if (!user.IsSetDescr)
             //{
             //    ViewSetProfileModel view = new ViewSetProfileModel();
@@ -141,18 +143,16 @@ namespace TaskProject.Controllers
             //    return View("SetProfile", view);
             //}
 
-            CheckGoals(user);
+            CheckGoals(dbuser);
 
-            if (user.IsDead || user.CurrentHealth <= 0)
+            if (dbuser.IsDead || dbuser.CurrentHealth <= 0)
             {
-                user.CurrentHealth = 0;
-                user.IsDead = true;
+                dbuser.CurrentHealth = 0;
+                dbuser.IsDead = true;
                 db.SaveChanges();
             }
 
-            db.SaveChanges();
-
-            return View(user);
+            return View(dbuser);
         }
 
         //[HttpPost]

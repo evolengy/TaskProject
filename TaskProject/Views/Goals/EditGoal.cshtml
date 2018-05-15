@@ -10,7 +10,7 @@
 
     <div class="form-horizontal">
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.UserTaskId)
+        @Html.HiddenFor(model => model.GoalId)
         @Html.HiddenFor(model => model.IsComplete)
         @Html.HiddenFor(model => model.UserId)
         <div class="form-group">
@@ -75,11 +75,11 @@
 
         <div class="form-group">
             <div class="col-md-offset-1 col-md-3">
-                @Html.LabelFor(model => model.AtributeId, "Характеристика", htmlAttributes: new { @class = "control-label" })
+                @Html.LabelFor(model => model.SkillId, "Навык", htmlAttributes: new { @class = "control-label" })
             </div>
             <div class="col-md-7">
-                @Html.DropDownList("AtributeId")
-                @Html.ValidationMessageFor(model => model.AtributeId)
+                @Html.DropDownList("SkillId")
+                @Html.ValidationMessageFor(model => model.SkillId)
             </div>
         </div>
 

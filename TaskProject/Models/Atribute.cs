@@ -14,6 +14,8 @@ namespace TaskProject.Models
             Lvl = 1;
             CurrentExp = 0;
             MaxExp = 500;
+
+            Skills = new List<Skill>();
         }
 
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -30,5 +32,7 @@ namespace TaskProject.Models
 
         public int CurrentExp { get; set; }
         public int MaxExp { get; set; }
+
+        public virtual List<Skill> Skills { get; set; }
     }
 }

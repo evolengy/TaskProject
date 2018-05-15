@@ -11,7 +11,7 @@ using TaskProject.Models;
 namespace TaskProject.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20180514062009_v.0.0.1")]
+    [Migration("20180515133828_v.0.0.1")]
     partial class v001
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -353,7 +353,7 @@ namespace TaskProject.Migrations
                     b.Property<int>("SkillId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("AtributeId");
+                    b.Property<int>("AtributeId");
 
                     b.Property<int>("CurrentExp");
 
@@ -461,8 +461,9 @@ namespace TaskProject.Migrations
             modelBuilder.Entity("TaskProject.Models.Skill", b =>
                 {
                     b.HasOne("TaskProject.Models.Atribute", "Atribute")
-                        .WithMany()
-                        .HasForeignKey("AtributeId");
+                        .WithMany("Skills")
+                        .HasForeignKey("AtributeId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("TaskProject.Models.Rating", "Rating")
                         .WithMany()

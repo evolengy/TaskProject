@@ -85,7 +85,7 @@ gulp.task("landing:mincss", function () {
 });
 
 gulp.task("main:minjs", function () {
-    return gulp.src([paths.js, "!" + paths.minJs], { base: "." })
+    return gulp.src([paths.js, "!" + paths.minJs, "!" + paths.landingjs], { base: "." })
         .pipe(concat(paths.concatJsDest))
         .pipe(uglify())
         .pipe(gulp.dest("."));

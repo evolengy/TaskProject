@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -13,48 +15,61 @@ namespace TaskProject.Controllers
     public class GoalsController : Controller
     {
         private ApplicationDbContext db;
+        private readonly UserManager<ApplicationUser> usermanager;
 
-        public GoalsController(ApplicationDbContext _db)
+        public GoalsController(ApplicationDbContext _db, UserManager<ApplicationUser> _userManager)
         {
             db = _db;
+            usermanager = _userManager;
         }
 
-        public ActionResult Index(bool iscomplete = false)
+        public async Task<IActionResult> Index(bool iscomplete = false)
         {
             ViewBag.Complete = true;
+
+            var user = await usermanager.GetUserAsync(User);
+
+            if (user == null)
+            {
+                return View("Index");
+            }
+
+            var goals = await db.Goals.Where(g => g.UserId == user.Id).Include(g => g.Repeat).Include(g => g.Complication).Include(g => g.Skill).ToListAsync();
+
             if (!iscomplete)
             {
                 ViewBag.Complete = false;
-                var goals = db.Goals.Where(g => g.IsComplete == false);
+                var completegoals = goals.Where(g => g.IsComplete == false);
                 return View(goals.ToList());
             }
-            var completegoals = db.Goals;
-            return View(completegoals.ToList());
+            
+            return View(goals.ToList());
         }
 
 
-        public ActionResult AddGoal()
+        public async Task <IActionResult> AddGoal()
         {
-                ViewBag.RepeatId = new SelectList(db.Repeats, "RepeatId", "Name");
-                ViewBag.ComplicationId = new SelectList(db.Complications, "ComplicationId", "Name");
-                ViewBag.AtributeId = new SelectList(db.Atributes, "AtributeId", "Name");
-                return View();
+            List<SelectListItem> skills = new SelectList(db.Skills.Where(s => s.UserId == usermanager.GetUserId(User)), "SkillId", "Name").ToList();
+            skills.Insert(0, new SelectListItem() { Text = "Нет", Value = null });
+
+            ViewBag.RepeatId = new SelectList(await db.Repeats.ToListAsync(), "RepeatId", "Name");
+            ViewBag.ComplicationId = new SelectList(await db.Complications.ToListAsync(), "ComplicationId", "Name");
+            ViewBag.SkillId = skills;
+            return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AddGoal(Goal goal)
+        public async Task<IActionResult> AddGoal(Goal goal)
         {
             if (ModelState.IsValid)
             {
-                int result;
-                if (!Int32.TryParse(HttpContext.Request.Cookies["UserId"].ToString(), out result))
+                var user = await usermanager.GetUserAsync(User);
+
+                if (user == null)
                 {
-                    return new StatusCodeResult(400);
+                    return View("Index");
                 }
-                string id = HttpContext.Request.Cookies["UserId"];
-                ApplicationUser user = db.Users.Where(c => c.Id == id).SingleOrDefault();
-                goal.UserId = id;
 
                 switch (goal.RepeatId)
                 {
@@ -69,30 +84,39 @@ namespace TaskProject.Controllers
                         }
                 }
 
-                user.Goals.Add(goal);
+                goal.UserId = user.Id;
+
+                db.Goals.Add(goal);
                 db.SaveChanges();
+
                 return PartialView("_Success");
             }
+
+            List<SelectListItem> skills = new SelectList(db.Skills.Where(s => s.UserId == usermanager.GetUserId(User)), "SkillId", "Name").ToList();
+            skills.Insert(0, new SelectListItem() { Text = "Нет", Value = null });
+
             ViewBag.RepeatId = new SelectList(db.Repeats, "RepeatId", "Name");
             ViewBag.ComplicationId = new SelectList(db.Complications, "ComplicationId", "Name", goal.ComplicationId);
+            ViewBag.SkillId = skills;
             return PartialView(goal);
         }
 
         public ActionResult EditGoal(int? id)
         {
-                if (id == null)
-                {
-                    return new StatusCodeResult(400);
-                }
-                Goal goal = db.Goals.Find(id);
+            Goal goal = db.Goals.Find(id);
 
-                if (goal == null)
-                {
-                    return NotFound();
-                }
-                ViewBag.RepeatId = new SelectList(db.Repeats, "RepeatId", "Name", goal.RepeatId);
-                ViewBag.ComplicationId = new SelectList(db.Complications, "ComplicationId", "Name", goal.ComplicationId);
-                return View(goal);
+            if (goal == null)
+            {
+                return NotFound();
+            }
+
+            List<SelectListItem> skills = new SelectList(db.Skills.Where(s => s.UserId == usermanager.GetUserId(User)), "SkillId", "Name").ToList();
+            skills.Insert(0, new SelectListItem() { Text = "Нет", Value = null });
+
+            ViewBag.RepeatId = new SelectList(db.Repeats, "RepeatId", "Name", goal.RepeatId);
+            ViewBag.ComplicationId = new SelectList(db.Complications, "ComplicationId", "Name", goal.ComplicationId);
+            ViewBag.SkillId = skills;
+            return View(goal);
         }
 
         [HttpPost]
@@ -105,8 +129,13 @@ namespace TaskProject.Controllers
                 db.SaveChanges();
                 return RedirectToAction("GameRoom", "Home", new { area = "" });
             }
+
+            List<SelectListItem> skills = new SelectList(db.Skills.Where(s => s.UserId == usermanager.GetUserId(User)), "SkillId", "Name").ToList();
+            skills.Insert(0, new SelectListItem() { Text = "Нет", Value = null }); 
+
             ViewBag.RepeatId = new SelectList(db.Repeats, "RepeatId", "Name");
             ViewBag.ComplicationId = new SelectList(db.Complications, "ComplicationId", "Name", goal.ComplicationId);
+            ViewBag.SkillId = skills;
             return View(goal);
         }
 

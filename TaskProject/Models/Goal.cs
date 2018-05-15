@@ -14,6 +14,8 @@ namespace TaskProject.Models
             GoalStart = DateTime.Now;
             GoalEnd = null;
             IsComplete = false;
+
+            SkillId = null;
             Skill = null;
         }
 
@@ -34,7 +36,7 @@ namespace TaskProject.Models
 
         [ForeignKey("Repeat")]
         public int RepeatId { get; set; }
-        public virtual Repeat Repeat { get; set; }
+        public Repeat Repeat { get; set; }
 
         [ForeignKey("User")]
         public string UserId { get; set; }
@@ -45,7 +47,9 @@ namespace TaskProject.Models
         [Display(Name = "Сложность")]
         public virtual Complication Complication { get; set; }
 
-        [Display(Name = "Навыки")]
+        [ForeignKey("Skill")]
+        public int? SkillId { get; set; }
+        [Display(Name = "Навык")]
         public virtual Skill Skill { get; set; }
     }
 

@@ -89,7 +89,6 @@ namespace TaskProject.Models
                     );
             }
 
-
             if (!context.Aligments.Any())
             {
                 context.AddRange(

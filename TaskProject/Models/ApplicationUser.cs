@@ -45,11 +45,11 @@ namespace TaskProject.Models
         public long MaxExp { get; set; }
         public int MaxHealth { get; set; }
 
-        public virtual Aligment Aligment { get; set; }
+        public Aligment Aligment { get; set; }
 
-        public List<Goal> Goals { get; set; }
-        public List<Atribute> Atributes { get; set; }
-        public List<Skill> Skills { get; set; }
+        public virtual List<Goal> Goals { get; set; }
+        public virtual List<Atribute> Atributes { get; set; }
+        public virtual List<Skill> Skills { get; set; }
 
         public bool IsDead { get; set; }
         public bool IsSetDescr { get; set; }

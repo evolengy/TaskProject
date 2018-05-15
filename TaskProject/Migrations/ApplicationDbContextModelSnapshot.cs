@@ -352,7 +352,7 @@ namespace TaskProject.Migrations
                     b.Property<int>("SkillId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("AtributeId");
+                    b.Property<int>("AtributeId");
 
                     b.Property<int>("CurrentExp");
 
@@ -460,8 +460,9 @@ namespace TaskProject.Migrations
             modelBuilder.Entity("TaskProject.Models.Skill", b =>
                 {
                     b.HasOne("TaskProject.Models.Atribute", "Atribute")
-                        .WithMany()
-                        .HasForeignKey("AtributeId");
+                        .WithMany("Skills")
+                        .HasForeignKey("AtributeId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("TaskProject.Models.Rating", "Rating")
                         .WithMany()

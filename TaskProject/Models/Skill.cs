@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -19,14 +19,18 @@ namespace TaskProject.Models
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int SkillId { get; set; }
 
-        public virtual ApplicationUser User { get; set; }
-
         public string Name { get; set; }
         public int Lvl { get; set; }
 
         public int CurrentExp { get; set; }
         public int MaxExp { get; set; }
 
+        [ForeignKey("User")]
+        public string UserId { get; set; }
+        public virtual ApplicationUser User { get; set; }
+
+        [ForeignKey("Atribute")]
+        public int AtributeId { get; set; }
         public virtual Atribute Atribute { get; set; }
 
         [ForeignKey("Rating")]
