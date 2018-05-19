@@ -1,0 +1,22 @@
+﻿@model TaskProject.Models.Skill
+
+@{
+    Layout = null;
+}
+
+<form asp-action="Edit">
+    
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="SkillId" />
+    <input type="hidden" asp-for="UserId"/>
+    <div class="form-group">
+        <label asp-for="Name" class="control-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="AtributeId" class="control-label"></label>
+        <select asp-for="AtributeId" class="form-control" asp-items="ViewBag.AtributeId"></select>
+        <span asp-validation-for="AtributeId" class="text-danger"></span>
+    </div>
+</form>

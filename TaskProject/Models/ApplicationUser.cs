@@ -27,7 +27,9 @@ namespace TaskProject.Models
             MaxHealth = 100;
 
             IsDead = false;
-            IsSetDescr = false;
+            IsSetValue = false;
+
+            Aligment = null;
         }
 
         public int Age { get; set; }
@@ -52,7 +54,143 @@ namespace TaskProject.Models
         public virtual List<Skill> Skills { get; set; }
 
         public bool IsDead { get; set; }
-        public bool IsSetDescr { get; set; }
+        public bool IsSetValue { get; set; }
+
+        public void SetDefaultValue()
+        {
+            this.Atributes = new List<Atribute>()
+                {
+                     new Atribute
+                        {
+                            Name = "Сила",
+                            Description = "Характеристика, отвечающая за общее физическое развитие персонажа"
+                        },
+                        new Atribute
+                        {
+                            Name = "Здоровье",
+                            Description = "Характеристика, отвечающая за физическое состояние персонажа"
+                        },
+                        new Atribute
+                        {
+                            Name = "Харизма",
+                            Description = "Характеристика, отвечающая за навыки взаимодействия с другими людьми"
+                        },
+                        new Atribute
+                        {
+                            Name = "Профессионализм",
+                            Description = "Характеристика, отвечающая за умственное развитие персонажа"
+                        },
+                        new Atribute
+                        {
+                            Name = "Интеллект",
+                            Description = "Характеристика, отвечающая за умственное развитие персонажа"
+                        },
+                        new Atribute
+                        {
+                            Name = "Известность",
+                            Description = "Характеристика, отвечающая за влияние персонажа в обществе"
+                        },
+                        new Atribute
+                        {
+                            Name = "Психика",
+                            Description = "Характеристика, отвечающая за стрессоустойчивость персонажа и его психическое состояние"
+                        }
+                };
+            this.Skills = new List<Skill>()
+            {
+                new Skill
+                {
+                    Name = "Владение холодным оружием",
+                    Atribute = this.Atributes.Where(c=> c.Name == "Сила").Single()
+                },
+                new Skill
+                {
+                    Name = "Дрессировка собак",
+                    Atribute = this.Atributes.Where(c => c.Name == "Профессионализм").Single()
+                },
+                new Skill
+                {
+                    Name = "Чтение",
+                    Atribute = this.Atributes.Where(c => c.Name == "Интеллект").Single()
+                }
+            };
+            this.Goals = new List<Goal>()
+            {
+                new Goal
+                {
+                    Name = "Сходить в кино с друзьями",
+                    Description = "",
+                    GoalEnd = DateTime.Now.AddDays(1),
+                    RepeatId = 1,
+                    ComplicationId = 1
+                },
+                new Goal
+                {
+                    Name = "Прочитать \" Горе от ума\"",
+                    Description = "",
+                    GoalEnd = DateTime.Now.AddDays(5),
+                    RepeatId = 1,
+                    ComplicationId = 2,
+                    Skill = this.Skills.Where( c => c.Name == "Чтение").Single()
+                }
+            };
+            this.IsSetValue = true;
+        }
+        public void CheckStatus()
+        {
+            foreach (var goal in this.Goals)
+            {
+                if (goal.GoalEnd < DateTime.Now && goal.IsComplete == false && (goal.GoalEnd.Value.Day - goal.GoalStart.Day) > TimeSpan.FromDays(1).Days)
+                {
+                    do
+                    {
+                        this.CurrentHealth = this.CurrentHealth - goal.Complication.Damage;
+                        switch (goal.RepeatId)
+                        {
+                            case 2:
+                                {
+                                    goal.GoalEnd = null;
+                                    break;
+                                }
+                            case 3:
+                                {
+                                    goal.GoalEnd = goal.GoalEnd.Value.AddDays(1);
+                                    break;
+                                }
+                            case 5:
+                                {
+                                    goal.GoalEnd = goal.GoalEnd.Value.AddMonths(1);
+                                    break;
+                                }
+                            case 6:
+                                {
+                                    goal.GoalEnd = goal.GoalEnd.Value.AddYears(1);
+                                    break;
+                                }
+                        }
+                    }
+                    while (goal.GoalEnd < DateTime.Now);
+                    CheckDead();
+                }
+            }
+        }
+        public void CheckLvl()
+        {
+            if (this.CurrentExp >= this.MaxExp)
+            {
+                CurrentLevel++;
+                CurrentExp = 0;
+            }
+        }
+        public void CheckDead()
+        
+        {
+            if (this.IsDead || this.CurrentHealth <= 0)
+            {
+                this.CurrentHealth = 0;
+                this.IsDead = true;
+            }
+        }
     }
 
     public class ViewSetProfileModel

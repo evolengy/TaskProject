@@ -4,12 +4,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0 text-dark">Dashboard</h1>
+                <h1 class="m-0 text-dark">@ViewBag.Breadcrumb</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#"></a></li>
-                    <li class="breadcrumb-item active">Dashboard v2</li>
+                    <li class="breadcrumb-item"><a href="@Url.Action("GameRoom","Home")">Главная</a></li>
+                    <li class="breadcrumb-item active">@ViewBag.Breadcrumb</li>
                 </ol>
             </div><!-- /.col -->
         </div><!-- /.row -->
@@ -60,7 +60,7 @@
             <div class="col-12 col-md-6">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Состояние персонажа</h3>
+                        <h3 class="card-title">Характеристики персонажа</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
@@ -88,9 +88,9 @@
                         <h3 class="card-title">
                             <i class="ion ion-clipboard mr-1"></i>
                             Задачи
-                            <button type="button" class="btn btn-info float-right" onclick="addtask()"><i class="fa fa-plus"></i> Добавить задачу</button>
+                            <a class="btn btn-info float-right addgoal" data_dialog_title="Создание новой задачи" href="@Url.Action("AddGoal","Goals")"><i class="fa fa-plus"></i> Добавить задачу</a>
                         </h3>
-                        
+
                         @*<div class="card-tools">
                                 <ul class="pagination pagination-sm">
                                     <li class="page-item"><a href="#" class="page-link">«</a></li>
@@ -105,24 +105,33 @@
                     <div class="card-body">
                         <ul class="todo-list ui-sortable">
 
-                            @foreach (var Goal in Model.Goals.Where(g => g.IsComplete == false).OrderByDescending(g => g.GoalEnd))
+                            @foreach (var goal in Model.Goals.Where(g => g.IsComplete == false).OrderByDescending(g => g.GoalEnd))
                             {
-                                <li>
-                                    <!-- drag handle -->
-                                    <span class="handle ui-sortable-handle">
-                                        <i class="fa fa-ellipsis-v"></i>
-                                        <i class="fa fa-ellipsis-v"></i>
-                                    </span>
+                                <li id="goal-@goal.GoalId">
                                     <!-- checkbox -->
-                                    <a href="@Url.Action("CompleteGoal","Goals",new { id = Goal.GoalId})" class="btn btn-xs"><i class=" fa fa-check"></i></a>
+                                    <a href="@Url.Action("CompleteGoal","Goals",new { id = goal.GoalId})" class="btn btn-xs completegoal"><i class=" fa fa-check"></i></a>
                                     <!-- todo text -->
-                                    <span class="text">@Goal.Name</span>
+                                    <span class="text">@goal.Name</span>
                                     <!-- Emphasis label -->
-                                    <small class="badge badge-danger"><i class="fa fa-clock-o"></i> @Goal.GoalEnd</small>
+
+                                    @if (goal.GoalEnd == null)
+                                    {
+                                        <small class="badge badge-success"><i class="fa fa-clock-o"></i> Без срока</small>
+                                    }
+                                    else if (DateTime.Now - goal.GoalEnd > TimeSpan.FromDays(1))
+                                    {
+                                        <small class="badge badge-danger"><i class="fa fa-clock-o"></i> @goal.GoalEnd.Value.ToShortDateString()</small>
+                                    }
+                                    else
+                                    {
+                                        <small class="badge badge-success"><i class="fa fa-clock-o"></i> @goal.GoalEnd.Value.ToShortDateString()</small>
+
+                                    }
+
                                     <!-- General tools such as edit or delete-->
                                     <div class="tools">
-                                        <i class="fa fa-edit" onclick="edittask(@Goal.GoalId)"></i>
-                                        <i class="fa fa-trash-o" onclick="deletetask(@Goal.GoalId)"></i>
+                                        <a style="display:block" class="editgoal" data_dialog_title="Редактирование задачи" href="@Url.Action("EditGoal","Goals",new {id = goal.GoalId })"><i class="fa fa-edit"></i></a>
+                                        <a style="display:block" class="deletegoal" href="#" onclick="deletegoal(@goal.GoalId)"><i class="fa fa-trash-o"></i></a>
                                     </div>
                                 </li>
                             }
@@ -137,26 +146,37 @@
                     <div class="card-header">
                         <h3 class="card-title">
                             Навыки персонажа
-                            <button type="button" class="btn btn-info float-right" onclick="addskill()"><i class="fa fa-plus"></i> Добавить навык</button>
+                            <a class="btn btn-info float-right addskill" data_dialog_title="Создание нового навыка" href="@Url.Action("AddSkill","Skills")"><i class="fa fa-plus"></i> Добавить навык</a>
                         </h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        @foreach (Skill skill in Model.Skills)
-                        {
-                            <div class="progress-group">
-                                <div>
-                                    @skill.Name
-                                </div>
-                                <div class="">
-                                    Уровень @skill.Lvl (@skill.Atribute.Name)
-                                    <span class="float-right"><b>@skill.CurrentExp</b>/@skill.MaxExp</span>
-                                </div>
-                                <div class="progress progress-sm">
-                                    <div class="progress-bar bg-info" style="width:  @(100 * skill.CurrentExp / skill.MaxExp)%"></div>
-                                </div>
-                            </div>
-                        }
+                        <ul class="todo-list">
+                            @foreach (Skill skill in Model.Skills)
+                            {
+                                <li id="skill-@skill.SkillId">
+                                    <div class="row">
+                                        <div class="progress-group col-11">
+                                            <div>
+                                                @skill.Name
+                                            </div>
+                                            <div class="">
+                                                Уровень @skill.Lvl (@skill.Atribute.Name)
+                                                <span class="float-right"><b>@skill.CurrentExp</b>/@skill.MaxExp</span>
+                                            </div>
+                                            <div class="progress progress-sm">
+                                                <div class="progress-bar bg-info" style="width:  @(100 * skill.CurrentExp / skill.MaxExp)%"></div>
+                                            </div>
+                                        </div>
+                                        <div class="tools col-1 text-center">
+                                            <a style="display:block" class="editskill" data_dialog_title="Редактирование навыка" href="@Url.Action("EditSkill","Skills",new {id = skill.SkillId })"><i class="fa fa-edit"></i></a>
+                                            <a style="display:block" class="deleteskill" href="#" onclick="deleteskill(@skill.SkillId)"><i class="fa fa-trash-o"></i></a>
+                                        </div>
+                                    </div>
+                                </li>
+                            }
+                        </ul>
+
                     </div>
                     <!-- /.card-body -->
                 </div>

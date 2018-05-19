@@ -4,11 +4,10 @@
     Layout = null;
 }
 
-@using (Html.BeginForm(new { @class = "form-auth-small", role = "form" }))
+@using (Html.BeginForm(new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
 
-<div class="form-horizontal">
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <div class="form-group">
         <div class="col-12">
@@ -16,6 +15,8 @@
         </div>
         <div class="col-12">
             @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+        </div>
+        <div class="col-12">
             @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -26,7 +27,6 @@
         </div>
         <div class="col-12">
             @Html.TextAreaFor(model => model.Description, new { @class = "form-control", rows = "10", style = "resize:none;" })
-            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
         </div>
     </div>
 
@@ -36,7 +36,6 @@
         </div>
         <div class="col-12">
             @Html.DropDownListFor(g => g.RepeatId, (IEnumerable<SelectListItem>)ViewBag.RepeateId, new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.RepeatId, "", new { @class = "text-danger" })
         </div>
     </div>
 
@@ -50,7 +49,6 @@
                     <span class="input-group-text"><i class="fa fa-calendar"></i></span>
                 </div>
                 <input class="form-control" type="date" name="GoalStart" min="@DateTime.Now.ToString("yyyy-MM-dd")" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
-                @Html.ValidationMessageFor(model => model.GoalEnd, "", new { @class = "text-danger" })
             </div>
         </div>
             <div class="col-md-6 col-12 GoalEnd">
@@ -62,7 +60,6 @@
                         <span class="input-group-text"><i class="fa fa-calendar"></i></span>
                     </div>
                     <input class="form-control d-inline-block" type="date" name="GoalEnd" min="@DateTime.Now.ToString("yyyy-MM-dd")" />
-                    @Html.ValidationMessageFor(model => model.GoalEnd, "", new { @class = "text-danger" })
                 </div>
             </div>      
     </div>
@@ -73,7 +70,6 @@
         </div>
         <div class="col-12">
             @Html.DropDownListFor( g => g.ComplicationId, (IEnumerable<SelectListItem>)ViewBag.ComplicationId, new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.ComplicationId, "", new { @class = "text-danger" })
         </div>
     </div>
 
@@ -83,16 +79,8 @@
         </div>
         <div class="col-12">
             @Html.DropDownListFor(g => g.SkillId,(IEnumerable<SelectListItem>)ViewBag.SkillId, new { @class = "form-control select2 select2-hidden-accessible"})
-            @Html.ValidationMessageFor(model => model.SkillId)
         </div>
     </div>
-
-    <div class="form-group">
-        <div class="col-md-12 text-center">
-            <input type="submit" value="Добавить задачу" class="btn btn-default" onclick="post_addtask(@Model)" />
-        </div>
-    </div>
-</div>
 }
 
 <script>

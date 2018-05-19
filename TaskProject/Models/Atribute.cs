@@ -34,5 +34,17 @@ namespace TaskProject.Models
         public int MaxExp { get; set; }
 
         public virtual List<Skill> Skills { get; set; }
+
+        public void ExpUp()
+        {
+            CurrentExp += 5;
+
+            if (CurrentExp == MaxExp)
+            {
+                Lvl++;
+                CurrentExp = 0;
+                MaxExp += 10;
+            }
+        }
     }
 }

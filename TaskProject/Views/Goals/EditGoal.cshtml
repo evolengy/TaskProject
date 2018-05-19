@@ -8,87 +8,84 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.GoalId)
-        @Html.HiddenFor(model => model.IsComplete)
-        @Html.HiddenFor(model => model.UserId)
-        <div class="form-group">
-            <div class="col-md-offset-1 col-md-3">
-                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label", required="required" })
-            </div>
-            <div class="col-md-7">
-                @Html.TextBoxFor(model => model.Name, new { @class = "form-control"})
-                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-            </div>
+<div class="form-horizontal">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.GoalId)
+    @Html.HiddenFor(model => model.IsComplete)
+    @Html.HiddenFor(model => model.UserId)
+    <div class="form-group">
+        <div class="col-12">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label", required = "required" })
         </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-1 col-md-3">
-                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label" })
-            </div>
-            <div class="col-md-7">
-                @Html.TextAreaFor(model => model.Description, new { @class = "form-control", rows = "10", style = "resize:none;" })
-                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-            </div>
+        <div class="col-12">
+            @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
         </div>
+        <div class="col-12">
+            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+        </div>
+    </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-1 col-md-3">
+    <div class="form-group">
+        <div class="col-12">
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label" })
+        </div>
+        <div class="col-12">
+            @Html.TextAreaFor(model => model.Description, new { @class = "form-control", rows = "10", style = "resize:none;" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-12">
+            @Html.LabelFor(model => model.RepeatId, "Повторение", htmlAttributes: new { @class = "control-label" })
+        </div>
+        <div class="col-12">
+            @Html.DropDownListFor(g => g.RepeatId, (IEnumerable<SelectListItem>)ViewBag.RepeateId, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="input-group mb-2">
+        <div class="col-md-6 col-12">
+            <div>
                 @Html.LabelFor(model => model.GoalStart, htmlAttributes: new { @class = "control-label" })
             </div>
-            <div class="col-md-7">
-                <input type="date" name="GoalStart" min="@Model.GoalStart.ToString("yyyy-MM-dd")" value="@Model.GoalStart.ToString("yyyy-MM-dd")" />
-                @Html.ValidationMessageFor(model => model.GoalEnd, "", new { @class = "text-danger" })
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                </div>
+                <input class="form-control" type="date" name="GoalStart" min="@Model.GoalStart.ToString("yyyy-MM-dd")" value="@Model.GoalStart.ToString("yyyy-MM-dd")" />
             </div>
         </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-1 col-md-3">
-                @Html.LabelFor(model => model.RepeatId, "Повторение", htmlAttributes: new { @class = "control-label" })
-            </div>
-            <div class="col-md-7">
-                @Html.DropDownList("RepeatId")
-                @Html.ValidationMessageFor(model => model.RepeatId)
-            </div>
-        </div>
-
-        <div class="form-group GoalEnd">
-            <div class="col-md-offset-1 col-md-3">
+        <div class="col-md-6 col-12 GoalEnd">
+            <div>
                 @Html.LabelFor(model => model.GoalEnd, htmlAttributes: new { @class = "control-label" })
             </div>
-            <div class="col-md-7">
-                <input type="date" name="GoalEnd" min="@Model.GoalStart.ToString("yyyy-MM-dd")" value="@Model.GoalStart.ToString("yyyy-MM-dd")" />
-                @Html.ValidationMessageFor(model => model.GoalEnd, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-1 col-md-3">
-                @Html.LabelFor(model => model.ComplicationId, "Сложность", htmlAttributes: new { @class = "control-label" })
-            </div>
-            <div class="col-md-7">
-                @Html.DropDownList("ComplicationId")
-                @Html.ValidationMessageFor(model => model.ComplicationId, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-1 col-md-3">
-                @Html.LabelFor(model => model.SkillId, "Навык", htmlAttributes: new { @class = "control-label" })
-            </div>
-            <div class="col-md-7">
-                @Html.DropDownList("SkillId")
-                @Html.ValidationMessageFor(model => model.SkillId)
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-12 text-center">
-                <input type="submit" value="Редактировать задачу" class="btn btn-default" />
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                </div>
+                <input class="form-control d-inline-block" type="date" name="GoalEnd" min="@Model.GoalStart.ToString("yyyy-MM-dd")" value="@Model.GoalStart.ToString("yyyy-MM-dd")" />
             </div>
         </div>
     </div>
+
+    <div class="form-group">
+        <div class="col-12">
+            @Html.LabelFor(model => model.ComplicationId, "Сложность", htmlAttributes: new { @class = "control-label" })
+        </div>
+        <div class="col-12">
+            @Html.DropDownList("ComplicationId", (IEnumerable<SelectListItem>)ViewBag.ComplocationId, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-12">
+            @Html.LabelFor(model => model.SkillId, "Навык", htmlAttributes: new { @class = "control-label" })
+        </div>
+        <div class="col-12">
+            @Html.DropDownList("SkillId", (IEnumerable<SelectListItem>)ViewBag.SkillId, new { @class = "form-control" })
+        </div>
+    </div>
+</div>
 }
 <script>
     $(document).ready(function () {

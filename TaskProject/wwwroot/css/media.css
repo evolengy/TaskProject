@@ -14,15 +14,6 @@
 
 @media screen and (max-width: 736px) {
 
-    .sw_skill .sw_skill_value {
-        margin: 0px 10px 0px;
-        flex-basis: 70px;
-    }
-
-    .sw_skill .sw_skill_progress span {
-        left: 30%;
-    }
-
 }
 
 @media screen and (max-width: 640px) {

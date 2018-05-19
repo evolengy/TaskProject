@@ -23,7 +23,7 @@ namespace TaskProject.Controllers
             usermanager = _userManager;
         }
 
-        public async Task<IActionResult> Index(bool iscomplete = false)
+        public async Task<IActionResult> GetGoals(bool iscomplete = false)
         {
             ViewBag.Complete = true;
 
@@ -40,17 +40,18 @@ namespace TaskProject.Controllers
             {
                 ViewBag.Complete = false;
                 var completegoals = goals.Where(g => g.IsComplete == false);
-                return View(goals.ToList());
+                return View(completegoals.ToList());
             }
-            
+
+            ViewBag.BreadCrumb = "Все задачи";
             return View(goals.ToList());
         }
 
 
-        public async Task <IActionResult> AddGoal()
+        public async Task<IActionResult> AddGoal()
         {
             List<SelectListItem> skills = new SelectList(db.Skills.Where(s => s.UserId == usermanager.GetUserId(User)), "SkillId", "Name").ToList();
-            skills.Insert(0, new SelectListItem() { Text = "Нет", Value = null });
+            skills.Insert(0, new SelectListItem() { Text = "Нет", Value = "0" });
 
             ViewBag.RepeatId = new SelectList(await db.Repeats.ToListAsync(), "RepeatId", "Name");
             ViewBag.ComplicationId = new SelectList(await db.Complications.ToListAsync(), "ComplicationId", "Name");
@@ -65,7 +66,6 @@ namespace TaskProject.Controllers
             if (ModelState.IsValid)
             {
                 var user = await usermanager.GetUserAsync(User);
-
                 if (user == null)
                 {
                     return View("Index");
@@ -84,34 +84,41 @@ namespace TaskProject.Controllers
                         }
                 }
 
+                if (goal.SkillId == 0)
+                {
+                    goal.SkillId = null;
+                }
+
                 goal.UserId = user.Id;
 
                 db.Goals.Add(goal);
                 db.SaveChanges();
 
+                ViewBag.Message = "Задача успешно добавлена.";
                 return PartialView("_Success");
             }
 
             List<SelectListItem> skills = new SelectList(db.Skills.Where(s => s.UserId == usermanager.GetUserId(User)), "SkillId", "Name").ToList();
-            skills.Insert(0, new SelectListItem() { Text = "Нет", Value = null });
+            skills.Insert(0, new SelectListItem() { Text = "Нет", Value = "0" });
 
-            ViewBag.RepeatId = new SelectList(db.Repeats, "RepeatId", "Name");
-            ViewBag.ComplicationId = new SelectList(db.Complications, "ComplicationId", "Name", goal.ComplicationId);
+            ViewBag.RepeatId = new SelectList(await db.Repeats.ToListAsync(), "RepeatId", "Name");
+            ViewBag.ComplicationId = new SelectList(await db.Complications.ToListAsync(), "ComplicationId", "Name", goal.ComplicationId);
             ViewBag.SkillId = skills;
+
             return PartialView(goal);
         }
 
-        public ActionResult EditGoal(int? id)
+        public async Task<IActionResult> EditGoal(int? id)
         {
-            Goal goal = db.Goals.Find(id);
+            Goal goal = await db.Goals.FindAsync(id);
 
             if (goal == null)
             {
                 return NotFound();
             }
 
-            List<SelectListItem> skills = new SelectList(db.Skills.Where(s => s.UserId == usermanager.GetUserId(User)), "SkillId", "Name").ToList();
-            skills.Insert(0, new SelectListItem() { Text = "Нет", Value = null });
+            List<SelectListItem> skills = new SelectList(db.Skills.Where(s => s.UserId == usermanager.GetUserId(User)), "SkillId", "Name", goal.SkillId).ToList();
+            skills.Insert(0, new SelectListItem() { Text = "Нет", Value = "0" });
 
             ViewBag.RepeatId = new SelectList(db.Repeats, "RepeatId", "Name", goal.RepeatId);
             ViewBag.ComplicationId = new SelectList(db.Complications, "ComplicationId", "Name", goal.ComplicationId);
@@ -121,48 +128,78 @@ namespace TaskProject.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditGoal(Goal goal)
+        public async Task<IActionResult> EditGoal(Goal goal)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(goal).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("GameRoom", "Home", new { area = "" });
+                if (goal.SkillId == 0)
+                {
+                    goal.SkillId = null;
+                }
+
+                try
+                {
+                    db.Update(goal);
+                    await db.SaveChangesAsync();
+                }
+
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!GoalExists(goal.GoalId))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+
+                ViewBag.Message = "Задача успешно изменена.";
+                return PartialView("_Success");
             }
 
             List<SelectListItem> skills = new SelectList(db.Skills.Where(s => s.UserId == usermanager.GetUserId(User)), "SkillId", "Name").ToList();
-            skills.Insert(0, new SelectListItem() { Text = "Нет", Value = null }); 
+            skills.Insert(0, new SelectListItem() { Text = "Нет", Value = "0" });
 
             ViewBag.RepeatId = new SelectList(db.Repeats, "RepeatId", "Name");
             ViewBag.ComplicationId = new SelectList(db.Complications, "ComplicationId", "Name", goal.ComplicationId);
             ViewBag.SkillId = skills;
-            return View(goal);
+            return PartialView(goal);
         }
 
         [HttpPost]
-        public ActionResult DeleteGoal(int? id)
+        public async Task <IActionResult> DeleteGoal(int? id)
         {
             if (id == null)
             {
-                return new StatusCodeResult(400);
+                return NotFound();
             }
-            Goal goal = db.Goals.Find(id);
+            Goal goal = await db.Goals.FindAsync(id);
             if (goal == null)
             {
                 return NotFound();
             }
             db.Goals.Remove(goal);
-            db.SaveChanges();
-            return null;
+            await db.SaveChangesAsync();
+            return Ok();
         }
 
-        public ActionResult CompleteGoal(int? id)
+        public async Task<IActionResult> CompleteGoal(int? id)
         {
             if (id == null)
             {
-                return new StatusCodeResult(400);
+                return NotFound();
             }
-            Goal goal = db.Goals.Find(id);
+
+            Goal goal = await db.Goals.Where(g => g.GoalId == id)
+                .Include(g => g.User)
+                .Include(g => g.Skill)
+                .Include(g=>g.Skill.Atribute)
+                .Include(g => g.Complication)
+                .Include(g => g.Repeat)
+                .SingleOrDefaultAsync();
+
             if (goal == null)
             {
                 return NotFound();
@@ -194,21 +231,24 @@ namespace TaskProject.Controllers
             goal.User.CurrentExp = goal.User.CurrentExp + goal.Complication.Exp;
             goal.User.CurrentGold = goal.User.CurrentGold + goal.Complication.Gold;
 
-
-            goal.User.CurrentHealth = goal.User.CurrentHealth + goal.Complication.Damage;
-            if (goal.User.CurrentHealth > goal.User.MaxHealth)
+            if (goal.Skill != null)
             {
-                goal.User.CurrentHealth = goal.User.MaxHealth;
+                goal.Skill.ExpUp();
             }
 
-            if (goal.User.CurrentExp >= goal.User.MaxExp)
-            {
-                goal.User.CurrentLevel++;
-                goal.User.CurrentExp = 0;
-            }
+            goal.User.CheckLvl();
+            goal.User.CheckStatus();
 
-            db.SaveChanges();
-            return RedirectToAction("GameRoom", "Home", new { area = "" });
+            await db.SaveChangesAsync();
+
+            ViewBag.Message = "Задача выполнена.";
+            return PartialView("_Success");
+        }
+
+
+        private bool GoalExists(int id)
+        {
+            return db.Goals.Any(e => e.GoalId == id);
         }
 
         protected override void Dispose(bool disposing)
@@ -219,5 +259,6 @@ namespace TaskProject.Controllers
             }
             base.Dispose(disposing);
         }
+
     }
 }

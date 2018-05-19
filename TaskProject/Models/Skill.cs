@@ -14,47 +14,46 @@ namespace TaskProject.Models
             CurrentExp = 0;
             MaxExp = 100;
             Lvl = 1;
+
+            Goals = new List<Goal>();
         }
 
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int SkillId { get; set; }
 
+        [Display(Name="Название навыка")]
+        [Required(ErrorMessage = "Не указано название навыка")]
         public string Name { get; set; }
+        [Display(Name="Текущий уровень")]
         public int Lvl { get; set; }
 
+        [Display(Name="Текущие очки опыта")]
         public int CurrentExp { get; set; }
+        [Display(Name = "Максимальные очки опыта")]
         public int MaxExp { get; set; }
 
         [ForeignKey("User")]
+        [Display(Name="Пользователь")]
         public string UserId { get; set; }
         public virtual ApplicationUser User { get; set; }
 
         [ForeignKey("Atribute")]
+        [Display(Name ="Характеристика")]
         public int AtributeId { get; set; }
         public virtual Atribute Atribute { get; set; }
 
         [ForeignKey("Rating")]
+        [Display(Name = "Рейтинг")]
         public int RatingId { get; set; }
         public virtual Rating Rating { get; set; }
 
-        private void CheckRating()
-        {
-            if(Lvl <= 10)
-            {
-                RatingId = 1;
-            }
-            else if(Lvl > 10 && Lvl <= 20)
-            {
-                RatingId = 2;
-            }
-            else
-            {
-                RatingId = 3;
-            }
-        }
+        public List<Goal> Goals { get; set; }
 
-        public void CheckLvl()
+        public void ExpUp()
         {
+            CurrentExp += 5;
+            Atribute.ExpUp();
+
             if(CurrentExp == MaxExp)
             {
                 Lvl++;
@@ -62,6 +61,22 @@ namespace TaskProject.Models
                 MaxExp += 10;
 
                 CheckRating();
+            }
+        }
+
+        private void CheckRating()
+        {
+            if (Lvl <= 10)
+            {
+                RatingId = 1;
+            }
+            else if (Lvl > 10 && Lvl <= 20)
+            {
+                RatingId = 2;
+            }
+            else
+            {
+                RatingId = 3;
             }
         }
     }

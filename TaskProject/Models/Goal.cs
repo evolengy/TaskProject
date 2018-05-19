@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -21,15 +22,16 @@ namespace TaskProject.Models
 
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int GoalId { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Имя не задано.")]
         [Display(Name = "Название задачи")]
         public string Name { get; set; }
         [Display(Name = "Описание")]
         public string Description { get; set; }
-        [Display(Name = "Начало выполнения задачи")]
+        [Display(Name = "Начало задачи")]
         public DateTime GoalStart { get; set; }
         [Display(Name = "Окончания задачи")]
         public DateTime? GoalEnd { get; set; }
+
         [Display(Name = "Выполнение")]
         public bool IsComplete { get; set; } 
 

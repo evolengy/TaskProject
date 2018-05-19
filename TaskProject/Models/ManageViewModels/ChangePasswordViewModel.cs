@@ -21,7 +21,7 @@ namespace TaskProject.Models.ManageViewModels
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm new password")]
-        [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
+        [Compare("NewPassword", ErrorMessage = "Пароли не совпадают.")]
         public string ConfirmPassword { get; set; }
 
         public string StatusMessage { get; set; }
