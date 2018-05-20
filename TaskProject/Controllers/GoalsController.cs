@@ -35,6 +35,7 @@ namespace TaskProject.Controllers
             }
 
             var goals = await db.Goals.Where(g => g.UserId == user.Id).Include(g => g.Repeat).Include(g => g.Complication).Include(g => g.Skill).ToListAsync();
+            ViewBag.BreadCrumb = "Все задачи";
 
             if (!iscomplete)
             {
@@ -43,7 +44,6 @@ namespace TaskProject.Controllers
                 return View(completegoals.ToList());
             }
 
-            ViewBag.BreadCrumb = "Все задачи";
             return View(goals.ToList());
         }
 

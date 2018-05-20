@@ -11,9 +11,10 @@ using TaskProject.Models;
 namespace TaskProject.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180519182337_v.0.0.6")]
+    partial class v006
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -343,24 +344,6 @@ namespace TaskProject.Migrations
                     b.ToTable("Moods");
                 });
 
-            modelBuilder.Entity("TaskProject.Models.Note", b =>
-                {
-                    b.Property<int>("NoteId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<DateTime>("DateCreate");
-
-                    b.Property<string>("Text");
-
-                    b.Property<string>("UserId");
-
-                    b.HasKey("NoteId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Note");
-                });
-
             modelBuilder.Entity("TaskProject.Models.Rating", b =>
                 {
                     b.Property<int>("RatingId");
@@ -498,13 +481,6 @@ namespace TaskProject.Migrations
                 {
                     b.HasOne("TaskProject.Models.ApplicationUser", "User")
                         .WithMany("Moods")
-                        .HasForeignKey("UserId");
-                });
-
-            modelBuilder.Entity("TaskProject.Models.Note", b =>
-                {
-                    b.HasOne("TaskProject.Models.ApplicationUser", "User")
-                        .WithMany("Notes")
                         .HasForeignKey("UserId");
                 });
 

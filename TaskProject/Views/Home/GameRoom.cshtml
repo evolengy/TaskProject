@@ -48,8 +48,40 @@
                                 <div class="progress-bar bg-primary" style="width: @(100 * Model.CurrentExp / Model.MaxExp)%"></div>
                             </div>
                         </div>
+
                         <div class="mb-3">
                             @Html.DisplayFor(m => m.CurrentGold) монет
+                        </div>
+
+                        <div class="mb-3">
+                            @if (ViewBag.TodayMood != null)
+                            {
+                                <div>
+                                    <img src="@ViewBag.TodayMood.LinkImg" alt="@ViewBag.TodayMood.Name" class="mood_img"/>
+                                </div>
+                            }
+                            else
+                            {
+                                <form class="checkmood" asp-action="AddTodayMood" asp-controller="Moods">
+                                    <span>Выберите свое настроение на сегодня:</span>
+                                    <div class="form-row mb-1">
+                                        @foreach (Mood mood in ViewBag.ListMood)
+                                        {
+                                            <div class="mr-1 col">
+                                                <div class="text-center">
+                                                    <img src="@mood.LinkImg" alt="@mood.Name" class="mood_img" />
+                                                </div>
+                                                <div class="text-center">
+                                                    @Html.RadioButton("Name", mood.Name)
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                    <div class="col text-center">
+                                        <button type="submit" class="btn btn-info"><i class="fa fa-plus"></i> Добавить настроение</button>
+                                    </div>
+                                </form>
+                            }
                         </div>
                     </div>
                     <!-- /.card-body -->
@@ -79,6 +111,24 @@
                 </div>
                 <!-- /.card -->
             </div>
+
+            @*<div class="col-12 col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Дневник персонажа</h3>
+                    </div>
+                    <div class="card-body text-center">
+                        @if (ViewBag.TodayNote == null)
+                        {
+                            <a class="btn btn-info" href="@Url.Action("AddNote","Notes")"><i class="fa fa-plus"></i> Добавить заметку в дневник</a>
+                        }
+                        else
+                        {
+                            <a class="btn btn-info" href="@Url.Action("EditNote","Notes")"><i class="fa fa-plus"></i> Посмотреть заметку в дневнике</a>
+                        }
+                    </div>
+                </div>
+            </div>*@
         </div>
 
         <div class="row">

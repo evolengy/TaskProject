@@ -30,6 +30,12 @@ namespace TaskProject.Models
             IsSetValue = false;
 
             Aligment = null;
+
+            Goals = new List<Goal>();
+            Atributes = new List<Atribute>();
+            Skills = new List<Skill>();
+            Moods = new List<Mood>();
+            Notes = new List<Note>();
         }
 
         public int Age { get; set; }
@@ -52,13 +58,15 @@ namespace TaskProject.Models
         public virtual List<Goal> Goals { get; set; }
         public virtual List<Atribute> Atributes { get; set; }
         public virtual List<Skill> Skills { get; set; }
+        public virtual List<Mood> Moods { get; set; }
+        public virtual List<Note> Notes { get; set; }
 
         public bool IsDead { get; set; }
         public bool IsSetValue { get; set; }
 
         public void SetDefaultValue()
         {
-            this.Atributes = new List<Atribute>()
+            this.Atributes.AddRange(new List<Atribute>()
                 {
                      new Atribute
                         {
@@ -95,8 +103,8 @@ namespace TaskProject.Models
                             Name = "Психика",
                             Description = "Характеристика, отвечающая за стрессоустойчивость персонажа и его психическое состояние"
                         }
-                };
-            this.Skills = new List<Skill>()
+                });
+            this.Skills.AddRange(new List<Skill>()
             {
                 new Skill
                 {
@@ -113,8 +121,8 @@ namespace TaskProject.Models
                     Name = "Чтение",
                     Atribute = this.Atributes.Where(c => c.Name == "Интеллект").Single()
                 }
-            };
-            this.Goals = new List<Goal>()
+            });
+            this.Goals.AddRange(new List<Goal>()
             {
                 new Goal
                 {
@@ -133,7 +141,7 @@ namespace TaskProject.Models
                     ComplicationId = 2,
                     Skill = this.Skills.Where( c => c.Name == "Чтение").Single()
                 }
-            };
+            });
             this.IsSetValue = true;
         }
         public void CheckStatus()

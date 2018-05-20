@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using TaskProject.Models;
 
 namespace TaskProject.Models
 {
@@ -17,6 +18,7 @@ namespace TaskProject.Models
         public DbSet<Rating> Ratings { get; set; }
         public DbSet<Skill> Skills { get; set; }
         public DbSet<Aligment> Aligments { get; set; }
+        public DbSet<Mood> Moods { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
@@ -37,5 +39,7 @@ namespace TaskProject.Models
             //    entity.Property(e => e.Id).HasColumnName("UserId");
             //});
         }
+
+        public DbSet<TaskProject.Models.Note> Note { get; set; }
     }
 }

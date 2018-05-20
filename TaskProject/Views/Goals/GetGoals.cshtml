@@ -63,11 +63,11 @@
                             <tbody>
                                 @foreach (var goal in Model)
                                 {
-                                    <tr id="goal-@goal.GoalId" @if (goal.IsComplete) { <text> style="background-color:grey" </text> }>
+                                    <tr id="goal-@goal.GoalId">
                                         <td>
                                             <a href="@Url.Action("CompleteGoal","Goals",new { id = goal.GoalId})" class="btn btn-xs completegoal"><i class=" fa fa-check"></i></a>
                                         </td>
-                                        <td>
+                                        <td @if (goal.IsComplete) { <text> style="text-decoration:line-through" </text> }>
                                             @Html.DisplayFor(modelgoal => goal.Name)
                                         </td>
                                         <td>
