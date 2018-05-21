@@ -21,12 +21,6 @@ namespace TaskProject.Controllers
             usermanager = _userManager;
         }
 
-        public async Task<IActionResult> Index()
-        {
-            var skills = db.Skills.Include(s => s.Atribute).Include(s => s.Rating).Include(s => s.User);
-            return View(await skills.ToListAsync());
-        }
-
         public IActionResult AddSkill()
         {
             ViewData["AtributeId"] = new SelectList(db.Atributes.Where(s => s.UserId == usermanager.GetUserId(User)), "AtributeId", "Name");

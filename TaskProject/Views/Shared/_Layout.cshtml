@@ -5,6 +5,11 @@
 
 <head>
     @Html.Partial("_Header")
+
+    @RenderSection("Css",false)
+
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/css/main.min.css">
 </head>
 
 
@@ -144,6 +149,14 @@
                                 </a>
                             </li>
                             <li class="nav-item">
+                                <a href="@Url.Action("ShowNotes","Notes")" class="nav-link">
+                                    <i class="nav-icon fa fa-book"></i>
+                                    <p>
+                                        Дневник
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
                                 <a href="@Url.Action("GetGoals","Goals")" class="nav-link">
                                     <i class="nav-icon fa fa-gamepad"></i>
                                     <p>
@@ -160,7 +173,25 @@
 
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
+                <!-- Content Header (Page header) -->
+                <div class="content-header">
+                    <div class="container-fluid">
+                        <div class="row mb-2">
+                            <div class="col-sm-6">
+                                <h1 class="m-0 text-dark">@ViewBag.Breadcrumb</h1>
+                            </div><!-- /.col -->
+                            <div class="col-sm-6">
+                                <ol class="breadcrumb float-sm-right">
+                                    <li class="breadcrumb-item"><a href="@Url.Action(" GameRoom","Home")">Главная</a></li>
+                                    <li class="breadcrumb-item active">@ViewBag.Breadcrumb</li>
+                                </ol>
+                            </div><!-- /.col -->
+                        </div><!-- /.row -->
+                    </div><!-- /.container-fluid -->
+                </div>
+
                 @RenderBody()
+
             </div>
             <!-- /.content-wrapper -->
 
@@ -176,6 +207,127 @@
     }
 
     @RenderSection("Scripts", false)
+
+    <script>
+    $(document).ready(function () {
+
+        $.ajaxSetup({ cache: false });
+
+     var link;
+
+     $(".addgoal").on("click", function (e) {
+            e.preventDefault();
+            $(".sw_title").text($(this).attr("data_dialog_title"));
+            $(".sw_modal_result").load(this.href);
+            $(".sw_modal").modal("show", function () {
+            });
+
+            link = "/Goals/AddGoal";
+     });
+
+     $(".addskill").on("click", function (e) {
+         e.preventDefault();
+         $(".sw_title").text($(this).attr("data_dialog_title"));
+         $(".sw_modal_result").load(this.href);
+         $(".sw_modal").modal("show", function () {
+         });
+
+         link = "/Skills/AddSkill";
+     });
+
+     $(".editgoal").on("click", function (e) {
+
+         e.preventDefault();
+         $(".sw_title").text($(this).attr("data_dialog_title"));
+         $(".sw_modal_result").load(this.href);
+         $(".sw_modal").modal("show", function () {
+         });
+
+         link = "/Goals/EditGoal";
+     });
+
+     $(".editskill").on("click", function (e) {
+
+         e.preventDefault();
+         $(".sw_title").text($(this).attr("data_dialog_title"));
+         $(".sw_modal_result").load(this.href);
+         $(".sw_modal").modal("show", function () {
+         });
+
+         link = "/Skills/EditSkill";
+        });
+
+        $(".completegoal").on("click", function (e) {
+            e.preventDefault();
+            $(".sw_title").text($(this).attr("data_dialog_title"));
+            $(".sw_modal_result").load(this.href);
+            $(".sw_modal").modal("show", function () {
+            });
+
+            link = "/Goals/CompleteGoal";
+        });
+
+        $(".sw_modal_submit").on("click", function (e) {
+            e.preventDefault();
+            var form = $('.form-modal').serialize();
+            $.ajax({
+                url: link,
+                type: "POST",
+                data: $('.form-modal').serialize(),
+                datatype: "json",
+                success: function (result) {
+                    $(".sw_modal_result").html(result);
+                }
+            });
+
+        });
+    });
+
+
+     function deletegoal(goalid) {
+         $.ajax({
+             url: '@Url.Action("DeleteGoal", "Goals")',
+             type: "POST",
+             data: { id: goalid },
+             success: function () {
+                 $("#goal-" + goalid).remove();
+             }
+         });
+    };
+
+     function deleteskill(skillid) {
+         $.ajax({
+             url: '@Url.Action("DeleteSkill", "Skills")',
+             type: "POST",
+             data: { id: skillid },
+             success: function () {
+                 $("#skill-" + skillid).remove();
+             }
+         });
+    };
+
+        @*$(document).ready(function () {
+            var dead = $(".sw_dead").val();
+            if (dead === "True") {
+                $.ajax({
+                    url: '@Url.Action("Dead","Home")',
+                    success: function (data) {
+                        $('.sw_modal_result').html(data);
+                        document.getElementById('modal-header').style.display = "none";
+                        $('.sw_modal_goals').modal({
+                            backdrop: 'static',
+                            keyboard: false
+                        });
+                    }
+                })
+            }
+            });
+*@
+
+    </script>
+
+    <!-- AdminLTE App -->
+    <script src="~/js/main.min.js"></script>
 
 </body>
 

@@ -4,22 +4,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!-- Content Header (Page header) -->
-<div class="content-header">
-    <div class="container-fluid">
-        <div class="row mb-2">
-            <div class="col-sm-6">
-                <h1 class="m-0 text-dark">@ViewBag.Breadcrumb</h1>
-            </div><!-- /.col -->
-            <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="@Url.Action("GameRoom","Home")">Главная</a></li>
-                    <li class="breadcrumb-item active">@ViewBag.Breadcrumb</li>
-                </ol>
-            </div><!-- /.col -->
-        </div><!-- /.row -->
-    </div><!-- /.container-fluid -->
-</div>
+@section Css{
+    <!--DateTable-->
+    <link rel="stylesheet" href="~/plugins/datatables/jquery.dataTables.min.css" />
+}
 
 <section class="content">
     <div class="container-fluid">
@@ -110,3 +98,40 @@
         </div>
     </div>
 </section>
+
+@section Scripts{
+
+    <!-- Datetable-->
+    <script src="~/plugins/datatables/jquery.dataTables.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('.sw_datatable').DataTable({
+                language: {
+                    processing: "Выполняется обработка...",
+                    search: "Поиск&nbsp;:",
+                    lengthMenu: "Показать _MENU_ задач",
+                    info: "Отображены с _START_ по _END_ из _TOTAL_ задач",
+                    infoEmpty: "Нет задач",
+                    infoFiltered: "(Поиск из _MAX_ задач)",
+                    infoPostFix: "",
+                    loadingRecords: "Идет загрузка...",
+                    zeroRecords: "Задач не найдено",
+                    emptyTable: "Нет задач",
+                    paginate: {
+                        first: "К первой",
+                        previous: "Предыдущие",
+                        next: "Следующие",
+                        last: "К последней"
+                    },
+                    aria: {
+                        sortAscending: ": Сортировка в порядке возрастания",
+                        sortDescending: ": Сортировка в порядке убывания"
+                    }
+                }
+            });
+
+        });
+    </script>
+
+}

@@ -352,6 +352,8 @@ namespace TaskProject.Migrations
 
                     b.Property<string>("Text");
 
+                    b.Property<string>("Theme");
+
                     b.Property<string>("UserId");
 
                     b.HasKey("NoteId");

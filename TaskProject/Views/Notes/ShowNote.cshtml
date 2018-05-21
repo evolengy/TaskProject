@@ -1,0 +1,69 @@
+﻿@model TaskProject.Models.Note
+
+@section Css{
+
+    <!-- bootstrap wysihtml5 - text editor -->
+    <link rel="stylesheet" href="~/plugins/summernote/summernote-bs4.css">
+}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card card-outline card-info">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            Заметка за @Model.DateCreate.ToShortDateString()
+                        </h3>
+                        <!-- tools box -->
+                        <!--<div class="card-tools">
+                            <button type="button" class="btn btn-tool btn-sm" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-tool btn-sm" data-widget="remove" data-toggle="tooltip" title="Remove">
+                                <i class="fa fa-times"></i>
+                            </button>
+                        </div>-->
+                        <!-- /. tools -->
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body pad">
+                        <div class="mb-3">
+                            <form asp-action="ShowNote">
+                                @Html.AntiForgeryToken()
+                                @Html.HiddenFor(n => n.NoteId)
+
+                                <div class="form-group col-md-4 col-8 mb-2">
+                                    <label asp-for="Theme" class="control-label"></label>
+                                    <input asp-for="Theme" class="form-control" />
+                                </div>
+
+                                <div class="form-group col-12">
+                                    <textarea id="Text" name="Text">@Model.Text</textarea>
+                                </div>
+
+                                <div class="form-group col-12">
+                                    <input type="submit" value="Редактировать заметку" class="btn btn-info" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@section Scripts{
+
+    <script src="~/plugins/summernote/summernote-bs4.min.js"></script>
+    <script>
+    $(document).ready(function () {
+        $("#Text").summernote({
+            height: 400,
+            focus:true
+        });
+    });
+    </script>
+}

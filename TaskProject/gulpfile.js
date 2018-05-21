@@ -31,6 +31,10 @@ var plugs = {
 
     "jquery-easing": {
         "/dist/**/*": ""
+    },
+
+    "summernote": {
+        "/dist/**/*":""
     }
 }
 

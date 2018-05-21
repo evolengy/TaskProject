@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -11,86 +12,97 @@ namespace TaskProject.Controllers
 {
     public class NotesController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly ApplicationDbContext db;
+        private readonly UserManager<ApplicationUser> userManager;
 
-        public NotesController(ApplicationDbContext context)
+        public NotesController(ApplicationDbContext _db,UserManager<ApplicationUser> _userManager)
         {
-            _context = context;
+            db = _db;
+            userManager = _userManager;
         }
 
-        // GET: Notes
-        public async Task<IActionResult> Index()
+        public IActionResult ShowNotes()
         {
-            var applicationDbContext = _context.Note.Include(n => n.User);
-            return View(await applicationDbContext.ToListAsync());
+
+            ViewBag.BreadCrumb = "Дневник";
+            return View(new NoteViewModel());
         }
 
-        // GET: Notes/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<ActionResult> GetNotes(DateTime start , DateTime end)
         {
-            if (id == null)
+            var noteModel = new NoteViewModel();
+
+            ApplicationUser user = await userManager.GetUserAsync(User);
+
+            if(user == null)
             {
-                return NotFound();
+                return View("Index");
             }
 
-            var note = await _context.Note
-                .Include(n => n.User)
-                .SingleOrDefaultAsync(m => m.NoteId == id);
-            if (note == null)
-            {
-                return NotFound();
-            }
+            List<Note> notes = await db.Note.Where(n => n.UserId == user.Id).ToListAsync();
 
-            return View(note);
+            foreach(Note note in notes)
+            {
+
+            }
+            return Json();
         }
 
-        // GET: Notes/Create
-        public IActionResult Create()
+        public IActionResult AddNote()
         {
-            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id");
+            ViewBag.BreadCrumb = "Новая заметка";
             return View();
         }
 
-        // POST: Notes/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("NoteId,Text,DateCreate,UserId")] Note note)
+        public async Task<IActionResult> AddNote(Note note)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(note);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                ApplicationUser user = await userManager.GetUserAsync(User);
+
+                if (user == null)
+                {
+                    return View("Index");
+                }
+
+                note.User = user;
+
+                if (string.IsNullOrEmpty(note.Theme))
+                {
+                    note.Theme = "Без названия";
+                }
+
+                db.Add(note);
+                await db.SaveChangesAsync();
+                return RedirectToAction("GameRoom","Home");
             }
-            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", note.UserId);
+
+            ViewBag.BreadCrumb = "Новая заметка";
             return View(note);
         }
 
-        // GET: Notes/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> ShowNote(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var note = await _context.Note.SingleOrDefaultAsync(m => m.NoteId == id);
+            var note = await db.Note.SingleOrDefaultAsync(m => m.NoteId == id);
             if (note == null)
             {
                 return NotFound();
             }
-            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", note.UserId);
+
+            ViewBag.BreadCrumb = "Просмотр заметки";
             return View(note);
         }
 
-        // POST: Notes/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("NoteId,Text,DateCreate,UserId")] Note note)
+        public async Task<IActionResult> ShowNote(int id, Note note)
         {
             if (id != note.NoteId)
             {
@@ -101,8 +113,16 @@ namespace TaskProject.Controllers
             {
                 try
                 {
-                    _context.Update(note);
-                    await _context.SaveChangesAsync();
+                    ApplicationUser user = await userManager.GetUserAsync(User);
+                    note.User = user;
+
+                    if (string.IsNullOrEmpty(note.Theme))
+                    {
+                        note.Theme = "Без названия";
+                    }
+
+                    db.Update(note);
+                    await db.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -115,9 +135,10 @@ namespace TaskProject.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("GameRoom","Home");
             }
-            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", note.UserId);
+
+            ViewBag.BreadCrumb = "Просмотр заметки";
             return View(note);
         }
 
@@ -129,7 +150,7 @@ namespace TaskProject.Controllers
                 return NotFound();
             }
 
-            var note = await _context.Note
+            var note = await db.Note
                 .Include(n => n.User)
                 .SingleOrDefaultAsync(m => m.NoteId == id);
             if (note == null)
@@ -145,15 +166,15 @@ namespace TaskProject.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var note = await _context.Note.SingleOrDefaultAsync(m => m.NoteId == id);
-            _context.Note.Remove(note);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            var note = await db.Note.SingleOrDefaultAsync(m => m.NoteId == id);
+            db.Note.Remove(note);
+            await db.SaveChangesAsync();
+            return RedirectToAction("GameRoom", "Home");
         }
 
         private bool NoteExists(int id)
         {
-            return _context.Note.Any(e => e.NoteId == id);
+            return db.Note.Any(e => e.NoteId == id);
         }
     }
 }

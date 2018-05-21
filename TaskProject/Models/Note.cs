@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,6 +15,9 @@ namespace TaskProject.Models
         }
 
         public int NoteId { get; set; }
+
+        [Display(Name="Тема")]
+        public string Theme { get; set; }
         public string Text { get; set; }
         public DateTime DateCreate { get; set; }
 
