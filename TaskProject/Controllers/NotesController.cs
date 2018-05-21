@@ -28,24 +28,35 @@ namespace TaskProject.Controllers
             return View(new NoteViewModel());
         }
 
-        public async Task<ActionResult> GetNotes(DateTime start , DateTime end)
+        public async Task<ActionResult> GetNotes(DateTime start, DateTime end)
         {
             var noteModel = new NoteViewModel();
 
+            var noteEvents = new List<NoteViewModel>();
+
             ApplicationUser user = await userManager.GetUserAsync(User);
 
-            if(user == null)
+            if (user == null)
             {
                 return View("Index");
             }
 
             List<Note> notes = await db.Note.Where(n => n.UserId == user.Id).ToListAsync();
 
-            foreach(Note note in notes)
+            foreach (Note note in notes)
             {
-
+                noteEvents.Add(
+                    new NoteViewModel
+                    {
+                        id = note.NoteId,
+                        title = note.Theme,
+                        start = note.DateCreate.ToShortDateString(),
+                        end = note.DateCreate.ToShortDateString(),
+                        allDay = false
+                    }
+                    );
             }
-            return Json();
+            return Json(noteEvents.ToArray());
         }
 
         public IActionResult AddNote()

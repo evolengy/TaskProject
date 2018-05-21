@@ -3,7 +3,7 @@
 
 @section Css{
     <link href="~/plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet" />
-    <link href="~/plugins/fullcalendar/fullcalendar.print.css" rel="stylesheet" />
+
 }
 
 <section class="content">
@@ -35,10 +35,10 @@
                         right: 'month,agendaWeek,agendaDay'
                     },
                 buttonText: {
-                    today: 'today',
-                    month: 'month',
-                    week: 'week',
-                    day: 'day'
+                    today: 'Сегодня',
+                    month: 'Месяц',
+                    week: 'Неделя',
+                    day: 'День'
                 },
                 firstDay: 1, //The day that each week begins (Monday=1)
             	slotMinutes: 60,
@@ -70,14 +70,14 @@
                 //    });
                 //},
 
-                eventRender: function (event, element) {
-                    element.qtip(
-                        {
-                            content: event.description
-                        });
-                },
+                //eventRender: function (event, element) {
+                //    element.qtip(
+                //        {
+                //            content: event.description
+                //        });
+                //},
 
-                editable: false
+                //editable: false
             });
         });
     </script>
