@@ -34,6 +34,7 @@ namespace TaskProject.Models
         }
 
         public DateTime? DateBirth { get; set; }
+        public DateTime? DateDeath { get; set; }
 
         [NotMapped]
         public int Age { get; private set; } 
@@ -211,6 +212,7 @@ namespace TaskProject.Models
 
             Health = new Health(Growth, Weight, Age);
         }
+
         public void CheckLvl()
         {
             if (this.CurrentExp >= this.MaxExp)
@@ -233,11 +235,177 @@ namespace TaskProject.Models
     public class ViewSetProfileModel
     {
 
-        public DateTime DateBirth { get; set; }
+        public DateTime DateBirth { get; set; } = DateTime.Now.Date;
         public string Sex { get; set; }
-        public int Growth { get; set; }
-        public int Weight { get; set; }
-        public SelectList SexSelect { get; set; }
+        public int Growth { get; set; } = 1;
+        public int Weight { get; set; } = 1;
+        public SelectList SexSelect { get; set; } = new SelectList(
+                new List<SelectListItem>
+                {
+                        new SelectListItem {Text = "Мужской", Value = "Man"},
+                        new SelectListItem {Text = "Женский", Value = "Woman"}
+                }, "Value", "Text"
+                );
+        public SelectList SmokeSelect { get; set; } = new SelectList(
+
+            new List<SelectListItem>
+            {
+                new SelectListItem{Text = "Да" , Value = "-2"},
+                new SelectListItem{Text = "Нет", Value = "+2"}
+            }, "Value", "Text"
+        );
+        public SelectList FriedFoodSelect { get; set; } = new SelectList(
+
+            new List<SelectListItem>
+            {
+                new SelectListItem{Text = "Да" , Value = "-0.4"},
+                new SelectListItem{Text = "Нет", Value = "+0.4"}
+            }, "Value", "Text"
+        );
+        public SelectList FattyFoodSelect { get; set; } = new SelectList(
+
+            new List<SelectListItem>
+            {
+                new SelectListItem{Text = "Да" , Value = "-2"},
+                new SelectListItem{Text = "Нет", Value = "+2"}
+            }, "Value", "Text"
+        );
+        public SelectList FoodSelect { get; set; } = new SelectList(
+
+            new List<SelectListItem>
+            {
+                new SelectListItem{Text = "Овощи" , Value = "+0.8"},
+                new SelectListItem{Text = "Мясо", Value = "-0.8"}
+            }, "Value", "Text"
+        );
+        public SelectList FastFoodSelect { get; set; } = new SelectList(
+
+            new List<SelectListItem>
+            {
+                new SelectListItem{Text = "Да" , Value = "-0.6"},
+                new SelectListItem{Text = "Нет", Value = "+0.6"}
+            }, "Value", "Text"
+        );
+        public SelectList CoffeeSelect { get; set; } = new SelectList(
+
+            new List<SelectListItem>
+            {
+                new SelectListItem{Text = "Да" , Value = "-0.6"},
+                new SelectListItem{Text = "Нет", Value = "+0.6"}
+            }, "Value", "Text"
+        );
+        public SelectList AlcoholSelect { get; set; } = new SelectList(
+
+            new List<SelectListItem>
+            {
+                new SelectListItem{Text = "Да" , Value = "-1.2"},
+                new SelectListItem{Text = "Нет", Value = "+0.6"}
+            }, "Value", "Text"
+        );
+        public SelectList AdversePlaceSelect { get; set; } = new SelectList(
+
+            new List<SelectListItem>
+            {
+                new SelectListItem{Text = "Да" , Value = "-1"},
+                new SelectListItem{Text = "Нет", Value = "+1"}
+            }, "Value", "Text"
+        );
+        public SelectList AspirinSelect { get; set; } = new SelectList(
+
+            new List<SelectListItem>
+            {
+                new SelectListItem{Text = "Да" , Value = "+0.8"},
+                new SelectListItem{Text = "Нет", Value = "-0.8"}
+            }, "Value", "Text"
+        );
+        public SelectList DentalFlossSelect { get; set; } = new SelectList(
+
+            new List<SelectListItem>
+            {
+                new SelectListItem{Text = "Да" , Value = "+1.2"},
+                new SelectListItem{Text = "Нет", Value = "-1.2"}
+            }, "Value", "Text"
+        );
+        public SelectList RegularChairSelect { get; set; } = new SelectList(
+
+            new List<SelectListItem>
+            {
+                new SelectListItem{Text = "Да" , Value = "+0.8"},
+                new SelectListItem{Text = "Нет", Value = "-0.8"}
+            }, "Value", "Text"
+        );
+        public SelectList SexRelationSelect { get; set; } = new SelectList(
+
+            new List<SelectListItem>
+            {
+                new SelectListItem{Text = "Да" , Value = "-1.6"},
+                new SelectListItem{Text = "Нет", Value = "+1.6"}
+            }, "Value", "Text"
+        );
+        public SelectList StrongTanSelect { get; set; } = new SelectList(
+
+            new List<SelectListItem>
+            {
+                new SelectListItem{Text = "Да" , Value = "+1.4"},
+                new SelectListItem{Text = "Нет", Value = "-1.4"}
+            }, "Value", "Text"
+        );
+        public SelectList MarriageSelect { get; set; } = new SelectList(
+
+            new List<SelectListItem>
+            {
+                new SelectListItem{Text = "Да" , Value = "+1.8"},
+                new SelectListItem{Text = "Нет", Value = "-1.8"}
+            }, "Value", "Text"
+        );
+        public SelectList StressSelect { get; set; } = new SelectList(
+
+            new List<SelectListItem>
+            {
+                new SelectListItem{Text = "Да" , Value = "+1.4"},
+                new SelectListItem{Text = "Нет", Value = "-1.4"}
+            }, "Value", "Text"
+        );
+        public SelectList DiabetesSelect { get; set; } = new SelectList(
+
+            new List<SelectListItem>
+            {
+                new SelectListItem{Text = "Да" , Value = "-0.8"},
+                new SelectListItem{Text = "Нет", Value = "+0.8"}
+            }, "Value", "Text"
+        );
+        public SelectList Parents75Select { get; set; } = new SelectList(
+
+            new List<SelectListItem>
+            {
+                new SelectListItem{Text = "Да" , Value = "-2"},
+                new SelectListItem{Text = "Нет", Value = "+2"}
+            }, "Value", "Text"
+        );
+        public SelectList Parents90Select { get; set; } = new SelectList(
+
+           new List<SelectListItem>
+           {
+                new SelectListItem{Text = "Да" , Value = "-4.8"},
+                new SelectListItem{Text = "Нет", Value = "+4.8"}
+           }, "Value", "Text"
+       );
+        public SelectList SportsSelest { get; set; } = new SelectList(
+
+            new List<SelectListItem>
+            {
+                new SelectListItem{Text = "Да" , Value = "+1.4"},
+                new SelectListItem{Text = "Нет", Value = "-1.4"}
+            }, "Value", "Text"
+        );
+        public SelectList VitaminSelect { get; set; } = new SelectList(
+
+            new List<SelectListItem>
+            {
+                new SelectListItem{Text = "Да" , Value = "+1.6"},
+                new SelectListItem{Text = "Нет", Value = "-1.6"}
+            }, "Value", "Text"
+        );
         public int AligmentId { get; set; }
         public List<Aligment> AligmentSelect { get; set; }
     }

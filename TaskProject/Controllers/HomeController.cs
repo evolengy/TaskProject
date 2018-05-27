@@ -96,17 +96,7 @@ namespace TaskProject.Controllers
             }
 
             ViewSetProfileModel view = new ViewSetProfileModel();
-            view.Growth = 1;
-            view.Weight = 1;
-            view.DateBirth = DateTime.Now.Date;
             view.AligmentSelect = await db.Aligments.ToListAsync();
-            view.SexSelect = new SelectList(
-                new List<SelectListItem>
-                {
-                        new SelectListItem {Text = "Мужской", Value = "Man"},
-                        new SelectListItem {Text = "Женский", Value = "Woman"}
-                }, "Value", "Text"
-                );
 
             ViewBag.SetProfile = false;
             return View("SetProfile", view);
@@ -133,6 +123,12 @@ namespace TaskProject.Controllers
                 user.AligmentId = view.AligmentId;
 
                 user.SetDefaultValues();
+                user.RefreshStatus();
+
+                if(user.Health.IMT.Class == "Норма")
+                {
+                    var count = "1.8";
+                }
 
                 user.IsSetValue = true;
                 await db.SaveChangesAsync();

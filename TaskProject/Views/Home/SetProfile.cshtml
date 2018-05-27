@@ -94,13 +94,13 @@
                     <a href="#step-5" type="button" class="btn btn-info btn-circle-3 waves-effect ml-0" data-toggle="tooltip" data-placement="top" title="О себе"><i class="fa fa-user" aria-hidden="true"></i></a>
                 </div>
                 <div class="steps-step-3">
-                    <a href="#step-6" type="button" class="btn btn-pink btn-circle-3 waves-effect p-3" data-toggle="tooltip" data-placement="top" title="Физические характеристики"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+                    <a href="#step-6" type="button" class="btn btn-pink btn-circle-3 waves-effect p-3" data-toggle="tooltip" data-placement="top" title="Данные о здоровье"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
                 </div>
                 <div class="steps-step-3">
-                    <a href="#step-7" type="button" class="btn btn-pink btn-circle-3 waves-effect" data-toggle="tooltip" data-placement="top" title="Мировозрение"><i class="fa fa-comment-o" aria-hidden="true"></i></a>
+                    <a href="#step-7" type="button" class="btn btn-pink btn-circle-3 waves-effect" data-toggle="tooltip" data-placement="top" title="Данные о еде"><i class="fa fa-cutlery" aria-hidden="true"></i></a>
                 </div>
                 <div class="steps-step-3 no-height">
-                    <a href="#step-8" type="button" class="btn btn-pink btn-circle-3 waves-effect p-3" data-toggle="tooltip" data-placement="top" title="Финиш"><i class="fa fa-check" aria-hidden="true"></i></a>
+                    <a href="#step-9" type="button" class="btn btn-pink btn-circle-3 waves-effect p-3" data-toggle="tooltip" data-placement="top" title="Данные о родственниках"><i class="fa fa-users" aria-hidden="true"></i></a>
                 </div>
             </div>
         </div>
@@ -133,33 +133,6 @@
                             <input id="DateBirth" name="DateBirth" type="date" required min="1930-01-01" max="@DateTime.Now.ToString("yyyy-MM-dd")" class="form-control validate">
                         </div>
                     </div>
-                    <button class="btn btn-mdb-color btn-rounded nextBtn-3 float-right" type="button">Дальше</button>
-                </div>
-            </div>
-
-
-            <!-- Second Step -->
-            <div class="row setup-content-3" id="step-6">
-                <div class="col-md-12">
-                    <h3 class="font-weight-bold pl-0 my-4"><strong>Ваши физические данные</strong></h3>
-                    <div class="form-group md-form">
-                        <label for="Growth" data-error="wrong" data-success="right">Ваш рост</label>
-                        <input id="Growth" name="Growth" type="text" required="required" class="form-control validate">
-                    </div>
-                    <div class="form-group md-form mt-3">
-                        <label for="Weight" data-error="wrong" data-success="right">Ваш вес</label>
-                        <input id="Weight" name="Weight" type="text" required="required" class="form-control validate">
-                    </div>
-                    <button class="btn btn-mdb-color btn-rounded prevBtn-3 float-left" type="button">Назад</button>
-                    <button class="btn btn-mdb-color btn-rounded nextBtn-3 float-right" type="button">Дальше</button>
-                </div>
-            </div>
-
-
-            <!-- Third Step -->
-            <div class="row setup-content-3" id="step-7">
-                <div class="col-md-12">
-                    <h3 class="font-weight-bold pl-0 my-4"><strong>Ваше мировозрение</strong></h3>
                     <div class="row">
                         @foreach (Aligment aligment in Model.AligmentSelect)
                         {
@@ -172,6 +145,101 @@
                     <div class="col-12">
                         <span class="aligment_description"></span>
                     </div>
+                    <div class="form-group md-form">
+                        <label for="MarriageSelect" data-error="wrong" data-success="right">В браке ли вы?</label>
+                        @Html.DropDownListFor(m => m.MarriageSelect, Model.MarriageSelect, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group md-form">
+                        <label for="SexRelationSelect" data-error="wrong" data-success="right">Были ли у вас рискованные половые связи?</label>
+                        @Html.DropDownListFor(m => m.SexRelationSelect, Model.SexRelationSelect, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group md-form">
+                        <label for="StressSelect" data-error="wrong" data-success="right">Умеете ли вы эффективно бороться со стрессом?</label>
+                        @Html.DropDownListFor(m => m.StressSelect, Model.StressSelect, new { @class = "form-control" })
+                    </div>
+                    <button class="btn btn-mdb-color btn-rounded nextBtn-3 float-right" type="button">Дальше</button>
+                </div>
+            </div>
+
+
+            <!-- Second Step -->
+            <div class="row setup-content-3" id="step-6">
+                <div class="col-md-12">
+                    <h3 class="font-weight-bold pl-0 my-4"><strong>Данные о здоровье</strong></h3>
+                    <div class="form-group md-form">
+                        <label for="Growth" data-error="wrong" data-success="right">Ваш рост</label>
+                        <input id="Growth" name="Growth" type="text" required="required" class="form-control validate">
+                    </div>
+                    <div class="form-group md-form mt-3">
+                        <label for="Weight" data-error="wrong" data-success="right">Ваш вес</label>
+                        <input id="Weight" name="Weight" type="text" required="required" class="form-control validate">
+                    </div>
+                    <div class="form-group md-form">
+                        <label for="SportsSelest" data-error="wrong" data-success="right">Занимаетесь ли вы регулярно спортом?</label>
+                        @Html.DropDownListFor(m => m.SportsSelest, Model.SportsSelest, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group md-form">
+                        <label for="SmokeSelect" data-error="wrong" data-success="right">Курите ли вы?</label>
+                        @Html.DropDownListFor(m => m.SmokeSelect, Model.SmokeSelect, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group md-form">
+                        <label for="AlcoholSelect" data-error="wrong" data-success="right">Часто ли вы принимаете алкоголь?</label>
+                        @Html.DropDownListFor(m => m.AlcoholSelect, Model.AlcoholSelect, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group md-form">
+                        <label for="AdversePlaceSelect" data-error="wrong" data-success="right">Живете ли вы в экологически неблагоприятном месте?</label>
+                        @Html.DropDownListFor(m => m.AdversePlaceSelect, Model.AdversePlaceSelect, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group md-form">
+                        <label for="StrongTanSelect" data-error="wrong" data-success="right">Предпочитаете ли вы сильный загар?</label>
+                        @Html.DropDownListFor(m => m.StrongTanSelect, Model.StrongTanSelect, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group md-form">
+                        <label for="StrongTanSelect" data-error="wrong" data-success="right">Часто ли вы чистите зубы?</label>
+                        @Html.DropDownListFor(m => m.StrongTanSelect, Model.StrongTanSelect, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group md-form">
+                        <label for="RegularChairSelect" data-error="wrong" data-success="right">Регулярный ли у вас стул?</label>
+                        @Html.DropDownListFor(m => m.RegularChairSelect, Model.RegularChairSelect, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group md-form">
+                        <label for="AspirinSelect" data-error="wrong" data-success="right">Принимаете ли вы аспирин каждный день в малых дозах?</label>
+                        @Html.DropDownListFor(m => m.AspirinSelect, Model.AspirinSelect, new { @class = "form-control" })
+                    </div>
+                    <button class="btn btn-mdb-color btn-rounded prevBtn-3 float-left" type="button">Назад</button>
+                    <button class="btn btn-mdb-color btn-rounded nextBtn-3 float-right" type="button">Дальше</button>
+                </div>
+            </div>
+
+
+            <!-- Third Step -->
+            <div class="row setup-content-3" id="step-7">
+                <div class="col-md-12">
+                    <h3 class="font-weight-bold pl-0 my-4"><strong>Данные о еде</strong></h3>
+                    <div class="form-group md-form">
+                        <label for="CoffeeSelect" data-error="wrong" data-success="right">Принимаете ли вы более 450 г кофе в день?</label>
+                        @Html.DropDownListFor(m => m.CoffeeSelect, Model.CoffeeSelect, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group md-form">
+                        <label for="FastFoodSelect" data-error="wrong" data-success="right">Часто ли вы предпочитаете есть фастфуд?</label>
+                        @Html.DropDownListFor(m => m.FastFoodSelect, Model.FastFoodSelect, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group md-form">
+                        <label for="FriedFoodSelect" data-error="wrong" data-success="right">Часто ли вы предпочитаете сильно прожаренную пищу?</label>
+                        @Html.DropDownListFor(m => m.FriedFoodSelect, Model.FriedFoodSelect, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group md-form">
+                        <label for="FattyFoodSelect" data-error="wrong" data-success="right">Часто ли вы предпочитаете жирную пищу?</label>
+                        @Html.DropDownListFor(m => m.FattyFoodSelect, Model.FattyFoodSelect, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group md-form">
+                        <label for="FoodSelect" data-error="wrong" data-success="right">Что вы больше предпочитаете в еде, овощи или мясо?</label>
+                        @Html.DropDownListFor(m => m.FoodSelect, Model.FoodSelect, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group md-form">
+                        <label for="VitaminSelect" data-error="wrong" data-success="right">Принимаете ли вы витамин E?</label>
+                        @Html.DropDownListFor(m => m.VitaminSelect, Model.VitaminSelect, new { @class = "form-control" })
+                    </div>
                     <button class="btn btn-mdb-color btn-rounded prevBtn-3 float-left" type="button">Назад</button>
                     <button class="btn btn-mdb-color btn-rounded nextBtn-3 float-right" type="button">Дальше</button>
                 </div>
@@ -179,13 +247,25 @@
 
 
             <!-- Fourth Step -->
-            <div class="row setup-content-3" id="step-8">
+            <div class="row setup-content-3" id="step-9">
                 <div class="col-md-12">
-                    <h3 class="font-weight-bold pl-0 my-4"><strong>Конец</strong></h3>
-                    <h2 class="text-center my-4">
-                        Сбор данных окончен. Нажмите принять для сохранения
-                        своих данных.
-                    </h2>
+                    <h3 class="font-weight-bold pl-0 my-4"><strong>Данные о родственниках</strong></h3>
+                    @*<h2 class="text-center my-4">
+            Сбор данных окончен. Нажмите принять для сохранения
+            своих данных.
+        </h2>*@
+                    <div class="form-group md-form">
+                        <label for="DiabetesSelect" data-error="wrong" data-success="right">Есть ли у вас родственники болеющие или болевшие диабетом?</label>
+                        @Html.DropDownListFor(m => m.DiabetesSelect, Model.DiabetesSelect, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group md-form">
+                        <label for="Parents75Select" data-error="wrong" data-success="right">Есть ли у вас родственники прожившие более 75 лет?</label>
+                        @Html.DropDownListFor(m => m.Parents75Select, Model.Parents75Select, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group md-form">
+                        <label for="Parents90Select" data-error="wrong" data-success="right">Есть ли у вас родственники прожившие более 90 лет?</label>
+                        @Html.DropDownListFor(m => m.Parents90Select, Model.Parents90Select, new { @class = "form-control" })
+                    </div>
                     <button class="btn btn-mdb-color btn-rounded prevBtn-3 float-left" type="button">Назад</button>
                     <button class="btn btn-success btn-rounded float-right" type="submit">Принять</button>
                 </div>
