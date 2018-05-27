@@ -84,6 +84,15 @@
             @Html.DropDownList("SkillId", (IEnumerable<SelectListItem>)ViewBag.SkillId, new { @class = "form-control" })
         </div>
     </div>
+
+    <div class="form-group">
+        <div class="col-12">
+            @Html.LabelFor(model => model.CatalogId, "Список", htmlAttributes: new { @class = "control-label" })
+        </div>
+        <div class="col-12">
+            @Html.DropDownList("CatalogId", (IEnumerable<SelectListItem>)ViewBag.CatalogId, new { @class = "form-control" })
+        </div>
+    </div>
 </form>
     
 <script>

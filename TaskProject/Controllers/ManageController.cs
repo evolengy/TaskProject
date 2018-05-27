@@ -65,6 +65,7 @@ namespace TaskProject.Controllers
                 StatusMessage = StatusMessage
             };
 
+            ViewBag.BreadCrumb = "Настройка профиля";
             return View(model);
         }
 
@@ -74,6 +75,7 @@ namespace TaskProject.Controllers
         {
             if (!ModelState.IsValid)
             {
+                ViewBag.BreadCrumb = "Настройка профиля";
                 return View(model);
             }
 
@@ -103,7 +105,7 @@ namespace TaskProject.Controllers
                 }
             }
 
-            StatusMessage = "Your profile has been updated";
+            StatusMessage = "Профиль был обновлен.";
             return RedirectToAction(nameof(Index));
         }
 
@@ -127,7 +129,7 @@ namespace TaskProject.Controllers
             var email = user.Email;
             await _emailSender.SendEmailConfirmationAsync(email, callbackUrl);
 
-            StatusMessage = "Verification email sent. Please check your email.";
+            StatusMessage = "Письмо для подтверждения отправлено. Пожалуйста, проверьте вашу почту.";
             return RedirectToAction(nameof(Index));
         }
 
@@ -146,6 +148,7 @@ namespace TaskProject.Controllers
                 return RedirectToAction(nameof(SetPassword));
             }
 
+            ViewBag.BreadCrumb = "Настройка профиля";
             var model = new ChangePasswordViewModel { StatusMessage = StatusMessage };
             return View(model);
         }
@@ -156,6 +159,7 @@ namespace TaskProject.Controllers
         {
             if (!ModelState.IsValid)
             {
+                ViewBag.BreadCrumb = "Настройка профиля";
                 return View(model);
             }
 
@@ -174,7 +178,7 @@ namespace TaskProject.Controllers
 
             await _signInManager.SignInAsync(user, isPersistent: false);
             _logger.LogInformation("User changed their password successfully.");
-            StatusMessage = "Your password has been changed.";
+            StatusMessage = "Ваш пароль был изменен.";
 
             return RedirectToAction(nameof(ChangePassword));
         }
@@ -222,7 +226,7 @@ namespace TaskProject.Controllers
             }
 
             await _signInManager.SignInAsync(user, isPersistent: false);
-            StatusMessage = "Your password has been set.";
+            StatusMessage = "Ваш пароль установлен.";
 
             return RedirectToAction(nameof(SetPassword));
         }
@@ -324,6 +328,7 @@ namespace TaskProject.Controllers
                 RecoveryCodesLeft = await _userManager.CountRecoveryCodesAsync(user),
             };
 
+            ViewBag.BreadCrumb = "Двухфакторная аутентификация";
             return View(model);
         }
 
@@ -403,7 +408,7 @@ namespace TaskProject.Controllers
 
             if (!is2faTokenValid)
             {
-                ModelState.AddModelError("Code", "Verification code is invalid.");
+                ModelState.AddModelError("Code", "Недопустимый код подтверждения.");
                 await LoadSharedKeyAndQrCodeUriAsync(user, model);
                 return View(model);
             }

@@ -11,6 +11,7 @@ namespace TaskProject.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Complication> Complications { get; set; }
+        public DbSet<Catalog> Catalogs { get; set; }
         public DbSet<Goal> Goals { get; set; }
         public DbSet<Atribute> Atributes { get; set; }
         public DbSet<Repeat> Repeats { get; set; }

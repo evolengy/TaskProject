@@ -16,5 +16,7 @@ namespace TaskProject.Models
         public String end { get; set; }
 
         public bool allDay { get; set; }
+
+        public string color { get; set; }
     }
 }

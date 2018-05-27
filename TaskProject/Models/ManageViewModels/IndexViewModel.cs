@@ -8,12 +8,14 @@ namespace TaskProject.Models.ManageViewModels
 {
     public class IndexViewModel
     {
+        [Display(Name ="Учетная запись")]
         public string Username { get; set; }
 
         public bool IsEmailConfirmed { get; set; }
 
         [Required]
         [EmailAddress]
+        [Display(Name = "Электронная почта")]
         public string Email { get; set; }
 
         [Phone]

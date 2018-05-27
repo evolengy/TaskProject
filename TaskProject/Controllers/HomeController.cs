@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using TaskProject;
 using TaskProject.Models;
@@ -38,28 +39,24 @@ namespace TaskProject.Controllers
 
             if (user == null)
             {
-                return View("Index");
+                return RedirectToAction("Index");
             }
 
             if (user.IsSetValue == false)
             {
-                user.SetDefaultValue();
-                await db.SaveChangesAsync();
-
-                //    ViewSetProfileModel view = new ViewSetProfileModel();
-                //    return View("SetProfile", view);
+                return RedirectToAction("SetProfile");
             }
 
-            var dbuser = db.Users.Where(u => u.Id == user.Id)
+            var dbuser = await db.Users.Where(u => u.Id == user.Id)
                 .Include(u => u.Goals)
                 .Include(u => u.Skills)
                 .Include(u => u.Atributes)
                 .Include(u => u.Aligment)
                 .Include(u => u.Moods)
                 .Include(u => u.Notes)
-                .Single();
+                .SingleAsync();
 
-            dbuser.CheckStatus();
+            dbuser.RefreshStatus();
 
             Mood todaymood = dbuser.Moods.Where(m => m.Date.ToShortDateString() == DateTime.Now.ToShortDateString()).SingleOrDefault();
             if(todaymood == null)
@@ -90,35 +87,98 @@ namespace TaskProject.Controllers
             return View(dbuser);
         }
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<ActionResult> SetProfile(ViewSetProfileModel view)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        var user = await usermanager.GetUserAsync(User);
-        //        if (user == null)
-        //        {
-        //            return View("Index");
-        //        }
+        public async Task<IActionResult> SetProfile()
+        {
+            var user = await usermanager.GetUserAsync(User);
+            if (user == null || user.IsSetValue == true)
+            {
+                return View("GameRoom");
+            }
 
-        //        foreach (UserAtribute atribute in view.UserAtributes)
-        //        {
-        //            atribute.MaxExp = atribute.Value * 1000;
-        //        }
+            ViewSetProfileModel view = new ViewSetProfileModel();
+            view.Growth = 1;
+            view.Weight = 1;
+            view.DateBirth = DateTime.Now.Date;
+            view.AligmentSelect = await db.Aligments.ToListAsync();
+            view.SexSelect = new SelectList(
+                new List<SelectListItem>
+                {
+                        new SelectListItem {Text = "Мужской", Value = "Man"},
+                        new SelectListItem {Text = "Женский", Value = "Woman"}
+                }, "Value", "Text"
+                );
 
-        //        db.Entry(user).State = EntityState.Modified;
-        //        user.Age = view.Age;
-        //        user.Weight = view.Weight;
-        //        user.Growth = view.Growth;
-        //        user.Sex = view.Sex;
-        //        db.SaveChanges();
+            ViewBag.SetProfile = false;
+            return View("SetProfile", view);
+        }
 
-        //        return View("GameRoom","Home");
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> SetProfile(ViewSetProfileModel view)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await usermanager.GetUserAsync(User);
+                if (user == null)
+                {
+                    return View("Index");
+                }
 
-        //    }
-        //    return View(view);
-        //}
+                db.Entry(user).State = EntityState.Modified;
+
+                user.DateBirth = view.DateBirth;
+                user.Weight = view.Weight;
+                user.Growth = view.Growth;
+                user.Sex = view.Sex;
+                user.AligmentId = view.AligmentId;
+
+                user.SetDefaultValues();
+
+                user.IsSetValue = true;
+                await db.SaveChangesAsync();
+
+                return RedirectToAction("GameRoom", "Home");
+
+            }
+            return View(view);
+        }
+
+
+        public async Task<ActionResult> Health()
+        {
+            var user = await usermanager.GetUserAsync(User);
+            if(user == null)
+            {
+                return View("GameRoom");
+            }
+        
+            user.RefreshStatus();
+            await db.SaveChangesAsync();
+            return View(user.Health);
+        }
+
+        public ActionResult Error(string id = null)
+        {
+            if(id == "403")
+            {
+                ViewBag.Code = "Ошибка 403.";
+                ViewBag.Title = "Отказано в доступе.";
+                ViewBag.Message = "В доступе отказано. Пожалуйста вернитесь назад.";
+            }
+            if(id == "404")
+            {
+                ViewBag.Code = "Ошибка 404.";
+                ViewBag.Title = "Упс! Страница не найдена.";
+                ViewBag.Message = "Страница, которую вы ищете не может быть найдена.";
+            }
+            else
+            {
+                ViewBag.Code = "Ошибка 500.";
+                ViewBag.Title = "Внутренняя ошибка сервера.";
+                ViewBag.Message = "Похоже мы испытываем проблемы. Но не волнуйтесь, скоро мы их разрешим. Пожалуйста, попробуйте попозже.";
+            }
+            return View();
+        }
 
         public ActionResult Dead()
         {

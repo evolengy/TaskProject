@@ -1,0 +1,21 @@
+.mood_img{
+    height:3em;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-item .nav-catalog{
+    width:215px;
+}
+
+.nav-tools {
+    display: none;
+}
+
+.nav-item:hover .nav-tools {
+    position: absolute;
+    display: block;
+    right: 0;
+}

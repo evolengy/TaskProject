@@ -11,8 +11,8 @@ using TaskProject.Models;
 namespace TaskProject.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20180521103343_v.0.0.8")]
-    partial class v008
+    [Migration("20180525050538_v.0.0.1")]
+    partial class v001
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -149,8 +149,6 @@ namespace TaskProject.Migrations
 
                     b.Property<int>("AccessFailedCount");
 
-                    b.Property<int>("Age");
-
                     b.Property<int?>("AligmentId");
 
                     b.Property<string>("ConcurrencyStamp")
@@ -164,14 +162,14 @@ namespace TaskProject.Migrations
 
                     b.Property<int>("CurrentLevel");
 
+                    b.Property<DateTime?>("DateBirth");
+
                     b.Property<string>("Email")
                         .HasMaxLength(256);
 
                     b.Property<bool>("EmailConfirmed");
 
                     b.Property<float>("Growth");
-
-                    b.Property<float>("IMT");
 
                     b.Property<string>("Information");
 
@@ -186,6 +184,8 @@ namespace TaskProject.Migrations
                     b.Property<long>("MaxExp");
 
                     b.Property<int>("MaxHealth");
+
+                    b.Property<string>("NickName");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256);
@@ -249,6 +249,22 @@ namespace TaskProject.Migrations
                     b.ToTable("Atributes");
                 });
 
+            modelBuilder.Entity("TaskProject.Models.Catalog", b =>
+                {
+                    b.Property<int>("CatalogId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("UserId");
+
+                    b.HasKey("CatalogId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Catalogs");
+                });
+
             modelBuilder.Entity("TaskProject.Models.Complication", b =>
                 {
                     b.Property<int>("ComplicationId");
@@ -271,6 +287,8 @@ namespace TaskProject.Migrations
                     b.Property<int>("GoalId")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<int?>("CatalogId");
+
                     b.Property<int>("ComplicationId");
 
                     b.Property<string>("Description");
@@ -291,6 +309,8 @@ namespace TaskProject.Migrations
                     b.Property<string>("UserId");
 
                     b.HasKey("GoalId");
+
+                    b.HasIndex("CatalogId");
 
                     b.HasIndex("ComplicationId");
 
@@ -333,7 +353,8 @@ namespace TaskProject.Migrations
 
                     b.Property<DateTime>("Date");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired();
 
                     b.Property<string>("UserId");
 
@@ -476,8 +497,19 @@ namespace TaskProject.Migrations
                         .HasForeignKey("UserId");
                 });
 
+            modelBuilder.Entity("TaskProject.Models.Catalog", b =>
+                {
+                    b.HasOne("TaskProject.Models.ApplicationUser", "User")
+                        .WithMany("Catalogs")
+                        .HasForeignKey("UserId");
+                });
+
             modelBuilder.Entity("TaskProject.Models.Goal", b =>
                 {
+                    b.HasOne("TaskProject.Models.Catalog", "Catalog")
+                        .WithMany("Goals")
+                        .HasForeignKey("CatalogId");
+
                     b.HasOne("TaskProject.Models.Complication", "Complication")
                         .WithMany()
                         .HasForeignKey("ComplicationId")

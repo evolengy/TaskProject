@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,6 +16,7 @@ namespace TaskProject.Models
         }
 
         public int MoodId { get; set; }
+        [Required]
         public string Name { get; set; }
         public DateTime Date { get; set; }
 
@@ -49,7 +51,7 @@ namespace TaskProject.Models
                         LinkImg = "/img/moods/laughing.svg";
                         break;
                     }
-                case "Счастлоивое":
+                case "Отличное":
                     {
                         LinkImg = "/img/moods/happy.svg";
                         break;

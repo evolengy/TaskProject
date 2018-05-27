@@ -15,13 +15,7 @@ namespace TaskProject.Models
         public ApplicationUser() : base()
         {
             CurrentLevel = 1;
-            CurrentExp = 0;
-            CurrentGold = 0;
             CurrentHealth = 100;
-            Age = 0;
-            Growth = 0;
-            Weight = 0;
-            IMT = 0;
 
             MaxExp = 500;
             MaxHealth = 100;
@@ -29,33 +23,43 @@ namespace TaskProject.Models
             IsDead = false;
             IsSetValue = false;
 
-            Aligment = null;
+            AligmentId = null;
 
             Goals = new List<Goal>();
+            Catalogs = new List<Catalog>();
             Atributes = new List<Atribute>();
             Skills = new List<Skill>();
             Moods = new List<Mood>();
             Notes = new List<Note>();
         }
 
-        public int Age { get; set; }
+        public DateTime? DateBirth { get; set; }
+
+        [NotMapped]
+        public int Age { get; private set; } 
+
         public string Sex { get; set; }
         public float Growth { get; set; }
         public float Weight { get; set; }
-        public float IMT { get; set; }
 
+        public string NickName { get; set; }
         public string Information { get; set; }
 
         public long CurrentExp { get; set; }
+        public long MaxExp { get; set; }
         public int CurrentLevel { get; set; }
         public int CurrentGold { get; set; }
         public int CurrentHealth { get; set; }
-        public long MaxExp { get; set; }
         public int MaxHealth { get; set; }
 
+        [ForeignKey("Aligment")]
+        public int? AligmentId { get; set; }
         public Aligment Aligment { get; set; }
 
+        public Health Health { get; set; }
+
         public virtual List<Goal> Goals { get; set; }
+        public virtual List<Catalog> Catalogs { get; set; }
         public virtual List<Atribute> Atributes { get; set; }
         public virtual List<Skill> Skills { get; set; }
         public virtual List<Mood> Moods { get; set; }
@@ -64,8 +68,24 @@ namespace TaskProject.Models
         public bool IsDead { get; set; }
         public bool IsSetValue { get; set; }
 
-        public void SetDefaultValue()
+        private void GetAge()
         {
+
+            if(DateBirth == null)
+            {
+                Age = 0;
+            }
+
+            Age = DateTime.Now.Year - DateBirth.Value.Year;
+        }
+
+        public void SetDefaultValues()
+        {
+            Catalog DefaultCatalog = new Catalog()
+            {
+                Name = "Мои задачи"
+            };
+
             this.Atributes.AddRange(new List<Atribute>()
                 {
                      new Atribute
@@ -122,6 +142,7 @@ namespace TaskProject.Models
                     Atribute = this.Atributes.Where(c => c.Name == "Интеллект").Single()
                 }
             });
+            this.Catalogs.Add(DefaultCatalog);
             this.Goals.AddRange(new List<Goal>()
             {
                 new Goal
@@ -130,7 +151,9 @@ namespace TaskProject.Models
                     Description = "",
                     GoalEnd = DateTime.Now.AddDays(1),
                     RepeatId = 1,
-                    ComplicationId = 1
+                    ComplicationId = 1,
+                    Catalog = DefaultCatalog
+                    
                 },
                 new Goal
                 {
@@ -139,12 +162,13 @@ namespace TaskProject.Models
                     GoalEnd = DateTime.Now.AddDays(5),
                     RepeatId = 1,
                     ComplicationId = 2,
-                    Skill = this.Skills.Where( c => c.Name == "Чтение").Single()
+                    Skill = this.Skills.Where( c => c.Name == "Чтение").Single(),
+                    Catalog = DefaultCatalog
                 }
             });
             this.IsSetValue = true;
         }
-        public void CheckStatus()
+        public void RefreshStatus()
         {
             foreach (var goal in this.Goals)
             {
@@ -178,9 +202,14 @@ namespace TaskProject.Models
                         }
                     }
                     while (goal.GoalEnd < DateTime.Now);
+
                     CheckDead();
                 }
             }
+
+            GetAge();
+
+            Health = new Health(Growth, Weight, Age);
         }
         public void CheckLvl()
         {
@@ -203,28 +232,14 @@ namespace TaskProject.Models
 
     public class ViewSetProfileModel
     {
-        public ViewSetProfileModel()
-        {
-            Atributes = new List<Atribute>();
-        }
 
-        [Display(Name = "Ваш возраст: (в г.)"), Range(1, 150, ErrorMessage = "Укажите верный возраст")]
-        public int Age { get; set; } = 1;
-        [Display(Name = "Ваш пол:")]
+        public DateTime DateBirth { get; set; }
         public string Sex { get; set; }
-        [Display(Name = "Ваш рост (в см.)"), Range(1, 500, ErrorMessage = "Укажите верный рост")]
-        public int Growth { get; set; } = 1;
-        [Display(Name = "Ваш вес (в кг.)"), Range(1, 500, ErrorMessage = "Укажите верный вес")]
-        public int Weight { get; set; } = 1;
-        public SelectList SexSelect { get; set; } = new SelectList(
-                    new List<SelectListItem>
-                    {
-                        new SelectListItem {Text = "Мужской", Value = "Мужчина"},
-                        new SelectListItem {Text = "Женский", Value = "Женщина"}
-                    }, "Value", "Text"
-                    );
-
-        public List<Atribute> Atributes { get; set; }
+        public int Growth { get; set; }
+        public int Weight { get; set; }
+        public SelectList SexSelect { get; set; }
+        public int AligmentId { get; set; }
+        public List<Aligment> AligmentSelect { get; set; }
     }
 }
 

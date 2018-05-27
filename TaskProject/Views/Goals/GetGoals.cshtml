@@ -6,7 +6,8 @@
 
 @section Css{
     <!--DateTable-->
-    <link rel="stylesheet" href="~/plugins/datatables/jquery.dataTables.min.css" />
+
+    <link rel="stylesheet" href="~/plugins/datatables/dataTables.bootstrap4.css" />
 }
 
 <section class="content">
@@ -18,11 +19,11 @@
                         <a class="btn btn-info addgoal" href="@Url.Action("AddGoal","Goals")">Добавить новую задачу</a>
                         @if (ViewBag.Complete)
                         {
-                            <a class="btn btn-default" href="@Url.Action("GetGoals", new {iscomplete = false })">Скрыть завершенные задачи</a>
+                            <a class="btn btn-default" href="@Url.Action("GetGoals", new {catalogid = ViewBag.CatalogId,iscomplete = false })">Скрыть завершенные задачи</a>
                         }
                         else
                         {
-                            <a class="btn btn-default" href="@Url.Action("GetGoals", new {iscomplete = true })">Показать завершенные задачи</a>
+                            <a class="btn btn-default" href="@Url.Action("GetGoals", new {catalogid = ViewBag.CatalogId,iscomplete = true })">Показать завершенные задачи</a>
                         }
                     </div>
                     <div class="card-body">
@@ -103,6 +104,7 @@
 
     <!-- Datetable-->
     <script src="~/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/plugins/datatables/dataTables.bootstrap4.js"></script>
 
     <script>
         $(document).ready(function () {

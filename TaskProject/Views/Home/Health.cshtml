@@ -1,0 +1,34 @@
+﻿@model TaskProject.Models.Health
+
+<section class="content">
+    <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+            <div class="col-md-6 col-12">
+                <div class="card card-primary card-outline">
+                    <div class="card-header">
+                        <div class="card-title">
+                            Индекс массы тела
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="text-center">
+                            Ваш ИМТ: @Math.Round(Model.IMT.Count, 2)
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <p>Риск для здоровья: @Model.IMT.HealthRisk</p>
+                                <p>Совет: @Model.IMT.Advice</p>
+                            </div>
+                            <div class="col-6 text-center">
+                                <p>Ваша возрастная группа: @Model.IMTAgeGroup.MinAge - @Model.IMTAgeGroup.MaxAge</p>
+                                <p>Приемлемый ИМТ: @Model.IMTAgeGroup.MinIMTCount - @Model.IMTAgeGroup.MaxIMTCount</p>
+                            </div>
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

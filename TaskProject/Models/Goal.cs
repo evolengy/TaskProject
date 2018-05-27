@@ -40,6 +40,10 @@ namespace TaskProject.Models
         public int RepeatId { get; set; }
         public Repeat Repeat { get; set; }
 
+        [ForeignKey("Catalog")]
+        public int CatalogId { get; set; }
+        public virtual Catalog Catalog { get; set; }
+
         [ForeignKey("User")]
         public string UserId { get; set; }
         public virtual ApplicationUser User { get; set; }
@@ -53,6 +57,26 @@ namespace TaskProject.Models
         public int? SkillId { get; set; }
         [Display(Name = "Навык")]
         public virtual Skill Skill { get; set; }
+    }
+
+    public class Catalog
+    {
+        public Catalog()
+        {
+            Goals = new List<Goal>();
+        }
+
+        public int CatalogId { get; set; }
+
+        [Required]
+        [Display(Name="Имя")]
+        public string Name { get; set; }
+
+        [ForeignKey("User")]
+        public string UserId { get; set; }
+        public ApplicationUser User { get; set; }
+
+        public List<Goal> Goals { get; set; }
     }
 
     public class Repeat

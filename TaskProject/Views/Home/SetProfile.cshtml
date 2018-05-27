@@ -1,259 +1,284 @@
 ﻿@using TaskProject
 @model ViewSetProfileModel
 
-<div class="form-central">
-    <div class="container">
-        <div class="row">
+@section Css{
+    <style>
+        .steps-form-3 {
+            width: 2px;
+            height: 470px;
+            position: relative;
+        }
 
-            <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="x_panel">
-                    <div class="x_title">
-                        <h2>Form Wizards <small>Sessions</small></h2>
-                        <ul class="nav navbar-right panel_toolbox">
-                            <li>
-                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href="#">Settings 1</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Settings 2</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a class="close-link"><i class="fa fa-close"></i></a>
-                            </li>
-                        </ul>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="x_content">
+            .steps-form-3 .steps-row-3 {
+                display: -webkit-box;
+                display: -webkit-flex;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-box-align: center;
+                -webkit-align-items: center;
+                -ms-flex-align: center;
+                align-items: center;
+                -webkit-box-orient: vertical;
+                -webkit-box-direction: normal;
+                -webkit-flex-direction: column;
+                -ms-flex-direction: column;
+                flex-direction: column;
+            }
 
+                .steps-form-3 .steps-row-3:before {
+                    top: 14px;
+                    bottom: 0;
+                    position: absolute;
+                    content: "";
+                    width: 2px;
+                    height: 100%;
+                    background-color: #7283a7;
+                }
 
-                        <!-- Smart Wizard -->
-                        <p>This is a basic form wizard example that inherits the colors from the selected scheme.</p>
-                        <div id="wizard" class="form_wizard wizard_horizontal">
-                            <ul class="wizard_steps">
-                                <li>
-                                    <a href="#step-1">
-                                        <span class="step_no">1</span>
-                                        <span class="step_descr">
-                                            Step 1<br />
-                                            <small>Step 1 description</small>
-                                        </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#step-2">
-                                        <span class="step_no">2</span>
-                                        <span class="step_descr">
-                                            Step 2<br />
-                                            <small>Step 2 description</small>
-                                        </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#step-3">
-                                        <span class="step_no">3</span>
-                                        <span class="step_descr">
-                                            Step 3<br />
-                                            <small>Step 3 description</small>
-                                        </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#step-4">
-                                        <span class="step_no">4</span>
-                                        <span class="step_descr">
-                                            Step 4<br />
-                                            <small>Step 4 description</small>
-                                        </span>
-                                    </a>
-                                </li>
-                            </ul>
-                            <div id="step-1">
-                                <form class="form-horizontal form-label-left">
+                .steps-form-3 .steps-row-3 .steps-step-3 {
+                    height: 150px;
+                    display: -webkit-box;
+                    display: -webkit-flex;
+                    display: -ms-flexbox;
+                    display: flex;
+                    text-align: center;
+                    position: relative;
+                }
 
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
-                                            First Name <span class="required">*</span>
-                                        </label>
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
-                                            Last Name <span class="required">*</span>
-                                        </label>
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Middle Name / Initial</label>
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Gender</label>
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <div id="gender" class="btn-group" data-toggle="buttons">
-                                                <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                                    <input type="radio" name="gender" value="male"> &nbsp; Male &nbsp;
-                                                </label>
-                                                <label class="btn btn-primary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                                    <input type="radio" name="gender" value="female"> Female
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">
-                                            Date Of Birth <span class="required">*</span>
-                                        </label>
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input id="birthday" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">
-                                        </div>
-                                    </div>
+                    .steps-form-3 .steps-row-3 .steps-step-3.no-height {
+                        height: 50px;
+                    }
 
-                                </form>
+                    .steps-form-3 .steps-row-3 .steps-step-3 p {
+                        margin-top: 0.5rem;
+                    }
 
-                            </div>
-                            <div id="step-2">
-                                <h2 class="StepTitle">Step 2 Content</h2>
-                                <p>
-                                    do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                </p>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                </p>
-                            </div>
-                            <div id="step-3">
-                                <h2 class="StepTitle">Step 3 Content</h2>
-                                <p>
-                                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
-                                    eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                </p>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                </p>
-                            </div>
-                            <div id="step-4">
-                                <h2 class="StepTitle">Step 4 Content</h2>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                </p>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                </p>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                </p>
-                            </div>
+                    .steps-form-3 .steps-row-3 .steps-step-3 button[disabled] {
+                        opacity: 1 !important;
+                        filter: alpha(opacity=100) !important;
+                    }
 
-                        </div>
-                        <!-- End SmartWizard Content -->
+                    .steps-form-3 .steps-row-3 .steps-step-3 .btn-circle-3 {
+                        width: 60px;
+                        height: 60px;
+                        border: 2px solid #59698D;
+                        background-color: white !important;
+                        color: #59698D !important;
+                        border-radius: 50%;
+                        padding: 18px 18px 15px 15px;
+                        margin-top: -22px;
+                    }
 
-                        <div class="col-sm-offset-3 col-sm-6 text-center">
-                            <h3>
-                                Для более подробного отображения информации о вас, необходимо заполнить
-                                некоторую информацию.
-                            </h3>
-                            <p> Пожалуйста, уделите на это пару минут</p>
-                        </div>
-                    </div>
+                        .steps-form-3 .steps-row-3 .steps-step-3 .btn-circle-3:hover {
+                            border: 2px solid #4285F4;
+                            color: #4285F4 !important;
+                            background-color: white !important;
+                        }
 
-                    @using (Html.BeginForm("SetProfile", "Home", FormMethod.Post, new { @class = "form-horizontal form-profile", role = "form" }))
-            {
-                @Html.AntiForgeryToken()
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Sex, new { @class = "col-sm-6 control-label" })
-                    <div class="col-sm-6">
-                        @Html.DropDownListFor(m => m.Sex, Model.SexSelect)
-                        @Html.ValidationMessageFor(m => m.Sex, "", new { @class = "text-danger" })
-                    </div>
+                        .steps-form-3 .steps-row-3 .steps-step-3 .btn-circle-3 .fa {
+                            font-size: 1.7rem;
+                        }
+    </style>
+}
+
+<!-- Grid row -->
+<div class="row pt-5 d-flex justify-content-center">
+
+    <!-- Grid column -->
+    <div class="col-md-2 pl-5 pl-md-0 pb-5">
+
+        <!-- Stepper -->
+        <div class="steps-form-3">
+            <div class="steps-row-3 setup-panel-3 d-flex justify-content-between">
+                <div class="steps-step-3">
+                    <a href="#step-5" type="button" class="btn btn-info btn-circle-3 waves-effect ml-0" data-toggle="tooltip" data-placement="top" title="О себе"><i class="fa fa-user" aria-hidden="true"></i></a>
                 </div>
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Age, new { @class = "col-sm-6 control-label" })
-                    <div class="col-sm-6">
-                        @Html.TextBoxFor(m => m.Age)
-                        @Html.ValidationMessageFor(m => m.Age, "", new { @class = "text-danger" })
-                    </div>
+                <div class="steps-step-3">
+                    <a href="#step-6" type="button" class="btn btn-pink btn-circle-3 waves-effect p-3" data-toggle="tooltip" data-placement="top" title="Физические характеристики"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
                 </div>
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Growth, new { @class = "col-sm-6 control-label" })
-                    <div class="col-sm-6">
-                        @Html.TextBoxFor(m => m.Growth)
-                        @Html.ValidationMessageFor(m => m.Growth, "", new { @class = "text-danger" })
-                    </div>
+                <div class="steps-step-3">
+                    <a href="#step-7" type="button" class="btn btn-pink btn-circle-3 waves-effect" data-toggle="tooltip" data-placement="top" title="Мировозрение"><i class="fa fa-comment-o" aria-hidden="true"></i></a>
                 </div>
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Weight, new { @class = "col-sm-6 control-label" })
-                    <div class="col-sm-6">
-                        @Html.TextBoxFor(m => m.Weight)
-                        @Html.ValidationMessageFor(m => m.Weight, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <h3>Оцените ваши навыки в различных областях</h3>
-
-        foreach (UserAtribute atribute in Model.UserAtributes)
-        {
-            @Html.Hidden("atribute.AtributeId", atribute.AtributeId)
-            @Html.Hidden("atribute.MaxValue", atribute.MaxValue)
-    string rangevalue = "rangevalue" + (atribute.AtributeId).ToString();
-        <div class="form-group">
-            <div class="row">
-                <div class="col-sm-12">
-                    @atribute.Atribute.Name
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-6">
-                    @atribute.Atribute.Description
-                </div>
-                <div class="col-sm-6">
-                    <input type="range" name="@atribute.Atribute.Name" value="@atribute.Value" step="1" min="0" max="@atribute.MaxValue" list="rangeskill" onchange="document.getElementById('@rangevalue').innerHTML = this.value;" />
-                    <datalist id="rangeskill">
-                        <option value="0" label="0"></option>
-                        <option value="1" label="1"></option>
-                        <option value="2" label="2"></option>
-                        <option value="3" label="3"></option>
-                        <option value="4" label="4"></option>
-                        <option value="5" label="5"></option>
-                        <option value="6" label="6"></option>
-                        <option value="7" label="7"></option>
-                        <option value="8" label="8"></option>
-                        <option value="9" label="9"></option>
-                        <option value="10" label="10"></option>
-                    </datalist>
-                    <span id="@rangevalue">0</span>
+                <div class="steps-step-3 no-height">
+                    <a href="#step-8" type="button" class="btn btn-pink btn-circle-3 waves-effect p-3" data-toggle="tooltip" data-placement="top" title="Финиш"><i class="fa fa-check" aria-hidden="true"></i></a>
                 </div>
             </div>
         </div>
-}
 
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
+    </div>
+    <!-- Grid column -->
+    <!-- Grid column -->
+    <div class="col-md-7">
 
-            <div class="col-sm-offset-3 col-sm-6 text-center">
-                <button type="submit" class="button special">Сохранить изменения</button>
-            </div>
-        </div>
-}
+        <form role="form" action="SetProfile" method="post">
+            @Html.AntiForgeryToken()
+            <!-- First Step -->
+            <div class="row setup-content-3" id="step-5">
+                <div class="col-md-12">
+                    <h3 class="font-weight-bold pl-0 my-4"><strong>Добавьте информацию о себе</strong></h3>
+                    <div class="form-group md-form">
+                        <label for="NickName" data-error="wrong" data-success="right">Никнейм</label>
+                        <input id="NickName" name="NickName" type="text" required="required" class="form-control validate">
+                    </div>
+                    <div class="form-group md-form">
+                        <label for="Sex" data-error="wrong" data-success="right">Пол</label>
+                        @Html.DropDownListFor(m => m.Sex, Model.SexSelect, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group md-form mt-3">
+                        <label for="DateBirth" data-error="wrong" data-success="right">Дата рождения</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                            </div>
+                            <input id="DateBirth" name="DateBirth" type="date" required min="1930-01-01" max="@DateTime.Now.ToString("yyyy-MM-dd")" class="form-control validate">
+                        </div>
+                    </div>
+                    <button class="btn btn-mdb-color btn-rounded nextBtn-3 float-right" type="button">Дальше</button>
                 </div>
             </div>
 
 
+            <!-- Second Step -->
+            <div class="row setup-content-3" id="step-6">
+                <div class="col-md-12">
+                    <h3 class="font-weight-bold pl-0 my-4"><strong>Ваши физические данные</strong></h3>
+                    <div class="form-group md-form">
+                        <label for="Growth" data-error="wrong" data-success="right">Ваш рост</label>
+                        <input id="Growth" name="Growth" type="text" required="required" class="form-control validate">
+                    </div>
+                    <div class="form-group md-form mt-3">
+                        <label for="Weight" data-error="wrong" data-success="right">Ваш вес</label>
+                        <input id="Weight" name="Weight" type="text" required="required" class="form-control validate">
+                    </div>
+                    <button class="btn btn-mdb-color btn-rounded prevBtn-3 float-left" type="button">Назад</button>
+                    <button class="btn btn-mdb-color btn-rounded nextBtn-3 float-right" type="button">Дальше</button>
+                </div>
+            </div>
 
+
+            <!-- Third Step -->
+            <div class="row setup-content-3" id="step-7">
+                <div class="col-md-12">
+                    <h3 class="font-weight-bold pl-0 my-4"><strong>Ваше мировозрение</strong></h3>
+                    <div class="row">
+                        @foreach (Aligment aligment in Model.AligmentSelect)
+                        {
+                            <div class="col-4 mb-3">
+                                <label><input type="radio" id="AligmentId" required data_descr="@aligment.Description" name="AligmentId" value="@aligment.AligmentId" />@aligment.Name</label>
+                            </div>
+
+                        }
+                    </div>
+                    <div class="col-12">
+                        <span class="aligment_description"></span>
+                    </div>
+                    <button class="btn btn-mdb-color btn-rounded prevBtn-3 float-left" type="button">Назад</button>
+                    <button class="btn btn-mdb-color btn-rounded nextBtn-3 float-right" type="button">Дальше</button>
+                </div>
+            </div>
+
+
+            <!-- Fourth Step -->
+            <div class="row setup-content-3" id="step-8">
+                <div class="col-md-12">
+                    <h3 class="font-weight-bold pl-0 my-4"><strong>Конец</strong></h3>
+                    <h2 class="text-center my-4">
+                        Сбор данных окончен. Нажмите принять для сохранения
+                        своих данных.
+                    </h2>
+                    <button class="btn btn-mdb-color btn-rounded prevBtn-3 float-left" type="button">Назад</button>
+                    <button class="btn btn-success btn-rounded float-right" type="submit">Принять</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+    <!-- Grid column -->
+
+</div>
+<!-- Grid row -->
+<!-- jQuery -->
+
+<script src="~/plugins/jquery/jquery.min.js"></script>
+
+<!-- Bootstrap 4 -->
+<script src="~/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- InputMask-->
+<script src="~/plugins/input-mask/jquery.inputmask.js"></script>
+<script src="~/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+<script src="~/plugins/input-mask/jquery.inputmask.numeric.extensions.js"></script>
+<script src="~/plugins/input-mask/jquery.inputmask.regex.extensions.js"></script>
+
+<script>
+    $(document).ready(function () {
+
+        $("input:radio[name='AligmentId']").on("change", function () {
+            var descr = $(this).attr("data_descr");
+            $(".aligment_description").html(descr);
+        });
+
+        //Datemask2
+        $('#Growth').inputmask("Regex", {
+            regex: "^[0-9]{3}"
+        });
+
+        $('#Weight').inputmask('Regex', {
+            regex: "^[0-9]{3}"
+        });
+
+        $('#NickName').inputmask('Regex', {
+            regex: "^[0-9aA-zZ]{20}"
+        });
+
+        var navListItems = $('div.setup-panel-3 div a'),
+            allWells = $('.setup-content-3'),
+            allNextBtn = $('.nextBtn-3'),
+            allPrevBtn = $('.prevBtn-3');
+
+        allWells.hide();
+
+        navListItems.click(function (e) {
+            e.preventDefault();
+            var $target = $($(this).attr('href')),
+                $item = $(this);
+
+            if (!$item.hasClass('disabled')) {
+                navListItems.removeClass('btn-info').addClass('btn-pink');
+                $item.addClass('btn-info');
+                allWells.hide();
+                $target.show();
+                $target.find('input:eq(0)').focus();
+            }
+        });
+
+        allPrevBtn.click(function () {
+            var curStep = $(this).closest(".setup-content-3"),
+                curStepBtn = curStep.attr("id"),
+                prevStepSteps = $('div.setup-panel-3 div a[href="#' + curStepBtn + '"]').parent().prev().children("a");
+
+            prevStepSteps.removeAttr('disabled').trigger('click');
+        });
+
+        allNextBtn.click(function () {
+            var curStep = $(this).closest(".setup-content-3"),
+                curStepBtn = curStep.attr("id"),
+                nextStepSteps = $('div.setup-panel-3 div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
+                curInputs = curStep.find("input[type='text'],input[type='url']"),
+                isValid = true;
+
+            $(".form-group").removeClass("has-error");
+            for (var i = 0; i < curInputs.length; i++) {
+                if (!curInputs[i].validity.valid) {
+                    isValid = false;
+                    $(curInputs[i]).closest(".form-group").addClass("has-error");
+                }
+            }
+
+            if (isValid)
+                nextStepSteps.removeAttr('disabled').trigger('click');
+        });
+
+        $('div.setup-panel-3 div a.btn-info').trigger('click');
+    });
+</script>

@@ -1,0 +1,16 @@
+﻿@model TaskProject.Models.Catalog
+
+@{
+    Layout = null;
+}
+
+<form asp-action="EditCatalog" class="form-modal">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    @Html.HiddenFor(model => model.UserId)
+    <input type="hidden" asp-for="CatalogId" />
+    <div class="form-group">
+        <label asp-for="Name" class="control-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+</form>

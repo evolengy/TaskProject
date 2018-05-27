@@ -41,7 +41,7 @@ namespace TaskProject.Controllers
                 return View("Index");
             }
 
-            List<Note> notes = await db.Note.Where(n => n.UserId == user.Id).ToListAsync();
+            List<Note> notes = await db.Note.Where(n => n.UserId == user.Id).Where(n => n.DateCreate >= start && n.DateCreate <=  end).ToListAsync();
 
             foreach (Note note in notes)
             {
@@ -49,10 +49,10 @@ namespace TaskProject.Controllers
                     new NoteViewModel
                     {
                         id = note.NoteId,
-                        title = note.Theme,
-                        start = note.DateCreate.ToShortDateString(),
-                        end = note.DateCreate.ToShortDateString(),
-                        allDay = false
+                        title = "Тема:" + note.Theme,
+                        start = note.DateCreate.ToString("s"),
+                        end = note.DateCreate.ToString("s"),
+                        allDay = true
                     }
                     );
             }
@@ -78,6 +78,7 @@ namespace TaskProject.Controllers
                     return View("Index");
                 }
 
+                note.DateCreate = DateTime.Now.Date;
                 note.User = user;
 
                 if (string.IsNullOrEmpty(note.Theme))

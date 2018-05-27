@@ -25,13 +25,26 @@ namespace TaskProject.Controllers
         [HttpPost]
         public async Task<IActionResult> AddTodayMood(Mood mood)
         {
+            if(ModelState.IsValid)
+            {
+                ApplicationUser user = await userManager.GetUserAsync(User);
+                user.Moods.Add(mood);
 
-            ApplicationUser user = await userManager.GetUserAsync(User);
-            user.Moods.Add(mood);
-
-            await db.SaveChangesAsync();
+                await db.SaveChangesAsync();
+            }
 
             return RedirectToAction("GameRoom","Home");
+        }
+
+        public async Task<IActionResult> GetMoods()
+        {
+            var user = await userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            List<Mood> moods = await db.Moods.Where(m => m.UserId == user.Id).ToListAsync();
+            return View();
         }
     }    
 }

@@ -32,6 +32,7 @@
                             <form asp-action="ShowNote">
                                 @Html.AntiForgeryToken()
                                 @Html.HiddenFor(n => n.NoteId)
+                                @Html.HiddenFor(n => n.DateCreate)
 
                                 <div class="form-group col-md-4 col-8 mb-2">
                                     <label asp-for="Theme" class="control-label"></label>

@@ -18,11 +18,14 @@ namespace TaskProject.Controllers
         public ActionResult FAQ()
         {
             Message message = new Message();
+
+            ViewBag.BreadCrumb = "Руководство";
             return View(message);
         }
 
         public ActionResult Report()
         {
+            ViewBag.BreadCrumb = "Сообщить об ошибке";
             return View();
         }
 
@@ -31,6 +34,7 @@ namespace TaskProject.Controllers
         {
             if (!ModelState.IsValid)
             {
+                ViewBag.BreadCrumb = "Сообщить об ошибке";
                 return View(model);
             }
 
@@ -47,6 +51,7 @@ namespace TaskProject.Controllers
 
         public ActionResult QuestionAndSuggestion()
         {
+            ViewBag.BreadCrumb = "Вопросы и предложения";
             return View();
         }
 
@@ -55,6 +60,7 @@ namespace TaskProject.Controllers
         {
             if (!ModelState.IsValid)
             {
+                ViewBag.BreadCrumb = "Вопросы и предложения";
                 return View(model);
             }
             model.Theme = "QuestionAndSuggestion";

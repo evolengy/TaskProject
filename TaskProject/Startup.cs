@@ -56,13 +56,15 @@ namespace TaskProject
             }
             else
             {
+                //Обработка ошибок в продакшене
+                app.UseStatusCodePagesWithReExecute("/Home/Error/{0}");
                 app.UseExceptionHandler("/Home/Error");
             }
 
             // Поддержка статических файлов
             app.UseStaticFiles();
 
-            // добавляем поддержку каталога node_modules
+            // Добавляем поддержку каталога node_modules
             app.UseFileServer(new FileServerOptions()
             {
                 FileProvider = new PhysicalFileProvider(

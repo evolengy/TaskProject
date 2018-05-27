@@ -11,7 +11,6 @@ namespace TaskProject.Models
     {
         public Note()
         {
-            DateCreate = DateTime.Now.Date;
         }
 
         public int NoteId { get; set; }

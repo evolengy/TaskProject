@@ -98,24 +98,24 @@ namespace TaskProject.Migrations
                 {
                     Id = table.Column<string>(nullable: false),
                     AccessFailedCount = table.Column<int>(nullable: false),
-                    Age = table.Column<int>(nullable: false),
                     AligmentId = table.Column<int>(nullable: true),
                     ConcurrencyStamp = table.Column<string>(nullable: true),
                     CurrentExp = table.Column<long>(nullable: false),
                     CurrentGold = table.Column<int>(nullable: false),
                     CurrentHealth = table.Column<int>(nullable: false),
                     CurrentLevel = table.Column<int>(nullable: false),
+                    DateBirth = table.Column<DateTime>(nullable: true),
                     Email = table.Column<string>(maxLength: 256, nullable: true),
                     EmailConfirmed = table.Column<bool>(nullable: false),
                     Growth = table.Column<float>(nullable: false),
-                    IMT = table.Column<float>(nullable: false),
                     Information = table.Column<string>(nullable: true),
                     IsDead = table.Column<bool>(nullable: false),
-                    IsSetDescr = table.Column<bool>(nullable: false),
+                    IsSetValue = table.Column<bool>(nullable: false),
                     LockoutEnabled = table.Column<bool>(nullable: false),
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
                     MaxExp = table.Column<long>(nullable: false),
                     MaxHealth = table.Column<int>(nullable: false),
+                    NickName = table.Column<string>(nullable: true),
                     NormalizedEmail = table.Column<string>(maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(maxLength: 256, nullable: true),
                     PasswordHash = table.Column<string>(nullable: true),
@@ -269,6 +269,69 @@ namespace TaskProject.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Catalogs",
+                columns: table => new
+                {
+                    CatalogId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(nullable: true),
+                    UserId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Catalogs", x => x.CatalogId);
+                    table.ForeignKey(
+                        name: "FK_Catalogs_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Moods",
+                columns: table => new
+                {
+                    MoodId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Date = table.Column<DateTime>(nullable: false),
+                    Name = table.Column<string>(nullable: false),
+                    UserId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Moods", x => x.MoodId);
+                    table.ForeignKey(
+                        name: "FK_Moods_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Note",
+                columns: table => new
+                {
+                    NoteId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    DateCreate = table.Column<DateTime>(nullable: false),
+                    Text = table.Column<string>(nullable: true),
+                    Theme = table.Column<string>(nullable: true),
+                    UserId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Note", x => x.NoteId);
+                    table.ForeignKey(
+                        name: "FK_Note_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Skills",
                 columns: table => new
                 {
@@ -278,7 +341,7 @@ namespace TaskProject.Migrations
                     CurrentExp = table.Column<int>(nullable: false),
                     Lvl = table.Column<int>(nullable: false),
                     MaxExp = table.Column<int>(nullable: false),
-                    Name = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(nullable: false),
                     RatingId = table.Column<int>(nullable: false),
                     UserId = table.Column<string>(nullable: true)
                 },
@@ -311,6 +374,7 @@ namespace TaskProject.Migrations
                 {
                     GoalId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    CatalogId = table.Column<int>(nullable: true),
                     ComplicationId = table.Column<int>(nullable: false),
                     Description = table.Column<string>(nullable: true),
                     GoalEnd = table.Column<DateTime>(nullable: true),
@@ -324,6 +388,12 @@ namespace TaskProject.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Goals", x => x.GoalId);
+                    table.ForeignKey(
+                        name: "FK_Goals_Catalogs_CatalogId",
+                        column: x => x.CatalogId,
+                        principalTable: "Catalogs",
+                        principalColumn: "CatalogId",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Goals_Complications_ComplicationId",
                         column: x => x.ComplicationId,
@@ -400,6 +470,16 @@ namespace TaskProject.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Catalogs_UserId",
+                table: "Catalogs",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Goals_CatalogId",
+                table: "Goals",
+                column: "CatalogId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Goals_ComplicationId",
                 table: "Goals",
                 column: "ComplicationId");
@@ -417,6 +497,16 @@ namespace TaskProject.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Goals_UserId",
                 table: "Goals",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Moods_UserId",
+                table: "Moods",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Note_UserId",
+                table: "Note",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
@@ -459,7 +549,16 @@ namespace TaskProject.Migrations
                 name: "Messages");
 
             migrationBuilder.DropTable(
+                name: "Moods");
+
+            migrationBuilder.DropTable(
+                name: "Note");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
+
+            migrationBuilder.DropTable(
+                name: "Catalogs");
 
             migrationBuilder.DropTable(
                 name: "Complications");

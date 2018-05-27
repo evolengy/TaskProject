@@ -23,7 +23,9 @@ namespace TaskProject.Controllers
             usermanager = _userManager;
         }
 
-        public async Task<IActionResult> GetGoals(bool iscomplete = false)
+        //Goals
+
+        public async Task<IActionResult> GetGoals(int? catalogid = null , bool iscomplete = false )
         {
             ViewBag.Complete = true;
 
@@ -34,8 +36,21 @@ namespace TaskProject.Controllers
                 return View("Index");
             }
 
-            var goals = await db.Goals.Where(g => g.UserId == user.Id).Include(g => g.Repeat).Include(g => g.Complication).Include(g => g.Skill).ToListAsync();
-            ViewBag.BreadCrumb = "Все задачи";
+            List<Goal> goals = new List<Goal>();
+
+            if (catalogid == null)
+            {
+                goals = await db.Goals.Where(g => g.UserId == user.Id).Include(g => g.Repeat).Include(g => g.Complication).Include(g => g.Skill).ToListAsync();
+                ViewBag.BreadCrumb = "Все задачи";
+                ViewBag.CatalogId = null;
+            }
+            else
+            {
+                Catalog catalog = db.Catalogs.Where(c => c.CatalogId == catalogid).SingleOrDefault();
+                goals = await db.Goals.Where(g => g.UserId == user.Id && g.CatalogId == catalogid).Include(g => g.Complication).Include(g => g.Skill).ToListAsync();
+                ViewBag.BreadCrumb = catalog.Name;
+                ViewBag.CatalogId = catalogid;
+            }
 
             if (!iscomplete)
             {
@@ -43,10 +58,8 @@ namespace TaskProject.Controllers
                 var completegoals = goals.Where(g => g.IsComplete == false);
                 return View(completegoals.ToList());
             }
-
             return View(goals.ToList());
         }
-
 
         public async Task<IActionResult> AddGoal()
         {
@@ -55,6 +68,7 @@ namespace TaskProject.Controllers
 
             ViewBag.RepeatId = new SelectList(await db.Repeats.ToListAsync(), "RepeatId", "Name");
             ViewBag.ComplicationId = new SelectList(await db.Complications.ToListAsync(), "ComplicationId", "Name");
+            ViewBag.CatalogId = new SelectList(await db.Catalogs.ToListAsync(), "CatalogId", "Name");
             ViewBag.SkillId = skills;
             return View();
         }
@@ -68,7 +82,7 @@ namespace TaskProject.Controllers
                 var user = await usermanager.GetUserAsync(User);
                 if (user == null)
                 {
-                    return View("Index");
+                    return RedirectToAction("Index","Home");
                 }
 
                 switch (goal.RepeatId)
@@ -91,8 +105,8 @@ namespace TaskProject.Controllers
 
                 goal.UserId = user.Id;
 
-                db.Goals.Add(goal);
-                db.SaveChanges();
+                await db.Goals.AddAsync(goal);
+                await db.SaveChangesAsync();
 
                 ViewBag.Message = "Задача успешно добавлена.";
                 return PartialView("_Success");
@@ -101,8 +115,9 @@ namespace TaskProject.Controllers
             List<SelectListItem> skills = new SelectList(db.Skills.Where(s => s.UserId == usermanager.GetUserId(User)), "SkillId", "Name").ToList();
             skills.Insert(0, new SelectListItem() { Text = "Нет", Value = "0" });
 
-            ViewBag.RepeatId = new SelectList(await db.Repeats.ToListAsync(), "RepeatId", "Name");
+            ViewBag.RepeatId = new SelectList(await db.Repeats.ToListAsync(), "RepeatId", "Name",goal.RepeatId);
             ViewBag.ComplicationId = new SelectList(await db.Complications.ToListAsync(), "ComplicationId", "Name", goal.ComplicationId);
+            ViewBag.CatalogId = new SelectList(await db.Catalogs.ToListAsync(), "CatalogId", "Name",goal.CatalogId);
             ViewBag.SkillId = skills;
 
             return PartialView(goal);
@@ -122,6 +137,7 @@ namespace TaskProject.Controllers
 
             ViewBag.RepeatId = new SelectList(db.Repeats, "RepeatId", "Name", goal.RepeatId);
             ViewBag.ComplicationId = new SelectList(db.Complications, "ComplicationId", "Name", goal.ComplicationId);
+            ViewBag.CatalogId = new SelectList(await db.Catalogs.ToListAsync(), "CatalogId", "Name", goal.CatalogId);
             ViewBag.SkillId = skills;
             return View(goal);
         }
@@ -162,8 +178,9 @@ namespace TaskProject.Controllers
             List<SelectListItem> skills = new SelectList(db.Skills.Where(s => s.UserId == usermanager.GetUserId(User)), "SkillId", "Name").ToList();
             skills.Insert(0, new SelectListItem() { Text = "Нет", Value = "0" });
 
-            ViewBag.RepeatId = new SelectList(db.Repeats, "RepeatId", "Name");
+            ViewBag.RepeatId = new SelectList(db.Repeats, "RepeatId", "Name",goal.RepeatId);
             ViewBag.ComplicationId = new SelectList(db.Complications, "ComplicationId", "Name", goal.ComplicationId);
+            ViewBag.CatalogId = new SelectList(await db.Catalogs.ToListAsync(), "CatalogId", "Name",goal.CatalogId);
             ViewBag.SkillId = skills;
             return PartialView(goal);
         }
@@ -237,7 +254,7 @@ namespace TaskProject.Controllers
             }
 
             goal.User.CheckLvl();
-            goal.User.CheckStatus();
+            goal.User.RefreshStatus();
 
             await db.SaveChangesAsync();
 
@@ -245,11 +262,108 @@ namespace TaskProject.Controllers
             return PartialView("_Success");
         }
 
-
         private bool GoalExists(int id)
         {
             return db.Goals.Any(e => e.GoalId == id);
         }
+
+
+        //Catalogs
+
+        public IActionResult AddCatalog()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AddCatalog(Catalog catalog)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await usermanager.GetUserAsync(User);
+                if (user == null)
+                {
+                    RedirectToAction("Index", "Home");
+                }
+
+                catalog.UserId = user.Id;
+                await db.Catalogs.AddAsync(catalog);
+                await db.SaveChangesAsync();
+
+                ViewBag.Message = "Список успешно создан.";
+                return PartialView("_Success");
+            }
+            return View(catalog);
+        }
+
+        public async Task<IActionResult> EditCatalog(int? id)
+        {
+            Catalog goal = await db.Catalogs.FindAsync(id);
+
+            if (goal == null)
+            {
+                return NotFound();
+            }
+
+            return PartialView(goal);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditCatalog(Catalog catalog)
+        {
+            if (ModelState.IsValid)
+            {
+
+                try
+                {
+                    db.Update(catalog);
+                    await db.SaveChangesAsync();
+                }
+
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!CatalogExists(catalog.CatalogId))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+
+                ViewBag.Message = "Список изменен.";
+                return PartialView("_Success");
+            }
+
+            return PartialView(catalog);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteCatalog(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            Catalog catalog = await db.Catalogs.FindAsync(id);
+            if (catalog == null)
+            {
+                return NotFound();
+            }
+            db.Catalogs.Remove(catalog);
+            await db.SaveChangesAsync();
+            return Ok();
+        }
+
+        private bool CatalogExists(int id)
+        {
+            return db.Catalogs.Any(e => e.CatalogId == id);
+        }
+
+        // Dispose
 
         protected override void Dispose(bool disposing)
         {

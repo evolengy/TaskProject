@@ -1,0 +1,40 @@
+﻿@model IEnumerable<TaskProject.Models.Catalog>
+
+<li class="nav-header">Списки задач</li>
+
+<li class="nav-item">
+    <a href="@Url.Action("GetGoals","Goals")" class="nav-link">
+        <i class="nav-icon fa fa-gamepad"></i>
+        <p>
+            Все задачи
+        </p>
+    </a>
+</li>
+@foreach (var item in Model)
+{
+    <li class="d-flex nav-item" id="catalog-@item.CatalogId">
+        <a href="@Url.Action("GetGoals","Goals",new { catalogid = item.CatalogId})" class="nav-link nav-catalog">
+            <i class="nav-icon fa fa-calendar"></i>
+            <p style="padding-left:5px;">
+                @item.Name
+                @if (item.Goals.Where(c => c.IsComplete == false).Count() == 0)
+                {
+
+                }
+                else
+                {
+                    <span class="badge badge-info right">
+                        @item.Goals.Where(c => c.IsComplete == false).Count()
+                    </span>
+                }
+            </p>
+        </a>
+        <div class="nav-tools">
+            <a style="display:block" class="editcatalog" data_dialog_title="Редактирование списка" href="@Url.Action("EditCatalog","Goals",new {id = item.CatalogId })"><i class="fa fa-edit"></i></a>
+            <a style="display:block" class="deletecatalog" href="#" onclick="deletecatalog(@item.CatalogId)"><i class="fa fa-trash-o"></i></a>
+        </div>
+    </li>
+}
+
+<a class="mt-2 btn btn-info float-right addcatalog" data_dialog_title="Создание нового списка" href="@Url.Action("AddCatalog","Goals")"><i class="fa fa-plus"></i> Новый список</a>
+
