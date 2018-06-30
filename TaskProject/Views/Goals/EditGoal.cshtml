@@ -8,42 +8,30 @@
 
     @Html.AntiForgeryToken()
 
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    @Html.HiddenFor(model => model.GoalId)
-    @Html.HiddenFor(model => model.IsComplete)
-    @Html.HiddenFor(model => model.UserId)
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <input type="hidden" asp-for="GoalId" />
+    <input type="hidden" asp-for="IsComplete" />
+    <input type="hidden" asp-for="UserId" />
+
     <div class="form-group">
-        <div class="col-12">
-            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label", required = "required" })
-        </div>
-        <div class="col-12">
-            @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
-        </div>
-        <div class="col-12">
-            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-        </div>
+        <label asp-for="Name" class="control-label"></label>
+        <input asp-for="Name" class="form-control" maxlength="50" /> 
+        <span asp-validation-for="Name" class="text-danger"></span>
     </div>
 
     <div class="form-group">
-        <div class="col-12">
-            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label" })
-        </div>
-        <div class="col-12">
-            @Html.TextAreaFor(model => model.Description, new { @class = "form-control", rows = "10", style = "resize:none;" })
-        </div>
+        <label asp-for="Description" class="control-label"></label>
+        <textarea asp-for="Description" class="form-control" rows="5" maxlength="250" style="resize:none"></textarea>
     </div>
 
     <div class="form-group">
-        <div class="col-12">
             @Html.LabelFor(model => model.RepeatId, "Повторение", htmlAttributes: new { @class = "control-label" })
-        </div>
-        <div class="col-12">
             @Html.DropDownListFor(g => g.RepeatId, (IEnumerable<SelectListItem>)ViewBag.RepeateId, new { @class = "form-control" })
-        </div>
     </div>
 
     <div class="input-group mb-2">
-        <div class="col-md-6 col-12">
+        <div class="col-md-6 col-12 GoalStart">
             <div>
                 @Html.LabelFor(model => model.GoalStart, htmlAttributes: new { @class = "control-label" })
             </div>
@@ -62,54 +50,56 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fa-calendar"></i></span>
                 </div>
-                <input class="form-control d-inline-block" type="date" name="GoalEnd" min="@Model.GoalStart.ToString("yyyy-MM-dd")" value="@Model.GoalStart.ToString("yyyy-MM-dd")" />
+                @if (Model.GoalEnd.HasValue)
+                {
+                    <input class="form-control d-inline-block" type="date" name="GoalEnd" min="@Model.GoalStart.ToString("yyyy-MM-dd")" value="@Model.GoalEnd.Value.ToString("yyyy-MM-dd")" />
+                }
+                else
+                {
+                    <input class="form-control d-inline-block" type="date" name="GoalEnd" min="@Model.GoalStart.ToString("yyyy-MM-dd")" />
+                }
             </div>
         </div>
     </div>
 
     <div class="form-group">
-        <div class="col-12">
             @Html.LabelFor(model => model.ComplicationId, "Сложность", htmlAttributes: new { @class = "control-label" })
-        </div>
-        <div class="col-12">
             @Html.DropDownList("ComplicationId", (IEnumerable<SelectListItem>)ViewBag.ComplocationId, new { @class = "form-control" })
-        </div>
     </div>
 
     <div class="form-group">
-        <div class="col-12">
             @Html.LabelFor(model => model.SkillId, "Навык", htmlAttributes: new { @class = "control-label" })
-        </div>
-        <div class="col-12">
             @Html.DropDownList("SkillId", (IEnumerable<SelectListItem>)ViewBag.SkillId, new { @class = "form-control" })
-        </div>
     </div>
 
     <div class="form-group">
-        <div class="col-12">
             @Html.LabelFor(model => model.CatalogId, "Список", htmlAttributes: new { @class = "control-label" })
-        </div>
-        <div class="col-12">
             @Html.DropDownList("CatalogId", (IEnumerable<SelectListItem>)ViewBag.CatalogId, new { @class = "form-control" })
-        </div>
     </div>
 </form>
-    
+
 <script>
     $(document).ready(function () {
-        if ($('#RepeatId').val() === "1") {
-            $(".GoalEnd").css("display", "block");
-        }
-        else {
-            $(".GoalEnd").css("display", "none");
-        };
+        CheckRepeate($("#RepeatId").val());
+
         $('#RepeatId').change(function () {
-            if ($(this).val() === "1") {
+            CheckRepeate($(this).val());
+        });
+
+        function CheckRepeate(id) {
+            if (id === "0") {
+                $(".GoalStart").css("display", "none");
+                $(".GoalEnd").css("display", "none");
+            }
+            else if (id === "1") {
+                $(".GoalStart").css("display", "block");
                 $(".GoalEnd").css("display", "block");
             }
             else {
+                $(".GoalStart").css("display", "block");
                 $(".GoalEnd").css("display", "none");
             }
-        });
+
+        };
     });
 </script>

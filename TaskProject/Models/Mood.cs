@@ -7,93 +7,38 @@ using System.Threading.Tasks;
 
 namespace TaskProject.Models
 {
+
+    public class UserMood
+    {
+        public UserMood()
+        {
+            Date = DateTime.Now.Date;
+        }
+
+        public int UserMoodId { get; set; }
+        public DateTime Date { get; set; }
+
+        [ForeignKey("Mood")]
+        public int MoodId { get; set; }
+        public Mood Mood { get; set; }
+
+        [ForeignKey("User")]
+        public string UserId { get; set; }
+        public ApplicationUser User { get; set; }
+    }
+
     public class Mood
     {
         public Mood()
         {
-            Date = DateTime.Now.Date;
-
+            UserMoods = new List<UserMood>();
         }
 
         public int MoodId { get; set; }
         [Required]
         public string Name { get; set; }
-        public DateTime Date { get; set; }
-
-        [NotMapped]
         public string LinkImg { get; set; }
 
-        [ForeignKey("User")]
-        public string UserId { get; set; }
-        public ApplicationUser User { get; set; }
-
-        public void GetLink()
-        {
-            switch (Name)
-            {
-                case "Плохое":
-                    {
-                        LinkImg = "/img/moods/crying.svg";
-                        break;
-                    }
-                case "Сонное":
-                    {
-                        LinkImg = "/img/moods/sleepy.svg";
-                        break;
-                    }
-                case "Нормальное":
-                    {
-                        LinkImg = "/img/moods/normal.svg";
-                        break;
-                    }
-                case "Веселое":
-                    {
-                        LinkImg = "/img/moods/laughing.svg";
-                        break;
-                    }
-                case "Отличное":
-                    {
-                        LinkImg = "/img/moods/happy.svg";
-                        break;
-                    }
-
-
-            }
-        }
-
-        public static List<Mood> GetMoods()
-        {
-            List<Mood> moods = new List<Mood>();
-            moods.AddRange(
-                new List<Mood>
-                {
-                    new Mood
-                    {
-                        Name = "Плохое",
-                        LinkImg = "/img/moods/crying.svg"
-                    },
-                    new Mood
-                    {
-                        Name = "Сонное",
-                        LinkImg = "/img/moods/sleepy.svg"
-                    },
-                    new Mood
-                    {
-                        Name = "Нормальное",
-                        LinkImg = "/img/moods/normal.svg"
-                    },
-                    new Mood
-                    {
-                        Name = "Веселое",
-                        LinkImg = "/img/moods/laughing.svg"
-                    },
-                    new Mood
-                    {
-                        Name = "Отличное",
-                        LinkImg = "/img/moods/happy.svg"
-                    }
-                });
-            return moods;
-        }
+        public virtual List<UserMood> UserMoods { get; set; }
     }
 }

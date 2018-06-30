@@ -18,6 +18,12 @@ namespace TaskProject.Models
             Goals = new List<Goal>();
         }
 
+        public delegate void SkillStateHandler(object sender, NotificationEventArgs e);
+
+        public event SkillStateHandler LvlUp;
+
+        public event SkillStateHandler RatingUp;
+
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int SkillId { get; set; }
 
@@ -56,11 +62,20 @@ namespace TaskProject.Models
 
             if(CurrentExp == MaxExp)
             {
+
                 Lvl++;
                 CurrentExp = 0;
                 MaxExp += 10;
 
+                LvlUp?.Invoke(this, new NotificationEventArgs($"Уровень навыка {Name} повышен: {Lvl} уровень", UserId));
+
+                int ratingtemp = RatingId;
                 CheckRating();
+
+                if(ratingtemp != RatingId)
+                {
+                    RatingUp?.Invoke(this, new NotificationEventArgs($"Рейтинг у навыка {Name} повышен", UserId));
+                }
             }
         }
 

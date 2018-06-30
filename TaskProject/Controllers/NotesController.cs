@@ -21,47 +21,19 @@ namespace TaskProject.Controllers
             userManager = _userManager;
         }
 
-        public IActionResult ShowNotes()
+        public async Task<IActionResult> ShowNotes()
         {
+            var user = await userManager.GetUserAsync(User);
 
             ViewBag.BreadCrumb = "Дневник";
-            return View(new NoteViewModel());
+            List<Note> notes = await db.Notes.Where(n => n.UserId == user.Id).ToListAsync();
+            return View(notes);
         }
 
-        public async Task<ActionResult> GetNotes(DateTime start, DateTime end)
-        {
-            var noteModel = new NoteViewModel();
-
-            var noteEvents = new List<NoteViewModel>();
-
-            ApplicationUser user = await userManager.GetUserAsync(User);
-
-            if (user == null)
-            {
-                return View("Index");
-            }
-
-            List<Note> notes = await db.Note.Where(n => n.UserId == user.Id).Where(n => n.DateCreate >= start && n.DateCreate <=  end).ToListAsync();
-
-            foreach (Note note in notes)
-            {
-                noteEvents.Add(
-                    new NoteViewModel
-                    {
-                        id = note.NoteId,
-                        title = "Тема:" + note.Theme,
-                        start = note.DateCreate.ToString("s"),
-                        end = note.DateCreate.ToString("s"),
-                        allDay = true
-                    }
-                    );
-            }
-            return Json(noteEvents.ToArray());
-        }
-
-        public IActionResult AddNote()
+        public IActionResult AddNote(bool today = false)
         {
             ViewBag.BreadCrumb = "Новая заметка";
+            ViewBag.TodayNote = today;
             return View();
         }
 
@@ -69,16 +41,20 @@ namespace TaskProject.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddNote(Note note)
         {
+            ApplicationUser user = await userManager.GetUserAsync(User);
+
+            if (user == null)
+            {
+                return View("Index");
+            }
+
+            if (await db.Notes.AnyAsync(n => n.DateCreate == note.DateCreate && n.UserId == user.Id))
+            {
+                ModelState.AddModelError("DateCreate","Заметка с такой датой уже существует");
+            }
+
             if (ModelState.IsValid)
             {
-                ApplicationUser user = await userManager.GetUserAsync(User);
-
-                if (user == null)
-                {
-                    return View("Index");
-                }
-
-                note.DateCreate = DateTime.Now.Date;
                 note.User = user;
 
                 if (string.IsNullOrEmpty(note.Theme))
@@ -86,9 +62,17 @@ namespace TaskProject.Controllers
                     note.Theme = "Без названия";
                 }
 
-                db.Add(note);
+                await db.AddAsync(note);
+
+                await db.Notifications.AddAsync(new Notification()
+                {
+                    Name = "Добавлена новая запись в дневнике: " + note.Theme,
+                    DateCreate = DateTime.Now,
+                    UserId = user.Id
+                });
+
                 await db.SaveChangesAsync();
-                return RedirectToAction("GameRoom","Home");
+                return RedirectToAction("ShowNotes","Notes");
             }
 
             ViewBag.BreadCrumb = "Новая заметка";
@@ -102,7 +86,7 @@ namespace TaskProject.Controllers
                 return NotFound();
             }
 
-            var note = await db.Note.SingleOrDefaultAsync(m => m.NoteId == id);
+            var note = await db.Notes.SingleOrDefaultAsync(m => m.NoteId == id);
             if (note == null)
             {
                 return NotFound();
@@ -154,39 +138,38 @@ namespace TaskProject.Controllers
             return View(note);
         }
 
-        // GET: Notes/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteNote(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var note = await db.Note
-                .Include(n => n.User)
-                .SingleOrDefaultAsync(m => m.NoteId == id);
+            var note = await db.Notes.SingleOrDefaultAsync(m => m.NoteId == id);
+
             if (note == null)
             {
                 return NotFound();
             }
 
-            return View(note);
-        }
+            db.Notifications.Add(new Notification()
+            {
+                Name = "Удалена запись в дневнике: " + note.Theme,
+                DateCreate = DateTime.Now,
+                UserId = note.UserId
+            });
 
-        // POST: Notes/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var note = await db.Note.SingleOrDefaultAsync(m => m.NoteId == id);
-            db.Note.Remove(note);
+            db.Notes.Remove(note);
+
             await db.SaveChangesAsync();
-            return RedirectToAction("GameRoom", "Home");
+            return RedirectToAction("ShowNotes", "Notes");
         }
 
         private bool NoteExists(int id)
         {
-            return db.Note.Any(e => e.NoteId == id);
+            return db.Notes.Any(e => e.NoteId == id);
         }
     }
 }

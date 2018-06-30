@@ -42,9 +42,11 @@ namespace TaskProject.Controllers
                 return RedirectToAction("Index");
             }
 
-            if (user.IsSetValue == false)
+            // Значения по умолчанию
+            if (!user.IsSetDefaultValues)
             {
-                return RedirectToAction("SetProfile");
+                user.SetDefaultValues();
+                await db.SaveChangesAsync();
             }
 
             var dbuser = await db.Users.Where(u => u.Id == user.Id)
@@ -52,26 +54,25 @@ namespace TaskProject.Controllers
                 .Include(u => u.Skills)
                 .Include(u => u.Atributes)
                 .Include(u => u.Aligment)
-                .Include(u => u.Moods)
+                .Include(u => u.UserMoods)
                 .Include(u => u.Notes)
                 .SingleAsync();
 
-            dbuser.RefreshStatus();
+            var allmood = await db.Moods.ToListAsync();
+            var todaymood = await db.UserMoods.Where(m => m.UserId == dbuser.Id && m.Date.ToShortDateString() == DateTime.Now.ToShortDateString()).Include(m => m.Mood).SingleOrDefaultAsync();
 
-            Mood todaymood = dbuser.Moods.Where(m => m.Date.ToShortDateString() == DateTime.Now.ToShortDateString()).SingleOrDefault();
-            if(todaymood == null)
+            if (todaymood == null)
             {
                 ViewBag.TodayMood = null;
-                ViewBag.ListMood = Mood.GetMoods();
+                ViewBag.ListMood = allmood;
             }
             else
             {
-                todaymood.GetLink();
                 ViewBag.TodayMood = todaymood;
             }
 
             Note todaynote = dbuser.Notes.Where(n => n.DateCreate.ToShortDateString() == DateTime.Now.ToShortDateString()).SingleOrDefault();
-            if(todaynote == null)
+            if (todaynote == null)
             {
                 ViewBag.TodayNote = null;
             }
@@ -83,74 +84,8 @@ namespace TaskProject.Controllers
             await db.SaveChangesAsync();
 
 
-            ViewBag.BreadCrumb = "Управление персонажем";
+            ViewBag.BreadCrumb = "Персонаж";
             return View(dbuser);
-        }
-
-        public async Task<IActionResult> SetProfile()
-        {
-            var user = await usermanager.GetUserAsync(User);
-            if (user == null || user.IsSetValue == true)
-            {
-                return View("GameRoom");
-            }
-
-            ViewSetProfileModel view = new ViewSetProfileModel();
-            view.AligmentSelect = await db.Aligments.ToListAsync();
-
-            ViewBag.SetProfile = false;
-            return View("SetProfile", view);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> SetProfile(ViewSetProfileModel view)
-        {
-            if (ModelState.IsValid)
-            {
-                var user = await usermanager.GetUserAsync(User);
-                if (user == null)
-                {
-                    return View("Index");
-                }
-
-                db.Entry(user).State = EntityState.Modified;
-
-                user.DateBirth = view.DateBirth;
-                user.Weight = view.Weight;
-                user.Growth = view.Growth;
-                user.Sex = view.Sex;
-                user.AligmentId = view.AligmentId;
-
-                user.SetDefaultValues();
-                user.RefreshStatus();
-
-                if(user.Health.IMT.Class == "Норма")
-                {
-                    var count = "1.8";
-                }
-
-                user.IsSetValue = true;
-                await db.SaveChangesAsync();
-
-                return RedirectToAction("GameRoom", "Home");
-
-            }
-            return View(view);
-        }
-
-
-        public async Task<ActionResult> Health()
-        {
-            var user = await usermanager.GetUserAsync(User);
-            if(user == null)
-            {
-                return View("GameRoom");
-            }
-        
-            user.RefreshStatus();
-            await db.SaveChangesAsync();
-            return View(user.Health);
         }
 
         public ActionResult Error(string id = null)
@@ -176,9 +111,6 @@ namespace TaskProject.Controllers
             return View();
         }
 
-        public ActionResult Dead()
-        {
-            return PartialView();
-        }
+       
     }
 }

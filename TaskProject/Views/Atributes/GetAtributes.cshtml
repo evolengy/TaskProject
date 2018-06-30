@@ -1,0 +1,29 @@
+﻿@model IEnumerable<TaskProject.Models.Atribute>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card card-primary">
+                    <div class="card-body">
+                        <div class="tab-pane" id="atributes">
+                            @foreach (Atribute atribute in Model)
+                            {
+                                <div class="progress-group">
+                                    <span class="js-atribute" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="@atribute.Description">
+                                        <img src="@atribute.GetImgPath()" class="mb-1 atribute-img" />
+                                        @atribute.Name
+                                    </span>
+                                    <span class="float-right">Уровень @atribute.Lvl</span>
+                                    <div class="progress progress-sm mt-1">
+                                        <div class="progress-bar bg-info" style="width:  @(100 * atribute.CurrentExp / atribute.MaxExp)%"></div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

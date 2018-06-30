@@ -9,6 +9,8 @@ using TaskProject.Services;
 using TaskProject;
 using Microsoft.Extensions.FileProviders;
 using System.IO;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication;
 
 namespace TaskProject
 {
@@ -25,7 +27,7 @@ namespace TaskProject
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>(options => options.Password = new PasswordOptions()
             {
@@ -37,6 +39,38 @@ namespace TaskProject
             })
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
+
+            // Google authentification
+            services.AddAuthentication().AddGoogle(options =>
+            {
+                options.ClientId = Configuration["Authentication:Google:ClientId"];
+                options.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
+            });
+
+
+            //// VK authentification
+            //services.AddAuthentication().AddVK(options =>
+            //{
+            //    options.ClientId = "";
+            //    options.ClientSecret = "";
+
+            //    // Request for permissions https://vk.com/dev/permissions?f=1.%20Access%20Permissions%20for%20User%20Token
+            //    options.Scope.Add("email");
+
+            //    // Add fields https://vk.com/dev/objects/user
+            //    options.Fields.Add("uid");
+            //    options.Fields.Add("first_name");
+            //    options.Fields.Add("last_name");
+
+            //    // In this case email will return in OAuthTokenResponse, 
+            //    // but all scope values will be merged with user response
+            //    // so we can claim it as field
+            //    options.ClaimActions.MapJsonKey(ClaimTypes.NameIdentifier, "uid");
+            //    options.ClaimActions.MapJsonKey(ClaimTypes.Email, "email");
+            //    options.ClaimActions.MapJsonKey(ClaimTypes.GivenName, "first_name");
+            //    options.ClaimActions.MapJsonKey(ClaimTypes.Surname, "last_name");
+
+            //});
 
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();

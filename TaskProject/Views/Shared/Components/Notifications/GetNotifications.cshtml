@@ -1,0 +1,36 @@
+﻿@model IEnumerable<TaskProject.Models.Notification>
+<!-- Notifications Dropdown Menu -->
+<li class="nav-item dropdown">
+    <a class="nav-link" data-toggle="dropdown" href="#">
+        <i class="fa fa-bell-o"></i>
+        <span class="badge badge-warning navbar-badge">@Model.Count()</span>
+    </a>
+    <div class="notify dropdown-menu dropdown-menu-lg dropdown-menu-right">
+        <a href="@Url.Action("DeleteAllNotifications","Notifications")" class="dropdown-item dropdown-header">Удалить все уведомления</a>
+        @if (Model.Count() == 0)
+        {
+            <div class="notify_image">
+                <img src="~/img/notify-trash.png" />
+            </div>
+            <h3 style="text-align:center">Нет уведомлений</h3>
+            <p class="notify_empty">Уведомления позволяют вам отслеживать ваши задачи, рост навыков и характеристик.</p>
+            <p class="notify_empty">Вы будете уведомлены о различных изменениях в вашем профиле.</p>
+        }
+
+        @foreach (Notification notif in Model)
+        {
+            <a href="#" class="dropdown-item">
+                @if (notif.Name.Length <= 43)
+                {
+                    <p>@notif.Name</p>
+                }
+                else
+                {
+                    notif.Name = notif.Name.Substring(0, 43) + "...";
+                    @notif.Name
+                }
+                <span class="float-right text-muted text-sm">@notif.DateCreate</span>
+            </a>
+        }
+    </div>
+</li>

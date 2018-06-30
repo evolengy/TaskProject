@@ -6,22 +6,18 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
 namespace TaskProject.Models
 {
-    // Add profile data for application users by adding properties to the ApplicationUser class
     public class ApplicationUser : IdentityUser
     {
         public ApplicationUser() : base()
         {
             CurrentLevel = 1;
-            CurrentHealth = 100;
-
             MaxExp = 500;
-            MaxHealth = 100;
 
-            IsDead = false;
-            IsSetValue = false;
+            IsSetDefaultValues = false;
 
             AligmentId = null;
 
@@ -29,64 +25,47 @@ namespace TaskProject.Models
             Catalogs = new List<Catalog>();
             Atributes = new List<Atribute>();
             Skills = new List<Skill>();
-            Moods = new List<Mood>();
+            UserMoods = new List<UserMood>();
+            UserAchievements = new List<UserAchievement>();
+            UserRewards = new List<UserReward>();
             Notes = new List<Note>();
+            Notifications = new List<Notification>();
         }
-
-        public DateTime? DateBirth { get; set; }
-        public DateTime? DateDeath { get; set; }
-
-        [NotMapped]
-        public int Age { get; private set; } 
-
-        public string Sex { get; set; }
-        public float Growth { get; set; }
-        public float Weight { get; set; }
-
-        public string NickName { get; set; }
-        public string Information { get; set; }
 
         public long CurrentExp { get; set; }
         public long MaxExp { get; set; }
         public int CurrentLevel { get; set; }
         public int CurrentGold { get; set; }
-        public int CurrentHealth { get; set; }
-        public int MaxHealth { get; set; }
 
         [ForeignKey("Aligment")]
         public int? AligmentId { get; set; }
         public Aligment Aligment { get; set; }
 
+        [ForeignKey("Health")]
+        public int? HealthId { get; set; }
         public Health Health { get; set; }
 
         public virtual List<Goal> Goals { get; set; }
         public virtual List<Catalog> Catalogs { get; set; }
         public virtual List<Atribute> Atributes { get; set; }
         public virtual List<Skill> Skills { get; set; }
-        public virtual List<Mood> Moods { get; set; }
+        public virtual List<UserMood> UserMoods { get; set; }
+        public virtual List<UserAchievement> UserAchievements { get; set; }
+        public virtual List<UserReward> UserRewards { get; set; }
         public virtual List<Note> Notes { get; set; }
+        public virtual List<Notification> Notifications { get; set; }
 
-        public bool IsDead { get; set; }
-        public bool IsSetValue { get; set; }
-
-        private void GetAge()
-        {
-
-            if(DateBirth == null)
-            {
-                Age = 0;
-            }
-
-            Age = DateTime.Now.Year - DateBirth.Value.Year;
-        }
-
+        public bool IsSetDefaultValues { get; set; }
         public void SetDefaultValues()
         {
+            Health = new Health() {
+                UserId = this.Id
+            };
+
             Catalog DefaultCatalog = new Catalog()
             {
                 Name = "Мои задачи"
             };
-
             this.Atributes.AddRange(new List<Atribute>()
                 {
                      new Atribute
@@ -97,7 +76,7 @@ namespace TaskProject.Models
                         new Atribute
                         {
                             Name = "Здоровье",
-                            Description = "Характеристика, отвечающая за физическое состояние персонажа"
+                            Description = "Характеристика, отвечающая за поддержку физического самочувствия персонажа"
                         },
                         new Atribute
                         {
@@ -107,7 +86,7 @@ namespace TaskProject.Models
                         new Atribute
                         {
                             Name = "Профессионализм",
-                            Description = "Характеристика, отвечающая за умственное развитие персонажа"
+                            Description = "Характеристика, отвечающая за развитие профессиональных качеств персонажа"
                         },
                         new Atribute
                         {
@@ -167,51 +146,46 @@ namespace TaskProject.Models
                     Catalog = DefaultCatalog
                 }
             });
-            this.IsSetValue = true;
+
+            IsSetDefaultValues = true;
         }
-        public void RefreshStatus()
-        {
-            foreach (var goal in this.Goals)
-            {
-                if (goal.GoalEnd < DateTime.Now && goal.IsComplete == false && (goal.GoalEnd.Value.Day - goal.GoalStart.Day) > TimeSpan.FromDays(1).Days)
-                {
-                    do
-                    {
-                        this.CurrentHealth = this.CurrentHealth - goal.Complication.Damage;
-                        switch (goal.RepeatId)
-                        {
-                            case 2:
-                                {
-                                    goal.GoalEnd = null;
-                                    break;
-                                }
-                            case 3:
-                                {
-                                    goal.GoalEnd = goal.GoalEnd.Value.AddDays(1);
-                                    break;
-                                }
-                            case 5:
-                                {
-                                    goal.GoalEnd = goal.GoalEnd.Value.AddMonths(1);
-                                    break;
-                                }
-                            case 6:
-                                {
-                                    goal.GoalEnd = goal.GoalEnd.Value.AddYears(1);
-                                    break;
-                                }
-                        }
-                    }
-                    while (goal.GoalEnd < DateTime.Now);
 
-                    CheckDead();
-                }
-            }
-
-            GetAge();
-
-            Health = new Health(Growth, Weight, Age);
-        }
+        //public void RefreshStatus()
+        //{
+        //    foreach (var goal in this.Goals)
+        //    {
+        //        if (goal.GoalEnd < DateTime.Now && goal.IsComplete == false && (goal.GoalEnd.Value.Day - goal.GoalStart.Day) > TimeSpan.FromDays(1).Days)
+        //        {
+        //            do
+        //            {
+        //                switch (goal.RepeatId)
+        //                {
+        //                    case 2:
+        //                        {
+        //                            goal.GoalEnd = null;
+        //                            break;
+        //                        }
+        //                    case 3:
+        //                        {
+        //                            goal.GoalEnd = goal.GoalEnd.Value.AddDays(1);
+        //                            break;
+        //                        }
+        //                    case 5:
+        //                        {
+        //                            goal.GoalEnd = goal.GoalEnd.Value.AddMonths(1);
+        //                            break;
+        //                        }
+        //                    case 6:
+        //                        {
+        //                            goal.GoalEnd = goal.GoalEnd.Value.AddYears(1);
+        //                            break;
+        //                        }
+        //                }
+        //            }
+        //            while (goal.GoalEnd < DateTime.Now);
+        //        }
+        //    }
+        //}
 
         public void CheckLvl()
         {
@@ -221,193 +195,6 @@ namespace TaskProject.Models
                 CurrentExp = 0;
             }
         }
-        public void CheckDead()
-        
-        {
-            if (this.IsDead || this.CurrentHealth <= 0)
-            {
-                this.CurrentHealth = 0;
-                this.IsDead = true;
-            }
-        }
-    }
-
-    public class ViewSetProfileModel
-    {
-
-        public DateTime DateBirth { get; set; } = DateTime.Now.Date;
-        public string Sex { get; set; }
-        public int Growth { get; set; } = 1;
-        public int Weight { get; set; } = 1;
-        public SelectList SexSelect { get; set; } = new SelectList(
-                new List<SelectListItem>
-                {
-                        new SelectListItem {Text = "Мужской", Value = "Man"},
-                        new SelectListItem {Text = "Женский", Value = "Woman"}
-                }, "Value", "Text"
-                );
-        public SelectList SmokeSelect { get; set; } = new SelectList(
-
-            new List<SelectListItem>
-            {
-                new SelectListItem{Text = "Да" , Value = "-2"},
-                new SelectListItem{Text = "Нет", Value = "+2"}
-            }, "Value", "Text"
-        );
-        public SelectList FriedFoodSelect { get; set; } = new SelectList(
-
-            new List<SelectListItem>
-            {
-                new SelectListItem{Text = "Да" , Value = "-0.4"},
-                new SelectListItem{Text = "Нет", Value = "+0.4"}
-            }, "Value", "Text"
-        );
-        public SelectList FattyFoodSelect { get; set; } = new SelectList(
-
-            new List<SelectListItem>
-            {
-                new SelectListItem{Text = "Да" , Value = "-2"},
-                new SelectListItem{Text = "Нет", Value = "+2"}
-            }, "Value", "Text"
-        );
-        public SelectList FoodSelect { get; set; } = new SelectList(
-
-            new List<SelectListItem>
-            {
-                new SelectListItem{Text = "Овощи" , Value = "+0.8"},
-                new SelectListItem{Text = "Мясо", Value = "-0.8"}
-            }, "Value", "Text"
-        );
-        public SelectList FastFoodSelect { get; set; } = new SelectList(
-
-            new List<SelectListItem>
-            {
-                new SelectListItem{Text = "Да" , Value = "-0.6"},
-                new SelectListItem{Text = "Нет", Value = "+0.6"}
-            }, "Value", "Text"
-        );
-        public SelectList CoffeeSelect { get; set; } = new SelectList(
-
-            new List<SelectListItem>
-            {
-                new SelectListItem{Text = "Да" , Value = "-0.6"},
-                new SelectListItem{Text = "Нет", Value = "+0.6"}
-            }, "Value", "Text"
-        );
-        public SelectList AlcoholSelect { get; set; } = new SelectList(
-
-            new List<SelectListItem>
-            {
-                new SelectListItem{Text = "Да" , Value = "-1.2"},
-                new SelectListItem{Text = "Нет", Value = "+0.6"}
-            }, "Value", "Text"
-        );
-        public SelectList AdversePlaceSelect { get; set; } = new SelectList(
-
-            new List<SelectListItem>
-            {
-                new SelectListItem{Text = "Да" , Value = "-1"},
-                new SelectListItem{Text = "Нет", Value = "+1"}
-            }, "Value", "Text"
-        );
-        public SelectList AspirinSelect { get; set; } = new SelectList(
-
-            new List<SelectListItem>
-            {
-                new SelectListItem{Text = "Да" , Value = "+0.8"},
-                new SelectListItem{Text = "Нет", Value = "-0.8"}
-            }, "Value", "Text"
-        );
-        public SelectList DentalFlossSelect { get; set; } = new SelectList(
-
-            new List<SelectListItem>
-            {
-                new SelectListItem{Text = "Да" , Value = "+1.2"},
-                new SelectListItem{Text = "Нет", Value = "-1.2"}
-            }, "Value", "Text"
-        );
-        public SelectList RegularChairSelect { get; set; } = new SelectList(
-
-            new List<SelectListItem>
-            {
-                new SelectListItem{Text = "Да" , Value = "+0.8"},
-                new SelectListItem{Text = "Нет", Value = "-0.8"}
-            }, "Value", "Text"
-        );
-        public SelectList SexRelationSelect { get; set; } = new SelectList(
-
-            new List<SelectListItem>
-            {
-                new SelectListItem{Text = "Да" , Value = "-1.6"},
-                new SelectListItem{Text = "Нет", Value = "+1.6"}
-            }, "Value", "Text"
-        );
-        public SelectList StrongTanSelect { get; set; } = new SelectList(
-
-            new List<SelectListItem>
-            {
-                new SelectListItem{Text = "Да" , Value = "+1.4"},
-                new SelectListItem{Text = "Нет", Value = "-1.4"}
-            }, "Value", "Text"
-        );
-        public SelectList MarriageSelect { get; set; } = new SelectList(
-
-            new List<SelectListItem>
-            {
-                new SelectListItem{Text = "Да" , Value = "+1.8"},
-                new SelectListItem{Text = "Нет", Value = "-1.8"}
-            }, "Value", "Text"
-        );
-        public SelectList StressSelect { get; set; } = new SelectList(
-
-            new List<SelectListItem>
-            {
-                new SelectListItem{Text = "Да" , Value = "+1.4"},
-                new SelectListItem{Text = "Нет", Value = "-1.4"}
-            }, "Value", "Text"
-        );
-        public SelectList DiabetesSelect { get; set; } = new SelectList(
-
-            new List<SelectListItem>
-            {
-                new SelectListItem{Text = "Да" , Value = "-0.8"},
-                new SelectListItem{Text = "Нет", Value = "+0.8"}
-            }, "Value", "Text"
-        );
-        public SelectList Parents75Select { get; set; } = new SelectList(
-
-            new List<SelectListItem>
-            {
-                new SelectListItem{Text = "Да" , Value = "-2"},
-                new SelectListItem{Text = "Нет", Value = "+2"}
-            }, "Value", "Text"
-        );
-        public SelectList Parents90Select { get; set; } = new SelectList(
-
-           new List<SelectListItem>
-           {
-                new SelectListItem{Text = "Да" , Value = "-4.8"},
-                new SelectListItem{Text = "Нет", Value = "+4.8"}
-           }, "Value", "Text"
-       );
-        public SelectList SportsSelest { get; set; } = new SelectList(
-
-            new List<SelectListItem>
-            {
-                new SelectListItem{Text = "Да" , Value = "+1.4"},
-                new SelectListItem{Text = "Нет", Value = "-1.4"}
-            }, "Value", "Text"
-        );
-        public SelectList VitaminSelect { get; set; } = new SelectList(
-
-            new List<SelectListItem>
-            {
-                new SelectListItem{Text = "Да" , Value = "+1.6"},
-                new SelectListItem{Text = "Нет", Value = "-1.6"}
-            }, "Value", "Text"
-        );
-        public int AligmentId { get; set; }
-        public List<Aligment> AligmentSelect { get; set; }
     }
 }
 

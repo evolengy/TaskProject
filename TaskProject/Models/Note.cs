@@ -17,7 +17,9 @@ namespace TaskProject.Models
 
         [Display(Name="Тема")]
         public string Theme { get; set; }
+        [Display(Name = "Текст")]
         public string Text { get; set; }
+        [Display(Name = "Дата создания")]
         public DateTime DateCreate { get; set; }
 
         [ForeignKey("User")]

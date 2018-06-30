@@ -12,7 +12,6 @@ namespace TaskProject.Models
     {
         public Goal()
         {
-            GoalStart = DateTime.Now;
             GoalEnd = null;
             IsComplete = false;
 
@@ -23,13 +22,13 @@ namespace TaskProject.Models
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int GoalId { get; set; }
         [Required(ErrorMessage = "Имя не задано.")]
-        [Display(Name = "Название задачи")]
+        [Display(Name = "Название задачи"), MaxLength(50, ErrorMessage = "Превышено максимальное количество знаков в названии списка - 50")]
         public string Name { get; set; }
-        [Display(Name = "Описание")]
+        [Display(Name = "Описание"), MaxLength(250, ErrorMessage = "Превышено максимальное количество знаков в описании задачи - 250")]
         public string Description { get; set; }
         [Display(Name = "Начало задачи")]
         public DateTime GoalStart { get; set; }
-        [Display(Name = "Окончания задачи")]
+        [Display(Name = "Окончание задачи")]
         public DateTime? GoalEnd { get; set; }
 
         [Display(Name = "Выполнение")]
@@ -69,7 +68,7 @@ namespace TaskProject.Models
         public int CatalogId { get; set; }
 
         [Required]
-        [Display(Name="Имя")]
+        [Display(Name="Имя"), MaxLength(30, ErrorMessage = "Превышено максимальное количество знаков в названии списка - 30")]
         public string Name { get; set; }
 
         [ForeignKey("User")]

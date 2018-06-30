@@ -1,0 +1,114 @@
+﻿@model IEnumerable<TaskProject.Models.UserReward>
+
+
+@section Css{
+    <!--DateTable-->
+
+    <link rel="stylesheet" href="~/plugins/datatables/dataTables.bootstrap4.css" />
+}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <a class="btn btn-info js-addreward" data_dialog_title="Создание новой награды" href="@Url.Action("AddReward")">Добавить новую награду</a>
+                        <div class="pt-2">
+                            <strong>@ViewBag.Gold монет</strong>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <table class="sw_datatable table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Name)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Description)
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var reward in Model)
+                                {
+                                    <tr id="reward-@reward.UserRewardId">
+                                        <td>
+                                            @if (reward.Cost <= ViewBag.Gold)
+                                            {
+                                                <a href="@Url.Action("CompleteReward","Rewards",new { id = reward.UserRewardId})" class="btn btn-xs btn-outline-primary completereward"><i class=" fa fa-money"></i> @reward.Cost</a>
+                                            }
+                                            else
+                                            {
+                                                <a href="#" class="btn btn-xs btn-outline-dark completereward"><i class=" fa fa-money"></i>@reward.Cost</a>
+                                            }
+                                            <span class="pl-2">
+                                                @Html.DisplayFor(modelgoal => reward.Name)
+                                            </span>
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelgoal => reward.Description)
+                                        </td>
+
+                                        <td>
+                                            <div class="pull-right btn-group">
+                                                <a class="js-editreward btn btn-xs btn-primary" data_dialog_title="Редактирование награды" href="@Url.Action("EditReward","Rewards",new {id = reward.UserRewardId })"><i class="fa fa-edit"></i></a>
+                                                <a class="js-deletereward btn btn-xs  btn-danger" href="#" onclick="deletereward(@reward.UserRewardId)"><i class="fa fa-trash-o"></i></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts{
+
+    <!-- Datetable-->
+    <script src="~/plugins/datatables/jquery.dataTables.js"></script>
+    <script src="~/plugins/datatables/dataTables.bootstrap4.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('.sw_datatable').DataTable({
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
+                "ordering": true,
+                "info": false,
+                "autoWidth": true,
+                language: {
+                    processing: "Выполняется обработка...",
+                    search: "Поиск&nbsp;:",
+                    lengthMenu: "Показать _MENU_ наград",
+                    info: "Отображены с _START_ по _END_ из _TOTAL_ наград",
+                    infoEmpty: "Нет наград",
+                    infoFiltered: "(Поиск из _MAX_ наград)",
+                    infoPostFix: "",
+                    loadingRecords: "Идет загрузка...",
+                    zeroRecords: "Наград не найдено",
+                    emptyTable: "Нет наград",
+                    paginate: {
+                        first: "К первой",
+                        previous: "Предыдущие",
+                        next: "Следующие",
+                        last: "К последней"
+                    },
+                    aria: {
+                        sortAscending: ": Сортировка в порядке возрастания",
+                        sortDescending: ": Сортировка в порядке убывания"
+                    }
+                }
+            });
+
+        });
+    </script>
+
+}

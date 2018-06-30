@@ -21,15 +21,15 @@ namespace TaskProject
             // Добавляем первоначальные значения в базу данных 
             var host = BuildWebHost(args);
 
-            using(var scope = host.Services.CreateScope())
+            using (var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
                 try
                 {
-                    var context = services.GetRequiredService<ApplicationDbContext>();      
+                    var context = services.GetRequiredService<ApplicationDbContext>();
                     ApplicationStore.Initialize(context);
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     var logger = services.GetRequiredService<ILogger<Program>>();
                     logger.LogError(ex, "Ошибка при доступе к базе данных.");
@@ -42,6 +42,7 @@ namespace TaskProject
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
+            .UseIISIntegration()
                 .Build();
     }
 }

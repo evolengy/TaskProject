@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -44,6 +45,48 @@ namespace TaskProject.Models
                 Lvl++;
                 CurrentExp = 0;
                 MaxExp += 10;
+            }
+        }
+
+
+        public string GetImgPath()
+        {
+            string path;
+            switch (Name)
+            {
+                case "Сила":
+                    {
+                        return path = "/img/atribute/shield.svg";
+                    }
+                case "Здоровье":
+                    {
+                        return path = "/img/atribute/pulse.svg";
+                    }
+                case "Интеллект":
+                    {
+                        return path = "/img/atribute/brain.svg";
+                    }
+                case "Харизма":
+                    {
+                        return path = "/img/atribute/chat.svg";
+                    }
+                case "Профессионализм":
+                    {
+                        return path = "/img/atribute/pencil-ruler-pen.svg";
+                    }
+                case "Известность":
+                    {
+                        return path = "/img/atribute/team.svg";
+                    }
+                case "Психика":
+                    {
+                        return path = "/img/atribute/sad.svg";
+                    }
+
+                default:
+                    {
+                        return path = null;
+                    }
             }
         }
     }

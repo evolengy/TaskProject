@@ -128,6 +128,22 @@ namespace TaskProject.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("TaskProject.Models.Achievement", b =>
+                {
+                    b.Property<int>("AchievementId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Description");
+
+                    b.Property<string>("LinkImg");
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("AchievementId");
+
+                    b.ToTable("Achievements");
+                });
+
             modelBuilder.Entity("TaskProject.Models.Aligment", b =>
                 {
                     b.Property<int>("AligmentId");
@@ -157,36 +173,22 @@ namespace TaskProject.Migrations
 
                     b.Property<int>("CurrentGold");
 
-                    b.Property<int>("CurrentHealth");
-
                     b.Property<int>("CurrentLevel");
-
-                    b.Property<DateTime?>("DateBirth");
-
-                    b.Property<DateTime?>("DateDeath");
 
                     b.Property<string>("Email")
                         .HasMaxLength(256);
 
                     b.Property<bool>("EmailConfirmed");
 
-                    b.Property<float>("Growth");
+                    b.Property<int?>("HealthId");
 
-                    b.Property<string>("Information");
-
-                    b.Property<bool>("IsDead");
-
-                    b.Property<bool>("IsSetValue");
+                    b.Property<bool>("IsSetDefaultValues");
 
                     b.Property<bool>("LockoutEnabled");
 
                     b.Property<DateTimeOffset?>("LockoutEnd");
 
                     b.Property<long>("MaxExp");
-
-                    b.Property<int>("MaxHealth");
-
-                    b.Property<string>("NickName");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256);
@@ -202,18 +204,16 @@ namespace TaskProject.Migrations
 
                     b.Property<string>("SecurityStamp");
 
-                    b.Property<string>("Sex");
-
                     b.Property<bool>("TwoFactorEnabled");
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256);
 
-                    b.Property<float>("Weight");
-
                     b.HasKey("Id");
 
                     b.HasIndex("AligmentId");
+
+                    b.HasIndex("HealthId");
 
                     b.HasIndex("NormalizedEmail")
                         .HasName("EmailIndex");
@@ -325,6 +325,30 @@ namespace TaskProject.Migrations
                     b.ToTable("Goals");
                 });
 
+            modelBuilder.Entity("TaskProject.Models.Health", b =>
+                {
+                    b.Property<int>("HealthId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime?>("DateBirth");
+
+                    b.Property<DateTime?>("DateDeath");
+
+                    b.Property<bool>("IsDead");
+
+                    b.Property<bool>("IsSetValue");
+
+                    b.Property<string>("Sex");
+
+                    b.Property<string>("UserId");
+
+                    b.HasKey("HealthId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Healths");
+                });
+
             modelBuilder.Entity("TaskProject.Models.Message", b =>
                 {
                     b.Property<int>("Id")
@@ -353,16 +377,12 @@ namespace TaskProject.Migrations
                     b.Property<int>("MoodId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<DateTime>("Date");
+                    b.Property<string>("LinkImg");
 
                     b.Property<string>("Name")
                         .IsRequired();
 
-                    b.Property<string>("UserId");
-
                     b.HasKey("MoodId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Moods");
                 });
@@ -384,7 +404,25 @@ namespace TaskProject.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Note");
+                    b.ToTable("Notes");
+                });
+
+            modelBuilder.Entity("TaskProject.Models.Notification", b =>
+                {
+                    b.Property<int>("NotificationID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("DateCreate");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("UserId");
+
+                    b.HasKey("NotificationID");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Notifications");
                 });
 
             modelBuilder.Entity("TaskProject.Models.Rating", b =>
@@ -440,6 +478,105 @@ namespace TaskProject.Migrations
                     b.ToTable("Skills");
                 });
 
+            modelBuilder.Entity("TaskProject.Models.UserAchievement", b =>
+                {
+                    b.Property<int>("UserAchievementId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("AchievementId");
+
+                    b.Property<bool>("IsOpen");
+
+                    b.Property<DateTime?>("SetDate");
+
+                    b.Property<string>("UserId");
+
+                    b.HasKey("UserAchievementId");
+
+                    b.HasIndex("AchievementId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserAchievements");
+                });
+
+            modelBuilder.Entity("TaskProject.Models.UserGrowth", b =>
+                {
+                    b.Property<int>("UserGrowthId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("Date");
+
+                    b.Property<int>("HealthId");
+
+                    b.Property<float>("Value");
+
+                    b.HasKey("UserGrowthId");
+
+                    b.HasIndex("HealthId");
+
+                    b.ToTable("UserGrowth");
+                });
+
+            modelBuilder.Entity("TaskProject.Models.UserMood", b =>
+                {
+                    b.Property<int>("UserMoodId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("Date");
+
+                    b.Property<int>("MoodId");
+
+                    b.Property<string>("UserId");
+
+                    b.HasKey("UserMoodId");
+
+                    b.HasIndex("MoodId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserMoods");
+                });
+
+            modelBuilder.Entity("TaskProject.Models.UserReward", b =>
+                {
+                    b.Property<int>("UserRewardId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int?>("Cost");
+
+                    b.Property<string>("Description");
+
+                    b.Property<string>("Name")
+                        .IsRequired();
+
+                    b.Property<string>("UserId");
+
+                    b.HasKey("UserRewardId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserRewards");
+                });
+
+            modelBuilder.Entity("TaskProject.Models.UserWeight", b =>
+                {
+                    b.Property<int>("UserWeightId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("Date");
+
+                    b.Property<int>("HealthId");
+
+                    b.Property<float>("Value");
+
+                    b.HasKey("UserWeightId");
+
+                    b.HasIndex("HealthId");
+
+                    b.ToTable("UserWeight");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole")
@@ -490,6 +627,10 @@ namespace TaskProject.Migrations
                     b.HasOne("TaskProject.Models.Aligment", "Aligment")
                         .WithMany()
                         .HasForeignKey("AligmentId");
+
+                    b.HasOne("TaskProject.Models.Health", "Health")
+                        .WithMany()
+                        .HasForeignKey("HealthId");
                 });
 
             modelBuilder.Entity("TaskProject.Models.Atribute", b =>
@@ -532,10 +673,10 @@ namespace TaskProject.Migrations
                         .HasForeignKey("UserId");
                 });
 
-            modelBuilder.Entity("TaskProject.Models.Mood", b =>
+            modelBuilder.Entity("TaskProject.Models.Health", b =>
                 {
                     b.HasOne("TaskProject.Models.ApplicationUser", "User")
-                        .WithMany("Moods")
+                        .WithMany()
                         .HasForeignKey("UserId");
                 });
 
@@ -543,6 +684,13 @@ namespace TaskProject.Migrations
                 {
                     b.HasOne("TaskProject.Models.ApplicationUser", "User")
                         .WithMany("Notes")
+                        .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("TaskProject.Models.Notification", b =>
+                {
+                    b.HasOne("TaskProject.Models.ApplicationUser", "User")
+                        .WithMany("Notifications")
                         .HasForeignKey("UserId");
                 });
 
@@ -561,6 +709,53 @@ namespace TaskProject.Migrations
                     b.HasOne("TaskProject.Models.ApplicationUser", "User")
                         .WithMany("Skills")
                         .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("TaskProject.Models.UserAchievement", b =>
+                {
+                    b.HasOne("TaskProject.Models.Achievement", "Achievement")
+                        .WithMany()
+                        .HasForeignKey("AchievementId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("TaskProject.Models.ApplicationUser", "User")
+                        .WithMany("UserAchievements")
+                        .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("TaskProject.Models.UserGrowth", b =>
+                {
+                    b.HasOne("TaskProject.Models.Health", "Health")
+                        .WithMany("UserListGrowth")
+                        .HasForeignKey("HealthId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("TaskProject.Models.UserMood", b =>
+                {
+                    b.HasOne("TaskProject.Models.Mood", "Mood")
+                        .WithMany("UserMoods")
+                        .HasForeignKey("MoodId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("TaskProject.Models.ApplicationUser", "User")
+                        .WithMany("UserMoods")
+                        .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("TaskProject.Models.UserReward", b =>
+                {
+                    b.HasOne("TaskProject.Models.ApplicationUser", "User")
+                        .WithMany("UserRewards")
+                        .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("TaskProject.Models.UserWeight", b =>
+                {
+                    b.HasOne("TaskProject.Models.Health", "Health")
+                        .WithMany("UserListWeight")
+                        .HasForeignKey("HealthId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

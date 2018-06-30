@@ -35,6 +35,14 @@ var plugs = {
 
     "summernote": {
         "/dist/**/*":""
+    },
+
+    "datatables-all": {
+        "/media/**/*":""
+    },
+
+    "bootstrap": {
+        "/**/*": ""
     }
 }
 

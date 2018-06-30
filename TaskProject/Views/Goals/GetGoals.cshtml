@@ -6,17 +6,16 @@
 
 @section Css{
     <!--DateTable-->
-
     <link rel="stylesheet" href="~/plugins/datatables/dataTables.bootstrap4.css" />
 }
 
 <section class="content">
     <div class="container-fluid">
-        <div class="row" style="text-align:center;">
+        <div class="row">
             <div class="col-12">
                 <div class="card">
-                    <div class="card-header">
-                        <a class="btn btn-info addgoal" href="@Url.Action("AddGoal","Goals")">Добавить новую задачу</a>
+                    <div class="card-header text-center">
+                        <a class="btn btn-info js-addgoal" href="@Url.Action("AddGoal", new {catalogid = ViewBag.CatalogId })">Добавить новую задачу</a>
                         @if (ViewBag.Complete)
                         {
                             <a class="btn btn-default" href="@Url.Action("GetGoals", new {catalogid = ViewBag.CatalogId,iscomplete = false })">Скрыть завершенные задачи</a>
@@ -27,46 +26,61 @@
                         }
                     </div>
                     <div class="card-body">
-                        <table class="sw_datatable table">
+                        <table class="js-datatable table table-responsive-lg">
                             <thead>
                                 <tr>
-                                    <th></th>
                                     <th>
                                         @Html.DisplayNameFor(model => model.Name)
                                     </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.Description)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.Complication.Name)
-                                    </th>
-                                    <th>
+                                    <th style="width:250px;">
                                         @Html.DisplayNameFor(model => model.Skill.Name)
                                     </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.GoalEnd)
+                                    <th style="width:85px;">
+                                        @Html.DisplayNameFor(model => model.Complication.Name)
                                     </th>
-                                    <th></th>
+                                    <th style="width:30px;">
+                                        Окончание
+                                    </th>
+                                    <th style="width:10px"></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach (var goal in Model)
                                 {
                                     <tr id="goal-@goal.GoalId">
-                                        <td>
-                                            <a href="@Url.Action("CompleteGoal","Goals",new { id = goal.GoalId})" class="btn btn-xs completegoal"><i class=" fa fa-check"></i></a>
+                                        @if (goal.IsComplete)
+                                        {
+                                        <td class="td-name" style="text-decoration:line-through">
+                                            <div class="row">
+                                                <div class="col-1">
+                                                    <a class="btn btn-xs btn-light js-restoregoal" href="@Url.Action("RestoreGoal","Goals",new { id = goal.GoalId})"><i class=" fa fa-ban"></i></a>
+                                                </div>
+                                                <div class="col-11" style="max-width:800px">
+                                                    @Html.DisplayFor(modelgoal => goal.Name) <br />
+                                                    <span style="color:#85898C">@Html.DisplayFor(modelgoal => goal.Description)</span>
+                                                </div>
+                                            </div>
                                         </td>
-                                        <td @if (goal.IsComplete) { <text> style="text-decoration:line-through" </text> }>
-                                            @Html.DisplayFor(modelgoal => goal.Name)
-                                        </td>
+                                        }
+                                        else
+                                        {
+                                            <td class="td-name">
+                                                <div class="row">
+                                                    <div class="col-1">
+                                                        <a class="btn btn-xs btn-light js-completegoal" href="@Url.Action("CompleteGoal","Goals",new { id = goal.GoalId})"><i class=" fa fa-check-circle-o"></i></a>
+                                                    </div>
+                                                    <div class="col-11" style="max-width:800px">
+                                                        @Html.DisplayFor(modelgoal => goal.Name) <br />
+                                                        <span style="color:#85898C">@Html.DisplayFor(modelgoal => goal.Description)</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        }
                                         <td>
-                                            @Html.DisplayFor(modelgoal => goal.Description)
+                                            @Html.DisplayFor(modelgoal => goal.Skill.Name)
                                         </td>
                                         <td>
                                             @Html.DisplayFor(modelgoal => goal.Complication.Name)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelgoal => goal.Skill.Name)
                                         </td>
                                         <td>
                                             @if (goal.GoalEnd == null)
@@ -84,9 +98,9 @@
                                             }
                                         </td>
                                         <td>
-                                            <div class="pull-right">
-                                                <a style="display:block" class="editgoal" data_dialog_title="Редактирование задачи" href="@Url.Action("EditGoal","Goals",new {id = goal.GoalId })"><i class="fa fa-edit"></i></a>
-                                                <a style="display:block" class="deletegoal" href="#" onclick="deletegoal(@goal.GoalId)"><i class="fa fa-trash-o"></i></a>
+                                            <div class="pull-right btn-group">
+                                                <a class="js-editgoal btn btn-xs btn-primary" data_dialog_title="Редактирование задачи" href="@Url.Action("EditGoal","Goals",new {id = goal.GoalId })"><i class="fa fa-edit"></i></a>
+                                                <a class="js-deletegoal btn btn-xs btn-danger" href="#" onclick="deletegoal(@goal.GoalId)"><i class="fa fa-trash-o"></i></a>
                                             </div>
                                         </td>
                                     </tr>
@@ -103,37 +117,43 @@
 @section Scripts{
 
     <!-- Datetable-->
-    <script src="~/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/plugins/datatables/jquery.dataTables.js"></script>
     <script src="~/plugins/datatables/dataTables.bootstrap4.js"></script>
-
     <script>
         $(document).ready(function () {
-            $('.sw_datatable').DataTable({
-                language: {
-                    processing: "Выполняется обработка...",
-                    search: "Поиск&nbsp;:",
-                    lengthMenu: "Показать _MENU_ задач",
-                    info: "Отображены с _START_ по _END_ из _TOTAL_ задач",
-                    infoEmpty: "Нет задач",
-                    infoFiltered: "(Поиск из _MAX_ задач)",
-                    infoPostFix: "",
-                    loadingRecords: "Идет загрузка...",
-                    zeroRecords: "Задач не найдено",
-                    emptyTable: "Нет задач",
-                    paginate: {
-                        first: "К первой",
-                        previous: "Предыдущие",
-                        next: "Следующие",
-                        last: "К последней"
-                    },
-                    aria: {
-                        sortAscending: ": Сортировка в порядке возрастания",
-                        sortDescending: ": Сортировка в порядке убывания"
+            $('.js-datatable').DataTable({
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
+                "ordering": true,
+                "info": false,
+                "autoWidth": false,
+                language:
+                    {
+                        processing: "Выполняется обработка...",
+                        search: "Поиск&nbsp;:",
+                        lengthMenu: "Показать _MENU_ задач",
+                        info: "Отображены с _START_ по _END_ из _TOTAL_ задач",
+                        infoEmpty: "Нет задач",
+                        infoFiltered: "(Поиск из _MAX_ задач)",
+                        infoPostFix: "",
+                        loadingRecords: "Идет загрузка...",
+                        zeroRecords: "Задач не найдено",
+                        emptyTable: "Нет задач",
+                        paginate:
+                            {
+                                first: "К первой",
+                                previous: "Предыдущие",
+                                next: "Следующие",
+                                last: "К последней"
+                            },
+                        aria:
+                            {
+                                sortAscending: ": Сортировка в порядке возрастания",
+                                sortDescending: ": Сортировка в порядке убывания"
+                            }
                     }
-                }
             });
-
         });
     </script>
-
 }
