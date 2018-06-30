@@ -1,20 +1,56 @@
-﻿@model TaskProject.Models.NoteViewModel
+﻿@model IEnumerable<TaskProject.Models.Note>
 
 
 @section Css{
-    <link href="~/plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet" />
+    <!--DateTable-->
 
+    <link rel="stylesheet" href="~/plugins/datatables/dataTables.bootstrap4.css" />
 }
 
 <section class="content">
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <div class="card card-primary">
-                    <div class="card-body p-0">
-                        <div id="calendar">
-
-                        </div>
+                <div class="card">
+                    <div class="card-header text-center">
+                        <a class="btn btn-info addnote" href="@Url.Action("AddNote", new {catalogid = ViewBag.CatalogId })">Добавить новую заметку</a>
+                    </div>
+                    <div class="card-body">
+                        <table class="sw_datatable table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Theme)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.DateCreate)
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var note in Model)
+                                {
+                                    <tr id="note-@note.NoteId">
+                                        <td>
+                                            @Html.DisplayFor(modelnote => note.Theme)
+                                        </td>
+                                        <td>
+                                            @note.DateCreate.ToShortDateString()
+                                        </td>
+                                        <td>
+                                            <div class="pull-right">
+                                                <a class="btn btn-info d-inline-block" href="@Url.Action("ShowNote","Notes",new {id = note.NoteId })"><i class="fa fa-edit"></i> Редактировать</a>
+                                                <form asp-action="DeleteNote" asp-controller="Notes" class="d-inline-block">
+                                                    <input type="hidden" name="Id" value="@note.NoteId"/>
+                                                    <button type="submit" class="btn btn-danger"><i class="fa fa-trash-o"></i> Удалить</button>
+                                                </form>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -23,34 +59,39 @@
 </section>
 
 @section Scripts{
-    <script src="~/plugins/fullcalendar/fullcalendar.min.js"></script>
+
+    <!-- Datetable-->
+    <script src="~/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/plugins/datatables/dataTables.bootstrap4.js"></script>
 
     <script>
         $(document).ready(function () {
-            $('#calendar').fullCalendar({
-                header:
-                    {
-                        left: 'prev,next today',
-                        center: 'title',
-                        right: '' /*'month,agendaWeek,agendaDay'*/
+            $('.sw_datatable').DataTable({
+                language: {
+                    processing: "Выполняется обработка...",
+                    search: "Поиск&nbsp;:",
+                    lengthMenu: "Показать _MENU_ заметок",
+                    info: "Отображены с _START_ по _END_ из _TOTAL_ заметок",
+                    infoEmpty: "Нет заметок",
+                    infoFiltered: "(Поиск из _MAX_ заметок)",
+                    infoPostFix: "",
+                    loadingRecords: "Идет загрузка...",
+                    zeroRecords: "Заметок не найдено",
+                    emptyTable: "Нет заметок",
+                    paginate: {
+                        first: "К первой",
+                        previous: "Предыдущие",
+                        next: "Следующие",
+                        last: "К последней"
                     },
-                buttonText: {
-                    today: 'Сегодня',
-                    month: 'Месяц',
-                    week: 'Неделя',
-                    day: 'День'
-                },
-                firstDay: 1, //День, с которого начинается неделя (Monday=1)
-                slotMinutes: 60,
-                events: 'GetNotes/Notes/',
-                eventClick: function (event) {
-                    document.location.href = "ShowNote/"+ event.id;
+                    aria: {
+                        sortAscending: ": Сортировка в порядке возрастания",
+                        sortDescending: ": Сортировка в порядке убывания"
+                    }
                 }
-
-                /*editable: true,
-                droppable: true, //Позволяет добавлять на календарь новые события дропом
-                drop: function (date, allDay) {} */  //Вызывается при дропе события
             });
+
         });
     </script>
+
 }

@@ -90,33 +90,8 @@
 
                 <!-- Right navbar links -->
                 <ul class="navbar-nav ml-auto">
-                    <!-- Notifications Dropdown Menu -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link" data-toggle="dropdown" href="#">
-                            <i class="fa fa-bell-o"></i>
-                            <span class="badge badge-warning navbar-badge">15</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                            <span class="dropdown-item dropdown-header">15 Notifications</span>
-                            <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item">
-                                <i class="fa fa-envelope mr-2"></i> 4 new messages
-                                <span class="float-right text-muted text-sm">3 mins</span>
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item">
-                                <i class="fa fa-users mr-2"></i> 8 friend requests
-                                <span class="float-right text-muted text-sm">12 hours</span>
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item">
-                                <i class="fa fa-file mr-2"></i> 3 new reports
-                                <span class="float-right text-muted text-sm">2 days</span>
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-                        </div>
-                    </li>
+
+                    @await Component.InvokeAsync("Notifications")
 
                     <!-- Help Dropdown Menu-->
                     <li class="nav-item dropdown">
@@ -191,7 +166,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="@Url.Action("Health","Home")" class="nav-link">
+                                <a href="@Url.Action("Index","Healths")" class="nav-link">
                                     <i class="nav-icon fa fa-heart-o"></i>
                                     <p>
                                         Здоровье
@@ -199,23 +174,57 @@
                                 </a>
                             </li>
 
+                            <li class="nav-header">Профиль</li>
+                            <li class="nav-item">
+                                <a href="@Url.Action("GetRewards","Rewards")" class="nav-link">
+                                    <i class="nav-icon fa fa-diamond"></i>
+                                    <p>
+                                        Награды
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="@Url.Action("GetAchievements","Achievements")" class="nav-link">
+                                    <i class="nav-icon fa fa-trophy"></i>
+                                    <p>
+                                        Достижения
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="@Url.Action("GetAtributes","Atributes")" class="nav-link">
+                                    <i class="nav-icon fa fa-user"></i>
+                                    <p>
+                                        Характеристики
+                                    </p>
+                                </a>
+                            </li>
+
                             <li class="nav-header">Статистика</li>
                             <li class="nav-item">
-                                <a href="@Url.Action("GetMoods","Moods")" class="nav-link">
+                                <a href="@Url.Action("StatMoods","Moods")" class="nav-link">
                                     <i class="nav-icon fa fa-frown-o"></i>
                                     <p>
                                         Настроение
                                     </p>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a href="@Url.Action("GetSkills","Skills")" class="nav-link">
-                                    <i class="nav-icon fa fa-user-o"></i>
-                                    <p>
-                                        Навыки
-                                    </p>
-                                </a>
-                            </li>
+                            @*<li class="nav-item">
+            <a href="@Url.Action("StatSkills","Skills")" class="nav-link">
+                <i class="nav-icon fa fa-user-o"></i>
+                <p>
+                    Навыки
+                </p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="@Url.Action("StatHealth","Healths")" class="nav-link">
+                <i class="nav-icon fa fa-heartbeat"></i>
+                <p>
+                    Здоровье
+                </p>
+            </a>
+        </li>*@
                             @await Component.InvokeAsync("Catalogs")
                         </ul>
                     </nav>
@@ -261,157 +270,6 @@
 
     @RenderSection("Scripts", false)
 
-    <script>
-    $(document).ready(function () {
-
-        $.ajaxSetup({ cache: false });
-
-     var link;
-
-        $(".addcatalog").on("click", function (e) {
-            e.preventDefault();
-            $(".sw_title").text($(this).attr("data_dialog_title"));
-            $(".sw_modal_result").load(this.href);
-            $(".sw_modal").modal("show", function () {
-            });
-
-            link = "/Goals/AddCatalog";
-        });
-
-        $(".editcatalog").on("click", function (e) {
-
-            e.preventDefault();
-            $(".sw_title").text($(this).attr("data_dialog_title"));
-            $(".sw_modal_result").load(this.href);
-            $(".sw_modal").modal("show", function () {
-            });
-
-            link = "/Goals/EditCatalog";
-        });
-
-        $(".addgoal").on("click", function (e) {
-            e.preventDefault();
-            $(".sw_title").text($(this).attr("data_dialog_title"));
-            $(".sw_modal_result").load(this.href);
-            $(".sw_modal").modal("show", function () {
-            });
-
-            link = "/Goals/AddGoal";
-        });
-
-     $(".editgoal").on("click", function (e) {
-
-         e.preventDefault();
-         $(".sw_title").text($(this).attr("data_dialog_title"));
-         $(".sw_modal_result").load(this.href);
-         $(".sw_modal").modal("show", function () {
-         });
-
-         link = "/Goals/EditGoal";
-        });
-
-        $(".addskill").on("click", function (e) {
-            e.preventDefault();
-            $(".sw_title").text($(this).attr("data_dialog_title"));
-            $(".sw_modal_result").load(this.href);
-            $(".sw_modal").modal("show", function () {
-            });
-
-            link = "/Skills/AddSkill";
-        });
-
-     $(".editskill").on("click", function (e) {
-
-         e.preventDefault();
-         $(".sw_title").text($(this).attr("data_dialog_title"));
-         $(".sw_modal_result").load(this.href);
-         $(".sw_modal").modal("show", function () {
-         });
-
-         link = "/Skills/EditSkill";
-        });
-
-        $(".completegoal").on("click", function (e) {
-            e.preventDefault();
-            $(".sw_title").text($(this).attr("data_dialog_title"));
-            $(".sw_modal_result").load(this.href);
-            $(".sw_modal").modal("show", function () {
-            });
-
-            link = "/Goals/CompleteGoal";
-        });
-
-        $(".sw_modal_submit").on("click", function (e) {
-            e.preventDefault();
-            var form = $('.form-modal').serialize();
-            $.ajax({
-                url: link,
-                type: "POST",
-                data: $('.form-modal').serialize(),
-                datatype: "json",
-                success: function (result) {
-                    $(".sw_modal_result").html(result);
-                }
-            });
-
-        });
-    });
-
-
-     function deletecatalog(catalogid) {
-         $.ajax({
-             url: '@Url.Action("DeleteCatalog", "Goals")',
-             type: "POST",
-             data: { id: catalogid },
-             success: function () {
-                 $("#catalog-" + catalogid).remove();
-             }
-         });
-    };
-
-     function deletegoal(goalid) {
-         $.ajax({
-             url: '@Url.Action("DeleteGoal", "Goals")',
-             type: "POST",
-             data: { id: goalid },
-             success: function () {
-                 $("#goal-" + goalid).remove();
-             }
-         });
-    };
-
-     function deleteskill(skillid) {
-         $.ajax({
-             url: '@Url.Action("DeleteSkill", "Skills")',
-             type: "POST",
-             data: { id: skillid },
-             success: function () {
-                 $("#skill-" + skillid).remove();
-             }
-         });
-     };
-
-        @*$(document).ready(function () {
-            var dead = $(".sw_dead").val();
-            if (dead === "True") {
-                $.ajax({
-                    url: '@Url.Action("Dead","Home")',
-                    success: function (data) {
-                        $('.sw_modal_result').html(data);
-                        document.getElementById('modal-header').style.display = "none";
-                        $('.sw_modal_goals').modal({
-                            backdrop: 'static',
-                            keyboard: false
-                        });
-                    }
-                })
-            }
-            });
-*@
-
-    </script>
-
-    <!-- AdminLTE App -->
     <script src="~/js/main.min.js"></script>
 
 </body>

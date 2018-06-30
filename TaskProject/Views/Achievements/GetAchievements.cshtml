@@ -1,0 +1,36 @@
+﻿@model IEnumerable<TaskProject.Models.UserAchievement>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-body">
+                <ul class="products-list product-list-in-card pl-2 pr-2">
+                    @foreach (var userAchievement in Model)
+                    {
+                        <li class="item">
+                            <div class="product-img mr-4">
+                                <img src="@userAchievement.Achievement.LinkImg" alt="Достижение" class="img-size-50">
+                            </div>
+                            <div class="product-info">
+                                <div class="product-title">
+                                    @userAchievement.Achievement.Name
+                                    @if (userAchievement.IsOpen)
+                                    {
+                                        <span class="badge badge-success float-right">Получено</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge badge-dark float-right">Не получено</span>
+                                    }
+                                </div>
+                                <span class="product-description">
+                                    @userAchievement.Achievement.Description
+                                </span>
+                            </div>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

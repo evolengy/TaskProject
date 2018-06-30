@@ -1,0 +1,151 @@
+﻿@model TaskProject.Models.Health
+
+<section class="content">
+    <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+
+            <!-- Physic Params -->
+            <div class="col-md-6 col-12">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <div class="card-title">
+                            Ваши параметры
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        @if (!Model.IsSetValue)
+                        {
+                            <p>
+                                Для отображения сведений о здоровье необходимо заполнить небольшую анкету, которая позволит
+                                собрать необходимую информацию и рассчитать ваши значения.
+                            </p>
+                            <div class="text-center">
+                                <a class="btn btn-primary" href="@Url.Action("SetProfile","Healths")">Заполнить анкету</a>
+                            </div>
+
+                        }
+                        else
+                        {
+                            <ul class="list-group list-group-unbordered">
+                                <li class="list-group-item text-center">
+                                    Физические данные
+                                </li>
+                                <li class="list-group-item js-datedeath">
+                                    <b>Рост </b>
+                                    <div class="float-right">@ViewBag.Growth см</div>
+                                </li>
+                                <li class="list-group-item js-datedeath">
+                                    <b>Вес </b>
+                                    <div class="float-right">@ViewBag.Weight кг</div>
+                                </li>
+                                <li class="list-group-item text-center">
+                                    Данные о возрасте
+                                </li>
+                                <li class="list-group-item">
+                                    <b>Возраст </b>
+                                    <div class="float-right">@Model.GetAge()</div>
+                                </li>
+                                <li class="list-group-item js-datedeath">
+                                    <b>Предположительная дата смерти </b>
+                                    <div class="float-right">@Model.DateDeath.Value.Date.ToShortDateString()</div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="progress-group js-health">
+                                        <b>Здоровье </b>
+                                        <span class="float-right">@Model.GetCurrentHealth() из @Model.GetMaxHealth() дней</span>
+                                        <div class="progress progress-sm">
+                                            <div class="progress-bar bg-danger" style="width:@((int)(100 * Model.GetCurrentHealth() / Model.GetMaxHealth()))%"></div>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class="list-group-item text-center">
+                                    Индекс массы тела
+                                </li>
+                                <li class="list-group-item">
+
+                                    <b>Ваш ИМТ</b>
+                                    <span class="float-right">@Math.Round(ViewBag.IMT.Count, 2)</span>
+
+                                </li>
+
+                                <li class="list-group-item">
+                                    <b>Ваша возрастная группа</b>
+                                    <span class="float-right">
+                                        @ViewBag.IMTGroup.MinAge - @ViewBag.IMTGroup.MaxAge
+                                    </span>
+                                </li>
+
+                                <li class="list-group-item">
+                                    <b>Приемлемый ИМТ</b>
+                                    <span class="float-right">
+                                        @ViewBag.IMTGroup.MinIMTCount - @ViewBag.IMTGroup.MaxIMTCount
+                                    </span>
+                                </li>
+
+                                <li class="list-group-item">
+                                    <b>Риск для здоровья</b>
+                                    <span class="float-right">
+                                        @ViewBag.IMT.HealthRisk
+                                    </span>
+                                </li>
+
+                                <li class="list-group-item">
+                                    <b>Совет</b>
+                                    <span class="float-right">
+                                        @ViewBag.IMT.Advice
+                                    </span>
+                                </li>
+                            </ul>
+                        }
+                    </div>
+                </div>
+            </div>
+            <!-- End Physic Params -->
+
+            <!-- Change Width and Growth -->
+            <div class="col-md-6 col-12">
+                <div class="card card-primary card-outline">
+                    <div class="card-header">
+                        <div class="card-title">
+                            Изменить ваши параметры
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="text-center">
+                            <form asp-action="ChangeParam">
+                                <div class="form-group">
+                                    <label name="growth" class="control-label"></label>
+                                    <input id="growth" name="growth" class="form-control" value="@ViewBag.Growth" />
+                                </div>
+                                <div class="form-group">
+                                    <label name="weight" class="control-label"></label>
+                                    <input id="weight" name="weight" class="form-control" value="@ViewBag.Weight" />
+                                </div>
+                                <button type="submit" class="btn">Изменить</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Change Width and Growth-->
+
+        </div>
+    </div>
+</section>
+
+@section Scripts{
+    <script>
+        //Datemask2
+        $('#growth').inputmask("Regex", {
+            regex: "^[0-9]{3}"
+        });
+
+        $('#weight').inputmask('Regex', {
+            regex: "^[0-9]{3}"
+        });
+
+    </script>
+}
+

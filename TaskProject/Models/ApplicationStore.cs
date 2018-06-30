@@ -13,12 +13,12 @@ namespace TaskProject.Models
             if (!context.Repeats.Any())
             {
                 context.Repeats.AddRange(
-                    new Repeat
-                    {
-                        RepeatId = 1,
-                        Name = "Без повторений"
+                     new Repeat
+                     {
+                         RepeatId = 1,
+                         Name = "Без повторений"
 
-                    },
+                     },
                     new Repeat
                     {
                         RepeatId = 2,
@@ -161,6 +161,193 @@ namespace TaskProject.Models
                         "<p> Они совершенно не видят ничего плохого в том, чтобы взять то, что им хочется, любыми возможными способами. Законы и правительства — лишь инструменты слабаков, неспособных защитить себя. </p>" +
                         "<p> Сильные имеют право брать, что они захотят, а слабые нужны, чтобы их использовать." +
                         "<p> Когда <b>хаотичные злые персонажи</b> собираются вместе, ими движет не желание кооперироваться, но, скорее, желание противостоять сильным врагам. Такую группу может удержать вместе только сильный лидер, способный железной рукой заставить своих подчинённых повиноваться. Так как лидерство основывается исключительно на грубой силе, скорее всего, лидер будет сметён при первом признаке слабости любым, кто сможет каким угодно способом отобрать у него это положение. </p>"
+                    }
+                );
+            }
+
+            if (!context.Moods.Any())
+            {
+                context.AddRange(
+                    new Mood()
+                    {
+                        Name = "Плохое",
+                        LinkImg = "/img/moods/crying.svg",
+                    },
+                    new Mood()
+                    {
+                        Name = "Сонное",
+                        LinkImg = "/img/moods/sleepy.svg",
+                    },
+                    new Mood()
+                    {
+                        Name = "Нормальное",
+                        LinkImg = "/img/moods/normal.svg",
+                    },
+                    new Mood()
+                    {
+                        Name = "Веселое",
+                        LinkImg = "/img/moods/laughing.svg",
+                    },
+                    new Mood()
+                    {
+                        Name = "Отличное",
+                        LinkImg = "/img/moods/happy.svg",
+                    }
+                    );
+            }
+
+            if (!context.Achievements.Any())
+            {
+                context.AddRange(
+                    new Achievement()
+                    {
+                        Name = "Уровень 2",
+                        Description = "Получил 2 уровень",
+                        LinkImg = ""
+                    },
+                    new Achievement()
+                    {
+                        Name = "Уровень 5",
+                        Description = "Получил 5 уровень",
+                        LinkImg = ""
+                    },
+                    new Achievement()
+                    {
+                        Name = "Уровень 10",
+                        Description = "Получил 10 уровень",
+                        LinkImg = ""
+                    },
+                    new Achievement()
+                    {
+                        Name = "Уровень 15",
+                        Description = "Получил 15 уровень",
+                        LinkImg = ""
+                    },
+                    new Achievement()
+                    {
+                        Name = "Уровень 20",
+                        Description = "Получил 20 уровень",
+                        LinkImg = ""
+                    },
+                    new Achievement()
+                    {
+                        Name = "500 золота",
+                        Description = "Получил 500 золота",
+                        LinkImg = ""
+                    },
+                    new Achievement()
+                    {
+                        Name = "1000 золота",
+                        Description = "Получил 1000 золота",
+                        LinkImg = ""
+                    },
+                    new Achievement()
+                    {
+                        Name = "5000 золота",
+                        Description = "Получил 5000 золота",
+                        LinkImg = ""
+                    },
+                    new Achievement()
+                    {
+                        Name = "10000 золота",
+                        Description = "Получил 10000 золота",
+                        LinkImg = ""
+                    },
+                    new Achievement()
+                    {
+                        Name = "10 выполненнных задач",
+                        Description = "Выполнил 10 задач",
+                        LinkImg = ""
+                    },
+                    new Achievement()
+                    {
+                        Name = "100 выполненнных задач",
+                        Description = "Выполнил 100 задач",
+                        LinkImg = ""
+                    },
+                    new Achievement()
+                    {
+                        Name = "1000 выполненнных задач",
+                        Description = "Выполнил 1000 задач",
+                        LinkImg = ""
+                    },
+                    new Achievement()
+                    {
+                        Name = "5000 выполненнных задач",
+                        Description = "Выполнил 5000 задач",
+                        LinkImg = ""
+                    },
+                    new Achievement()
+                    {
+                        Name = "10 добавленных задач",
+                        Description = "Добавил 10 задач",
+                        LinkImg = ""
+                    },
+                    new Achievement()
+                    {
+                        Name = "100 добавленных задач",
+                        Description = "Добавил 100 задач",
+                        LinkImg = ""
+                    },
+                    new Achievement()
+                    {
+                        Name = "1000 добавленных задач",
+                        Description = "Добавил 1000 задач",
+                        LinkImg = ""
+                    },
+                    new Achievement()
+                    {
+                        Name = "5000 добавленных задач",
+                        Description = "Добавил 5000 задач",
+                        LinkImg = ""
+                    },
+                    new Achievement()
+                    {
+                        Name = "5 уровень у навыка",
+                        Description = "Получил 5 уровень у навыка",
+                        LinkImg = ""
+                    },
+                    new Achievement()
+                    {
+                        Name = "10 уровень у навыка",
+                        Description = "Получил 10 уровень у навыка",
+                        LinkImg = ""
+                    },
+                    new Achievement()
+                    {
+                        Name = "25 уровень у навыка ",
+                        Description = "Получил 25 уровень у навыка",
+                        LinkImg = ""
+                    },
+                    new Achievement()
+                    {
+                        Name = "50 уровень у навыка",
+                        Description = "Получил 50 уровень у навыка",
+                        LinkImg = ""
+                    },
+                    new Achievement()
+                    {
+                        Name = "5 уровень у характеристики",
+                        Description = "Получил 5 уровень у характеристики",
+                        LinkImg = ""
+                    },
+                    new Achievement()
+                    {
+                        Name = "10 уровень у характеристики",
+                        Description = "Получил 10 уровень у характеристики",
+                        LinkImg = ""
+                    },
+                    new Achievement()
+                    {
+                        Name = "50 уровень у характеристики",
+                        Description = "Получил 25 уровень у характеристики",
+                        LinkImg = ""
+                    },
+                    new Achievement()
+                    {
+                        Name = "100 уровень у характеристики",
+                        Description = "Получил 50 уровень у характеристики",
+                        LinkImg = ""
                     }
                 );
             }

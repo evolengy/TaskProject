@@ -24,7 +24,7 @@ namespace TaskProject.Controllers
         public IActionResult AddSkill()
         {
             ViewData["AtributeId"] = new SelectList(db.Atributes.Where(s => s.UserId == usermanager.GetUserId(User)), "AtributeId", "Name");
-            return View();
+            return PartialView();
         }
 
         [HttpPost]
@@ -41,7 +41,15 @@ namespace TaskProject.Controllers
 
                 skill.UserId = user.Id;
 
-                db.Add(skill);
+                await db.AddAsync(skill);
+
+                await db.Notifications.AddAsync(new Notification()
+                {
+                    Name = "Добавлен новый навык: " + skill.Name,
+                    DateCreate = DateTime.Now,
+                    UserId = user.Id
+                });
+
                 await db.SaveChangesAsync();
 
                 ViewBag.Message = "Навык успешно добавлен.";
@@ -111,6 +119,13 @@ namespace TaskProject.Controllers
             {
                 return NotFound();
             }
+
+            db.Notifications.Add(new Notification()
+            {
+                Name = "Удален навык: " + skill.Name,
+                DateCreate = DateTime.Now,
+                UserId = skill.UserId
+            });
 
             db.Skills.Remove(skill);
             await db.SaveChangesAsync();

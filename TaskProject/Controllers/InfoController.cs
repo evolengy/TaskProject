@@ -45,6 +45,7 @@ namespace TaskProject.Controllers
             sender.SendEmailAsync(model.Email, model.Theme, model.Body);
 
             db.Messages.Add(model);
+
             db.SaveChanges();
             return RedirectToAction("GameRoom","Home");
         }
