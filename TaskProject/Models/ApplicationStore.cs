@@ -203,151 +203,151 @@ namespace TaskProject.Models
                     {
                         Name = "Уровень 2",
                         Description = "Получил 2 уровень",
-                        LinkImg = ""
+                        LinkImg = "/img/achievment.png"
                     },
                     new Achievement()
                     {
                         Name = "Уровень 5",
                         Description = "Получил 5 уровень",
-                        LinkImg = ""
+                        LinkImg = "/img/achievment.png"
                     },
                     new Achievement()
                     {
                         Name = "Уровень 10",
                         Description = "Получил 10 уровень",
-                        LinkImg = ""
+                        LinkImg = "/img/achievment.png"
                     },
                     new Achievement()
                     {
                         Name = "Уровень 15",
                         Description = "Получил 15 уровень",
-                        LinkImg = ""
+                        LinkImg = "/img/achievment.png"
                     },
                     new Achievement()
                     {
                         Name = "Уровень 20",
                         Description = "Получил 20 уровень",
-                        LinkImg = ""
+                        LinkImg = "/img/achievment.png"
                     },
                     new Achievement()
                     {
                         Name = "500 золота",
                         Description = "Получил 500 золота",
-                        LinkImg = ""
+                        LinkImg = "/img/achievment.png"
                     },
                     new Achievement()
                     {
                         Name = "1000 золота",
                         Description = "Получил 1000 золота",
-                        LinkImg = ""
+                        LinkImg = "/img/achievment.png"
                     },
                     new Achievement()
                     {
                         Name = "5000 золота",
                         Description = "Получил 5000 золота",
-                        LinkImg = ""
+                        LinkImg = "/img/achievment.png"
                     },
                     new Achievement()
                     {
                         Name = "10000 золота",
                         Description = "Получил 10000 золота",
-                        LinkImg = ""
+                        LinkImg = "/img/achievment.png"
                     },
                     new Achievement()
                     {
                         Name = "10 выполненнных задач",
                         Description = "Выполнил 10 задач",
-                        LinkImg = ""
+                        LinkImg = "/img/achievment.png"
                     },
                     new Achievement()
                     {
                         Name = "100 выполненнных задач",
                         Description = "Выполнил 100 задач",
-                        LinkImg = ""
+                        LinkImg = "/img/achievment.png"
                     },
                     new Achievement()
                     {
                         Name = "1000 выполненнных задач",
                         Description = "Выполнил 1000 задач",
-                        LinkImg = ""
+                        LinkImg = "/img/achievment.png"
                     },
                     new Achievement()
                     {
                         Name = "5000 выполненнных задач",
                         Description = "Выполнил 5000 задач",
-                        LinkImg = ""
+                        LinkImg = "/img/achievment.png"
                     },
                     new Achievement()
                     {
                         Name = "10 добавленных задач",
                         Description = "Добавил 10 задач",
-                        LinkImg = ""
+                        LinkImg = "/img/achievment.png"
                     },
                     new Achievement()
                     {
                         Name = "100 добавленных задач",
                         Description = "Добавил 100 задач",
-                        LinkImg = ""
+                        LinkImg = "/img/achievment.png"
                     },
                     new Achievement()
                     {
                         Name = "1000 добавленных задач",
                         Description = "Добавил 1000 задач",
-                        LinkImg = ""
+                        LinkImg = "/img/achievment.png"
                     },
                     new Achievement()
                     {
                         Name = "5000 добавленных задач",
                         Description = "Добавил 5000 задач",
-                        LinkImg = ""
+                        LinkImg = "/img/achievment.png"
                     },
                     new Achievement()
                     {
                         Name = "5 уровень у навыка",
                         Description = "Получил 5 уровень у навыка",
-                        LinkImg = ""
+                        LinkImg = "/img/achievment.png"
                     },
                     new Achievement()
                     {
                         Name = "10 уровень у навыка",
                         Description = "Получил 10 уровень у навыка",
-                        LinkImg = ""
+                        LinkImg = "/img/achievment.png"
                     },
                     new Achievement()
                     {
                         Name = "25 уровень у навыка ",
                         Description = "Получил 25 уровень у навыка",
-                        LinkImg = ""
+                        LinkImg = "/img/achievment.png"
                     },
                     new Achievement()
                     {
                         Name = "50 уровень у навыка",
                         Description = "Получил 50 уровень у навыка",
-                        LinkImg = ""
+                        LinkImg = "/img/achievment.png"
                     },
                     new Achievement()
                     {
                         Name = "5 уровень у характеристики",
                         Description = "Получил 5 уровень у характеристики",
-                        LinkImg = ""
+                        LinkImg = "/img/achievment.png"
                     },
                     new Achievement()
                     {
                         Name = "10 уровень у характеристики",
                         Description = "Получил 10 уровень у характеристики",
-                        LinkImg = ""
+                        LinkImg = "/img/achievment.png"
                     },
                     new Achievement()
                     {
                         Name = "50 уровень у характеристики",
                         Description = "Получил 25 уровень у характеристики",
-                        LinkImg = ""
+                        LinkImg = "/img/achievment.png"
                     },
                     new Achievement()
                     {
                         Name = "100 уровень у характеристики",
                         Description = "Получил 50 уровень у характеристики",
-                        LinkImg = ""
+                        LinkImg = "/img/achievment.png"
                     }
                 );
             }

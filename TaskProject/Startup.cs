@@ -43,8 +43,8 @@ namespace TaskProject
             // Google authentification
             services.AddAuthentication().AddGoogle(options =>
             {
-                options.ClientId = Configuration["Authentication:Google:ClientId"];
-                options.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
+                options.ClientId = "148895869514-jnqmdu4vp5fe4obbbudci13kp6a702fi.apps.googleusercontent.com"  /*Configuration["Authentication:Google:ClientId"]*/;
+                options.ClientSecret = "XtHgT-DHK04uIc_cc-XOv3oS" /*Configuration["Authentication:Google:ClientSecret"]*/;
             });
 
 
@@ -99,14 +99,16 @@ namespace TaskProject
             app.UseStaticFiles();
 
             // Добавляем поддержку каталога node_modules
-            app.UseFileServer(new FileServerOptions()
-            {
-                FileProvider = new PhysicalFileProvider(
-                    Path.Combine(env.ContentRootPath, "node_modules")
-                ),
-                RequestPath = "/node_modules",
-                EnableDirectoryBrowsing = false
-            });
+            // Заккоментировать при публикации на хостинг
+
+            //app.UseFileServer(new FileServerOptions()
+            //{
+            //    FileProvider = new PhysicalFileProvider(
+            //        Path.Combine(env.ContentRootPath, "node_modules")
+            //    ),
+            //    RequestPath = "/node_modules",
+            //    EnableDirectoryBrowsing = false
+            //});
 
             // Поддержка аутентификации
             app.UseAuthentication();
