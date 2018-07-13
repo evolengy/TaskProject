@@ -12,7 +12,7 @@
                     <div class="card-body box-profile">
 
                         <div class="text-center">
-                            <img class="profile-user-img img-fluid img-circle" src="~/img/profile.png" alt="User profile picture">
+                            <img class="profile-user-img img-fluid img-circle" src="~/img/primary/man.png" alt="User profile picture">
                         </div>
                         <h3 class="profile-username text-center">@Model.UserName</h3>
 
@@ -21,7 +21,7 @@
                                 <b>Статус</b>
                                 <div class="float-right">Уровень @Html.DisplayFor(m => m.CurrentLevel)</div>
                             </li>
-                           
+
                             <li class="list-group-item">
                                 <div class="progress-group js-exp">
                                     <b>Опыт </b>
@@ -80,7 +80,7 @@
                                                 </div>
                                                 <div class="text-center">
                                                     @Html.RadioButton("MoodId", mood.MoodId)
-                                                    @Html.Hidden("Name",mood.Name)
+                                                    @Html.Hidden("Name", mood.Name)
                                                 </div>
                                             </div>
                                         }
@@ -115,75 +115,73 @@
             </div>
 
             <div class="col-md-9">
+
+                <!-- Goals -->
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Задачи на сегодня</h3>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="mb-3 text-center">
+                            <a class="btn btn-info js-addgoal" data_dialog_title="Создание новой задачи" href="@Url.Action("AddGoal","Goals")"><i class="fa fa-plus"></i> Добавить задачу</a>
+                        </h3>
+                        <ul class="todo-list ui-sortable">
+                            @foreach (var goal in Model.Goals.Where(g => g.IsComplete == false && g.GoalEnd.HasValue && g.GoalEnd.Value.Date == DateTime.Now.Date))
+                            {
+                                <li id="goal-@goal.GoalId">
+                                    <!-- checkbox -->
+                                    <a href="@Url.Action("CompleteGoal","Goals",new { id = goal.GoalId})" class="btn btn-xs js-completegoal"><i class=" fa fa-check"></i></a>
+                                    <!-- todo text -->
+                                    <span class="text">@goal.Name</span>
+                                    <!-- Emphasis label -->
+
+                                    @if (goal.GoalEnd == null)
+                                    {
+                                        <small class="badge badge-success"><i class="fa fa-clock-o"></i> Без срока</small>
+                                    }
+                                    else if (DateTime.Now - goal.GoalEnd > TimeSpan.FromDays(1))
+                                    {
+                                        <small class="badge badge-danger"><i class="fa fa-clock-o"></i> @goal.GoalEnd.Value.ToShortDateString()</small>
+                                    }
+                                    else
+                                    {
+                                        <small class="badge badge-success"><i class="fa fa-clock-o"></i> @goal.GoalEnd.Value.ToShortDateString()</small>
+
+                                    }
+
+                                    <!-- General tools such as edit or delete-->
+                                    <div class="tools">
+                                        <a style="display:block" class="js-editgoal" data_dialog_title="Редактирование задачи" href="@Url.Action("EditGoal","Goals",new {id = goal.GoalId })"><i class="fa fa-edit"></i></a>
+                                        <a style="display:block" class="js-deletegoal" href="#" onclick="deletegoal(@goal.GoalId)"><i class="fa fa-trash-o"></i></a>
+                                    </div>
+                                </li>
+                            }
+                        </ul>
+
+                        @*<div class="card-tools">
+                                <ul class="pagination pagination-sm">
+                                    <li class="page-item"><a href="#" class="page-link">«</a></li>
+                                    <li class="page-item"><a href="#" class="page-link">1</a></li>
+                                    <li class="page-item"><a href="#" class="page-link">2</a></li>
+                                    <li class="page-item"><a href="#" class="page-link">3</a></li>
+                                    <li class="page-item"><a href="#" class="page-link">»</a></li>
+                                </ul>
+                            </div>*@
+                    </div>
+                </div>
+                <!-- End Goals -->
+
                 <div class="card">
                     <div class="card-header p-2">
                         <ul class="nav nav-pills">
-                            <li class="nav-item"><a class="nav-link active" href="#activities" data-toggle="tab">Задачи на сегодня</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#skills" data-toggle="tab">Навыки</a></li>
+                            <li class="nav-item"><a class="nav-link active" href="#skills" data-toggle="tab">Навыки</a></li>
                             <li class="nav-item"><a class="nav-link" href="#atributes" data-toggle="tab">Характеристики</a></li>
                         </ul>
                     </div><!-- /.card-header -->
                     <div class="card-body">
                         <div class="tab-content">
-
-                            <!-- Goals -->
-                            <div class="tab-pane active show" id="activities">
-                                <div class="text-center mb-3" style="cursor: move;">
-                                    <h3 class="mb-3">
-                                        <a class="btn btn-info js-addgoal" data_dialog_title="Создание новой задачи" href="@Url.Action("AddGoal","Goals")"><i class="fa fa-plus"></i> Добавить задачу</a>
-                                    </h3>
-
-                                    @*<div class="card-tools">
-                                            <ul class="pagination pagination-sm">
-                                                <li class="page-item"><a href="#" class="page-link">«</a></li>
-                                                <li class="page-item"><a href="#" class="page-link">1</a></li>
-                                                <li class="page-item"><a href="#" class="page-link">2</a></li>
-                                                <li class="page-item"><a href="#" class="page-link">3</a></li>
-                                                <li class="page-item"><a href="#" class="page-link">»</a></li>
-                                            </ul>
-                                        </div>*@
-                                </div>
-                                <!-- /.card-header -->
-                                <div>
-                                    <ul class="todo-list ui-sortable">
-
-                                        @foreach (var goal in Model.Goals.Where(g => g.IsComplete == false && g.GoalEnd.HasValue && g.GoalEnd.Value.Date == DateTime.Now.Date))
-                                        {
-                                            <li id="goal-@goal.GoalId">
-                                                <!-- checkbox -->
-                                                <a href="@Url.Action("CompleteGoal","Goals",new { id = goal.GoalId})" class="btn btn-xs js-completegoal"><i class=" fa fa-check"></i></a>
-                                                <!-- todo text -->
-                                                <span class="text">@goal.Name</span>
-                                                <!-- Emphasis label -->
-
-                                                @if (goal.GoalEnd == null)
-                                                {
-                                                    <small class="badge badge-success"><i class="fa fa-clock-o"></i> Без срока</small>
-                                                }
-                                                else if (DateTime.Now - goal.GoalEnd > TimeSpan.FromDays(1))
-                                                {
-                                                    <small class="badge badge-danger"><i class="fa fa-clock-o"></i> @goal.GoalEnd.Value.ToShortDateString()</small>
-                                                }
-                                                else
-                                                {
-                                                    <small class="badge badge-success"><i class="fa fa-clock-o"></i> @goal.GoalEnd.Value.ToShortDateString()</small>
-
-                                                }
-
-                                                <!-- General tools such as edit or delete-->
-                                                <div class="tools">
-                                                    <a style="display:block" class="js-editgoal" data_dialog_title="Редактирование задачи" href="@Url.Action("EditGoal","Goals",new {id = goal.GoalId })"><i class="fa fa-edit"></i></a>
-                                                    <a style="display:block" class="js-deletegoal" href="#" onclick="deletegoal(@goal.GoalId)"><i class="fa fa-trash-o"></i></a>
-                                                </div>
-                                            </li>
-                                        }
-                                    </ul>
-                                </div>
-                            </div>
-                            <!-- End Goals -->
-
                             <!-- Skills -->
-                            <div class="tab-pane" id="skills">
+                            <div class="tab-pane active show" id="skills">
                                 <div class="text-center">
                                     <h3 class="mb-3">
                                         <a class="btn btn-info js-addskill" data_dialog_title="Создание нового навыка" href="@Url.Action("AddSkill","Skills")"><i class="fa fa-plus"></i> Добавить навык</a>
@@ -219,7 +217,6 @@
                                 </div>
                             </div>
                             <!-- End Skills -->
-
                             <!-- Atributes -->
                             <div class="tab-pane" id="atributes">
                                 @foreach (Atribute atribute in Model.Atributes)
