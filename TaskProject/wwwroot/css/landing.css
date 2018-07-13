@@ -2,6 +2,42 @@ body {
     font-family: 'Lato';
 }
 
+#landing-logo{
+    height:256px;
+}
+
+#portfolio-item1 a {
+    background-color: #1D83C1;
+}
+
+#portfolio-item2 a {
+    background-color: burlywood;
+}
+
+#portfolio-item3 a {
+    background-color: #804545;
+}
+
+#portfolio-item4 a {
+    background-color: silver;
+}
+
+#portfolio-item5 a {
+    background-color: #6b689e;
+}
+
+#portfolio-item6 a {
+    background-color: #423939;
+}
+
+.portfolio-item img{
+    height:200px;
+}
+
+.portfolio-img{
+    height:300px;
+}
+
 h1,
 h2,
 h3,
@@ -40,7 +76,7 @@ hr.star-light {
 
     hr.star-light:after {
         color: #fff;
-        background-color: #18BC9C;
+        background-color: #365792;
     }
 
 hr.star-dark {
@@ -354,7 +390,7 @@ a {
 }
 
 .bg-primary {
-    background-color: #18BC9C !important;
+    background-color: #365792 !important;
 }
 
 .bg-secondary {

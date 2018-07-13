@@ -13,21 +13,26 @@
 
   <ItemGroup>
     <Compile Remove="Models\Migrations\**" />
+    <Compile Remove="wwwroot\NewFolder\**" />
     <Compile Remove="wwwroot\vendor\**" />
     <Content Remove="Models\Migrations\**" />
+    <Content Remove="wwwroot\NewFolder\**" />
     <Content Remove="wwwroot\vendor\**" />
     <EmbeddedResource Remove="Models\Migrations\**" />
+    <EmbeddedResource Remove="wwwroot\NewFolder\**" />
     <EmbeddedResource Remove="wwwroot\vendor\**" />
     <None Remove="Models\Migrations\**" />
+    <None Remove="wwwroot\NewFolder\**" />
     <None Remove="wwwroot\vendor\**" />
   </ItemGroup>
 
 
   <ItemGroup>
     <PackageReference Include="AspNet.Security.OAuth.VK" Version="0.0.1" />
-    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.6" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.0.3" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.4" PrivateAssets="All" />
+    <PackageReference Include="Sendgrid" Version="9.9.0" />
   </ItemGroup>
 
   <ItemGroup>

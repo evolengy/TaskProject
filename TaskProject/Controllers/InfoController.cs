@@ -3,16 +3,20 @@ using System;
 using Microsoft.AspNetCore.Mvc;
 using TaskProject.Services;
 using TaskProject;
+using Microsoft.Extensions.Configuration;
+using System.Threading.Tasks;
 
 namespace TaskProject.Controllers
 {
     public class InfoController : Controller
     {
         private readonly ApplicationDbContext db;
+        private readonly IConfiguration configuration;
 
-        public InfoController(ApplicationDbContext _db)
+        public InfoController(ApplicationDbContext _db, IConfiguration _configuration)
         {
             db = _db;
+            configuration = _configuration;
         }
 
         public ActionResult FAQ()
@@ -30,7 +34,7 @@ namespace TaskProject.Controllers
         }
 
         [HttpPost]
-        public ActionResult Report(Message model)
+        public async Task<ActionResult> Report(Message model)
         {
             if (!ModelState.IsValid)
             {
@@ -41,12 +45,12 @@ namespace TaskProject.Controllers
             model.Theme = "Report";
             model.DateCreate = DateTime.Now.ToString();
 
-            EmailSender sender = new EmailSender();
-            sender.SendEmailAsync(model.Email, model.Theme, model.Body);
+            EmailSender sender = new EmailSender(configuration);
+            await sender.SendEmailAsync(model.Email, model.Theme, model.Body);
 
-            db.Messages.Add(model);
+            await db.Messages.AddAsync(model);
 
-            db.SaveChanges();
+            await db.SaveChangesAsync();
             return RedirectToAction("GameRoom","Home");
         }
 
@@ -57,7 +61,7 @@ namespace TaskProject.Controllers
         }
 
         [HttpPost]
-        public ActionResult QuestionAndSuggestion(Message model)
+        public async Task<ActionResult> QuestionAndSuggestion(Message model)
         {
             if (!ModelState.IsValid)
             {
@@ -67,11 +71,11 @@ namespace TaskProject.Controllers
             model.Theme = "QuestionAndSuggestion";
             model.DateCreate = DateTime.Now.ToString();
 
-            EmailSender sender = new EmailSender();
-            sender.SendEmailAsync(model.Email, model.Theme, model.Body);
+            EmailSender sender = new EmailSender(configuration);
+            await sender.SendEmailAsync(model.Email, model.Theme, model.Body);
 
-            db.Messages.Add(model);
-            db.SaveChanges();
+            await db.Messages.AddAsync(model);
+            await db.SaveChangesAsync();
             return RedirectToAction("GameRoom", "Home");
         }
     }
