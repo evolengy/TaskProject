@@ -369,7 +369,7 @@ namespace TaskProject.Controllers
 
                 await db.Notifications.AddAsync(new Notification()
                 {
-                    Name = "Каталог добавлен:" + catalog.Name,
+                    Name = "Каталог добавлен: " + catalog.Name,
                     DateCreate = DateTime.Now,
                     UserId = catalog.UserId
                 });
@@ -442,7 +442,7 @@ namespace TaskProject.Controllers
 
             await db.Notifications.AddAsync(new Notification()
             {
-                Name = "Каталог удален:" + catalog.Name,
+                Name = "Каталог удален: " + catalog.Name,
                 DateCreate = DateTime.Now,
                 UserId = catalog.UserId
             });

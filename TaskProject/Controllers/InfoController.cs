@@ -46,7 +46,7 @@ namespace TaskProject.Controllers
             model.DateCreate = DateTime.Now.ToString();
 
             EmailSender sender = new EmailSender(configuration);
-            await sender.SendEmailAsync(model.Email, model.Theme, model.Body);
+            await sender.SendEmailToOwnerAsync(model.Email, model.Theme, model.Body);
 
             await db.Messages.AddAsync(model);
 
@@ -72,7 +72,7 @@ namespace TaskProject.Controllers
             model.DateCreate = DateTime.Now.ToString();
 
             EmailSender sender = new EmailSender(configuration);
-            await sender.SendEmailAsync(model.Email, model.Theme, model.Body);
+            await sender.SendEmailToOwnerAsync(model.Email, model.Theme, model.Body);
 
             await db.Messages.AddAsync(model);
             await db.SaveChangesAsync();

@@ -11,14 +11,24 @@ using Microsoft.Extensions.FileProviders;
 using System.IO;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Rewrite;
 
 namespace TaskProject
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IHostingEnvironment env)
         {
-            Configuration = configuration;
+            // Указываем файл конфигурации в зависимости от названия конфигурации в переменных среды
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(env.ContentRootPath)
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+                .AddEnvironmentVariables();
+
+            Configuration = builder.Build();
         }
 
         public IConfiguration Configuration { get; }
@@ -27,8 +37,9 @@ namespace TaskProject
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
-                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+             options.UseSqlServer(Configuration.GetConnectionString("DbConnection")));
 
+            // Идентификация пароля
             services.AddIdentity<ApplicationUser, IdentityRole>(options => options.Password = new PasswordOptions()
             {
                 RequireDigit = true,
@@ -40,7 +51,7 @@ namespace TaskProject
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
-            // Google authentification
+            // Аутентификация Google
             services.AddAuthentication().AddGoogle(options =>
             {
                 options.ClientId = Configuration.GetSection("Google_API").GetSection("ClientId").Value;
@@ -72,8 +83,10 @@ namespace TaskProject
 
             //});
 
-            // Add application services.
+            // Почта.
             services.AddTransient<IEmailSender, EmailSender>();
+
+            // MVC
             services.AddMvc();
         }
 
@@ -100,6 +113,11 @@ namespace TaskProject
             }
             else
             {
+                //Редирект с HTTP на HTTPS
+                var rewriteoptions = new RewriteOptions()
+    .AddRedirectToHttpsPermanent();
+                app.UseRewriter(rewriteoptions);
+
                 //Обработка ошибок в продакшене
                 app.UseStatusCodePagesWithReExecute("/Home/Error/{0}");
                 app.UseExceptionHandler("/Home/Error");
@@ -107,6 +125,14 @@ namespace TaskProject
 
             // Поддержка статических файлов
             app.UseStaticFiles();
+
+            // Открыть доступ для регистрации LetsEncrypt
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @".well-known")),
+                RequestPath = new PathString("/.well-known"),
+                ServeUnknownFileTypes = true
+            });
 
             // Поддержка аутентификации
             app.UseAuthentication();

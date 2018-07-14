@@ -6,7 +6,7 @@
         <!-- Small boxes (Stat box) -->
         <div class="row">
 
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <!-- Profile Image -->
                 <div class="card card-primary card-outline">
                     <div class="card-body box-profile">
@@ -114,7 +114,7 @@
                 </div>
             </div>
 
-            <div class="col-md-9">
+            <div class="col-md-8">
 
                 <!-- Goals -->
                 <div class="card card-primary">
@@ -150,9 +150,9 @@
                                     }
 
                                     <!-- General tools such as edit or delete-->
-                                    <div class="tools">
-                                        <a style="display:block" class="js-editgoal" data_dialog_title="Редактирование задачи" href="@Url.Action("EditGoal","Goals",new {id = goal.GoalId })"><i class="fa fa-edit"></i></a>
-                                        <a style="display:block" class="js-deletegoal" href="#" onclick="deletegoal(@goal.GoalId)"><i class="fa fa-trash-o"></i></a>
+                                    <div class="pull-right btn-group">
+                                        <a  class="js-editgoal btn btn-xs btn-primary" data_dialog_title="Редактирование задачи" href="@Url.Action("EditGoal","Goals",new {id = goal.GoalId })"><i class="fa fa-edit"></i></a>
+                                        <a  class="js-deletegoal btn btn-xs  btn-danger" href="#" onclick="deletegoal(@goal.GoalId)"><i class="fa fa-trash-o"></i></a>
                                     </div>
                                 </li>
                             }
@@ -189,12 +189,12 @@
                                 </div>
 
                                 <div>
-                                    <ul class="todo-list">
+                                    <ul class="todo-list ui-sortable">
                                         @foreach (Skill skill in Model.Skills)
                                         {
                                             <li id="skill-@skill.SkillId">
                                                 <div class="row">
-                                                    <div class="progress-group col-11">
+                                                    <div class="progress-group col-10">
                                                         <span>
                                                             <img src="@skill.Atribute.GetImgPath()" class="atribute-img" />
                                                             @skill.Name
@@ -206,9 +206,9 @@
                                                             <div class="progress-bar bg-info" style="width:  @(100 * skill.CurrentExp / skill.MaxExp)%"></div>
                                                         </div>
                                                     </div>
-                                                    <div class="tools col-1 text-center">
-                                                        <a style="display:block" class="js-editskill" data_dialog_title="Редактирование навыка" href="@Url.Action("EditSkill","Skills",new {id = skill.SkillId })"><i class="fa fa-edit"></i></a>
-                                                        <a style="display:block" class="js-deleteskill" href="#" onclick="deleteskill(@skill.SkillId)"><i class="fa fa-trash-o"></i></a>
+                                                    <div class="pull-right btn-group pt-3 pb-1">
+                                                        <a class="js-editskill btn btn-xs btn-primary" data_dialog_title="Редактирование навыка" href="@Url.Action("EditSkill","Skills",new {id = skill.SkillId })"><i class="fa fa-edit"></i></a>
+                                                        <a class="js-deleteskill btn btn-xs btn-danger" href="#" onclick="deleteskill(@skill.SkillId)"><i class="fa fa-trash-o"></i></a>
                                                     </div>
                                                 </div>
                                             </li>
@@ -217,6 +217,7 @@
                                 </div>
                             </div>
                             <!-- End Skills -->
+
                             <!-- Atributes -->
                             <div class="tab-pane" id="atributes">
                                 @foreach (Atribute atribute in Model.Atributes)

@@ -7,6 +7,8 @@ namespace TaskProject.Services
 {
     public interface IEmailSender
     {
-        Task SendEmailAsync(string email, string subject, string message);
+        Task SendEmailToUserAsync(string userEmail, string subject, string message);
+
+        Task SendEmailToOwnerAsync(string userEmail, string subject, string message);
     }
 }

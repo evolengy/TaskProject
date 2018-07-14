@@ -14,26 +14,43 @@ namespace TaskProject.Services
     public class EmailSender : IEmailSender
     {
         private readonly IConfiguration configuration;
+        private readonly string apikey;
+        private readonly string ownerEmail;
 
         public EmailSender(IConfiguration _configuration)
         {
             configuration = _configuration;
+            apikey = configuration.GetSection("SendGrid_API_KEY").Value;
+            ownerEmail = configuration.GetSection("Owner_Email").Value;
         }
 
-        public async Task SendEmailAsync(string email, string subject, string message)
+        public async Task SendEmailToOwnerAsync(string userEmail, string subject, string message)
         {
-
-            string apikey = configuration.GetSection("SendGrid_API_KEY").Value;
-
             var client = new SendGridClient(apikey);
             var mail = new SendGridMessage()
             {
                 Subject = subject,
-                From = new EmailAddress(email),
+                From = new EmailAddress(userEmail),
                 PlainTextContent = message
             };
 
-            mail.AddTo(new EmailAddress("evpetruhin@gmail.com"));
+            mail.AddTo(new EmailAddress(ownerEmail));
+
+            var response = await client.SendEmailAsync(mail);
+        }
+
+
+        public async Task SendEmailToUserAsync(string userEmail, string subject, string message)
+        {
+            var client = new SendGridClient(apikey);
+            var mail = new SendGridMessage()
+            {
+                Subject = subject,
+                From = new EmailAddress(ownerEmail),
+                PlainTextContent = message
+            };
+
+            mail.AddTo(new EmailAddress(userEmail));
 
             var response = await client.SendEmailAsync(mail);
         }
