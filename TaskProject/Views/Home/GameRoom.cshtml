@@ -126,7 +126,7 @@
                             <a class="btn btn-info js-addgoal" data_dialog_title="Создание новой задачи" href="@Url.Action("AddGoal","Goals")"><i class="fa fa-plus"></i> Добавить задачу</a>
                         </h3>
                         <ul class="todo-list ui-sortable">
-                            @foreach (var goal in Model.Goals.Where(g => g.IsComplete == false && g.GoalEnd.HasValue && g.GoalEnd.Value.Date == DateTime.Now.Date))
+                            @foreach (var goal in Model.Goals.Where(g => g.IsComplete == false && g.GoalEnd.HasValue && g.GoalEnd.Value.Date <= DateTime.Now.Date))
                             {
                                 <li id="goal-@goal.GoalId">
                                     <!-- checkbox -->

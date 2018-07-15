@@ -298,7 +298,7 @@ namespace TaskProject.Controllers
 
             await db.Notifications.AddAsync(new Notification()
             {
-                Name = "Задача выполнена:" + goal.Name,
+                Name = "Задача выполнена: " + goal.Name,
                 DateCreate = DateTime.Now,
                 UserId = goal.UserId
             });

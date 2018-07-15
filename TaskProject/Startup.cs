@@ -121,18 +121,19 @@ namespace TaskProject
                 //Обработка ошибок в продакшене
                 app.UseStatusCodePagesWithReExecute("/Home/Error/{0}");
                 app.UseExceptionHandler("/Home/Error");
+
+
+                // Открыть доступ для регистрации LetsEncrypt
+                app.UseStaticFiles(new StaticFileOptions
+                {
+                    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @".well-known")),
+                    RequestPath = new PathString("/.well-known"),
+                    ServeUnknownFileTypes = true
+                });
             }
 
             // Поддержка статических файлов
             app.UseStaticFiles();
-
-            // Открыть доступ для регистрации LetsEncrypt
-            app.UseStaticFiles(new StaticFileOptions
-            {
-                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @".well-known")),
-                RequestPath = new PathString("/.well-known"),
-                ServeUnknownFileTypes = true
-            });
 
             // Поддержка аутентификации
             app.UseAuthentication();
