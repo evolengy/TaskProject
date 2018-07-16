@@ -59,29 +59,12 @@ namespace TaskProject
             });
 
 
-            //// VK authentification
-            //services.AddAuthentication().AddVK(options =>
-            //{
-            //    options.ClientId = "";
-            //    options.ClientSecret = "";
-
-            //    // Request for permissions https://vk.com/dev/permissions?f=1.%20Access%20Permissions%20for%20User%20Token
-            //    options.Scope.Add("email");
-
-            //    // Add fields https://vk.com/dev/objects/user
-            //    options.Fields.Add("uid");
-            //    options.Fields.Add("first_name");
-            //    options.Fields.Add("last_name");
-
-            //    // In this case email will return in OAuthTokenResponse, 
-            //    // but all scope values will be merged with user response
-            //    // so we can claim it as field
-            //    options.ClaimActions.MapJsonKey(ClaimTypes.NameIdentifier, "uid");
-            //    options.ClaimActions.MapJsonKey(ClaimTypes.Email, "email");
-            //    options.ClaimActions.MapJsonKey(ClaimTypes.GivenName, "first_name");
-            //    options.ClaimActions.MapJsonKey(ClaimTypes.Surname, "last_name");
-
-            //});
+            // Аутентификация Facebook
+            services.AddAuthentication().AddFacebook(options =>
+            {
+                options.AppId = Configuration.GetSection("Facebook_API").GetSection("ClientId").Value;
+                options.AppSecret = Configuration.GetSection("Facebook_API").GetSection("ClientSecret").Value;
+            });
 
             // Почта.
             services.AddTransient<IEmailSender, EmailSender>();
@@ -95,7 +78,10 @@ namespace TaskProject
         {
             if (env.IsDevelopment())
             {
+                
                 app.UseBrowserLink();
+
+                // Добавление поддержки ошибок для разработки
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
 
@@ -132,8 +118,14 @@ namespace TaskProject
                 });
             }
 
-            // Поддержка статических файлов
-            app.UseStaticFiles();
+            // Добавление кеширования статических файлов
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                OnPrepareResponse = ctx =>
+                {
+                    ctx.Context.Response.Headers.Add("Cache-Control", "public,max-age=600");
+                }
+            });
 
             // Поддержка аутентификации
             app.UseAuthentication();

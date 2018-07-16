@@ -1,5 +1,4 @@
-﻿$(document).ready(function () {
-
+﻿$(document).ready(function () { 
     $.ajaxSetup({ cache: false });
 
 // Popovers Bootstrap
@@ -173,10 +172,16 @@
                 $(".sw_modal_result").html(result);
             }
         });
-
     });
+
 });
 
+function keydownenter(event) {
+        if (event.keyCode == 13) {
+            event.preventDefault();
+            return false;
+        }
+};
 
 //Delete Element without load
 

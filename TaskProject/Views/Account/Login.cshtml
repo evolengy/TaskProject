@@ -53,18 +53,18 @@
                     <p>
                         @foreach (var provider in loginProviders)
                         {
-                            if (provider.Name == "VK")
+                            if (provider.Name == "Facebook")
                             {
-                                <button type="submit" class="btn btn-block btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">
-                                    <i class="fa fa-vk mr-2"></i>
-                                    Войти с помощью Vk
+                                <button type="submit" class="btn btn-block btn-primary" name="provider" value="@provider.Name" title="Войти используя ваш @provider.DisplayName аккаунт">
+                                    <i class="fa fa-facebook mr-2"></i>
+                                    Войти с помощью Facebook
                                 </button>
                             }
                             else if (provider.Name == "Google")
                             {
-                                <button type="submit" class="btn btn-block btn-danger" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">
+                                <button type="submit" class="btn btn-block btn-danger" name="provider" value="@provider.Name" title="Войти используя ваш @provider.DisplayName аккаунт">
                                     <i class="fa fa-google-plus mr-2"></i>
-                                    Google+
+                                    Войти с помощью Google+
                                 </button>
                             }
                         }
