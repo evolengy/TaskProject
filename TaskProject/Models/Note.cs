@@ -19,8 +19,9 @@ namespace TaskProject.Models
         public string Theme { get; set; }
         [Display(Name = "Текст")]
         public string Text { get; set; }
+        [Required(ErrorMessage = "Укажите дату создания заметки")]
         [Display(Name = "Дата создания")]
-        public DateTime DateCreate { get; set; }
+        public DateTime? DateCreate { get; set; }
 
         [ForeignKey("User")]
         public string UserId { get; set; }

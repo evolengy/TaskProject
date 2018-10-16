@@ -1,4 +1,4 @@
-﻿@model TaskProject.Models.Goal
+﻿@model TaskProject.Models.GoalModels.Goal
 
 @{
     Layout = null;
@@ -11,8 +11,9 @@
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
     <input type="hidden" asp-for="GoalId" />
-    <input type="hidden" asp-for="IsComplete" />
     <input type="hidden" asp-for="UserId" />
+    <input type="hidden" asp-for="IsComplete" />
+    <input type="hidden" asp-for="FinishCount" />
 
     <div class="form-group">
         <label asp-for="Name" class="control-label"></label>
@@ -35,29 +36,31 @@
             <div>
                 @Html.LabelFor(model => model.GoalStart, htmlAttributes: new { @class = "control-label" })
             </div>
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+
+            <div class="input-group date" id="GoalStart" data-target-input="nearest">
+                <input type="text" name="GoalStart" class="form-control datetimepicker-input" data-target="#GoalStart" value="@Model.GoalStart.Value.ToString("dd.MM.yyyy HH:mm")"/>
+                <div class="input-group-append" data-target="#GoalStart" data-toggle="datetimepicker">
+                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                 </div>
-                <input class="form-control" type="date" name="GoalStart" min="@Model.GoalStart.ToString("yyyy-MM-dd")" value="@Model.GoalStart.ToString("yyyy-MM-dd")" />
+                <span asp-validation-for="GoalStart" class="text-danger"></span>
             </div>
         </div>
         <div class="col-md-6 col-12 GoalEnd">
             <div>
                 @Html.LabelFor(model => model.GoalEnd, htmlAttributes: new { @class = "control-label" })
-            </div>
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fa fa-calendar"></i></span>
-                </div>
+            </div>       
+            <div class="input-group date" id="GoalEnd" data-target-input="nearest">
                 @if (Model.GoalEnd.HasValue)
                 {
-                    <input class="form-control d-inline-block" type="date" name="GoalEnd" min="@Model.GoalStart.ToString("yyyy-MM-dd")" value="@Model.GoalEnd.Value.ToString("yyyy-MM-dd")" />
+                    <input type="text" name="GoalEnd" class="form-control datetimepicker-input" data-target="#GoalEnd" value="@Model.GoalEnd.Value.ToString("dd.MM.yyyy HH:mm")"/>
                 }
                 else
                 {
-                    <input class="form-control d-inline-block" type="date" name="GoalEnd" min="@Model.GoalStart.ToString("yyyy-MM-dd")" />
+                    <input type="text" name="GoalEnd" class="form-control datetimepicker-input" data-target="#GoalEnd"/>
                 }
+                <div class="input-group-append" data-target="#GoalEnd" data-toggle="datetimepicker">
+                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                </div>
             </div>
         </div>
     </div>
@@ -78,6 +81,22 @@
     </div>
 </form>
 
+
+<script>
+    $('#GoalStart').datetimepicker({
+        locale: 'ru'
+    });
+    $('#GoalEnd').datetimepicker({
+        locale: 'ru',
+        useCurrent: false //Important! See issue #1075
+    });
+    $("#GoalStart").on("change.datetimepicker", function (e) {
+        $('#GoalEnd').datetimepicker('minDate', e.date);
+    });
+    $("#GoalEnd").on("change.datetimepicker", function (e) {
+        $('#GoalStart').datetimepicker('maxDate', e.date);
+    });
+</script>
 <script>
     $(document).ready(function () {
         CheckRepeate($("#RepeatId").val());

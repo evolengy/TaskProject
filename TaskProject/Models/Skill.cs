@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
+ using TaskProject.Models.GoalModels;
 
 namespace TaskProject.Models
 {
@@ -70,6 +71,7 @@ namespace TaskProject.Models
                 LvlUp?.Invoke(this, new NotificationEventArgs($"Уровень навыка {Name} повышен: {Lvl} уровень", UserId));
 
                 int ratingtemp = RatingId;
+
                 CheckRating();
 
                 if(ratingtemp != RatingId)

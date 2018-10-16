@@ -38,11 +38,11 @@
                                         <td>
                                             @if (reward.Cost <= ViewBag.Gold)
                                             {
-                                                <a href="@Url.Action("CompleteReward","Rewards",new { id = reward.UserRewardId})" class="btn btn-xs btn-outline-primary completereward"><i class=" fa fa-money"></i> @reward.Cost</a>
+                                                <a href="@Url.Action("CompleteReward","Rewards",new { id = reward.UserRewardId})" class="btn btn-xs btn-success completereward"><i class=" fa fa-money"></i> @reward.Cost</a>
                                             }
                                             else
                                             {
-                                                <a href="#" class="btn btn-xs btn-outline-dark completereward"><i class=" fa fa-money"></i>@reward.Cost</a>
+                                                <a href="#" class="btn btn-xs btn-danger completereward"><i class=" fa fa-money"></i> @reward.Cost</a>
                                             }
                                             <span class="pl-2">
                                                 @Html.DisplayFor(modelgoal => reward.Name)
@@ -55,7 +55,7 @@
                                         <td>
                                             <div class="pull-right btn-group">
                                                 <a class="js-editreward btn btn-xs btn-primary" data_dialog_title="Редактирование награды" href="@Url.Action("EditReward","Rewards",new {id = reward.UserRewardId })"><i class="fa fa-edit"></i></a>
-                                                <a class="js-deletereward btn btn-xs  btn-danger" href="#" onclick="deletereward(@reward.UserRewardId)"><i class="fa fa-trash-o"></i></a>
+                                                <a class="js-deletereward btn btn-xs  btn-danger" href="#" onclick="deletereward(@reward.UserRewardId)"><i class="fa fa-trash"></i></a>
                                             </div>
                                         </td>
                                     </tr>

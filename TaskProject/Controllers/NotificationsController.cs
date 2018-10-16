@@ -21,10 +21,13 @@ namespace TaskProject.Controllers
             usermanager = _usermanager;
         }
 
-
         public async Task<IActionResult> DeleteAllNotifications()
         {
             var user = await usermanager.GetUserAsync(User);
+            if (user == null)
+            {
+                RedirectToAction("Logout", "Account");
+            }
 
             var notifications = await db.Notifications.Where(n => n.UserId == user.Id).ToListAsync();
 

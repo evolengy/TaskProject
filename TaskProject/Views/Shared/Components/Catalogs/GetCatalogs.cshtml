@@ -1,4 +1,5 @@
-﻿@model IEnumerable<TaskProject.Models.Catalog>
+﻿@using TaskProject.Models.GoalModels
+@model IEnumerable<Catalog>
 
 <li class="nav-header">Списки задач</li>
 
@@ -10,48 +11,98 @@
         </p>
     </a>
 </li>
-@foreach (var item in Model)
+
+@{
+    Catalog catalog = Model.Where(c => c.Name == "Мои задачи").SingleOrDefault();
+
+    if (catalog != null)
+    {
+        <li class="d-flex nav-item" id="catalog-@catalog.CatalogId">
+            <a href="@Url.Action("GetGoals","Goals",new { catalogid = catalog.CatalogId})" class="nav-link nav-catalog">
+                <i class="nav-icon fa fa-calendar"></i>
+                <p style="padding-left:5px;">
+
+                    @if (catalog.Goals.Count(c => c.IsComplete == false) != 0)
+                    {
+                        if (catalog.Name.Length <= 15)
+                        {
+                            @catalog.Name
+                        }
+                        else
+                        {
+                            string cutstring = catalog.Name.Substring(0, 15) + "..";
+                            @cutstring
+                        }
+
+                        <span class="badge badge-info right">
+                            @catalog.Goals.Where(c => c.IsComplete == false).Count()
+                        </span>
+                    }
+                    else
+                    {
+                        if (catalog.Name.Length <= 15)
+                        {
+                            @catalog.Name
+                        }
+                        else
+                        {
+                            string cutstring = catalog.Name.Substring(0, 18) + "..";
+                            @cutstring
+                        }
+                    }
+                </p>
+            </a>
+        </li>
+    }
+}
+
+@foreach (var item in Model.OrderBy(c => c.Name))
 {
-    <li class="d-flex nav-item" id="catalog-@item.CatalogId">
-        <a href="@Url.Action("GetGoals","Goals",new { catalogid = item.CatalogId})" class="nav-link nav-catalog">
-            <i class="nav-icon fa fa-calendar"></i>
-            <p style="padding-left:5px;">
+    if (item.Name != "Мои задачи")
+    {
+        <li class="d-flex nav-item" id="catalog-@item.CatalogId">
+            <a href="@Url.Action("GetGoals","Goals",new { catalogid = item.CatalogId})" class="nav-link nav-catalog">
+                <i class="nav-icon fa fa-calendar"></i>
+                <p style="padding-left:5px;">
 
-                @if (item.Goals.Where(c => c.IsComplete == false).Count() != 0)
-                {
-                    if (item.Name.Length <= 15)
+                    @if (item.Goals.Where(c => c.IsComplete == false).Count() != 0)
                     {
-                        @item.Name
+                        if (item.Name.Length <= 15)
+                        {
+                            @item.Name
+                        }
+                        else
+                        {
+                            string cutstring = item.Name.Substring(0, 15) + "..";
+                            @cutstring
+                        }
+
+                        <span class="badge badge-info right">
+                            @item.Goals.Where(c => c.IsComplete == false).Count()
+                        </span>
                     }
                     else
                     {
-                        string cutstring = item.Name.Substring(0, 15) + "..";
-                        @cutstring
+                        if (item.Name.Length <= 15)
+                        {
+                            @item.Name
+                        }
+                        else
+                        {
+                            string cutstring = item.Name.Substring(0, 18) + "..";
+                            @cutstring
+                        }
                     }
+                </p>
+            </a>
+            
+            <div class="nav-tools">
+                <a style="display:block" class="js-editcatalog" data_dialog_title="Редактирование списка" href="@Url.Action("EditCatalog","Goals",new {id = item.CatalogId })"><i class="fa fa-edit"></i></a>
+                <a style="display:block" class="js-deletecatalog" href="#" onclick="deletecatalog(@item.CatalogId)"><i class="fa fa-trash"></i></a>
+            </div>
+        </li>
+    }
 
-                    <span class="badge badge-info right">
-                        @item.Goals.Where(c => c.IsComplete == false).Count()
-                    </span>
-                }
-                else
-                {
-                    if (item.Name.Length <= 15)
-                    {
-                        @item.Name
-                    }
-                    else
-                    {
-                        string cutstring = item.Name.Substring(0, 18) + "..";
-                        @cutstring
-                    }
-                }
-            </p>
-        </a>
-        <div class="nav-tools">
-            <a style="display:block" class="js-editcatalog" data_dialog_title="Редактирование списка" href="@Url.Action("EditCatalog","Goals",new {id = item.CatalogId })"><i class="fa fa-edit"></i></a>
-            <a style="display:block" class="js-deletecatalog" href="#" onclick="deletecatalog(@item.CatalogId)"><i class="fa fa-trash-o"></i></a>
-        </div>
-    </li>
 }
 
 <a class="mt-2 btn btn-info float-right js-addcatalog" data_dialog_title="Создание нового списка" href="@Url.Action("AddCatalog","Goals")"><i class="fa fa-plus"></i> Новый список</a>

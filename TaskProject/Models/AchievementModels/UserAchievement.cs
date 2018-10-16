@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace TaskProject.Models
+namespace TaskProject.Models.AchievementModels
 {
     public class UserAchievement
     {
@@ -27,17 +26,5 @@ namespace TaskProject.Models
         [ForeignKey("Achievement")]
         public int AchievementId { get; set; }
         public Achievement Achievement { get; set; }
-    }
-
-    public class Achievement
-    {
-        public int AchievementId { get; set; } 
-
-        [Display(Name="Название")]
-        public string Name { get; set; }
-        [Display(Name = "Описание")]
-        public string Description { get; set; }
-
-        public string LinkImg { get; set; }
     }
 }

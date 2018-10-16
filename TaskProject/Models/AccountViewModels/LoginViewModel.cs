@@ -8,12 +8,12 @@ namespace TaskProject.Models.AccountViewModels
 {
     public class LoginViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "Введите вашу электронную почту")]
         [EmailAddress]
         [Display(Name = "Электронная почта")]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Введите пароль")]
         [DataType(DataType.Password)]
         [Display(Name = "Пароль")]
         public string Password { get; set; }

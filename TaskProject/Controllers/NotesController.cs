@@ -24,6 +24,10 @@ namespace TaskProject.Controllers
         public async Task<IActionResult> ShowNotes()
         {
             var user = await userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                RedirectToAction("Logout", "Account");
+            }
 
             ViewBag.BreadCrumb = "Дневник";
             List<Note> notes = await db.Notes.Where(n => n.UserId == user.Id).ToListAsync();
@@ -42,16 +46,18 @@ namespace TaskProject.Controllers
         public async Task<IActionResult> AddNote(Note note)
         {
             ApplicationUser user = await userManager.GetUserAsync(User);
-
             if (user == null)
             {
-                return View("Index");
+                RedirectToAction("Logout", "Account");
             }
 
-            if (await db.Notes.AnyAsync(n => n.DateCreate == note.DateCreate && n.UserId == user.Id))
+            if (note.DateCreate != null)
             {
-                ModelState.AddModelError("DateCreate","Заметка с такой датой уже существует");
-            }
+                if (await db.Notes.AnyAsync(n => n.DateCreate.Value.Date == note.DateCreate.Value.Date && n.UserId == user.Id))
+                {
+                    ModelState.AddModelError("DateCreate", "Заметка с такой датой уже существует");
+                }
+            }    
 
             if (ModelState.IsValid)
             {

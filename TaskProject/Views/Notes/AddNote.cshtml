@@ -43,7 +43,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="fa fa-calendar"></i></span>
                                             </div>
-                                            <input class="form-control d-inline-block" type="date" asp-for="DateCreate" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
+                                            <input class="form-control d-inline-block" type="date" name="DateCreate" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
                                         </div>
                                         <span asp-validation-for="DateCreate" class="text-danger"></span>
                                     </div>
@@ -52,11 +52,11 @@
                                 {
                                     <div class="form-group col-md-4 col-8 mb-3">
                                         <label asp-for="DateCreate" class="control-label"></label>
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                        <div class="input-group date" id="DateCreate" data-target-input="nearest">
+                                            <input type="text" name="DateCreate" class="form-control datetimepicker-input" data-target="#DateCreate"/>
+                                            <div class="input-group-append" data-target="#DateCreate" data-toggle="datetimepicker">
+                                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                             </div>
-                                            <input class="form-control d-inline-block" type="date" asp-for="DateCreate" />
                                         </div>
                                         <span asp-validation-for="DateCreate" class="text-danger"></span>
                                     </div>
@@ -84,6 +84,10 @@
     <script src="~/plugins/summernote/summernote-bs4.min.js"></script>
     <script>
         $(document).ready(function () {
+            $('#DateCreate').datetimepicker({
+                locale: 'ru'
+            });
+
             $("#Text").summernote({
                 height: 400,
                 focus: true

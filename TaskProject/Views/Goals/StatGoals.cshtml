@@ -1,0 +1,132 @@
+﻿@using TaskProject.Models.GoalModels
+@model IEnumerable<Goal>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    float all = Model.Count(g => g.IsComplete && g.GoalEnd.HasValue);
+    float lastMonth = Model.Count(g => g.IsComplete && g.GoalEnd.HasValue && g.GoalEnd.Value.Month == DateTime.Now.Month - 1);
+    float curMonth = Model.Count(g => g.IsComplete && g.GoalEnd.HasValue && g.GoalEnd.Value.Month == DateTime.Now.Month);
+
+    float procent;
+
+    Goal bestGoal = new Goal();
+    Goal passGoal = new Goal();
+
+    if (lastMonth == 0 && curMonth == 0)
+    {
+        procent = 0;
+    }
+    else if ((lastMonth == 0 && curMonth != 0) || (lastMonth != 0 && curMonth == 0))
+    {
+        procent = 100;
+    }
+    else
+    {
+        procent = (curMonth - lastMonth / lastMonth) * 100;
+    }
+
+    if (Model.Any(g => !g.IsComplete))
+    {
+        int maxFinishCount = Model.Where(g => !g.IsComplete).Max(g => g.FinishCount);
+        bestGoal = Model.First(g => g.FinishCount == maxFinishCount && !g.IsComplete);
+
+        int maxPassCount = Model.Where(g => !g.IsComplete).Max(g => g.PassCount);
+        passGoal = Model.First(g => g.PassCount == maxPassCount && !g.IsComplete);
+    }
+}
+
+<section class="content">
+    <div class="container-fluid">       
+        <div class="row">
+
+            <div class="col-md-6 col-sm-6 col-12">
+                <div class="info-box">
+                    <span class="info-box-icon bg-info"><i class="fa fa-star"></i></span>
+
+                    <div class="info-box-content">
+                        <span class="info-box-text">Количество всех выполненных задач</span>
+                        <span class="info-box-number">@all</span>
+                        <span class="info-box-more">Все задачи</span>
+                    </div>
+                </div>
+            </div>
+            
+            @if (Model.Any(g => !g.IsComplete))
+            {
+                <div class="col-md-6 col-sm-6 col-12">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-success"><i class="fa fa-flag"></i></span>
+
+                        <div class="info-box-content">
+                            <span class="info-box-text">Самая продолжительная задача</span>
+
+                            <span class="info-box-number">Количество выполнений: @bestGoal.FinishCount</span>
+                            <span class="info-box-more">@bestGoal.Name</span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-6 col-sm-6 col-12">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-danger-gradient"><i class="fa fa-thumbs-down"></i></span>
+
+                        <div class="info-box-content">
+                            <span class="info-box-text">Задача с большим пропуском</span>
+
+                            <span class="info-box-number">Количество пропусков: @passGoal.PassCount</span>
+                            <span class="info-box-more">@passGoal.Name</span>
+                        </div>
+                    </div>
+                </div>
+            }
+            
+        </div>
+
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-12">
+
+                    @if (lastMonth > curMonth)
+                    {
+                        <div class="info-box bg-danger-gradient">
+                            <span class="info-box-icon"><i class="fa fa-calendar"></i></span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-text">Количество выполненных задач за месяц</span>
+                                <span class="info-box-number">@curMonth</span>
+
+                                <div class="progress">
+                                    <div class="progress-bar" style="width: @procent%"></div>
+                                </div>
+                                <span class="progress-description">
+                                    На @procent% меньше задач за последний месяц
+                                </span>
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="info-box bg-warning-gradient">
+                            <span class="info-box-icon"><i class="fa fa-calendar"></i></span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-text">Количество выполненных задач за месяц</span>
+                                <span class="info-box-number">@curMonth</span>
+
+                                <div class="progress">
+                                    <div class="progress-bar" style="width: @procent%"></div>
+                                </div>
+                                <span class="progress-description">
+                                    На @procent% больше задач за последний месяц
+                                </span>
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+</section>

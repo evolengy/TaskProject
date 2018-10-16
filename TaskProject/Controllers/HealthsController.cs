@@ -26,7 +26,7 @@ namespace TaskProject.Controllers
             var user = await usermanager.GetUserAsync(User);
             if (user == null)
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Logout", "Account");
             }
 
             Health health = await db.Healths.Where(h => h.UserId == user.Id).Include(h => h.UserListGrowth).Include(h => h.UserListWeight).SingleOrDefaultAsync();
@@ -50,7 +50,7 @@ namespace TaskProject.Controllers
             var user = await usermanager.GetUserAsync(User);
             if (user == null)
             {
-                return View("Index", "Home");
+                return RedirectToAction("Logout", "Account");
             }
 
             ViewSetProfileModel view = new ViewSetProfileModel();
@@ -323,7 +323,7 @@ namespace TaskProject.Controllers
 
             if (user == null)
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Logout", "Account");
             }
 
 

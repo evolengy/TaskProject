@@ -27,7 +27,8 @@ namespace TaskProject
                 try
                 {
                     var context = services.GetRequiredService<ApplicationDbContext>();
-                    ApplicationStore.Initialize(context);
+                    context.Initialize();
+
                 }
                 catch (Exception ex)
                 {
@@ -42,7 +43,9 @@ namespace TaskProject
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
-            .UseIISIntegration()
+                //Устанавливаем наименьший уровень логов
+                //.ConfigureLogging(logging => logging.SetMinimumLevel(LogLevel.Warning))
+                .UseIISIntegration()
                 .Build();
     }
 }

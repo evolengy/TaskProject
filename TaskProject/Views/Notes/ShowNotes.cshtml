@@ -36,14 +36,14 @@
                                             @Html.DisplayFor(modelnote => note.Theme)
                                         </td>
                                         <td>
-                                            @note.DateCreate.ToShortDateString()
+                                            @note.DateCreate.Value.ToShortDateString()
                                         </td>
                                         <td>
                                             <div class="pull-right">
-                                                <a class="btn btn-info d-inline-block" href="@Url.Action("ShowNote","Notes",new {id = note.NoteId })"><i class="fa fa-edit"></i> Редактировать</a>
+                                                <a class="btn btn-info d-inline-block" href="@Url.Action("ShowNote","Notes",new {id = note.NoteId })"><i class="fa fa-edit"></i></a>
                                                 <form asp-action="DeleteNote" asp-controller="Notes" class="d-inline-block">
                                                     <input type="hidden" name="Id" value="@note.NoteId"/>
-                                                    <button type="submit" class="btn btn-danger"><i class="fa fa-trash-o"></i> Удалить</button>
+                                                    <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
                                                 </form>
                                             </div>
                                         </td>
@@ -67,6 +67,12 @@
     <script>
         $(document).ready(function () {
             $('.sw_datatable').DataTable({
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
+                "ordering": true,
+                "info": false,
+                "autoWidth": false,
                 language: {
                     processing: "Выполняется обработка...",
                     search: "Поиск&nbsp;:",

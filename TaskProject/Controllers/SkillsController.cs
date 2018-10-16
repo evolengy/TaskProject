@@ -36,7 +36,7 @@ namespace TaskProject.Controllers
                 var user = await usermanager.GetUserAsync(User);
                 if (user == null)
                 {
-                    return View("Index");
+                    RedirectToAction("Logout", "Account");
                 }
 
                 skill.UserId = user.Id;

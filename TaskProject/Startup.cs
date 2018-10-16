@@ -1,19 +1,17 @@
 ﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Rewrite;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using TaskProject.Models;
-using TaskProject.Services;
-using TaskProject;
 using Microsoft.Extensions.FileProviders;
-using System.IO;
-using System.Security.Claims;
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.Extensions.Logging;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Rewrite;
+using System;
+using System.IO;
+using TaskProject.Models;
+using TaskProject.Services.EmailSender;
 
 namespace TaskProject
 {
@@ -33,9 +31,10 @@ namespace TaskProject
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+        // Подключение сервисов
         public void ConfigureServices(IServiceCollection services)
         {
+            // Подключение контекста базы данных
             services.AddDbContext<ApplicationDbContext>(options =>
              options.UseSqlServer(Configuration.GetConnectionString("DbConnection")));
 
@@ -58,7 +57,6 @@ namespace TaskProject
                 options.ClientSecret = Configuration.GetSection("Google_API").GetSection("ClientSecret").Value;
             });
 
-
             // Аутентификация Facebook
             services.AddAuthentication().AddFacebook(options =>
             {
@@ -74,20 +72,20 @@ namespace TaskProject
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            // Логи
+            loggerFactory.AddFile($"Logs\\ErrorLog-{DateTime.Now.Date.ToString("dd-MM-yyyy")}.txt");
+
             if (env.IsDevelopment())
             {
-                
                 app.UseBrowserLink();
 
                 // Добавление поддержки ошибок для разработки
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
 
-                // Добавляем поддержку каталога node_modules
-                // Заккоментировать при публикации на хостинг
-
+                // Добавляем поддержку каталога node_modules, в продакшене не нужен
                 app.UseFileServer(new FileServerOptions()
                 {
                     FileProvider = new PhysicalFileProvider(
@@ -99,15 +97,14 @@ namespace TaskProject
             }
             else
             {
+
                 //Редирект с HTTP на HTTPS
-                var rewriteoptions = new RewriteOptions()
-    .AddRedirectToHttpsPermanent();
+                var rewriteoptions = new RewriteOptions().AddRedirectToHttpsPermanent();
                 app.UseRewriter(rewriteoptions);
 
                 //Обработка ошибок в продакшене
                 app.UseStatusCodePagesWithReExecute("/Home/Error/{0}");
                 app.UseExceptionHandler("/Home/Error");
-
 
                 // Открыть доступ для регистрации LetsEncrypt
                 app.UseStaticFiles(new StaticFileOptions
@@ -117,6 +114,7 @@ namespace TaskProject
                     ServeUnknownFileTypes = true
                 });
             }
+
 
             // Добавление кеширования статических файлов
             app.UseStaticFiles(new StaticFileOptions

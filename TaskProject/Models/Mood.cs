@@ -17,6 +17,7 @@ namespace TaskProject.Models
 
         public int UserMoodId { get; set; }
         public DateTime Date { get; set; }
+        public string Comment { get; set; }
 
         [ForeignKey("Mood")]
         public int MoodId { get; set; }

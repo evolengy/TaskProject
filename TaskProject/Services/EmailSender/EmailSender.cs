@@ -1,13 +1,9 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
 using SendGrid;
 using SendGrid.Helpers.Mail;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace TaskProject.Services
+namespace TaskProject.Services.EmailSender
 {
     // This class is used by the application to send email for account confirmation and password reset.
     // For more details see https://go.microsoft.com/fwlink/?LinkID=532713

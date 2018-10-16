@@ -24,6 +24,11 @@ namespace TaskProject.Controllers
         public async Task<IActionResult> GetAtributes()
         {
             var user = await usermanager.GetUserAsync(User);
+            if (user == null)
+            {
+                RedirectToAction("Logout", "Account");
+            }
+
             var atributes = await db.Atributes.Where(a => a.UserId == user.Id).ToListAsync();
 
             ViewBag.BreadCrumb = "Характеристики";

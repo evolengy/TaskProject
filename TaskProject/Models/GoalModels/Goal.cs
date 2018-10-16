@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace TaskProject.Models
+namespace TaskProject.Models.GoalModels
 {
     public class Goal
     {
@@ -14,6 +14,8 @@ namespace TaskProject.Models
         {
             GoalEnd = null;
             IsComplete = false;
+            FinishCount = 0;
+            SeriesCount = 0;
 
             SkillId = null;
             Skill = null;
@@ -26,14 +28,18 @@ namespace TaskProject.Models
         public string Name { get; set; }
         [Display(Name = "Описание"), MaxLength(250, ErrorMessage = "Превышено максимальное количество знаков в описании задачи - 250")]
         public string Description { get; set; }
+        [Required(ErrorMessage = "Укажите дату начала задачи")]
         [Display(Name = "Начало задачи")]
-        public DateTime GoalStart { get; set; }
+        public DateTime? GoalStart { get; set; }
         [Display(Name = "Окончание задачи")]
         public DateTime? GoalEnd { get; set; }
 
         [Display(Name = "Выполнение")]
         public bool IsComplete { get; set; } 
 
+        public int FinishCount { get; set; }
+        public int SeriesCount { get; set; }
+        public int PassCount { get; set; }
 
         [ForeignKey("Repeat")]
         public int RepeatId { get; set; }
@@ -56,44 +62,6 @@ namespace TaskProject.Models
         public int? SkillId { get; set; }
         [Display(Name = "Навык")]
         public virtual Skill Skill { get; set; }
-    }
-
-    public class Catalog
-    {
-        public Catalog()
-        {
-            Goals = new List<Goal>();
         }
-
-        public int CatalogId { get; set; }
-
-        [Required]
-        [Display(Name="Имя"), MaxLength(30, ErrorMessage = "Превышено максимальное количество знаков в названии списка - 30")]
-        public string Name { get; set; }
-
-        [ForeignKey("User")]
-        public string UserId { get; set; }
-        public ApplicationUser User { get; set; }
-
-        public List<Goal> Goals { get; set; }
     }
-
-    public class Repeat
-    {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int RepeatId { get; set; }
-        [Display(Name = "Повтор")]
-        public string Name { get; set; }
-    }
-
-    public class Complication
-    {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int ComplicationId { get; set; }
-        [Display(Name = "Сложность")]
-        public string Name { get; set; }
-        public int Exp { get; set; }
-        public int Gold { get; set; }
-        public int Damage { get; set; }
-    }
-}
+   

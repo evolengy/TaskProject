@@ -5,6 +5,7 @@ using TaskProject.Services;
 using TaskProject;
 using Microsoft.Extensions.Configuration;
 using System.Threading.Tasks;
+using TaskProject.Services.EmailSender;
 
 namespace TaskProject.Controllers
 {

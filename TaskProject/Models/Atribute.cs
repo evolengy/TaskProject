@@ -49,44 +49,85 @@ namespace TaskProject.Models
         }
 
 
+        //public string GetImgPath()
+        //{
+        //    string path;
+        //    switch (Name)
+        //    {
+        //        case "Сила":
+        //            {
+        //                return path = "/img/atribute/shield.svg";
+        //            }
+        //        case "Здоровье":
+        //            {
+        //                return path = "/img/atribute/pulse.svg";
+        //            }
+        //        case "Интеллект":
+        //            {
+        //                return path = "/img/atribute/brain.svg";
+        //            }
+        //        case "Харизма":
+        //            {
+        //                return path = "/img/atribute/chat.svg";
+        //            }
+        //        case "Профессионализм":
+        //            {
+        //                return path = "/img/atribute/pencil-ruler-pen.svg";
+        //            }
+        //        case "Известность":
+        //            {
+        //                return path = "/img/atribute/team.svg";
+        //            }
+        //        case "Психика":
+        //            {
+        //                return path = "/img/atribute/sad.svg";
+        //            }
+
+        //        default:
+        //            {
+        //                return path = null;
+        //            }
+        //    }
+        //}
+
         public string GetImgPath()
         {
             string path;
             switch (Name)
             {
                 case "Сила":
-                    {
-                        return path = "/img/atribute/shield.svg";
-                    }
+                {
+                    return path = "fa fa-dumbbell";
+                }
                 case "Здоровье":
-                    {
-                        return path = "/img/atribute/pulse.svg";
-                    }
+                {
+                    return path = "fa fa-heart";
+                }
                 case "Интеллект":
-                    {
-                        return path = "/img/atribute/brain.svg";
-                    }
+                {
+                    return path = "fa fa-brain";
+                }
                 case "Харизма":
-                    {
-                        return path = "/img/atribute/chat.svg";
-                    }
+                {
+                    return path = "fa fa-comments";
+                }
                 case "Профессионализм":
-                    {
-                        return path = "/img/atribute/pencil-ruler-pen.svg";
-                    }
+                {
+                    return path = "fa fa-briefcase";
+                }
                 case "Известность":
-                    {
-                        return path = "/img/atribute/team.svg";
-                    }
+                {
+                    return path = "fa fa-users";
+                }
                 case "Психика":
-                    {
-                        return path = "/img/atribute/sad.svg";
-                    }
+                {
+                    return path = "fa fa-eye";
+                }
 
                 default:
-                    {
-                        return path = null;
-                    }
+                {
+                    return path = null;
+                }
             }
         }
     }

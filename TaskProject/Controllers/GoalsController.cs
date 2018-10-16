@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -9,6 +10,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using TaskProject;
 using TaskProject.Models;
+using TaskProject.Models.GoalModels;
 
 namespace TaskProject.Controllers
 {
@@ -20,21 +22,20 @@ namespace TaskProject.Controllers
         public GoalsController(ApplicationDbContext _db, UserManager<ApplicationUser> _userManager)
         {
             db = _db;
-            
+
             usermanager = _userManager;
         }
 
         //Goals
 
-        public async Task<IActionResult> GetGoals(int? catalogid = null , bool iscomplete = false )
+        public async Task<IActionResult> GetGoals(int? catalogid = null, bool iscomplete = false)
         {
             ViewBag.Complete = true;
 
             var user = await usermanager.GetUserAsync(User);
-
             if (user == null)
             {
-                return View("Index");
+                RedirectToAction("Logout", "Account");
             }
 
             List<Goal> goals = new List<Goal>();
@@ -49,7 +50,7 @@ namespace TaskProject.Controllers
             {
                 Catalog catalog = db.Catalogs.Where(c => c.CatalogId == catalogid).SingleOrDefault();
 
-                if(catalog == null)
+                if (catalog == null)
                 {
                     return RedirectToAction("GetGoals", catalogid = null);
                 }
@@ -68,62 +69,49 @@ namespace TaskProject.Controllers
             return View(goals.ToList());
         }
 
+
+        public async Task<IActionResult> StatGoals()
+        {
+            var user = await usermanager.GetUserAsync(User);
+            if (user == null)
+            {
+                RedirectToAction("Logout", "Account");
+            }
+
+            List<Goal> goals = await db.Goals.Where(g => g.UserId == user.Id).Include(g => g.Repeat).Include(g => g.Complication).Include(g => g.Skill).ToListAsync();
+
+            ViewBag.BreadCrumb = "Статистика задач";
+            return View(goals.ToList());
+        }
+
         public async Task<IActionResult> AddGoal(int catalogid)
         {
             List<SelectListItem> skills = new SelectList(db.Skills.Where(s => s.UserId == usermanager.GetUserId(User)), "SkillId", "Name").ToList();
             skills.Insert(0, new SelectListItem() { Text = "Нет", Value = "0" });
 
-            var catalogs = await db.Catalogs.Where(c => c.UserId == usermanager.GetUserId(User)).ToListAsync();
+            ViewBag.CatalogId
+                = new SelectList(await db.Catalogs.Where(c => c.UserId == usermanager.GetUserId(User)).OrderBy(c => c.Name).ToListAsync(), "CatalogId", "Name", db.Catalogs.Where(c => c.CatalogId == catalogid)).ToList();
 
+            ViewBag.SkillId = skills;
             ViewBag.RepeatId = new SelectList(await db.Repeats.ToListAsync(), "RepeatId", "Name");
             ViewBag.ComplicationId = new SelectList(await db.Complications.ToListAsync(), "ComplicationId", "Name");
-            ViewBag.CatalogId = new SelectList(catalogs, "CatalogId", "Name", catalogs.Where(c => c.CatalogId == catalogid));
-            ViewBag.SkillId = skills;
             return View();
         }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddGoal(Goal goal)
         {
+
             if (ModelState.IsValid)
             {
                 var user = await usermanager.GetUserAsync(User);
                 if (user == null)
                 {
-                    return RedirectToAction("Index","Home");
-                }
-
-                switch (goal.RepeatId)
-                {
-                    case 1:
-                        {
-                            break;
-                        }
-                    default:
-                        {
-                            goal.GoalEnd = goal.GoalStart;
-                            break;
-                        }
-                }
-
-                if (goal.SkillId == 0)
-                {
-                    goal.SkillId = null;
+                    return RedirectToAction("Logout", "Account");
                 }
 
                 goal.UserId = user.Id;
-
-                await db.Goals.AddAsync(goal);
-
-                await db.Notifications.AddAsync(new Notification()
-                {
-                    Name = "Новая задача добавлена: " + goal.Name,
-                    DateCreate = DateTime.Now,
-                    UserId = user.Id
-                });
-
-                await db.SaveChangesAsync();
+                await db.AddGoalAsync(goal);
 
                 ViewBag.Message = "Задача успешно добавлена.";
                 return PartialView("_Success");
@@ -132,9 +120,9 @@ namespace TaskProject.Controllers
             List<SelectListItem> skills = new SelectList(db.Skills.Where(s => s.UserId == usermanager.GetUserId(User)), "SkillId", "Name").ToList();
             skills.Insert(0, new SelectListItem() { Text = "Нет", Value = "0" });
 
-            ViewBag.RepeatId = new SelectList(await db.Repeats.ToListAsync(), "RepeatId", "Name",goal.RepeatId);
+            ViewBag.RepeatId = new SelectList(await db.Repeats.ToListAsync(), "RepeatId", "Name", goal.RepeatId);
             ViewBag.ComplicationId = new SelectList(await db.Complications.ToListAsync(), "ComplicationId", "Name", goal.ComplicationId);
-            ViewBag.CatalogId = new SelectList(await db.Catalogs.Where(c => c.UserId == usermanager.GetUserId(User)).ToListAsync(), "CatalogId", "Name",goal.CatalogId);
+            ViewBag.CatalogId = new SelectList(await db.Catalogs.Where(c => c.UserId == usermanager.GetUserId(User)).ToListAsync(), "CatalogId", "Name", goal.CatalogId);
             ViewBag.SkillId = skills;
 
             return PartialView(goal);
@@ -149,12 +137,12 @@ namespace TaskProject.Controllers
                 return NotFound();
             }
 
-            List<SelectListItem> skills = new SelectList(db.Skills.Where(s => s.UserId == usermanager.GetUserId(User)), "SkillId", "Name", goal.SkillId).ToList();
+            List<SelectListItem> skills = new SelectList(db.Skills.Where(s => s.UserId == usermanager.GetUserId(User)).OrderBy(s => s.Name), "SkillId", "Name", goal.SkillId).ToList();
             skills.Insert(0, new SelectListItem() { Text = "Нет", Value = "0" });
 
             ViewBag.RepeatId = new SelectList(db.Repeats, "RepeatId", "Name", goal.RepeatId);
             ViewBag.ComplicationId = new SelectList(db.Complications, "ComplicationId", "Name", goal.ComplicationId);
-            ViewBag.CatalogId = new SelectList(await db.Catalogs.Where(c => c.UserId == usermanager.GetUserId(User)).ToListAsync(), "CatalogId", "Name", goal.CatalogId);
+            ViewBag.CatalogId = new SelectList(await db.Catalogs.Where(c => c.UserId == usermanager.GetUserId(User)).OrderBy(c => c.Name).ToListAsync(), "CatalogId", "Name", goal.CatalogId);
             ViewBag.SkillId = skills;
             return View(goal);
         }
@@ -163,43 +151,10 @@ namespace TaskProject.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EditGoal(Goal goal)
         {
+
             if (ModelState.IsValid)
             {
-                if (goal.SkillId == 0)
-                {
-                    goal.SkillId = null;
-                }
-
-                switch (goal.RepeatId)
-                {
-                    case 1:
-                        {
-                            break;
-                        }
-                    default:
-                        {
-                            goal.GoalEnd = goal.GoalStart;
-                            break;
-                        }
-                }
-
-                try
-                {
-                    db.Update(goal);
-                    await db.SaveChangesAsync();
-                }
-
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!GoalExists(goal.GoalId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                await db.EditGoalAsync(goal);
 
                 ViewBag.Message = "Задача успешно изменена.";
                 return PartialView("_Success");
@@ -208,35 +163,30 @@ namespace TaskProject.Controllers
             List<SelectListItem> skills = new SelectList(db.Skills.Where(s => s.UserId == usermanager.GetUserId(User)), "SkillId", "Name").ToList();
             skills.Insert(0, new SelectListItem() { Text = "Нет", Value = "0" });
 
-            ViewBag.RepeatId = new SelectList(db.Repeats, "RepeatId", "Name",goal.RepeatId);
+            ViewBag.RepeatId = new SelectList(db.Repeats, "RepeatId", "Name", goal.RepeatId);
             ViewBag.ComplicationId = new SelectList(db.Complications, "ComplicationId", "Name", goal.ComplicationId);
-            ViewBag.CatalogId = new SelectList(await db.Catalogs.Where(c => c.UserId == usermanager.GetUserId(User)).ToListAsync(), "CatalogId", "Name",goal.CatalogId);
+            ViewBag.CatalogId = new SelectList(await db.Catalogs.Where(c => c.UserId == usermanager.GetUserId(User)).ToListAsync(), "CatalogId", "Name", goal.CatalogId);
             ViewBag.SkillId = skills;
             return PartialView(goal);
         }
 
         [HttpPost]
-        public async Task <IActionResult> DeleteGoal(int? id)
+        public async Task<IActionResult> DeleteGoal(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
+
             Goal goal = await db.Goals.FindAsync(id);
+
             if (goal == null)
             {
                 return NotFound();
             }
 
-            await db.Notifications.AddAsync(new Notification()
-            {
-                Name = "Задача удалена: " + goal.Name,
-                DateCreate = DateTime.Now,
-                UserId = goal.UserId
-            });
+            await db.DeleteGoalAsync(goal);
 
-            db.Goals.Remove(goal);
-            await db.SaveChangesAsync();
             return Ok();
         }
 
@@ -248,77 +198,6 @@ namespace TaskProject.Controllers
             }
 
             Goal goal = await db.Goals.Where(g => g.GoalId == id)
-                .Include(g => g.User)
-                .Include(g => g.Skill)
-                .Include(g=>g.Skill.Atribute)
-                .Include(g => g.Complication)
-                .Include(g => g.Repeat)
-                .SingleOrDefaultAsync();
-
-            if (goal == null)
-            {
-                return NotFound();
-            }
-
-            switch (goal.RepeatId)
-            {
-                case 1:
-                    {
-                        goal.IsComplete = true;
-                        break;
-                    }
-                case 2:
-                    {
-                        goal.GoalEnd = goal.GoalEnd.Value.AddDays(1);
-                        break;
-                    }
-                case 3:
-                    {
-                        goal.GoalEnd = goal.GoalEnd.Value.AddMonths(1);
-                        break;
-                    }
-                case 4:
-                    {
-                        goal.GoalEnd = goal.GoalEnd.Value.AddYears(1);
-                        break;
-                    }
-            }
-            goal.User.CurrentExp = goal.User.CurrentExp + goal.Complication.Exp;
-            goal.User.CurrentGold = goal.User.CurrentGold + goal.Complication.Gold;
-
-            if (goal.Skill != null)
-            {
-                goal.Skill.LvlUp += AddNotification;
-                goal.Skill.RatingUp += AddNotification;
-
-                goal.Skill.ExpUp();
-            }
-
-            goal.User.CheckLvl();
-
-            await db.Notifications.AddAsync(new Notification()
-            {
-                Name = "Задача выполнена: " + goal.Name,
-                DateCreate = DateTime.Now,
-                UserId = goal.UserId
-            });
-
-            await db.SaveChangesAsync();
-
-            ViewBag.Message = "Задача выполнена - " +  goal.Name;
-            return PartialView("_Success");
-        }
-
-
-        public async Task<IActionResult> RestoreGoal(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            Goal goal = await db.Goals.Where(g => g.GoalId == id)
-                .Include(g => g.User)
                 .Include(g => g.Skill)
                 .Include(g => g.Skill.Atribute)
                 .Include(g => g.Complication)
@@ -330,9 +209,39 @@ namespace TaskProject.Controllers
                 return NotFound();
             }
 
-            goal.IsComplete = false;
+            var user = await usermanager.GetUserAsync(User);
 
-            await db.SaveChangesAsync();
+            if (user == null)
+            {
+                RedirectToAction("Logout", "Account");
+            }
+
+            await db.CompleteGoal(goal, user);
+
+            ViewBag.Message = "Задача выполнена - " + goal.Name;
+            return PartialView("_Success");
+        }
+
+        public async Task<IActionResult> RestoreGoal(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            Goal goal = await db.Goals.Where(g => g.GoalId == id)
+                .Include(g => g.Skill)
+                .Include(g => g.Skill.Atribute)
+                .Include(g => g.Complication)
+                .Include(g => g.Repeat)
+                .SingleOrDefaultAsync();
+
+            if (goal == null)
+            {
+                return NotFound();
+            }
+
+            await db.RestoreGoal(goal);
 
             ViewBag.Message = "Задача восстановлена - " + goal.Name;
             return PartialView("_Success");
@@ -361,7 +270,7 @@ namespace TaskProject.Controllers
                 var user = await usermanager.GetUserAsync(User);
                 if (user == null)
                 {
-                    RedirectToAction("Index", "Home");
+                    RedirectToAction("Logout", "Account");
                 }
 
                 catalog.UserId = user.Id;
@@ -451,18 +360,7 @@ namespace TaskProject.Controllers
             return Ok();
         }
 
-        private void AddNotification(object sender, NotificationEventArgs e)
-        {
 
-            db.Notifications.Add(new Notification()
-            {
-                Name = e.Name,
-                DateCreate = DateTime.Now,
-                UserId = e.UserId
-            });
-
-            db.SaveChanges();
-        }
 
         private bool CatalogExists(int id)
         {

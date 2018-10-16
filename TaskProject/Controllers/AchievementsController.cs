@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using TaskProject.Models;
+using TaskProject.Models.AchievementModels;
 
 namespace TaskProject.Controllers
 {
@@ -27,24 +28,11 @@ namespace TaskProject.Controllers
 
             if(user == null)
             {
-                RedirectToAction("Index", "Home");
+                RedirectToAction("Logout", "Account");
             }
 
             var dbUser = await db.Users.Where(u => u.Id == user.Id).Include(u => u.UserAchievements).SingleOrDefaultAsync();
-
-            var dbAchievements = await db.Achievements.ToListAsync();
-
-            foreach(var achievement in dbAchievements)
-            {
-                if(!dbUser.UserAchievements.Exists(a => a.AchievementId == achievement.AchievementId))
-                {
-                    user.UserAchievements.Add(new UserAchievement()
-                    {
-                        Achievement = achievement
-                    });
-                }
-            }
-            await db.SaveChangesAsync();
+            await db.GetAchievementsAsync(dbUser);
 
             ViewBag.BreadCrumb = "Достижения";
 

@@ -15,6 +15,7 @@
 
 <body class="hold-transition sidebar-mini" style="background-color:#e9ecef">
 
+    <!-- Модальное окно по умолчанию -->
     <div class="sw_modal modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -37,270 +38,271 @@
         </div>
     </div>
 
-
-    @if (!User.Identity.IsAuthenticated || ViewBag.SetProfile == false)
+    <!-- Для неавторизованного пользователя -->
+    @if (!User.Identity.IsAuthenticated)
     {
-        if (ViewBag.SetProfile == false)
-        {
-            <div class="container-fluid">
-                <div class="row align-items-center justify-content-center" style="height:100vh;">
-                    <div class="col-md-8 col-12">
-                        <div class="card">
-                            <div class="card-body">
-                                @RenderBody()
-                            </div>
+        <div class="container-fluid">
+            <div class="row align-items-center justify-content-center">
+                <div class="register-box">
+                    <div class="register-logo">
+                        Evolve Me!
+                    </div>
+                    <div class="card">
+                        <div class="card-body register-card-body">
+                            @RenderBody()
                         </div>
                     </div>
                 </div>
             </div>
-        }
-        else
-        {
-            <div class="register-box">
-                <div class="register-logo">
-                    Evolve Me!
-                </div>
-                <div class="card">
-                    <div class="card-body register-card-body">
-                        @RenderBody()
-                    </div>
-                </div>
-            </div>
+        </div>
 
-            <!-- jQuery -->
-            <script src="~/plugins/jquery/jquery.min.js"></script>
+        <!-- jQuery -->
+        <script src="~/plugins/jquery/jquery.min.js"></script>
 
-            <!-- Bootstrap 4 -->
-            <script src="~/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-        }
+        <!-- Bootstrap 4 -->
+        <script src="~/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     }
     else
     {
-        <div class="wrapper">
-            <!-- Navbar -->
-            <nav class="main-header navbar navbar-expand bg-white navbar-light border-bottom">
+    <div class="wrapper">
+        <!-- Верхнее меню -->
+        <nav class="main-header navbar navbar-expand bg-white navbar-light border-bottom">
 
-                <!-- Left navbar links -->
-                <ul class="navbar-nav gamburger">
-                    <li class="nav-item">
-                        <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
-                    </li>
+            <!-- Гамбургер -->
+            <ul class="navbar-nav gamburger">
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
+                </li>
 
-                </ul>
+            </ul>
 
-                <!-- Right navbar links -->
-                <ul class="navbar-nav ml-auto">
+            <!-- Правое меню -->
+            <ul class="navbar-nav ml-auto">
 
-                    @await Component.InvokeAsync("Notifications")
+                @await Component.InvokeAsync("Notifications")
 
-                    <!-- Help Dropdown Menu-->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link" data-toggle="dropdown" href="#">
-                            <span>Помощь</span>
+                <!-- Help Dropdown Menu-->
+                <li class="nav-item dropdown">
+                    <a class="nav-link" data-toggle="dropdown" href="#">
+                        <span>Помощь</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <span class="dropdown-item dropdown-header">Решение вопросов</span>
+                        <div class="dropdown-divider"></div>
+                        <a href="@Url.Action("FAQ","Info")" class="dropdown-item">
+                            Руководство
                         </a>
-                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                            <span class="dropdown-item dropdown-header">Решение вопросов</span>
-                            <div class="dropdown-divider"></div>
-                            <a href="@Url.Action("FAQ","Info")" class="dropdown-item">
-                                Руководство
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a href="@Url.Action("QuestionAndSuggestion","Info")" class="dropdown-item">
-                                Вопросы и предложения
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a href="@Url.Action("Report","Info")" class="dropdown-item">
-                                Сообщить об ошибке
-                            </a>
-                        </div>
-                    </li>
-
-                    <!-- Profile Dropdown Menu-->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link" data-toggle="dropdown" href="#">
-                            <span>Профиль</span>
+                        <div class="dropdown-divider"></div>
+                        <a href="@Url.Action("QuestionAndSuggestion","Info")" class="dropdown-item">
+                            Вопросы и предложения
                         </a>
-                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                            <span class="dropdown-item dropdown-header">Управление пользователем</span>
-                            <div class="dropdown-divider"></div>
-                            <a href="@Url.Action("Index","Manage")" class="dropdown-item">
-                                Настройка профиля
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a href="@Url.Action("Logout","Account")" class="dropdown-item">
-                                Выход
-                            </a>
-                        </div>
-                    </li>
-                </ul>
-            </nav>
-            <!-- /.navbar -->
-            <!-- Main Sidebar Container -->
-            <aside class="main-sidebar sidebar-dark-primary elevation-4">
-                <!-- Brand Logo -->
-                <a href="@Url.Action("GameRoom","Home")" class="brand-link">
-                    <img src="~/img/primary/ereader.png" alt="Evolve Me Logo" class="brand-image img-circle elevation-3"
-                        style="opacity: .8">
-                    <span class="brand-text font-weight-light">Evolve Me!</span>
-                </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="@Url.Action("Report","Info")" class="dropdown-item">
+                            Сообщить об ошибке
+                        </a>
+                    </div>
+                </li>
 
-                <!-- Sidebar -->
-                <div class="sidebar">
-                    <!-- Sidebar Menu -->
-                    <nav class="mt-2">
-                        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                            <li class="nav-item">
-                                <a href="@Url.Action("GameRoom","Home")" class="nav-link">
-                                    <i class="nav-icon fa fa-dashboard"></i>
-                                    <p>
-                                        Главная
-                                    </p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="@Url.Action("ShowNotes","Notes")" class="nav-link">
-                                    <i class="nav-icon fa fa-book"></i>
-                                    <p>
-                                        Дневник
-                                    </p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="@Url.Action("Index","Healths")" class="nav-link">
-                                    <i class="nav-icon fa fa-heart-o"></i>
-                                    <p>
-                                        Здоровье
-                                    </p>
-                                </a>
-                            </li>
+                <!-- Profile Dropdown Menu-->
+                <li class="nav-item dropdown">
+                    <a class="nav-link" data-toggle="dropdown" href="#">
+                        <span>Профиль</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <span class="dropdown-item dropdown-header">Управление пользователем</span>
+                        <div class="dropdown-divider"></div>
+                        <a href="@Url.Action("Index","Manage")" class="dropdown-item">
+                            Настройка профиля
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="@Url.Action("Logout","Account")" class="dropdown-item">
+                            Выход
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    <!-- /.Верхнее меню -->
 
-                            <li class="nav-header">Профиль</li>
-                            <li class="nav-item">
-                                <a href="@Url.Action("GetRewards","Rewards")" class="nav-link">
-                                    <i class="nav-icon fa fa-diamond"></i>
-                                    <p>
-                                        Награды
-                                    </p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="@Url.Action("GetAchievements","Achievements")" class="nav-link">
-                                    <i class="nav-icon fa fa-trophy"></i>
-                                    <p>
-                                        Достижения
-                                    </p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="@Url.Action("GetAtributes","Atributes")" class="nav-link">
-                                    <i class="nav-icon fa fa-user"></i>
-                                    <p>
-                                        Характеристики
-                                    </p>
-                                </a>
-                            </li>
-
-                            <li class="nav-header">Статистика</li>
-                            <li class="nav-item">
-                                <a href="@Url.Action("StatMoods","Moods")" class="nav-link">
-                                    <i class="nav-icon fa fa-frown-o"></i>
-                                    <p>
-                                        Настроение
-                                    </p>
-                                </a>
-                            </li>
-                            @*<li class="nav-item">
-            <a href="@Url.Action("StatSkills","Skills")" class="nav-link">
-                <i class="nav-icon fa fa-user-o"></i>
-                <p>
-                    Навыки
-                </p>
+        <!-- Main Sidebar Container -->
+        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+            <!-- Brand Logo -->
+            <a href="@Url.Action("GameRoom","Home")" class="brand-link">
+                <img src="~/img/primary/inferno.svg" alt="Evolve Me Logo" class="brand-image img-circle elevation-3"
+                     style="opacity: .8">
+                <span class="brand-text font-weight-light">Evolve Me!</span>
             </a>
-        </li>
-        <li class="nav-item">
-            <a href="@Url.Action("StatHealth","Healths")" class="nav-link">
-                <i class="nav-icon fa fa-heartbeat"></i>
-                <p>
-                    Здоровье
-                </p>
-            </a>
-        </li>*@
-                            @await Component.InvokeAsync("Catalogs")
-                        </ul>
-                    </nav>
-                    <!-- /.sidebar-menu -->
-                </div>
-                <!-- /.sidebar -->
-            </aside>
 
-            <!-- Content Wrapper. Contains page content -->
-            <div class="content-wrapper">
-                <!-- Content Header (Page header) -->
-                <div class="content-header">
-                    <div class="container-fluid">
-                        <div class="row mb-2">
-                            <div class="col-sm-6">
-                                <h1 class="m-0 text-dark">@ViewBag.Breadcrumb</h1>
-                            </div><!-- /.col -->
-                            <div class="col-sm-6">
-                                <ol class="breadcrumb float-sm-right">
-                                    <li class="breadcrumb-item"><a href="@Url.Action("GameRoom","Home")">Главная</a></li>
-                                    <li class="breadcrumb-item active">@ViewBag.Breadcrumb</li>
-                                </ol>
-                            </div><!-- /.col -->
-                        </div><!-- /.row -->
-                    </div><!-- /.container-fluid -->
-                </div>
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Sidebar Menu -->
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                        <li class="nav-item">
+                            <a href="@Url.Action("GameRoom","Home")" class="nav-link">
+                                <i class="nav-icon fa fa-home"></i>
+                                <p>
+                                    Главная
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("ShowNotes","Notes")" class="nav-link">
+                                <i class="nav-icon fa fa-book"></i>
+                                <p>
+                                    Дневник
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index","Healths")" class="nav-link">
+                                <i class="nav-icon fa fa-heartbeat"></i>
+                                <p>
+                                    Здоровье
+                                </p>
+                            </a>
+                        </li>
 
-                @RenderBody()
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fa fa-user"></i>
+                                <p>
+                                    Профиль
+                                    <i class="right fa fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview" style="display: none;">
+                                <li class="nav-item">
+                                    <a href="@Url.Action("GetRewards","Rewards")" class="nav-link">
+                                        <i class="nav-icon fa fa-trophy"></i>
+                                        <p>
+                                            Награды
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="@Url.Action("GetAchievements","Achievements")" class="nav-link">
+                                        <i class="nav-icon fa fa-award"></i>
+                                        <p>
+                                            Достижения
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="@Url.Action("GetAtributes","Atributes")" class="nav-link">
+                                        <i class="nav-icon fa fa-user"></i>
+                                        <p>
+                                            Характеристики
+                                        </p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
 
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fa fa-star-half-alt"></i>
+                                <p>
+                                    Статистика
+                                    <i class="right fa fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview" style="display: none;">
+                                <li class="nav-item">
+                                    <a href="@Url.Action("StatMoods","Moods")" class="nav-link">
+                                        <i class="nav-icon fa fa-theater-masks"></i>
+                                        <p>
+                                            Настроения
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="@Url.Action("StatGoals","Goals")" class="nav-link">
+                                        <i class="nav-icon fa fa-tasks"></i>
+                                        <p>
+                                            Задачи
+                                        </p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        @await Component.InvokeAsync("Catalogs")
+                    </ul>
+                </nav>
+                <!-- /.sidebar-menu -->
             </div>
-            <!-- /.content-wrapper -->
+            <!-- /.sidebar -->
+        </aside>
 
-            <footer class="main-footer">
-                <div class="row">
-                    <div class="col-8">
-                        <strong>Copyright &copy; 2018 Evolve Me!</strong>
-                        Все права защищены.
-                    </div>
-                    <div class="col-3">
-                        <h5 class="text-bold">Подписка на новости</h5>
-                        <ul class="list-inline mb-0">
-                            <li class="list-inline-item">
-                                <a class="btn btn-outline-dark btn-social text-center rounded-circle" href="https://vk.com/evolveme">
-                                    <i class="fa fa-fw fa-vk"></i>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a class="btn btn-outline-dark btn-social text-center rounded-circle" href="https://github.com/eugenenoize/TaskProject">
-                                    <i class="fa fa-fw fa-github"></i>
-                                </a>
-                            </li>
-                            @*<li class="list-inline-item">
-                <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
-                    <i class="fa fa-fw fa-twitter"></i>
-                </a>
-            </li>
-            <li class="list-inline-item">
-                <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
-                    <i class="fa fa-fw fa-linkedin"></i>
-                </a>
-            </li>
-            <li class="list-inline-item">
-                <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
-                    <i class="fa fa-fw fa-dribbble"></i>
-                </a>
-            </li>*@
-                        </ul>
-                    </div>
-                </div>
-               
-            </footer>
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <div class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1 class="m-0 text-dark">@ViewBag.Breadcrumb</h1>
+                        </div><!-- /.col -->
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-right">
+                                <li class="breadcrumb-item"><a href="@Url.Action("GameRoom","Home")">Главная</a></li>
+                                <li class="breadcrumb-item active">@ViewBag.Breadcrumb</li>
+                            </ol>
+                        </div><!-- /.col -->
+                    </div><!-- /.row -->
+                </div><!-- /.container-fluid -->
+            </div>
+
+            @RenderBody()
 
         </div>
-        <!-- ./wrapper -->
+        <!-- /.content-wrapper -->
 
-        @Html.Partial("_Scripts")
+        <footer class="main-footer">
+            <div class="row">
+                <div class="col-8">
+                    <strong>Copyright &copy; 2018 Evolve Me!</strong>
+                    Все права защищены.
+                </div>
+                <div class="col-4">
+                    <h5 class="text-bold">Подписка на новости</h5>
+                    <ul class="list-inline mb-0">
+                        <li class="list-inline-item">
+                            <a class="btn btn-outline-dark btn-social text-center" href="https://vk.com/evolveme">
+                                <i class="fab fa-vk"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a class="btn btn-outline-dark btn-social text-center" href="https://github.com/eugenenoize/TaskProject">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </li>
+                        @*<li class="list-inline-item">
+                                <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
+                                    <i class="fa fa-fw fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
+                                    <i class="fa fa-fw fa-linkedin"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
+                                    <i class="fa fa-fw fa-dribbble"></i>
+                                </a>
+                            </li>*@
+                    </ul>
+                </div>
+            </div>
+
+        </footer>
+
+    </div>
+    <!-- ./wrapper -->
+
+    @Html.Partial("_Scripts")
     }
 
     @RenderSection("Scripts", false)
@@ -308,5 +310,4 @@
     <script src="~/js/main.min.js"></script>
 
 </body>
-
 </html>

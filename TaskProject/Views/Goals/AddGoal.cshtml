@@ -1,4 +1,4 @@
-﻿@model TaskProject.Models.Goal
+﻿@model TaskProject.Models.GoalModels.Goal
 
 @{
     Layout = null;
@@ -10,7 +10,7 @@
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <div class="form-group">
         <label asp-for="Name" class="control-label"></label>
-        <input asp-for="Name" class="form-control" maxlength="50" onkeydown="keydownenter(event)"/>
+        <input asp-for="Name" class="form-control" maxlength="50" onkeydown="keydownenter(event)" />
         <span asp-validation-for="Name" class="text-danger"></span>
     </div>
 
@@ -29,22 +29,25 @@
             <div>
                 @Html.LabelFor(model => model.GoalStart, htmlAttributes: new { @class = "control-label" })
             </div>
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+
+            <div class="input-group date" id="GoalStart" data-target-input="nearest">
+                <input type="text" name="GoalStart" class="form-control datetimepicker-input" data-target="#GoalStart" />
+                <div class="input-group-append" data-target="#GoalStart" data-toggle="datetimepicker">
+                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                 </div>
-                <input class="form-control" type="date" name="GoalStart" min="@DateTime.Now.ToString("yyyy-MM-dd")" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
             </div>
+            <span asp-validation-for="GoalStart" class="text-danger"></span>
         </div>
+
         <div class="col-md-6 col-12 GoalEnd">
             <div>
                 @Html.LabelFor(model => model.GoalEnd, htmlAttributes: new { @class = "control-label" })
             </div>
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+            <div class="input-group date" id="GoalEnd" data-target-input="nearest">
+                <input type="text" name="GoalEnd" class="form-control datetimepicker-input" data-target="#GoalEnd" />
+                <div class="input-group-append" data-target="#GoalEnd" data-toggle="datetimepicker">
+                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                 </div>
-                <input class="form-control d-inline-block" type="date" name="GoalEnd" min="@DateTime.Now.ToString("yyyy-MM-dd")" />
             </div>
         </div>
     </div>
@@ -55,21 +58,35 @@
     </div>
 
     <div class="form-group">
-            @Html.LabelFor(model => model.SkillId, "Навык", htmlAttributes: new { @class = "control-label" })
-            @Html.DropDownListFor(g => g.SkillId, (IEnumerable<SelectListItem>)ViewBag.SkillId, new { @class = "form-control" })
+        @Html.LabelFor(model => model.SkillId, "Навык", htmlAttributes: new { @class = "control-label" })
+        @Html.DropDownListFor(g => g.SkillId, (IEnumerable<SelectListItem>)ViewBag.SkillId, new { @class = "form-control" })
     </div>
 
     <div class="form-group">
-            @Html.LabelFor(model => model.CatalogId, "Список", htmlAttributes: new { @class = "control-label" })
-            @Html.DropDownListFor(g => g.CatalogId, (IEnumerable<SelectListItem>)ViewBag.CatalogId, new { @class = "form-control" })
+        @Html.LabelFor(model => model.CatalogId, "Список", htmlAttributes: new { @class = "control-label" })
+        @Html.DropDownListFor(g => g.CatalogId, (IEnumerable<SelectListItem>)ViewBag.CatalogId, new { @class = "form-control" })
     </div>
 </form>
 
+<script>
+    $('#GoalStart').datetimepicker({
+        locale: 'ru'
+    });
 
+$('#GoalEnd').datetimepicker({
+    locale: 'ru',
+    useCurrent: false //Important! See issue #1075
+});
+$("#GoalStart").on("change.datetimepicker", function (e) {
+    $('#GoalEnd').datetimepicker('minDate', e.date);
+});
+$("#GoalEnd").on("change.datetimepicker", function (e) {
+    $('#GoalStart').datetimepicker('maxDate', e.date);
+});
+</script>
 <script>
 
     $(document).ready(function () {
-
         CheckRepeate($("#RepeatId").val());
 
         $('#RepeatId').change(function () {

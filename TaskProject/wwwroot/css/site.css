@@ -1,3 +1,29 @@
+/* Sortable To-Do */
+
+#sortable {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+}
+
+    #sortable li {
+        border-radius: 2px;
+        padding: 10px;
+        margin-bottom: 2px;
+        color: #444;
+    }
+
+    #sortable .sortable-icon {
+        cursor: pointer;
+    }
+
+.ui-state-highlight {
+    height: 1em;
+    line-height: 1.2em;
+    background-color: lightgray;
+}
+
 .mood-img {
     height: 3em;
 }
@@ -36,7 +62,7 @@
 }
 
 .notify .notify_empty {
-    padding: 3px 34px;
+    padding: 3px 20px;
     font-size: 0.9rem;
     line-height: 20px;
     color: darkslategrey;
@@ -58,10 +84,6 @@
 .atribute-img {
     height: 2.5em;
     padding: 2px;
-    border: 1px solid;
-    -moz-border-radius: 12px;
-    -webkit-border-radius: 12px;
-    border-radius: 12px;
 }
 
 .nav-item {

@@ -8,12 +8,12 @@ namespace TaskProject.Models.AccountViewModels
 {
     public class RegisterViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "Введите вашу электронную почту")]
         [EmailAddress]
         [Display(Name = "Электронная почта")]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Введите пароль")]
         [StringLength(100, ErrorMessage = "{0} должен быть не менее {2} и максимум {1} длины.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Пароль")]

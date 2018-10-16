@@ -1,6 +1,13 @@
 ﻿$(document).ready(function () { 
     $.ajaxSetup({ cache: false });
 
+    $(function () {
+        $("#sortable").sortable({
+            placeholder: "ui-state-highlight"
+        });
+        $("#sortable").disableSelection();
+    });
+
 // Popovers Bootstrap
 
     $(function () {
@@ -91,6 +98,28 @@
         });
 
         link = "/Goals/EditCatalog";
+    });
+
+    //NickName
+    $(".js-addnickname").on("click", function (e) {
+        e.preventDefault();
+        $(".sw_title").text($(this).attr("data_dialog_title"));
+        $(".sw_modal_result").load(this.href);
+        $(".sw_modal").modal("show", function () {
+        });
+
+        link = "/Home/AddNickName";
+    });
+
+    $(".js-editnickname").on("click", function (e) {
+
+        e.preventDefault();
+        $(".sw_title").text($(this).attr("data_dialog_title"));
+        $(".sw_modal_result").load(this.href);
+        $(".sw_modal").modal("show", function () {
+        });
+
+        link = "/Home/EditNickName";
     });
 
     // Goals

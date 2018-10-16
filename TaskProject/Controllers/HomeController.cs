@@ -27,9 +27,12 @@ namespace TaskProject.Controllers
 
         public ActionResult Index()
         {
-            if (User.Identity.IsAuthenticated)
+            if (User != null)
             {
-                return RedirectToAction("GameRoom");
+                if (User.Identity.IsAuthenticated)
+                {
+                    return RedirectToAction("GameRoom");
+                }
             }
             return View();
         }
@@ -51,17 +54,11 @@ namespace TaskProject.Controllers
                 await db.SaveChangesAsync();
             }
 
-            var dbuser = await db.Users.Where(u => u.Id == user.Id)
-                .Include(u => u.Goals)
-                .Include(u => u.Skills)
-                .Include(u => u.Atributes)
-                .Include(u => u.Aligment)
-                .Include(u => u.UserMoods)
-                .Include(u => u.Notes)
-                .SingleAsync();
+            user = await db.GetUser(user.Id);
+            await db.CheckGoal(user);
 
             var allmood = await db.Moods.ToListAsync();
-            var todaymood = await db.UserMoods.Where(m => m.UserId == dbuser.Id && m.Date.ToShortDateString() == DateTime.Now.ToShortDateString()).Include(m => m.Mood).SingleOrDefaultAsync();
+            var todaymood = user.GetTodayMood();
 
             if (todaymood == null)
             {
@@ -73,7 +70,7 @@ namespace TaskProject.Controllers
                 ViewBag.TodayMood = todaymood;
             }
 
-            Note todaynote = dbuser.Notes.Where(n => n.DateCreate.ToShortDateString() == DateTime.Now.ToShortDateString()).SingleOrDefault();
+            Note todaynote = user.Notes.SingleOrDefault(n => n.DateCreate.Value.Date == DateTime.Now.Date);
             if (todaynote == null)
             {
                 ViewBag.TodayNote = null;
@@ -81,13 +78,23 @@ namespace TaskProject.Controllers
             else
             {
                 ViewBag.TodayNote = todaynote;
-            }
+            }  
 
             await db.SaveChangesAsync();
 
-
             ViewBag.BreadCrumb = "Персонаж";
-            return View(dbuser);
+            return View(user);
+        }
+
+        //Todo Сделать
+        public ActionResult AddNickName()
+        {
+            throw new NotImplementedException();
+        }
+        //Todo Сделать
+        public IActionResult GetNickName()
+        {
+            throw new NotImplementedException();
         }
 
         public ActionResult Error(string id = null)
@@ -111,8 +118,6 @@ namespace TaskProject.Controllers
                 ViewBag.Message = "Похоже мы испытываем проблемы. Но не волнуйтесь, скоро мы их разрешим. Пожалуйста, попробуйте попозже.";
             }
             return View();
-        }
-
-       
+        }  
     }
 }

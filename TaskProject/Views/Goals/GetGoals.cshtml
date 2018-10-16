@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TaskProject.Models.Goal>
+﻿@model IEnumerable<TaskProject.Models.GoalModels.Goal>
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -50,27 +50,27 @@
                                     <tr id="goal-@goal.GoalId">
                                         @if (goal.IsComplete)
                                         {
-                                        <td class="td-name" style="text-decoration:line-through">
-                                            <div class="row">
-                                                <div class="col-1">
-                                                    <a class="btn btn-xs btn-light js-restoregoal" href="@Url.Action("RestoreGoal","Goals",new { id = goal.GoalId})"><i class=" fa fa-ban"></i></a>
+                                            <td class="td-name">
+                                                <div class="row">
+                                                    <a class="btn btn-xs btn-light js-restoregoal" href="@Url.Action("RestoreGoal","Goals",new { id = goal.GoalId})"><i class=" fa fa-calendar-plus"></i></a>
+                                                    <span class="text" style="max-width: 800px; margin-left:20px;margin-right:20px;">
+                                                        @Html.DisplayFor(modelgoal => goal.Name)
+                                                        <small class="badge badge-secondary"><i class="fa fa-clock-o"></i> Завершена</small>
+                                                    </span>
+                                                    
                                                 </div>
-                                                <div class="col-11" style="max-width:800px">
-                                                    @Html.DisplayFor(modelgoal => goal.Name) <br />
-                                                    <span style="color:#85898C">@Html.DisplayFor(modelgoal => goal.Description)</span>
-                                                </div>
-                                            </div>
-                                        </td>
+                                               
+                                            </td>
                                         }
                                         else
                                         {
                                             <td class="td-name">
                                                 <div class="row">
-                                                    <a class="btn btn-xs btn-light js-completegoal" href="@Url.Action("CompleteGoal","Goals",new { id = goal.GoalId})"><i class=" fa fa-check-circle-o"></i></a>
-                                                    <div class="col-11" style="max-width:800px">
+                                                    <a class="btn btn-xs btn-light js-completegoal" href="@Url.Action("CompleteGoal","Goals",new { id = goal.GoalId})"><i class=" fa fa-calendar-check"></i></a>
+                                                    <span class="text" style="max-width:800px; margin-left:20px;margin-right:20px;">
                                                         @Html.DisplayFor(modelgoal => goal.Name) <br />
                                                         <span style="color:#85898C">@Html.DisplayFor(modelgoal => goal.Description)</span>
-                                                    </div>
+                                                    </span>
                                                 </div>
                                             </td>
                                         }
@@ -98,7 +98,7 @@
                                         <td>
                                             <div class="pull-right btn-group">
                                                 <a class="js-editgoal btn btn-xs btn-primary" data_dialog_title="Редактирование задачи" href="@Url.Action("EditGoal","Goals",new {id = goal.GoalId })"><i class="fa fa-edit"></i></a>
-                                                <a class="js-deletegoal btn btn-xs btn-danger" href="#" onclick="deletegoal(@goal.GoalId)"><i class="fa fa-trash-o"></i></a>
+                                                <a class="js-deletegoal btn btn-xs btn-danger" href="#" onclick="deletegoal(@goal.GoalId)"><i class="fa fa-trash"></i></a>
                                             </div>
                                         </td>
                                     </tr>

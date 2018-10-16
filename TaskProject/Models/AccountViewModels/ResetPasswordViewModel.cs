@@ -8,11 +8,11 @@ namespace TaskProject.Models.AccountViewModels
 {
     public class ResetPasswordViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "Введите вашу электронную почту")]
         [EmailAddress]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Введите пароль")]
         [StringLength(100, ErrorMessage = "{0} должен быть не менее {2} и максимум {1} длины.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         public string Password { get; set; }

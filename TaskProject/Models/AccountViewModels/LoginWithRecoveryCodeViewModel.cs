@@ -8,7 +8,7 @@ namespace TaskProject.Models.AccountViewModels
 {
     public class LoginWithRecoveryCodeViewModel
     {
-            [Required]
+            [Required(ErrorMessage = "Введите код восстановления")]
             [DataType(DataType.Text)]
             [Display(Name = "Код восстановления")]
             public string RecoveryCode { get; set; }

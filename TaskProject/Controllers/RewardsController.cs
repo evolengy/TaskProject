@@ -24,9 +24,16 @@ namespace TaskProject.Controllers
         public async Task<IActionResult> GetRewards()
         {
             var user = await userManager.GetUserAsync(User);
+
+            if (user == null)
+            {
+                RedirectToAction("Logout", "Account");
+            }
+
             var rewards = await db.UserRewards.Where(r => r.UserId == user.Id).ToListAsync();
 
             ViewBag.Gold = user.CurrentGold;
+            ViewBag.BreadCrumb = "Награды";
             return View(rewards);
         }
 
@@ -53,7 +60,7 @@ namespace TaskProject.Controllers
                 var user = await userManager.GetUserAsync(User);
                 if(user == null)
                 {
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Logout", "Account");
                 }
 
                 reward.UserId = user.Id;
@@ -125,6 +132,12 @@ namespace TaskProject.Controllers
         [HttpPost]
         public async Task<IActionResult> DeleteReward(int? id)
         {
+            var user = await userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                RedirectToAction("Logout", "Account");
+            }
+
             if (id == null)
             {
                 return NotFound();
@@ -156,7 +169,7 @@ namespace TaskProject.Controllers
             var user = await db.Users.Where(u => u.Id == userManager.GetUserId(User)).SingleOrDefaultAsync();
             if (user == null)
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Logout", "Account");
             }
 
             var reward = await db.UserRewards.Where(r => r.UserRewardId == id).SingleOrDefaultAsync();
