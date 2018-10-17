@@ -24,6 +24,15 @@
 
     });
 
+    $(".js-karma").popover({
+        container: 'body',
+        placement: "right",
+        trigger: "hover",
+        title: "Карма персонажа",
+        content: "Карма начисляется в зависимости от ваших поступков, которые вы отмечаете ежедневно."
+
+    });
+
     $(".js-datedeath").popover({
         container: 'body',
         placement: "right",
@@ -65,6 +74,17 @@
         });
 
         link = "/Rewards/AddReward";
+    });
+
+
+    $(".js-addkarma").on("click", function (e) {
+        e.preventDefault();
+        $(".sw_title").text($(this).attr("data_dialog_title"));
+        $(".sw_modal_result").load(this.href);
+        $(".sw_modal").modal("show", function () {
+        });
+
+        link = "/Karma/Add";
     });
 
     $(".js-editreward").on("click", function (e) {

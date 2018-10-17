@@ -163,6 +163,7 @@
                             </a>
                         </li>
 
+
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fa fa-user"></i>
@@ -177,6 +178,14 @@
                                         <i class="nav-icon fa fa-trophy"></i>
                                         <p>
                                             Награды
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="@Url.Action("GetKarma","Karma")" class="nav-link">
+                                        <i class="nav-icon fa fa-yin-yang"></i>
+                                        <p>
+                                            Карма
                                         </p>
                                     </a>
                                 </li>
@@ -221,6 +230,34 @@
                                         <i class="nav-icon fa fa-tasks"></i>
                                         <p>
                                             Задачи
+                                        </p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fa fa-users"></i>
+                                <p>
+                                    Пользователи
+                                    <i class="right fa fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview" style="display: none;">
+                                <li class="nav-item">
+                                    <a href="@Url.Action("GetKarmaForUsers","Users")" class="nav-link">
+                                        <i class="nav-icon fa fa-yin-yang"></i>
+                                        <p>
+                                            Рейтинг кармы
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="@Url.Action("GetGoalsForUsers","Users")" class="nav-link">
+                                        <i class="nav-icon fa fa-tasks"></i>
+                                        <p>
+                                            Рейтинг задач
                                         </p>
                                     </a>
                                 </li>

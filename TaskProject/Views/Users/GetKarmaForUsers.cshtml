@@ -1,0 +1,98 @@
+﻿@model IEnumerable<TaskProject.Models.RatingViewModels.KarmaViewModel>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Css{
+    <!--DateTable-->
+    <link rel="stylesheet" href="~/plugins/datatables/dataTables.bootstrap4.css" />
+}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <table class="js-datatable table table-responsive-lg">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Email)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.AllKarma)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.GoodKarma)
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var karma in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelgoal => karma.Email)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelgoal => karma.AllKarma)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelgoal => karma.GoodKarma)
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts{
+
+    <!-- Datetable-->
+    <script src="~/plugins/datatables/jquery.dataTables.js"></script>
+    <script src="~/plugins/datatables/dataTables.bootstrap4.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.js-datatable').DataTable({
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
+                "ordering": true,
+                "info": false,
+                "autoWidth": false,
+                language:
+                {
+                    processing: "Выполняется обработка...",
+                    search: "Поиск&nbsp;:",
+                    lengthMenu: "Показать _MENU_ пользователей",
+                    info: "Отображены с _START_ по _END_ из _TOTAL_ пользователей",
+                    infoEmpty: "Нет пользователей",
+                    infoFiltered: "(Поиск из _MAX_ пользователей)",
+                    infoPostFix: "",
+                    loadingRecords: "Идет загрузка...",
+                    zeroRecords: "Пользователей не найдено",
+                    emptyTable: "Нет пользователей",
+                    paginate:
+                    {
+                        first: "К первой",
+                        previous: "Предыдущие",
+                        next: "Следующие",
+                        last: "К последней"
+                    },
+                    aria:
+                    {
+                        sortAscending: ": Сортировка в порядке возрастания",
+                        sortDescending: ": Сортировка в порядке убывания"
+                    }
+                }
+            });
+        });
+    </script>
+}

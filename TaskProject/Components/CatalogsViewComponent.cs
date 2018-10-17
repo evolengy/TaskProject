@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ViewComponents;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -13,13 +12,13 @@ namespace TaskProject.Components
 {
     public class Catalogs : ViewComponent
     {
-        private ApplicationDbContext db;
+        private readonly ApplicationDbContext db;
         private readonly UserManager<ApplicationUser> usermanager;
 
-        public Catalogs(ApplicationDbContext _db, UserManager<ApplicationUser> _userManager)
+        public Catalogs(ApplicationDbContext db, UserManager<ApplicationUser> userManager)
         {
-            db = _db;
-            usermanager = _userManager;
+            this.db = db;
+            usermanager = userManager;
         }
 
         public async Task<ViewViewComponentResult> InvokeAsync()

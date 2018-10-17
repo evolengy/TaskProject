@@ -21,14 +21,14 @@
                         <h3 class="profile-username text-center">
 
                             @if (string.IsNullOrEmpty(Model.NickName))
-                            {                    
-                                <a href="@Url.Action("AddNickName","Home")" class="btn btn-xs btn-light js-addnickname"><i class="fa fa-user-plus" style="color: black;"></i> Добавить ник пользователя</a>
+                            {
+                                <a href="@Url.Action("AddNickName","Home")" data_dialog_title="Добавить ник" class="btn btn-xs btn-light js-addnickname"><i class="fa fa-user-plus" style="color: black;"></i> Добавить ник</a>
 
                             }
                             else
                             {
-                                <span>@Model.NickName</span>
-                                <a href="@Url.Action("GetNickName","Home")" class="btn btn-xs btn-light js-editnickname"><i class="fa fa-user-edit" style="color: black;"></i> Редактировать ник пользователя</a>
+                                <span>@Model.NickName </span>
+                                <a href="@Url.Action("EditNickName","Home")" data_dialog_title="Изменить ник" class="btn btn-xs btn-light js-editnickname"><i class="fa fa-user-edit" style="color: black;"></i></a>
                             }
                         </h3>
 
@@ -44,6 +44,28 @@
                                     <span class="float-right">@Html.DisplayFor(m => m.CurrentExp)/@Html.DisplayFor(m => m.MaxExp)</span>
                                     <div class="progress progress-sm">
                                         <div class="progress-bar bg-primary" style="width: @(100 * Model.CurrentExp / Model.MaxExp)%"></div>
+                                    </div>
+                                </div>
+                            </li>
+                            
+                            <li class="list-group-item">
+                                <div class="progress-group js-karma">
+                                    <b>Карма </b>
+                                    <span class="float-right">@Html.DisplayFor(m => m.CurrentKarma)</span>
+                                    <div class="progress progress-sm">
+                                        @if (Model.CurrentKarma > 0)
+                                        {
+                                            <div class="progress-bar bg-success" style="width: @(100 * Model.CurrentKarma / 1000)%"></div>
+                                        }
+                                        else if (Model.CurrentKarma < 0)
+                                        {
+                                            <div class="progress-bar bg-danger" style="width: @(100 * Model.CurrentKarma / 1000)%"></div>
+                                        }
+                                        else
+                                        {
+                                            <div class="progress-bar bg-info" style="width: 100%"></div>
+                                        }
+
                                     </div>
                                 </div>
                             </li>
@@ -65,7 +87,7 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-
+                        
                         <strong class="js-mood">
                             <i class="fa fa-smile-o"></i>
                             Настроение
@@ -96,7 +118,7 @@
                                                 </div>
                                                 <div class="text-center">
                                                     @Html.RadioButton("MoodId", mood.MoodId)
-     
+
                                                     @Html.Hidden("Name", mood.Name)
                                                 </div>
                                             </div>
@@ -108,6 +130,15 @@
                                 </form>
                             }
                             <hr />
+                        </div>
+                        
+                        <strong>
+                            <i class="fa fa-yin-yang mr-1"></i>
+                            Добавить себе поступок в карму
+                        </strong>
+
+                        <div class="text-center mt-3">
+                            <a class="btn btn-primary js-addkarma" data_dialog_title="Добавить новый поступок" href="@Url.Action("Add","Karma", new { today = true})"><i class="fa fa-plus"></i> Добавить поступок</a>
                         </div>
 
                         <strong>
@@ -133,234 +164,11 @@
             </div>
 
             <div class="col-md-8">
-
                 <!-- Goals -->
-                <div class="card">
-                    <div class="card-header d-flex p-0">
-                        <h3 class="card-title p-3">Задачи</h3>
-                        <ul class="nav nav-pills ml-auto p-2">
-                            <li class="nav-item"><a class="nav-link active show" href="#now" data-toggle="tab">Сегодня </a></li>
-                            <li class="nav-item"><a class="nav-link" href="#week" data-toggle="tab">Неделя</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#month" data-toggle="tab">Месяц</a></li>
-                        </ul>
-                    </div><!-- /.card-header -->
-                    <div class="card-body">
-                        <h3 class="mb-3 text-center">
-                            <a class="btn btn-primary js-addgoal" data_dialog_title="Создание новой задачи" href="@Url.Action("AddGoal","Goals")"><i class="fa fa-plus"></i> Добавить задачу</a>
-                        </h3>
-                        <div class="tab-content">
-                            <div class="tab-pane active show" id="now">
-                                <ul class="todo-list ui-sortable">
-                                    @foreach (var goal in Model.Goals.Where(g => g.IsComplete == false && g.GoalEnd.HasValue && g.GoalEnd.Value.Date <= DateTime.Now.Date))
-                                    {
-                                        <li id="goal-@goal.GoalId">
-                                            <!-- checkbox -->
-                                            <a href="@Url.Action("CompleteGoal","Goals",new { id = goal.GoalId})" class="btn btn-xs btn-light js-completegoal"><i class="fa fa-calendar-check" style="color: black;"></i></a>
-                                            <span class="text">@goal.Name</span>
-                                            <!-- Emphasis label -->
-
-                                            @if (goal.GoalEnd == null)
-                                            {
-                                                <small class="badge badge-success"><i class="fa fa-clock-o"></i> Без срока</small>
-                                            }
-                                            else if (goal.GoalEnd < DateTime.Now)
-                                            {
-                                                <small class="badge badge-danger"><i class="fa fa-clock-o"></i> @goal.GoalEnd.Value.ToString("dd.MM.yyyy HH:mm")</small>
-                                            }
-                                            else
-                                            {
-                                                <small class="badge badge-success"><i class="fa fa-clock-o"></i> @goal.GoalEnd.Value.ToString("dd.MM.yyyy HH:mm")</small>
-
-                                            }
-                                            
-                                            @if (goal.PassCount != 0)
-                                            {
-                                                <small class="badge badge-danger"><i class="fa fa-calendar-minus"></i> Пропущено раз: @goal.PassCount </small>
-                                            }
-
-                                            <!-- General tools such as edit or delete-->
-                                            <div class="pull-right btn-group">
-                                                <a class="js-editgoal btn btn-xs btn-primary" data_dialog_title="Редактирование задачи" href="@Url.Action("EditGoal","Goals",new {id = goal.GoalId })"><i class="fa fa-edit"></i></a>
-                                                <a class="js-deletegoal btn btn-xs  btn-danger" href="#" onclick="deletegoal(@goal.GoalId)"><i class="fa fa-trash"></i></a>
-                                            </div>
-                                        </li>
-                                    }
-                                </ul>
-                            </div>
-                            
-
-                            <!-- /.tab-pane -->
-                            <div class="tab-pane" id="week">
-                                <ul class="todo-list ui-sortable">
-                                    @foreach (var goal in Model.Goals.Where(g => g.IsComplete == false && g.GoalEnd.HasValue && g.GoalEnd.Value.Date <= DateTime.Now.AddDays(7)))
-                                    {
-                                    <li id="goal-@goal.GoalId">
-                                        <!-- checkbox -->
-                                        <a href="@Url.Action("CompleteGoal","Goals",new { id = goal.GoalId})" class="btn btn-xs btn-light js-completegoal"><i class=" fa fa-calendar-check" style="color: black;"></i></a>
-                                        <!-- todo text -->
-                                        <span class="text">@goal.Name</span>
-                                        <!-- Emphasis label -->
-
-                                        @if (goal.GoalEnd == null)
-                                        {
-                                            <small class="badge badge-success"><i class="fa fa-clock-o"></i> Без срока</small>
-                                        }
-                                        else if (goal.GoalEnd < DateTime.Now)
-                                        {
-                                            <small class="badge badge-danger"><i class="fa fa-clock-o"></i> @goal.GoalEnd.Value.ToString("dd.MM.yyyy HH:mm")</small>
-                                        }
-                                        else
-                                        {
-                                            <small class="badge badge-success"><i class="fa fa-clock-o"></i> @goal.GoalEnd.Value.ToString("dd.MM.yyyy HH:mm")</small>
-
-                                        }
-
-                                        @if (goal.PassCount != 0)
-                                        {
-                                            <small class="badge badge-danger"><i class="fa fa-calendar-minus"></i> Пропущено раз: @goal.PassCount </small>
-                                        }
-
-                                        <!-- General tools such as edit or delete-->
-                                        <div class="pull-right btn-group">
-                                            <a class="js-editgoal btn btn-xs btn-primary" data_dialog_title="Редактирование задачи" href="@Url.Action("EditGoal","Goals",new {id = goal.GoalId })"><i class="fa fa-edit"></i></a>
-                                            <a class="js-deletegoal btn btn-xs  btn-danger" href="#" onclick="deletegoal(@goal.GoalId)"><i class="fa fa-trash"></i></a>
-                                        </div>
-                                    </li>
-                                    }
-                                </ul>
-                            </div>
-                            <!-- /.tab-pane -->
-                            <div class="tab-pane" id="month">
-                                <ul class="todo-list ui-sortable">
-                                    @foreach (var goal in Model.Goals.Where(g => g.IsComplete == false && g.GoalEnd.HasValue && g.GoalEnd.Value.Date <= DateTime.Now.AddDays(30)))
-                                    {
-                                    <li id="goal-@goal.GoalId">
-                                        <!-- checkbox -->
-                                        <a href="@Url.Action("CompleteGoal","Goals",new { id = goal.GoalId})" class="btn btn-xs btn-light js-completegoal"><i class=" fa fa-calendar-check" style="color: black;"></i></a>
-                                        <!-- todo text -->
-                                        <span class="text">@goal.Name</span>
-                                        <!-- Emphasis label -->
-
-                                        @if (goal.GoalEnd == null)
-                                        {
-                                            <small class="badge badge-success"><i class="fa fa-clock-o"></i> Без срока</small>
-                                        }
-                                        else if (goal.GoalEnd < DateTime.Now)
-                                        {
-                                            <small class="badge badge-danger"><i class="fa fa-clock-o"></i> @goal.GoalEnd.Value.ToString("dd.MM.yyyy HH:mm")</small>
-                                        }
-                                        else
-                                        {
-                                            <small class="badge badge-success"><i class="fa fa-clock-o"></i> @goal.GoalEnd.Value.ToString("dd.MM.yyyy HH:mm")</small>
-
-                                        }
-
-                                        @if (goal.PassCount != 0)
-                                        {
-                                            <small class="badge badge-danger"><i class="fa fa-calendar-minus"></i> Пропущено раз: @goal.PassCount </small>
-                                        }
-
-                                        <!-- General tools such as edit or delete-->
-                                        <div class="pull-right btn-group">
-                                            <a class="js-editgoal btn btn-xs btn-primary" data_dialog_title="Редактирование задачи" href="@Url.Action("EditGoal","Goals",new {id = goal.GoalId })"><i class="fa fa-edit"></i></a>
-                                            <a class="js-deletegoal btn btn-xs  btn-danger" href="#" onclick="deletegoal(@goal.GoalId)"><i class="fa fa-trash"></i></a>
-                                        </div>
-                                    </li>
-                                    }
-                                </ul>
-                            </div>
-                            <!-- /.tab-pane -->
-                        </div>
-                        <!-- /.tab-content -->
-                    </div><!-- /.card-body -->
-                </div>
+                @Html.Partial("Goals", Model.Goals)
                 <!-- End Goals -->
-
                 <!-- Skills -->
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">Навыки</h3>
-                    </div>
-                    <div class="card-body">
-                        <div class="tab-content">
-                            <div class="text-center">
-                                <h3 class="mb-3">
-                                    <a class="btn btn-primary js-addskill" data_dialog_title="Создание нового навыка" href="@Url.Action("AddSkill","Skills")"><i class="fa fa-plus"></i> Добавить навык</a>
-                                </h3>
-                            </div>
-
-                            <!-- Atributes -->
-                            @foreach (Atribute atribute in Model.Atributes)
-                            {
-                                <div class="card collapsed-card">
-                                    <div class="card-header" style="padding:0; padding-bottom: 5px; padding-top: 5px;'">
-                                        <h3 class="card-title">
-                                            <span class="js-atribute" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="@atribute.Description">
-                                        
-                                                <span class="atribute-img" style="font-size: 24px;">
-                                                    <i class="@atribute.GetImgPath()"></i>
-                                                </span>
-                                                @atribute.Name (уровень @atribute.Lvl)
-                                            </span>
-                                        </h3>
-
-                                        <div class="card-tools">
-                                            <button type="button" class="btn btn-tool" data-widget="collapse">
-                                                <i class="fa fa-plus"></i>
-                                            </button>
-                                        </div>
-                                        <!-- /.card-tools -->
-                                    </div>
-
-                                    <div class="progress progress-sm">
-                                        <div class="progress-bar bg-info" style="width:  @(100 * atribute.CurrentExp / atribute.MaxExp)%"></div>
-                                    </div>
-
-                                    <!-- /.card-header -->
-                                    <div class="card-body">
-                                        <ul class="todo-list">
-                                            @if (!atribute.Skills.Any())
-                                            {
-                                          
-                                                <li>Нет навыков</li>
-                                            }
-                                            else
-                                            {
-                                                foreach (Skill skill in atribute.Skills.OrderBy(s => s.Name))
-                                                {
-                                                    <li id="skill-@skill.SkillId" class="ui-state-default">
-                                                        <div class="row">
-                                                            <div class="progress-group col-10 col-sm-12">
-                                                                @*<span class="sortable-icon mr-2">
-                                                                        <i class="fa fa-ellipsis-v"></i>
-                                                                    </span>*@
-                                                                <span>
-                                                                    @skill.Name
-                                                                </span>
-                                                                <span class="float-right">
-                                                                    Уровень @skill.Lvl
-                                                                </span>
-                                                                <div class="progress progress-sm mt-1">
-                                                                    <div class="progress-bar bg-info" style="width:  @(100 * skill.CurrentExp / skill.MaxExp)%"></div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="pull-right btn-group pt-3 pb-1">
-                                                                <a class="js-editskill btn btn-xs btn-primary" data_dialog_title="Редактирование навыка" href="@Url.Action("EditSkill","Skills",new {id = skill.SkillId })"><i class="fa fa-edit"></i></a>
-                                                                <a class="js-deleteskill btn btn-xs btn-danger" href="#" onclick="deleteskill(@skill.SkillId)"><i class="fa fa-trash"></i></a>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                }
-                                            }
-                                        </ul>
-                                    </div>
-                                    <!-- /.card-body -->
-                                </div>
-                            }
-                        </div>
-                        <!-- End Atributes-->
-                    </div>
-                </div>
+                @Html.Partial("Skills", Model.Atributes)
                 <!-- End Skills-->
             </div>
         </div>

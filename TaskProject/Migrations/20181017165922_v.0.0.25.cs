@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace TaskProject.Migrations
 {
-    public partial class v001 : Migration
+    public partial class v0025 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,6 +15,7 @@ namespace TaskProject.Migrations
                 {
                     AchievementId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    AchievementType = table.Column<int>(nullable: false),
                     Description = table.Column<string>(nullable: true),
                     LinkImg = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: true)
@@ -64,6 +65,52 @@ namespace TaskProject.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Complications", x => x.ComplicationId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Hobbies",
+                columns: table => new
+                {
+                    HobbyId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Description = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Hobbies", x => x.HobbyId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "LogAccess",
+                columns: table => new
+                {
+                    LogAccessId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Date = table.Column<DateTime>(nullable: false),
+                    Log = table.Column<string>(nullable: true),
+                    UserAgent = table.Column<string>(nullable: true),
+                    UserName = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_LogAccess", x => x.LogAccessId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "LogEvents",
+                columns: table => new
+                {
+                    LogEventId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Date = table.Column<DateTime>(nullable: false),
+                    EventId = table.Column<int>(nullable: false),
+                    LogLevel = table.Column<string>(nullable: true),
+                    Message = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_LogEvents", x => x.LogEventId);
                 });
 
             migrationBuilder.CreateTable(
@@ -122,6 +169,47 @@ namespace TaskProject.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "AspNetUsers",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    AccessFailedCount = table.Column<int>(nullable: false),
+                    AligmentId = table.Column<int>(nullable: true),
+                    ConcurrencyStamp = table.Column<string>(nullable: true),
+                    CurrentExp = table.Column<long>(nullable: false),
+                    CurrentGold = table.Column<int>(nullable: false),
+                    CurrentKarma = table.Column<int>(nullable: false),
+                    CurrentLevel = table.Column<int>(nullable: false),
+                    Email = table.Column<string>(maxLength: 256, nullable: true),
+                    EmailConfirmed = table.Column<bool>(nullable: false),
+                    HealthId = table.Column<int>(nullable: true),
+                    IsSetDefaultValues = table.Column<bool>(nullable: false),
+                    LockoutEnabled = table.Column<bool>(nullable: false),
+                    LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
+                    MaxExp = table.Column<long>(nullable: false),
+                    NickName = table.Column<string>(nullable: true),
+                    NormalizedEmail = table.Column<string>(maxLength: 256, nullable: true),
+                    NormalizedUserName = table.Column<string>(maxLength: 256, nullable: true),
+                    PasswordHash = table.Column<string>(nullable: true),
+                    PhoneNumber = table.Column<string>(nullable: true),
+                    PhoneNumberConfirmed = table.Column<bool>(nullable: false),
+                    Photo = table.Column<byte[]>(nullable: true),
+                    SecurityStamp = table.Column<string>(nullable: true),
+                    TwoFactorEnabled = table.Column<bool>(nullable: false),
+                    UserName = table.Column<string>(maxLength: 256, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AspNetUsers_Aligments_AligmentId",
+                        column: x => x.AligmentId,
+                        principalTable: "Aligments",
+                        principalColumn: "AligmentId",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -140,65 +228,6 @@ namespace TaskProject.Migrations
                         principalTable: "AspNetRoles",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "UserAchievements",
-                columns: table => new
-                {
-                    UserAchievementId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    AchievementId = table.Column<int>(nullable: false),
-                    SetDate = table.Column<DateTime>(nullable: false),
-                    UserId = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_UserAchievements", x => x.UserAchievementId);
-                    table.ForeignKey(
-                        name: "FK_UserAchievements_Achievements_AchievementId",
-                        column: x => x.AchievementId,
-                        principalTable: "Achievements",
-                        principalColumn: "AchievementId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "AspNetUsers",
-                columns: table => new
-                {
-                    Id = table.Column<string>(nullable: false),
-                    AccessFailedCount = table.Column<int>(nullable: false),
-                    AligmentId = table.Column<int>(nullable: true),
-                    ConcurrencyStamp = table.Column<string>(nullable: true),
-                    CurrentExp = table.Column<long>(nullable: false),
-                    CurrentGold = table.Column<int>(nullable: false),
-                    CurrentLevel = table.Column<int>(nullable: false),
-                    Email = table.Column<string>(maxLength: 256, nullable: true),
-                    EmailConfirmed = table.Column<bool>(nullable: false),
-                    HealthId = table.Column<int>(nullable: true),
-                    IsSetDefaultValues = table.Column<bool>(nullable: false),
-                    LockoutEnabled = table.Column<bool>(nullable: false),
-                    LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
-                    MaxExp = table.Column<long>(nullable: false),
-                    NormalizedEmail = table.Column<string>(maxLength: 256, nullable: true),
-                    NormalizedUserName = table.Column<string>(maxLength: 256, nullable: true),
-                    PasswordHash = table.Column<string>(nullable: true),
-                    PhoneNumber = table.Column<string>(nullable: true),
-                    PhoneNumberConfirmed = table.Column<bool>(nullable: false),
-                    SecurityStamp = table.Column<string>(nullable: true),
-                    TwoFactorEnabled = table.Column<bool>(nullable: false),
-                    UserName = table.Column<string>(maxLength: 256, nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AspNetUsers", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_AspNetUsers_Aligments_AligmentId",
-                        column: x => x.AligmentId,
-                        principalTable: "Aligments",
-                        principalColumn: "AligmentId",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -307,7 +336,7 @@ namespace TaskProject.Migrations
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -316,7 +345,7 @@ namespace TaskProject.Migrations
                 {
                     CatalogId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: false),
+                    Name = table.Column<string>(maxLength: 30, nullable: false),
                     UserId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -327,7 +356,7 @@ namespace TaskProject.Migrations
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -351,7 +380,29 @@ namespace TaskProject.Migrations
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Karma",
+                columns: table => new
+                {
+                    KarmaId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Date = table.Column<DateTime>(nullable: false),
+                    IsGood = table.Column<bool>(nullable: false),
+                    Name = table.Column<string>(nullable: false),
+                    UserId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Karma", x => x.KarmaId);
+                    table.ForeignKey(
+                        name: "FK_Karma_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -373,7 +424,7 @@ namespace TaskProject.Migrations
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -394,7 +445,35 @@ namespace TaskProject.Migrations
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "UserAchievements",
+                columns: table => new
+                {
+                    UserAchievementId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    AchievementId = table.Column<int>(nullable: false),
+                    IsOpen = table.Column<bool>(nullable: false),
+                    SetDate = table.Column<DateTime>(nullable: true),
+                    UserId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserAchievements", x => x.UserAchievementId);
+                    table.ForeignKey(
+                        name: "FK_UserAchievements_Achievements_AchievementId",
+                        column: x => x.AchievementId,
+                        principalTable: "Achievements",
+                        principalColumn: "AchievementId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_UserAchievements_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -403,6 +482,7 @@ namespace TaskProject.Migrations
                 {
                     UserMoodId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Comment = table.Column<string>(nullable: true),
                     Date = table.Column<DateTime>(nullable: false),
                     MoodId = table.Column<int>(nullable: false),
                     UserId = table.Column<string>(nullable: true)
@@ -418,6 +498,28 @@ namespace TaskProject.Migrations
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_UserMoods_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "UserRewards",
+                columns: table => new
+                {
+                    UserRewardId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Cost = table.Column<int>(nullable: true),
+                    Description = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(nullable: false),
+                    UserId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserRewards", x => x.UserRewardId);
+                    table.ForeignKey(
+                        name: "FK_UserRewards_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
@@ -511,12 +613,15 @@ namespace TaskProject.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     CatalogId = table.Column<int>(nullable: false),
                     ComplicationId = table.Column<int>(nullable: false),
-                    Description = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(maxLength: 250, nullable: true),
+                    FinishCount = table.Column<int>(nullable: false),
                     GoalEnd = table.Column<DateTime>(nullable: true),
                     GoalStart = table.Column<DateTime>(nullable: false),
                     IsComplete = table.Column<bool>(nullable: false),
-                    Name = table.Column<string>(nullable: false),
+                    Name = table.Column<string>(maxLength: 50, nullable: false),
+                    PassCount = table.Column<int>(nullable: false),
                     RepeatId = table.Column<int>(nullable: false),
+                    SeriesCount = table.Column<int>(nullable: false),
                     SkillId = table.Column<int>(nullable: true),
                     UserId = table.Column<string>(nullable: true)
                 },
@@ -588,11 +693,6 @@ namespace TaskProject.Migrations
                 column: "AligmentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AspNetUsers_HealthId",
-                table: "AspNetUsers",
-                column: "HealthId");
-
-            migrationBuilder.CreateIndex(
                 name: "EmailIndex",
                 table: "AspNetUsers",
                 column: "NormalizedEmail");
@@ -642,6 +742,13 @@ namespace TaskProject.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Healths_UserId",
                 table: "Healths",
+                column: "UserId",
+                unique: true,
+                filter: "[UserId] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Karma_UserId",
+                table: "Karma",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
@@ -695,33 +802,18 @@ namespace TaskProject.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_UserRewards_UserId",
+                table: "UserRewards",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_UserWeight_HealthId",
                 table: "UserWeight",
                 column: "HealthId");
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_UserAchievements_AspNetUsers_UserId",
-                table: "UserAchievements",
-                column: "UserId",
-                principalTable: "AspNetUsers",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Restrict);
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_AspNetUsers_Healths_HealthId",
-                table: "AspNetUsers",
-                column: "HealthId",
-                principalTable: "Healths",
-                principalColumn: "HealthId",
-                onDelete: ReferentialAction.Restrict);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_Healths_AspNetUsers_UserId",
-                table: "Healths");
-
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
@@ -741,6 +833,18 @@ namespace TaskProject.Migrations
                 name: "Goals");
 
             migrationBuilder.DropTable(
+                name: "Hobbies");
+
+            migrationBuilder.DropTable(
+                name: "Karma");
+
+            migrationBuilder.DropTable(
+                name: "LogAccess");
+
+            migrationBuilder.DropTable(
+                name: "LogEvents");
+
+            migrationBuilder.DropTable(
                 name: "Messages");
 
             migrationBuilder.DropTable(
@@ -757,6 +861,9 @@ namespace TaskProject.Migrations
 
             migrationBuilder.DropTable(
                 name: "UserMoods");
+
+            migrationBuilder.DropTable(
+                name: "UserRewards");
 
             migrationBuilder.DropTable(
                 name: "UserWeight");
@@ -783,6 +890,9 @@ namespace TaskProject.Migrations
                 name: "Moods");
 
             migrationBuilder.DropTable(
+                name: "Healths");
+
+            migrationBuilder.DropTable(
                 name: "Atributes");
 
             migrationBuilder.DropTable(
@@ -793,9 +903,6 @@ namespace TaskProject.Migrations
 
             migrationBuilder.DropTable(
                 name: "Aligments");
-
-            migrationBuilder.DropTable(
-                name: "Healths");
         }
     }
 }

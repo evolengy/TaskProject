@@ -32,8 +32,10 @@ namespace TaskProject.Models
             Notes = new List<Note>();
             Notifications = new List<Notification>();
             Goals = new List<Goal>();
+            Karma = new List<Karma>();
         }
 
+        public int CurrentKarma { get; set; }
         public long CurrentExp { get; set; }
         public long MaxExp { get; set; }
         public int CurrentLevel { get; set; }
@@ -59,6 +61,7 @@ namespace TaskProject.Models
         public virtual List<Note> Notes { get; set; }
         public virtual List<Notification> Notifications { get; set; }
         public virtual List<Goal> Goals { get; set; }
+        public virtual List<Karma> Karma { get; set; }
 
         public UserMood GetTodayMood()
         {

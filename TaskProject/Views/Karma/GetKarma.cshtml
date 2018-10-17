@@ -1,0 +1,100 @@
+﻿@model IEnumerable<TaskProject.Models.Karma>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Css{
+    <!--DateTable-->
+    <link rel="stylesheet" href="~/plugins/datatables/dataTables.bootstrap4.css" />
+}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <table class="js-datatable table table-responsive-lg">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Name)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.IsGood)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Date)
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var karma in Model)
+                                {
+                                    <tr>
+                                        <td class="td-name">
+                                            @karma.Name
+                                        </td>
+                                        @if (karma.IsGood)
+                                        {
+                                            <td>Хороший</td>
+                                        }
+                                        else
+                                        {
+                                            <td>Плохой</td>
+                                        }                                      
+                                        <td>@karma.Date.ToString("dd MMMM yyyy")</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts{
+    <!-- Datetable-->
+    <script src="~/plugins/datatables/jquery.dataTables.js"></script>
+    <script src="~/plugins/datatables/dataTables.bootstrap4.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.js-datatable').DataTable({
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
+                "ordering": true,
+                "info": false,
+                "autoWidth": false,
+                language:
+                {
+                    processing: "Выполняется обработка...",
+                    search: "Поиск&nbsp;:",
+                    lengthMenu: "Показать _MENU_ поступков",
+                    info: "Отображены с _START_ по _END_ из _TOTAL_ поступков",
+                    infoEmpty: "Нет поступков",
+                    infoFiltered: "(Поиск из _MAX_ поступков)",
+                    infoPostFix: "",
+                    loadingRecords: "Идет загрузка...",
+                    zeroRecords: "Поступков не найдено",
+                    emptyTable: "Нет поступков",
+                    paginate:
+                    {
+                        first: "К первой",
+                        previous: "Предыдущие",
+                        next: "Следующие",
+                        last: "К последней"
+                    },
+                    aria:
+                    {
+                        sortAscending: ": Сортировка в порядке возрастания",
+                        sortDescending: ": Сортировка в порядке убывания"
+                    }
+                }
+            });
+        });
+    </script>
+}

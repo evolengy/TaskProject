@@ -54,7 +54,7 @@ namespace TaskProject.Models
         public int RatingId { get; set; }
         public virtual Rating Rating { get; set; }
 
-        public List<Goal> Goals { get; set; }
+        public virtual List<Goal> Goals { get; set; }
 
         public void ExpUp()
         {

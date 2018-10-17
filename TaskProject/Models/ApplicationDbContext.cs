@@ -1,11 +1,9 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
-using TaskProject.Migrations;
-using TaskProject.Models;
 using TaskProject.Models.AchievementModels;
 using TaskProject.Models.GoalModels;
 using TaskProject.Models.LogsModels;
@@ -33,6 +31,7 @@ namespace TaskProject.Models
         public DbSet<LogAccess> LogAccess { get; set; }
         public DbSet<LogEvent> LogEvents { get; set; }
         public DbSet<Note> Notes { get; set; }
+        public DbSet<Karma> Karma { get; set; }
         public DbSet<Notification> Notifications { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
@@ -49,11 +48,6 @@ namespace TaskProject.Models
                 .HasOne(p => p.User)
                 .WithMany(t => t.Atributes)
                 .OnDelete(DeleteBehavior.Cascade);
-
-            builder.Entity<Goal>()
-                .HasOne(g => g.Skill)
-                .WithMany(s => s.Goals)
-                .OnDelete(DeleteBehavior.SetNull);
 
             builder.Entity<Goal>()
                 .HasOne(c => c.Catalog)
@@ -85,6 +79,12 @@ namespace TaskProject.Models
                 .HasOne<ApplicationUser>(n => n.User)
                 .WithMany(u => u.Notes)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            builder.Entity<Karma>()
+                .HasOne(n => n.User)
+                .WithMany(u => u.Karma)
+                .OnDelete(DeleteBehavior.Cascade);
+              
 
             builder.Entity<Notification>()
                 .HasOne<ApplicationUser>(n => n.User)
@@ -1124,7 +1124,6 @@ namespace TaskProject.Models
 
             await SaveChangesAsync();
         }
-
         public async Task CheckGoal(ApplicationUser user)
         {
             List<Goal> goals = user.Goals;
@@ -1193,6 +1192,22 @@ namespace TaskProject.Models
             }
         }
 
+
+        public async Task AddKarmaAsync(Karma karma)
+        {
+            await Karma.AddAsync(karma);
+
+            var user = Users.Single(u => u.Id == karma.UserId);
+
+            if (karma.IsGood)
+                user.CurrentKarma += 10;
+            else
+                user.CurrentKarma -= 10;
+
+            await SaveChangesAsync();
+
+            AddNotification(karma, new NotificationEventArgs($"Поступок добавлен: {karma.Name}", karma.UserId));
+        }
 
         public async Task<ApplicationUser> GetUser(string userId)
         {

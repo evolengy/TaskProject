@@ -1,0 +1,859 @@
+2018-10-18T00:43:58.7390130+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-18T00:44:01.6118168+05:00  [INF] Executed DbCommand ("30"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Repeats] AS [r])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-10-18T00:44:01.6440497+05:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Complications] AS [c])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-10-18T00:44:01.6657490+05:00  [INF] Executed DbCommand ("9"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Ratings] AS [r])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-10-18T00:44:01.6816685+05:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Aligments] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-10-18T00:44:01.6958301+05:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Moods] AS [m])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-10-18T00:44:01.7071998+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Achievements] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-10-18T00:44:01.7323937+05:00  [INF] Executed DbCommand ("6"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Hobbies] AS [h])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-10-18T00:44:09.3495674+05:00 0HLHKD3HPM0GP:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:1282/   (ca22a1cb)
+2018-10-18T00:44:09.7013417+05:00 0HLHKD3HPM0GP:00000001 [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-18T00:44:09.9661403+05:00 0HLHKD3HPM0GP:00000001 [INF] Executed DbCommand ("101"ms) [Parameters=["@__get_Item_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[AligmentId], [e].[ConcurrencyStamp], [e].[CurrentExp], [e].[CurrentGold], [e].[CurrentKarma], [e].[CurrentLevel], [e].[Email], [e].[EmailConfirmed], [e].[HealthId], [e].[IsSetDefaultValues], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[MaxExp], [e].[NickName], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[Photo], [e].[SecurityStamp], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0" (0723d8ff)
+2018-10-18T00:44:10.1374140+05:00 0HLHKD3HPM0GP:00000001 [INF] Executed DbCommand ("4"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AspNetUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0" (0723d8ff)
+2018-10-18T00:44:10.2072328+05:00 0HLHKD3HPM0GP:00000001 [INF] Executed DbCommand ("5"ms) [Parameters=["@__userId_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2018-10-18T00:44:10.2133108+05:00 0HLHKD3HPM0GP:00000001 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-10-18T00:44:11.0491207+05:00 0HLHKD3HPM0GP:00000001 [INF] Executing action method "TaskProject.Controllers.HomeController.Index (TaskProject)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-10-18T00:44:11.0822419+05:00 0HLHKD3HPM0GP:00000001 [INF] Executing RedirectResult, redirecting to "/Home/GameRoom". (d98d540e)
+2018-10-18T00:44:11.1021024+05:00 0HLHKD3HPM0GP:00000001 [INF] Executed action "TaskProject.Controllers.HomeController.Index (TaskProject)" in 76.0174ms (afa2e885)
+2018-10-18T00:44:11.1297106+05:00 0HLHKD3HPM0GP:00000001 [INF] Request finished in 1837.1825ms 302  (791a596a)
+2018-10-18T00:44:11.1672106+05:00 0HLHKD3HPM0GP:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:1282/Home/GameRoom   (ca22a1cb)
+2018-10-18T00:44:11.1928363+05:00 0HLHKD3HPM0GP:00000002 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-10-18T00:44:11.2316973+05:00 0HLHKD3HPM0GP:00000002 [INF] Executing action method "TaskProject.Controllers.HomeController.GameRoom (TaskProject)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-10-18T00:44:11.2807206+05:00 0HLHKD3HPM0GP:00000002 [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-18T00:44:11.2983367+05:00 0HLHKD3HPM0GP:00000002 [INF] Executed DbCommand ("1"ms) [Parameters=["@__get_Item_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[AligmentId], [e].[ConcurrencyStamp], [e].[CurrentExp], [e].[CurrentGold], [e].[CurrentKarma], [e].[CurrentLevel], [e].[Email], [e].[EmailConfirmed], [e].[HealthId], [e].[IsSetDefaultValues], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[MaxExp], [e].[NickName], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[Photo], [e].[SecurityStamp], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0" (0723d8ff)
+2018-10-18T00:44:11.6422952+05:00 0HLHKD3HPM0GP:00000002 [INF] Executed DbCommand ("4"ms) [Parameters=["@__userId_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [u].[Id], [u].[AccessFailedCount], [u].[AligmentId], [u].[ConcurrencyStamp], [u].[CurrentExp], [u].[CurrentGold], [u].[CurrentKarma], [u].[CurrentLevel], [u].[Email], [u].[EmailConfirmed], [u].[HealthId], [u].[IsSetDefaultValues], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[MaxExp], [u].[NickName], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[Photo], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName], [u.Aligment].[AligmentId], [u.Aligment].[Description], [u.Aligment].[Name]
+FROM [AspNetUsers] AS [u]
+LEFT JOIN [Aligments] AS [u.Aligment] ON [u].[AligmentId] = [u.Aligment].[AligmentId]
+WHERE [u].[Id] = @__userId_0
+ORDER BY [u].[Id]" (0723d8ff)
+2018-10-18T00:44:11.7463174+05:00 0HLHKD3HPM0GP:00000002 [INF] Executed DbCommand ("8"ms) [Parameters=["@__userId_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [u.Catalogs].[CatalogId], [u.Catalogs].[Name], [u.Catalogs].[UserId]
+FROM [Catalogs] AS [u.Catalogs]
+INNER JOIN (
+    SELECT DISTINCT [t].*
+    FROM (
+        SELECT TOP(1) [u0].[Id]
+        FROM [AspNetUsers] AS [u0]
+        LEFT JOIN [Aligments] AS [u.Aligment0] ON [u0].[AligmentId] = [u.Aligment0].[AligmentId]
+        WHERE [u0].[Id] = @__userId_0
+        ORDER BY [u0].[Id]
+    ) AS [t]
+) AS [t0] ON [u.Catalogs].[UserId] = [t0].[Id]
+ORDER BY [t0].[Id]" (0723d8ff)
+2018-10-18T00:44:11.7896042+05:00 0HLHKD3HPM0GP:00000002 [INF] Executed DbCommand ("6"ms) [Parameters=["@__userId_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [u.Goals].[GoalId], [u.Goals].[CatalogId], [u.Goals].[ComplicationId], [u.Goals].[Description], [u.Goals].[FinishCount], [u.Goals].[GoalEnd], [u.Goals].[GoalStart], [u.Goals].[IsComplete], [u.Goals].[Name], [u.Goals].[PassCount], [u.Goals].[RepeatId], [u.Goals].[SeriesCount], [u.Goals].[SkillId], [u.Goals].[UserId]
+FROM [Goals] AS [u.Goals]
+INNER JOIN (
+    SELECT DISTINCT [t1].*
+    FROM (
+        SELECT TOP(1) [u1].[Id]
+        FROM [AspNetUsers] AS [u1]
+        LEFT JOIN [Aligments] AS [u.Aligment1] ON [u1].[AligmentId] = [u.Aligment1].[AligmentId]
+        WHERE [u1].[Id] = @__userId_0
+        ORDER BY [u1].[Id]
+    ) AS [t1]
+) AS [t2] ON [u.Goals].[UserId] = [t2].[Id]
+ORDER BY [t2].[Id]" (0723d8ff)
+2018-10-18T00:44:11.8095575+05:00 0HLHKD3HPM0GP:00000002 [INF] Executed DbCommand ("6"ms) [Parameters=["@__userId_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [u.Skills].[SkillId], [u.Skills].[AtributeId], [u.Skills].[CurrentExp], [u.Skills].[Lvl], [u.Skills].[MaxExp], [u.Skills].[Name], [u.Skills].[RatingId], [u.Skills].[UserId]
+FROM [Skills] AS [u.Skills]
+INNER JOIN (
+    SELECT DISTINCT [t3].*
+    FROM (
+        SELECT TOP(1) [u2].[Id]
+        FROM [AspNetUsers] AS [u2]
+        LEFT JOIN [Aligments] AS [u.Aligment2] ON [u2].[AligmentId] = [u.Aligment2].[AligmentId]
+        WHERE [u2].[Id] = @__userId_0
+        ORDER BY [u2].[Id]
+    ) AS [t3]
+) AS [t4] ON [u.Skills].[UserId] = [t4].[Id]
+ORDER BY [t4].[Id]" (0723d8ff)
+2018-10-18T00:44:11.8433015+05:00 0HLHKD3HPM0GP:00000002 [INF] Executed DbCommand ("5"ms) [Parameters=["@__userId_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [u.Atributes].[AtributeId], [u.Atributes].[CurrentExp], [u.Atributes].[Description], [u.Atributes].[Lvl], [u.Atributes].[MaxExp], [u.Atributes].[Name], [u.Atributes].[UserId]
+FROM [Atributes] AS [u.Atributes]
+INNER JOIN (
+    SELECT DISTINCT [t5].*
+    FROM (
+        SELECT TOP(1) [u3].[Id]
+        FROM [AspNetUsers] AS [u3]
+        LEFT JOIN [Aligments] AS [u.Aligment3] ON [u3].[AligmentId] = [u.Aligment3].[AligmentId]
+        WHERE [u3].[Id] = @__userId_0
+        ORDER BY [u3].[Id]
+    ) AS [t5]
+) AS [t6] ON [u.Atributes].[UserId] = [t6].[Id]
+ORDER BY [t6].[Id]" (0723d8ff)
+2018-10-18T00:44:11.8947462+05:00 0HLHKD3HPM0GP:00000002 [INF] Executed DbCommand ("4"ms) [Parameters=["@__userId_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [u.UserMoods].[UserMoodId], [u.UserMoods].[Comment], [u.UserMoods].[Date], [u.UserMoods].[MoodId], [u.UserMoods].[UserId]
+FROM [UserMoods] AS [u.UserMoods]
+INNER JOIN (
+    SELECT DISTINCT [t7].*
+    FROM (
+        SELECT TOP(1) [u4].[Id]
+        FROM [AspNetUsers] AS [u4]
+        LEFT JOIN [Aligments] AS [u.Aligment4] ON [u4].[AligmentId] = [u.Aligment4].[AligmentId]
+        WHERE [u4].[Id] = @__userId_0
+        ORDER BY [u4].[Id]
+    ) AS [t7]
+) AS [t8] ON [u.UserMoods].[UserId] = [t8].[Id]
+ORDER BY [t8].[Id]" (0723d8ff)
+2018-10-18T00:44:11.9095979+05:00 0HLHKD3HPM0GP:00000002 [INF] Executed DbCommand ("5"ms) [Parameters=["@__userId_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [u.Notes].[NoteId], [u.Notes].[DateCreate], [u.Notes].[Text], [u.Notes].[Theme], [u.Notes].[UserId]
+FROM [Notes] AS [u.Notes]
+INNER JOIN (
+    SELECT DISTINCT [t9].*
+    FROM (
+        SELECT TOP(1) [u5].[Id]
+        FROM [AspNetUsers] AS [u5]
+        LEFT JOIN [Aligments] AS [u.Aligment5] ON [u5].[AligmentId] = [u.Aligment5].[AligmentId]
+        WHERE [u5].[Id] = @__userId_0
+        ORDER BY [u5].[Id]
+    ) AS [t9]
+) AS [t10] ON [u.Notes].[UserId] = [t10].[Id]
+ORDER BY [t10].[Id]" (0723d8ff)
+2018-10-18T00:44:11.9207809+05:00 0HLHKD3HPM0GP:00000002 [INF] Executed DbCommand ("3"ms) [Parameters=["@__userId_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [u.UserAchievements].[UserAchievementId], [u.UserAchievements].[AchievementId], [u.UserAchievements].[IsOpen], [u.UserAchievements].[SetDate], [u.UserAchievements].[UserId]
+FROM [UserAchievements] AS [u.UserAchievements]
+INNER JOIN (
+    SELECT DISTINCT [t11].*
+    FROM (
+        SELECT TOP(1) [u6].[Id]
+        FROM [AspNetUsers] AS [u6]
+        LEFT JOIN [Aligments] AS [u.Aligment6] ON [u6].[AligmentId] = [u.Aligment6].[AligmentId]
+        WHERE [u6].[Id] = @__userId_0
+        ORDER BY [u6].[Id]
+    ) AS [t11]
+) AS [t12] ON [u.UserAchievements].[UserId] = [t12].[Id]
+ORDER BY [t12].[Id]" (0723d8ff)
+2018-10-18T00:44:11.9472693+05:00 0HLHKD3HPM0GP:00000002 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [m].[MoodId], [m].[LinkImg], [m].[Name]
+FROM [Moods] AS [m]" (0723d8ff)
+2018-10-18T00:44:19.4660760+05:00 0HLHKD3HPM0GP:00000002 [INF] Executing ViewResult, running view at path "/Views/Home/GameRoom.cshtml". (9707eebe)
+2018-10-18T00:44:22.6605897+05:00 0HLHKD3HPM0GP:00000002 [INF] Executed DbCommand ("67"ms) [Parameters=["@__userid_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [c].[NotificationID], [c].[DateCreate], [c].[Name], [c].[UserId]
+FROM [Notifications] AS [c]
+WHERE [c].[UserId] = @__userid_0
+ORDER BY [c].[DateCreate] DESC" (0723d8ff)
+2018-10-18T00:44:23.2551923+05:00 0HLHKD3HPM0GP:00000002 [INF] Executed DbCommand ("4"ms) [Parameters=["@__userid_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [c].[CatalogId], [c].[Name], [c].[UserId]
+FROM [Catalogs] AS [c]
+WHERE [c].[UserId] = @__userid_0" (0723d8ff)
+2018-10-18T00:44:25.3521960+05:00 0HLHKD3HPM0GP:00000002 [INF] Executed action "TaskProject.Controllers.HomeController.GameRoom (TaskProject)" in 14121.7438ms (afa2e885)
+2018-10-18T00:44:25.3688825+05:00 0HLHKD3HPM0GP:00000002 [INF] Request finished in 14202.8497ms 200 text/html; charset=utf-8 (791a596a)
+2018-10-18T00:44:25.4947494+05:00 0HLHKD3HPM0GP:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/font-awesome/css/font-awesome.min.css?v=eZrrJcwDc_3uDhsdt61sL2oOBY362qM3lon1gyExkL0   (ca22a1cb)
+2018-10-18T00:44:25.5227428+05:00 0HLHKD3HPM0GP:00000003 [INF] Sending file. Request path: '"/plugins/font-awesome/css/font-awesome.min.css"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\font-awesome\css\font-awesome.min.css"' (27b0a520)
+2018-10-18T00:44:25.5452941+05:00 0HLHKD3HPM0GP:00000003 [INF] Request finished in 52.3098ms 200 text/css (791a596a)
+2018-10-18T00:44:25.8668300+05:00 0HLHKD3HPM0GP:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/iCheck/flat/blue.css?v=w-71cB3p1q0C30xFtffGVRCQqZY6IpbbW-8698qGFxk   (ca22a1cb)
+2018-10-18T00:44:25.8887845+05:00 0HLHKD3HPM0GR:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/select2/select2.min.css?v=Zlen06xFBs47DKkjTfT2O2v_jpTpLyH513khsWb8aSU   (ca22a1cb)
+2018-10-18T00:44:25.8939056+05:00 0HLHKD3HPM0GP:00000004 [INF] Sending file. Request path: '"/plugins/iCheck/flat/blue.css"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\iCheck\flat\blue.css"' (27b0a520)
+2018-10-18T00:44:25.9153195+05:00 0HLHKD3HPM0GR:00000001 [INF] Sending file. Request path: '"/plugins/select2/select2.min.css"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\select2\select2.min.css"' (27b0a520)
+2018-10-18T00:44:25.9330674+05:00 0HLHKD3HPM0GP:00000004 [INF] Request finished in 67.5133ms 200 text/css (791a596a)
+2018-10-18T00:44:25.9616768+05:00 0HLHKD3HPM0GR:00000001 [INF] Request finished in 68.4129ms 200 text/css (791a596a)
+2018-10-18T00:44:26.0008716+05:00 0HLHKD3HPM0GR:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:1282/css/main.min.css   (ca22a1cb)
+2018-10-18T00:44:26.0121114+05:00 0HLHKD3HPM0GR:00000002 [INF] Sending file. Request path: '"/css/main.min.css"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\css\main.min.css"' (27b0a520)
+2018-10-18T00:44:26.0839385+05:00 0HLHKD3HPM0GR:00000002 [INF] Request finished in 62.1249ms 200 text/css (791a596a)
+2018-10-18T00:44:26.1257295+05:00 0HLHKD3HPM0GR:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/jquery/jquery.min.js?v=FgpCb_KJQlLNfOu91ta32o_NMZxltwRo8QtmkMRdAu8   (ca22a1cb)
+2018-10-18T00:44:26.1374094+05:00 0HLHKD3HPM0GR:00000003 [INF] Sending file. Request path: '"/plugins/jquery/jquery.min.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\jquery\jquery.min.js"' (27b0a520)
+2018-10-18T00:44:26.1573144+05:00 0HLHKD3HPM0GR:00000003 [INF] Request finished in 30.157ms 200 application/javascript (791a596a)
+2018-10-18T00:44:26.3707258+05:00 0HLHKD3HPM0GR:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/bootstrap/js/bootstrap.bundle.min.js?v=78rSZBnBJXmJ5VGuWL8mkunvhy94g99Rw53bssjHSUk   (ca22a1cb)
+2018-10-18T00:44:26.3802508+05:00 0HLHKD3HPM0GR:00000004 [INF] Sending file. Request path: '"/plugins/bootstrap/js/bootstrap.bundle.min.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\bootstrap\js\bootstrap.bundle.min.js"' (27b0a520)
+2018-10-18T00:44:26.3918683+05:00 0HLHKD3HPM0GR:00000004 [INF] Request finished in 21.9545ms 200 application/javascript (791a596a)
+2018-10-18T00:44:26.4840637+05:00 0HLHKD3HPM0GP:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/slimScroll/jquery.slimscroll.min.js?v=91NKPpYtpwjHuKO18SJmnkaIocF_hun9sbJoTtyk81E   (ca22a1cb)
+2018-10-18T00:44:26.4929238+05:00 0HLHKD3HPM0GP:00000005 [INF] Sending file. Request path: '"/plugins/slimScroll/jquery.slimscroll.min.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\slimScroll\jquery.slimscroll.min.js"' (27b0a520)
+2018-10-18T00:44:26.5088934+05:00 0HLHKD3HPM0GP:00000005 [INF] Request finished in 22.2183ms 200 application/javascript (791a596a)
+2018-10-18T00:44:26.5229408+05:00 0HLHKD3HPM0GR:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/fastclick/fastclick.min.js?v=MsmDpLO4fY9-r6QIQMh5E1Glk8hpowKdi3NWqM9tKpQ   (ca22a1cb)
+2018-10-18T00:44:26.5290803+05:00 0HLHKD3HPM0GR:00000005 [INF] Sending file. Request path: '"/plugins/fastclick/fastclick.min.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\fastclick\fastclick.min.js"' (27b0a520)
+2018-10-18T00:44:26.5382202+05:00 0HLHKD3HPM0GR:00000005 [INF] Request finished in 14.7753ms 200 application/javascript (791a596a)
+2018-10-18T00:44:26.6367088+05:00 0HLHKD3HPM0GP:00000006 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/select2/select2.full.min.js?v=S0OSS1VIFhO4U2RG9P5K0TuApj8mW6JYMGFFVbCNaPw   (ca22a1cb)
+2018-10-18T00:44:26.6453943+05:00 0HLHKD3HPM0GP:00000006 [INF] Sending file. Request path: '"/plugins/select2/select2.full.min.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\select2\select2.full.min.js"' (27b0a520)
+2018-10-18T00:44:26.6825432+05:00 0HLHKD3HPM0GP:00000006 [INF] Request finished in 26.8313ms 200 application/javascript (791a596a)
+2018-10-18T00:44:26.7291322+05:00 0HLHKD3HPM0GR:00000006 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/input-mask/jquery.inputmask.js?v=pp0oIHHWcYkpwhFeUiCut1N8Ov_noE7jWugU6sJFV0w   (ca22a1cb)
+2018-10-18T00:44:26.7464470+05:00 0HLHKD3HPM0GR:00000006 [INF] Sending file. Request path: '"/plugins/input-mask/jquery.inputmask.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\input-mask\jquery.inputmask.js"' (27b0a520)
+2018-10-18T00:44:26.7549072+05:00 0HLHKD3HPM0GS:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/input-mask/jquery.inputmask.date.extensions.js?v=FOj_bTmtyvTbGyANspkVpKAHRPJ_0QYU729JlJ9TTtw   (ca22a1cb)
+2018-10-18T00:44:26.8081718+05:00 0HLHKD3HPM0GR:00000006 [INF] Request finished in 102.0142ms 200 application/javascript (791a596a)
+2018-10-18T00:44:26.8338623+05:00 0HLHKD3HPM0GS:00000001 [INF] Sending file. Request path: '"/plugins/input-mask/jquery.inputmask.date.extensions.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\input-mask\jquery.inputmask.date.extensions.js"' (27b0a520)
+2018-10-18T00:44:26.8510351+05:00 0HLHKD3HPM0GS:00000001 [INF] Request finished in 100.893ms 200 application/javascript (791a596a)
+2018-10-18T00:44:27.0385616+05:00 0HLHKD3HPM0GS:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/input-mask/jquery.inputmask.numeric.extensions.js?v=zusZuHdA77D2uaY0gt_c1lD6_rb26CSV_DXy3Hh1dk0   (ca22a1cb)
+2018-10-18T00:44:27.0511951+05:00 0HLHKD3HPM0GS:00000002 [INF] Sending file. Request path: '"/plugins/input-mask/jquery.inputmask.numeric.extensions.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\input-mask\jquery.inputmask.numeric.extensions.js"' (27b0a520)
+2018-10-18T00:44:27.0758869+05:00 0HLHKD3HPM0GS:00000002 [INF] Request finished in 29.8137ms 200 application/javascript (791a596a)
+2018-10-18T00:44:27.1065801+05:00 0HLHKD3HPM0GP:00000007 [INF] Request starting HTTP/1.1 GET http://localhost:1282/js/main.min.js   (ca22a1cb)
+2018-10-18T00:44:27.1632204+05:00 0HLHKD3HPM0GR:00000007 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/input-mask/jquery.inputmask.regex.extensions.js?v=szi1DxBwty2OyVrCCqOg9tjqvzdEX6eqFV3lFcS0iK0   (ca22a1cb)
+2018-10-18T00:44:27.1811224+05:00 0HLHKD3HPM0GR:00000007 [INF] Sending file. Request path: '"/plugins/input-mask/jquery.inputmask.regex.extensions.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\input-mask\jquery.inputmask.regex.extensions.js"' (27b0a520)
+2018-10-18T00:44:27.1858480+05:00 0HLHKD3HPM0GP:00000007 [INF] Sending file. Request path: '"/js/main.min.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\js\main.min.js"' (27b0a520)
+2018-10-18T00:44:27.1976238+05:00 0HLHKD3HPM0GR:00000007 [INF] Request finished in 121.8766ms 200 application/javascript (791a596a)
+2018-10-18T00:44:27.2133063+05:00 0HLHKD3HPM0GP:00000007 [INF] Request finished in 128.9682ms 200 application/javascript (791a596a)
+2018-10-18T00:44:27.2803476+05:00 0HLHKD3HPM0GS:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:1282/img/primary/inferno.svg   (ca22a1cb)
+2018-10-18T00:44:27.3216313+05:00 0HLHKD3HPM0GS:00000003 [INF] Sending file. Request path: '"/img/primary/inferno.svg"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\img\primary\inferno.svg"' (27b0a520)
+2018-10-18T00:44:27.3263916+05:00 0HLHKD3HPM0GR:00000008 [INF] Request starting HTTP/1.1 GET http://localhost:1282/img/moods/crying.svg?v=oN1XGPIZT6so8DqAYcBl50oyUp0Ps5znSo3bWTTRALM   (ca22a1cb)
+2018-10-18T00:44:27.3560309+05:00 0HLHKD3HPM0GP:00000008 [INF] Request starting HTTP/1.1 GET http://localhost:1282/img/moods/sleepy.svg?v=q5VJ0bezgLuQxFKceT_KR_9FBw_9gqtB0JPry3L6meI   (ca22a1cb)
+2018-10-18T00:44:27.3661918+05:00 0HLHKD3HPM0GR:00000008 [INF] Sending file. Request path: '"/img/moods/crying.svg"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\img\moods\crying.svg"' (27b0a520)
+2018-10-18T00:44:27.4105375+05:00 0HLHKD3HPM0GS:00000003 [INF] Request finished in 94.9049ms 200 image/svg+xml (791a596a)
+2018-10-18T00:44:27.4338496+05:00 0HLHKD3HPM0GP:00000008 [INF] Sending file. Request path: '"/img/moods/sleepy.svg"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\img\moods\sleepy.svg"' (27b0a520)
+2018-10-18T00:44:27.4808405+05:00 0HLHKD3HPM0GR:00000008 [INF] Request finished in 124.9687ms 200 image/svg+xml (791a596a)
+2018-10-18T00:44:27.5039631+05:00 0HLHKD3HPM0GP:00000008 [INF] Request finished in 174.9086ms 200 image/svg+xml (791a596a)
+2018-10-18T00:44:28.0780780+05:00 0HLHKD3HPM0GP:00000009 [INF] Request starting HTTP/1.1 GET http://localhost:1282/img/moods/laughing.svg?v=3I1JwqLUqTIbkrYWQ-7Rq3DK7awDP2WS6GXAXVz78vI   (ca22a1cb)
+2018-10-18T00:44:28.0907777+05:00 0HLHKD3HPM0GP:00000009 [INF] Sending file. Request path: '"/img/moods/laughing.svg"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\img\moods\laughing.svg"' (27b0a520)
+2018-10-18T00:44:28.1017921+05:00 0HLHKD3HPM0GR:00000009 [INF] Request starting HTTP/1.1 GET http://localhost:1282/img/moods/happy.svg?v=ZFMznT0ez_luSwPTAFpWAIvYaCxova-PoDYTWrkFSP0   (ca22a1cb)
+2018-10-18T00:44:28.1349634+05:00 0HLHKD3HPM0GP:00000009 [INF] Request finished in 29.5874ms 200 image/svg+xml (791a596a)
+2018-10-18T00:44:28.1624947+05:00 0HLHKD3HPM0GR:00000009 [INF] Sending file. Request path: '"/img/moods/happy.svg"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\img\moods\happy.svg"' (27b0a520)
+2018-10-18T00:44:28.1858484+05:00 0HLHKD3HPM0GP:0000000A [INF] Request starting HTTP/1.1 GET http://localhost:1282/img/moods/normal.svg?v=9G6rKkSvjslv5wKaDJkwLIk6NYms3Gr0wO7bFX-5ZQM   (ca22a1cb)
+2018-10-18T00:44:28.1936527+05:00 0HLHKD3HPM0GR:00000009 [INF] Request finished in 83.4718ms 200 image/svg+xml (791a596a)
+2018-10-18T00:44:28.2133509+05:00 0HLHKD3HPM0GP:0000000A [INF] Sending file. Request path: '"/img/moods/normal.svg"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\img\moods\normal.svg"' (27b0a520)
+2018-10-18T00:44:28.2258411+05:00 0HLHKD3HPM0GP:0000000A [INF] Request finished in 49.3121ms 200 image/svg+xml (791a596a)
+2018-10-18T00:44:54.9038960+05:00 0HLHKD3HPM0GT:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:1282/Users/GetKarmaForUsers   (ca22a1cb)
+2018-10-18T00:44:54.9113209+05:00 0HLHKD3HPM0GT:00000001 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-10-18T00:44:54.9204899+05:00 0HLHKD3HPM0GT:00000001 [INF] Executing action method "TaskProject.Controllers.UsersController.GetKarmaForUsers (TaskProject)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-10-18T00:44:54.9297825+05:00 0HLHKD3HPM0GT:00000001 [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-18T00:44:54.9837847+05:00 0HLHKD3HPM0GT:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [u].[Id], [u].[AccessFailedCount], [u].[AligmentId], [u].[ConcurrencyStamp], [u].[CurrentExp], [u].[CurrentGold], [u].[CurrentKarma], [u].[CurrentLevel], [u].[Email], [u].[EmailConfirmed], [u].[HealthId], [u].[IsSetDefaultValues], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[MaxExp], [u].[NickName], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[Photo], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+ORDER BY [u].[Id]" (0723d8ff)
+2018-10-18T00:44:55.0266389+05:00 0HLHKD3HPM0GT:00000001 [INF] Executed DbCommand ("31"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [u.Karma].[KarmaId], [u.Karma].[Date], [u.Karma].[IsGood], [u.Karma].[Name], [u.Karma].[UserId]
+FROM [Karma] AS [u.Karma]
+INNER JOIN (
+    SELECT [u0].[Id]
+    FROM [AspNetUsers] AS [u0]
+) AS [t] ON [u.Karma].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-18T00:44:55.6866761+05:00 0HLHKD3HPM0GT:00000001 [INF] Executing ViewResult, running view at path "/Views/Users/GetKarmaForUsers.cshtml". (9707eebe)
+2018-10-18T00:44:55.7322644+05:00 0HLHKD3HPM0GT:00000001 [INF] Executed DbCommand ("4"ms) [Parameters=["@__userid_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [c].[NotificationID], [c].[DateCreate], [c].[Name], [c].[UserId]
+FROM [Notifications] AS [c]
+WHERE [c].[UserId] = @__userid_0
+ORDER BY [c].[DateCreate] DESC" (0723d8ff)
+2018-10-18T00:44:55.7435062+05:00 0HLHKD3HPM0GT:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=["@__userid_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [c].[CatalogId], [c].[Name], [c].[UserId]
+FROM [Catalogs] AS [c]
+WHERE [c].[UserId] = @__userid_0" (0723d8ff)
+2018-10-18T00:44:55.7619857+05:00 0HLHKD3HPM0GT:00000001 [INF] Executed action "TaskProject.Controllers.UsersController.GetKarmaForUsers (TaskProject)" in 839.0619ms (afa2e885)
+2018-10-18T00:44:55.7684032+05:00 0HLHKD3HPM0GT:00000001 [INF] Request finished in 866.5037ms 200 text/html; charset=utf-8 (791a596a)
+2018-10-18T00:44:55.8922704+05:00 0HLHKD3HPM0GT:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/font-awesome/css/font-awesome.min.css?v=eZrrJcwDc_3uDhsdt61sL2oOBY362qM3lon1gyExkL0   (ca22a1cb)
+2018-10-18T00:44:55.9077391+05:00 0HLHKD3HPM0H0:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/select2/select2.min.css?v=Zlen06xFBs47DKkjTfT2O2v_jpTpLyH513khsWb8aSU   (ca22a1cb)
+2018-10-18T00:44:55.9120007+05:00 0HLHKD3HPM0H2:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:1282/img/primary/inferno.svg   (ca22a1cb)
+2018-10-18T00:44:55.9875850+05:00 0HLHKD3HPM0GV:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/datatables/dataTables.bootstrap4.css   (ca22a1cb)
+2018-10-18T00:44:56.0176461+05:00 0HLHKD3HPM0GU:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/iCheck/flat/blue.css?v=w-71cB3p1q0C30xFtffGVRCQqZY6IpbbW-8698qGFxk   (ca22a1cb)
+2018-10-18T00:44:56.0251332+05:00 0HLHKD3HPM0H1:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:1282/css/main.min.css   (ca22a1cb)
+2018-10-18T00:44:56.0347667+05:00 0HLHKD3HPM0H2:00000001 [INF] Sending file. Request path: '"/img/primary/inferno.svg"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\img\primary\inferno.svg"' (27b0a520)
+2018-10-18T00:44:56.0678504+05:00 0HLHKD3HPM0H0:00000001 [INF] Sending file. Request path: '"/plugins/select2/select2.min.css"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\select2\select2.min.css"' (27b0a520)
+2018-10-18T00:44:56.0844248+05:00 0HLHKD3HPM0GT:00000002 [INF] Sending file. Request path: '"/plugins/font-awesome/css/font-awesome.min.css"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\font-awesome\css\font-awesome.min.css"' (27b0a520)
+2018-10-18T00:44:56.0880575+05:00 0HLHKD3HPM0GV:00000001 [INF] Sending file. Request path: '"/plugins/datatables/dataTables.bootstrap4.css"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\datatables\dataTables.bootstrap4.css"' (27b0a520)
+2018-10-18T00:44:56.1373015+05:00 0HLHKD3HPM0H1:00000001 [INF] Sending file. Request path: '"/css/main.min.css"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\css\main.min.css"' (27b0a520)
+2018-10-18T00:44:56.2026784+05:00 0HLHKD3HPM0H0:00000001 [INF] Request finished in 255.7704ms 200 text/css (791a596a)
+2018-10-18T00:44:56.2718793+05:00 0HLHKD3HPM0H2:00000001 [INF] Request finished in 213.6188ms 200 image/svg+xml (791a596a)
+2018-10-18T00:44:56.2967569+05:00 0HLHKD3HPM0GU:00000001 [INF] Sending file. Request path: '"/plugins/iCheck/flat/blue.css"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\iCheck\flat\blue.css"' (27b0a520)
+2018-10-18T00:44:56.2986662+05:00 0HLHKD3HPM0GT:00000002 [INF] Request finished in 280.2693ms 200 text/css (791a596a)
+2018-10-18T00:44:56.3019485+05:00 0HLHKD3HPM0H1:00000001 [INF] Request finished in 375.4587ms 200 text/css (791a596a)
+2018-10-18T00:44:56.4003072+05:00 0HLHKD3HPM0H2:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/jquery/jquery.min.js?v=FgpCb_KJQlLNfOu91ta32o_NMZxltwRo8QtmkMRdAu8   (ca22a1cb)
+2018-10-18T00:44:56.4645939+05:00 0HLHKD3HPM0H0:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/input-mask/jquery.inputmask.js?v=pp0oIHHWcYkpwhFeUiCut1N8Ov_noE7jWugU6sJFV0w   (ca22a1cb)
+2018-10-18T00:44:56.4869813+05:00 0HLHKD3HPM0H1:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/slimScroll/jquery.slimscroll.min.js?v=91NKPpYtpwjHuKO18SJmnkaIocF_hun9sbJoTtyk81E   (ca22a1cb)
+2018-10-18T00:44:56.5239109+05:00 0HLHKD3HPM0H2:00000002 [INF] Sending file. Request path: '"/plugins/jquery/jquery.min.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\jquery\jquery.min.js"' (27b0a520)
+2018-10-18T00:44:56.5679905+05:00 0HLHKD3HPM0GT:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/select2/select2.full.min.js?v=S0OSS1VIFhO4U2RG9P5K0TuApj8mW6JYMGFFVbCNaPw   (ca22a1cb)
+2018-10-18T00:44:56.6128510+05:00 0HLHKD3HPM0GV:00000001 [INF] Request finished in 313.7916ms 200 text/css (791a596a)
+2018-10-18T00:44:56.7374689+05:00 0HLHKD3HPM0H0:00000002 [INF] Sending file. Request path: '"/plugins/input-mask/jquery.inputmask.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\input-mask\jquery.inputmask.js"' (27b0a520)
+2018-10-18T00:44:56.7576157+05:00 0HLHKD3HPM0H1:00000002 [INF] Sending file. Request path: '"/plugins/slimScroll/jquery.slimscroll.min.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\slimScroll\jquery.slimscroll.min.js"' (27b0a520)
+2018-10-18T00:44:56.7660074+05:00 0HLHKD3HPM0GT:00000003 [INF] Sending file. Request path: '"/plugins/select2/select2.full.min.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\select2\select2.full.min.js"' (27b0a520)
+2018-10-18T00:44:56.8060377+05:00 0HLHKD3HPM0GU:00000001 [INF] Request finished in 477.3359ms 200 text/css (791a596a)
+2018-10-18T00:44:56.9116781+05:00 0HLHKD3HPM0H2:00000002 [INF] Request finished in 255.605ms 200 application/javascript (791a596a)
+2018-10-18T00:44:56.9424027+05:00 0HLHKD3HPM0H1:00000002 [INF] Request finished in 423.7094ms 200 application/javascript (791a596a)
+2018-10-18T00:44:57.0075623+05:00 0HLHKD3HPM0GT:00000003 [INF] Request finished in 359.3456ms 200 application/javascript (791a596a)
+2018-10-18T00:44:57.0172486+05:00 0HLHKD3HPM0H0:00000002 [INF] Request finished in 410.877ms 200 application/javascript (791a596a)
+2018-10-18T00:44:57.0968033+05:00 0HLHKD3HPM0H1:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/input-mask/jquery.inputmask.numeric.extensions.js?v=zusZuHdA77D2uaY0gt_c1lD6_rb26CSV_DXy3Hh1dk0   (ca22a1cb)
+2018-10-18T00:44:57.1241366+05:00 0HLHKD3HPM0H2:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/input-mask/jquery.inputmask.date.extensions.js?v=FOj_bTmtyvTbGyANspkVpKAHRPJ_0QYU729JlJ9TTtw   (ca22a1cb)
+2018-10-18T00:44:57.1505916+05:00 0HLHKD3HPM0GV:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/fastclick/fastclick.min.js?v=MsmDpLO4fY9-r6QIQMh5E1Glk8hpowKdi3NWqM9tKpQ   (ca22a1cb)
+2018-10-18T00:44:57.1760326+05:00 0HLHKD3HPM0GT:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/datatables/jquery.dataTables.js   (ca22a1cb)
+2018-10-18T00:44:57.1882344+05:00 0HLHKD3HPM0H0:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/input-mask/jquery.inputmask.regex.extensions.js?v=szi1DxBwty2OyVrCCqOg9tjqvzdEX6eqFV3lFcS0iK0   (ca22a1cb)
+2018-10-18T00:44:57.2093827+05:00 0HLHKD3HPM0H1:00000003 [INF] Sending file. Request path: '"/plugins/input-mask/jquery.inputmask.numeric.extensions.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\input-mask\jquery.inputmask.numeric.extensions.js"' (27b0a520)
+2018-10-18T00:44:57.2151825+05:00 0HLHKD3HPM0H2:00000003 [INF] Sending file. Request path: '"/plugins/input-mask/jquery.inputmask.date.extensions.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\input-mask\jquery.inputmask.date.extensions.js"' (27b0a520)
+2018-10-18T00:44:57.2867596+05:00 0HLHKD3HPM0H0:00000003 [INF] Sending file. Request path: '"/plugins/input-mask/jquery.inputmask.regex.extensions.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\input-mask\jquery.inputmask.regex.extensions.js"' (27b0a520)
+2018-10-18T00:44:57.3038525+05:00 0HLHKD3HPM0GT:00000004 [INF] Sending file. Request path: '"/plugins/datatables/jquery.dataTables.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\datatables\jquery.dataTables.js"' (27b0a520)
+2018-10-18T00:44:57.3157843+05:00 0HLHKD3HPM0GV:00000002 [INF] Sending file. Request path: '"/plugins/fastclick/fastclick.min.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\fastclick\fastclick.min.js"' (27b0a520)
+2018-10-18T00:44:57.3803590+05:00 0HLHKD3HPM0GV:00000002 [INF] Request finished in 483.6652ms 200 application/javascript (791a596a)
+2018-10-18T00:44:57.4123947+05:00 0HLHKD3HPM0H2:00000003 [INF] Request finished in 256.0248ms 200 application/javascript (791a596a)
+2018-10-18T00:44:57.4350764+05:00 0HLHKD3HPM0GU:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/bootstrap/js/bootstrap.bundle.min.js?v=78rSZBnBJXmJ5VGuWL8mkunvhy94g99Rw53bssjHSUk   (ca22a1cb)
+2018-10-18T00:44:57.4364004+05:00 0HLHKD3HPM0H1:00000003 [INF] Request finished in 244.2802ms 200 application/javascript (791a596a)
+2018-10-18T00:44:57.4418529+05:00 0HLHKD3HPM0H0:00000003 [INF] Request finished in 216.3211ms 200 application/javascript (791a596a)
+2018-10-18T00:44:57.4561992+05:00 0HLHKD3HPM0GU:00000002 [INF] Sending file. Request path: '"/plugins/bootstrap/js/bootstrap.bundle.min.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\bootstrap\js\bootstrap.bundle.min.js"' (27b0a520)
+2018-10-18T00:44:57.5229137+05:00 0HLHKD3HPM0H2:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:1282/js/main.min.js   (ca22a1cb)
+2018-10-18T00:44:57.5300513+05:00 0HLHKD3HPM0H1:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/datatables/dataTables.bootstrap4.js   (ca22a1cb)
+2018-10-18T00:44:57.5478112+05:00 0HLHKD3HPM0GU:00000002 [INF] Request finished in 416.5025ms 200 application/javascript (791a596a)
+2018-10-18T00:44:57.6177504+05:00 0HLHKD3HPM0H1:00000004 [INF] Sending file. Request path: '"/plugins/datatables/dataTables.bootstrap4.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\datatables\dataTables.bootstrap4.js"' (27b0a520)
+2018-10-18T00:44:57.7003439+05:00 0HLHKD3HPM0H2:00000004 [INF] Sending file. Request path: '"/js/main.min.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\js\main.min.js"' (27b0a520)
+2018-10-18T00:44:57.7565207+05:00 0HLHKD3HPM0GT:00000004 [INF] Request finished in 401.8881ms 200 application/javascript (791a596a)
+2018-10-18T00:44:57.7879573+05:00 0HLHKD3HPM0H2:00000004 [INF] Request finished in 259.5342ms 200 application/javascript (791a596a)
+2018-10-18T00:44:57.7929991+05:00 0HLHKD3HPM0H1:00000004 [INF] Request finished in 264.2026ms 200 application/javascript (791a596a)
+2018-10-18T00:45:25.2156401+05:00 0HLHKD3HPM0H3:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/bootstrap/js/bootstrap.bundle.min.js.map   (ca22a1cb)
+2018-10-18T00:45:25.2238165+05:00 0HLHKD3HPM0H3:00000001 [INF] Sending file. Request path: '"/plugins/bootstrap/js/bootstrap.bundle.min.js.map"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\bootstrap\js\bootstrap.bundle.min.js.map"' (27b0a520)
+2018-10-18T00:45:25.2463126+05:00 0HLHKD3HPM0H3:00000001 [INF] Request finished in 28.0142ms 200 text/plain (791a596a)
+2018-10-18T00:46:07.3611670+05:00 0HLHKD3HPM0H4:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:1282/Users/GetKarmaForUsers   (ca22a1cb)
+2018-10-18T00:46:07.3683143+05:00 0HLHKD3HPM0H4:00000001 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-10-18T00:46:07.3750252+05:00 0HLHKD3HPM0H4:00000001 [INF] Executing action method "TaskProject.Controllers.UsersController.GetKarmaForUsers (TaskProject)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-10-18T00:46:07.3821307+05:00 0HLHKD3HPM0H4:00000001 [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-18T00:46:07.4042010+05:00 0HLHKD3HPM0H4:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [u].[Id], [u].[AccessFailedCount], [u].[AligmentId], [u].[ConcurrencyStamp], [u].[CurrentExp], [u].[CurrentGold], [u].[CurrentKarma], [u].[CurrentLevel], [u].[Email], [u].[EmailConfirmed], [u].[HealthId], [u].[IsSetDefaultValues], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[MaxExp], [u].[NickName], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[Photo], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+ORDER BY [u].[Id]" (0723d8ff)
+2018-10-18T00:46:07.4170977+05:00 0HLHKD3HPM0H4:00000001 [INF] Executed DbCommand ("6"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [u.Karma].[KarmaId], [u.Karma].[Date], [u.Karma].[IsGood], [u.Karma].[Name], [u.Karma].[UserId]
+FROM [Karma] AS [u.Karma]
+INNER JOIN (
+    SELECT [u0].[Id]
+    FROM [AspNetUsers] AS [u0]
+) AS [t] ON [u.Karma].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-18T00:46:07.4229720+05:00 0HLHKD3HPM0H4:00000001 [INF] Executing ViewResult, running view at path "/Views/Users/GetKarmaForUsers.cshtml". (9707eebe)
+2018-10-18T00:46:07.8825592+05:00 0HLHKD3HPM0H4:00000001 [INF] Executed DbCommand ("4"ms) [Parameters=["@__userid_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [c].[NotificationID], [c].[DateCreate], [c].[Name], [c].[UserId]
+FROM [Notifications] AS [c]
+WHERE [c].[UserId] = @__userid_0
+ORDER BY [c].[DateCreate] DESC" (0723d8ff)
+2018-10-18T00:46:07.8980120+05:00 0HLHKD3HPM0H4:00000001 [INF] Executed DbCommand ("3"ms) [Parameters=["@__userid_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [c].[CatalogId], [c].[Name], [c].[UserId]
+FROM [Catalogs] AS [c]
+WHERE [c].[UserId] = @__userid_0" (0723d8ff)
+2018-10-18T00:46:07.9312165+05:00 0HLHKD3HPM0H4:00000001 [INF] Executed action "TaskProject.Controllers.UsersController.GetKarmaForUsers (TaskProject)" in 554.503ms (afa2e885)
+2018-10-18T00:46:07.9380151+05:00 0HLHKD3HPM0H4:00000001 [INF] Request finished in 580.1653ms 200 text/html; charset=utf-8 (791a596a)
+2018-10-18T00:46:08.0048151+05:00 0HLHKD3HPM0H4:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/font-awesome/css/font-awesome.min.css?v=eZrrJcwDc_3uDhsdt61sL2oOBY362qM3lon1gyExkL0   (ca22a1cb)
+2018-10-18T00:46:08.0508596+05:00 0HLHKD3HPM0H9:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:1282/img/primary/inferno.svg   (ca22a1cb)
+2018-10-18T00:46:08.0661302+05:00 0HLHKD3HPM0H7:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/datatables/dataTables.bootstrap4.css   (ca22a1cb)
+2018-10-18T00:46:08.0908342+05:00 0HLHKD3HPM0H5:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/iCheck/flat/blue.css?v=w-71cB3p1q0C30xFtffGVRCQqZY6IpbbW-8698qGFxk   (ca22a1cb)
+2018-10-18T00:46:08.0992361+05:00 0HLHKD3HPM0H8:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:1282/css/main.min.css   (ca22a1cb)
+2018-10-18T00:46:08.1142919+05:00 0HLHKD3HPM0H6:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/select2/select2.min.css?v=Zlen06xFBs47DKkjTfT2O2v_jpTpLyH513khsWb8aSU   (ca22a1cb)
+2018-10-18T00:46:08.1178637+05:00 0HLHKD3HPM0H7:00000001 [INF] Sending file. Request path: '"/plugins/datatables/dataTables.bootstrap4.css"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\datatables\dataTables.bootstrap4.css"' (27b0a520)
+2018-10-18T00:46:08.1216202+05:00 0HLHKD3HPM0H4:00000002 [INF] Sending file. Request path: '"/plugins/font-awesome/css/font-awesome.min.css"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\font-awesome\css\font-awesome.min.css"' (27b0a520)
+2018-10-18T00:46:08.1489158+05:00 0HLHKD3HPM0H9:00000001 [INF] Sending file. Request path: '"/img/primary/inferno.svg"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\img\primary\inferno.svg"' (27b0a520)
+2018-10-18T00:46:08.1645467+05:00 0HLHKD3HPM0H5:00000001 [INF] Sending file. Request path: '"/plugins/iCheck/flat/blue.css"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\iCheck\flat\blue.css"' (27b0a520)
+2018-10-18T00:46:08.1908965+05:00 0HLHKD3HPM0H8:00000001 [INF] Sending file. Request path: '"/css/main.min.css"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\css\main.min.css"' (27b0a520)
+2018-10-18T00:46:08.1939890+05:00 0HLHKD3HPM0H4:00000002 [INF] Request finished in 147.7246ms 200 text/css (791a596a)
+2018-10-18T00:46:08.2018398+05:00 0HLHKD3HPM0H7:00000001 [INF] Request finished in 141.6897ms 200 text/css (791a596a)
+2018-10-18T00:46:08.2082676+05:00 0HLHKD3HPM0H6:00000001 [INF] Sending file. Request path: '"/plugins/select2/select2.min.css"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\select2\select2.min.css"' (27b0a520)
+2018-10-18T00:46:08.2157082+05:00 0HLHKD3HPM0H9:00000001 [INF] Request finished in 183.9731ms 200 image/svg+xml (791a596a)
+2018-10-18T00:46:08.3026020+05:00 0HLHKD3HPM0H5:00000001 [INF] Request finished in 195.6523ms 200 text/css (791a596a)
+2018-10-18T00:46:08.3154893+05:00 0HLHKD3HPM0H7:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/jquery/jquery.min.js?v=FgpCb_KJQlLNfOu91ta32o_NMZxltwRo8QtmkMRdAu8   (ca22a1cb)
+2018-10-18T00:46:08.3291099+05:00 0HLHKD3HPM0H8:00000001 [INF] Request finished in 250.781ms 200 text/css (791a596a)
+2018-10-18T00:46:08.3317127+05:00 0HLHKD3HPM0H6:00000001 [INF] Request finished in 275.2935ms 200 text/css (791a596a)
+2018-10-18T00:46:08.3665459+05:00 0HLHKD3HPM0H7:00000002 [INF] Sending file. Request path: '"/plugins/jquery/jquery.min.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\jquery\jquery.min.js"' (27b0a520)
+2018-10-18T00:46:08.3793196+05:00 0HLHKD3HPM0H7:00000002 [INF] Request finished in 157.5793ms 200 application/javascript (791a596a)
+2018-10-18T00:46:08.4817234+05:00 0HLHKD3HPM0H7:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/bootstrap/js/bootstrap.bundle.min.js?v=78rSZBnBJXmJ5VGuWL8mkunvhy94g99Rw53bssjHSUk   (ca22a1cb)
+2018-10-18T00:46:08.4908254+05:00 0HLHKD3HPM0H7:00000003 [INF] Sending file. Request path: '"/plugins/bootstrap/js/bootstrap.bundle.min.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\bootstrap\js\bootstrap.bundle.min.js"' (27b0a520)
+2018-10-18T00:46:08.5060369+05:00 0HLHKD3HPM0H7:00000003 [INF] Request finished in 22.9962ms 200 application/javascript (791a596a)
+2018-10-18T00:46:08.6780691+05:00 0HLHKD3HPM0H7:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/slimScroll/jquery.slimscroll.min.js?v=91NKPpYtpwjHuKO18SJmnkaIocF_hun9sbJoTtyk81E   (ca22a1cb)
+2018-10-18T00:46:08.6819514+05:00 0HLHKD3HPM0H8:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/fastclick/fastclick.min.js?v=MsmDpLO4fY9-r6QIQMh5E1Glk8hpowKdi3NWqM9tKpQ   (ca22a1cb)
+2018-10-18T00:46:08.7167771+05:00 0HLHKD3HPM0H8:00000002 [INF] Sending file. Request path: '"/plugins/fastclick/fastclick.min.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\fastclick\fastclick.min.js"' (27b0a520)
+2018-10-18T00:46:08.7203611+05:00 0HLHKD3HPM0H7:00000004 [INF] Sending file. Request path: '"/plugins/slimScroll/jquery.slimscroll.min.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\slimScroll\jquery.slimscroll.min.js"' (27b0a520)
+2018-10-18T00:46:08.7527031+05:00 0HLHKD3HPM0H8:00000002 [INF] Request finished in 73.9091ms 200 application/javascript (791a596a)
+2018-10-18T00:46:08.8060887+05:00 0HLHKD3HPM0H7:00000004 [INF] Request finished in 97.0929ms 200 application/javascript (791a596a)
+2018-10-18T00:46:08.8361899+05:00 0HLHKD3HPM0H7:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/input-mask/jquery.inputmask.js?v=pp0oIHHWcYkpwhFeUiCut1N8Ov_noE7jWugU6sJFV0w   (ca22a1cb)
+2018-10-18T00:46:08.8362360+05:00 0HLHKD3HPM0H8:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/select2/select2.full.min.js?v=S0OSS1VIFhO4U2RG9P5K0TuApj8mW6JYMGFFVbCNaPw   (ca22a1cb)
+2018-10-18T00:46:08.8817186+05:00 0HLHKD3HPM0H7:00000005 [INF] Sending file. Request path: '"/plugins/input-mask/jquery.inputmask.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\input-mask\jquery.inputmask.js"' (27b0a520)
+2018-10-18T00:46:08.8850223+05:00 0HLHKD3HPM0H8:00000003 [INF] Sending file. Request path: '"/plugins/select2/select2.full.min.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\select2\select2.full.min.js"' (27b0a520)
+2018-10-18T00:46:08.9071058+05:00 0HLHKD3HPM0H7:00000005 [INF] Request finished in 71.7199ms 200 application/javascript (791a596a)
+2018-10-18T00:46:08.9128816+05:00 0HLHKD3HPM0H8:00000003 [INF] Request finished in 113.6429ms 200 application/javascript (791a596a)
+2018-10-18T00:46:08.9545526+05:00 0HLHKD3HPM0H7:00000006 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/input-mask/jquery.inputmask.date.extensions.js?v=FOj_bTmtyvTbGyANspkVpKAHRPJ_0QYU729JlJ9TTtw   (ca22a1cb)
+2018-10-18T00:46:08.9898466+05:00 0HLHKD3HPM0H7:00000006 [INF] Sending file. Request path: '"/plugins/input-mask/jquery.inputmask.date.extensions.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\input-mask\jquery.inputmask.date.extensions.js"' (27b0a520)
+2018-10-18T00:46:08.9932872+05:00 0HLHKD3HPM0H8:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/input-mask/jquery.inputmask.numeric.extensions.js?v=zusZuHdA77D2uaY0gt_c1lD6_rb26CSV_DXy3Hh1dk0   (ca22a1cb)
+2018-10-18T00:46:09.0194090+05:00 0HLHKD3HPM0H7:00000006 [INF] Request finished in 51.1785ms 200 application/javascript (791a596a)
+2018-10-18T00:46:09.0541024+05:00 0HLHKD3HPM0H8:00000004 [INF] Sending file. Request path: '"/plugins/input-mask/jquery.inputmask.numeric.extensions.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\input-mask\jquery.inputmask.numeric.extensions.js"' (27b0a520)
+2018-10-18T00:46:09.0898568+05:00 0HLHKD3HPM0H7:00000007 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/input-mask/jquery.inputmask.regex.extensions.js?v=szi1DxBwty2OyVrCCqOg9tjqvzdEX6eqFV3lFcS0iK0   (ca22a1cb)
+2018-10-18T00:46:09.0936295+05:00 0HLHKD3HPM0H8:00000004 [INF] Request finished in 99.9886ms 200 application/javascript (791a596a)
+2018-10-18T00:46:09.1327396+05:00 0HLHKD3HPM0H7:00000007 [INF] Sending file. Request path: '"/plugins/input-mask/jquery.inputmask.regex.extensions.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\input-mask\jquery.inputmask.regex.extensions.js"' (27b0a520)
+2018-10-18T00:46:09.1514526+05:00 0HLHKD3HPM0H8:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/datatables/jquery.dataTables.js   (ca22a1cb)
+2018-10-18T00:46:09.1639420+05:00 0HLHKD3HPM0H7:00000007 [INF] Request finished in 95.3157ms 200 application/javascript (791a596a)
+2018-10-18T00:46:09.2381302+05:00 0HLHKD3HPM0H8:00000005 [INF] Sending file. Request path: '"/plugins/datatables/jquery.dataTables.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\datatables\jquery.dataTables.js"' (27b0a520)
+2018-10-18T00:46:09.2473217+05:00 0HLHKD3HPM0H7:00000008 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/datatables/dataTables.bootstrap4.js   (ca22a1cb)
+2018-10-18T00:46:09.2575922+05:00 0HLHKD3HPM0H7:00000008 [INF] Sending file. Request path: '"/plugins/datatables/dataTables.bootstrap4.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\datatables\dataTables.bootstrap4.js"' (27b0a520)
+2018-10-18T00:46:09.2687791+05:00 0HLHKD3HPM0H7:00000008 [INF] Request finished in 44.2562ms 200 application/javascript (791a596a)
+2018-10-18T00:46:09.2906465+05:00 0HLHKD3HPM0H8:00000005 [INF] Request finished in 162.8967ms 200 application/javascript (791a596a)
+2018-10-18T00:46:09.3017931+05:00 0HLHKD3HPM0H7:00000009 [INF] Request starting HTTP/1.1 GET http://localhost:1282/js/main.min.js   (ca22a1cb)
+2018-10-18T00:46:09.3145366+05:00 0HLHKD3HPM0H7:00000009 [INF] Sending file. Request path: '"/js/main.min.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\js\main.min.js"' (27b0a520)
+2018-10-18T00:46:09.4151844+05:00 0HLHKD3HPM0H7:00000009 [INF] Request finished in 32.6872ms 200 application/javascript (791a596a)
+2018-10-18T00:46:12.5480874+05:00 0HLHKD3HPM0HA:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:1282/Users/GetKarmaForUsers   (ca22a1cb)
+2018-10-18T00:46:12.5557645+05:00 0HLHKD3HPM0HA:00000001 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-10-18T00:46:12.5637630+05:00 0HLHKD3HPM0HA:00000001 [INF] Executing action method "TaskProject.Controllers.UsersController.GetKarmaForUsers (TaskProject)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-10-18T00:46:12.5787646+05:00 0HLHKD3HPM0HA:00000001 [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-18T00:46:12.5873871+05:00 0HLHKD3HPM0HB:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:1282/Users/GetKarmaForUsers   (ca22a1cb)
+2018-10-18T00:46:12.6197313+05:00 0HLHKD3HPM0HA:00000001 [INF] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [u].[Id], [u].[AccessFailedCount], [u].[AligmentId], [u].[ConcurrencyStamp], [u].[CurrentExp], [u].[CurrentGold], [u].[CurrentKarma], [u].[CurrentLevel], [u].[Email], [u].[EmailConfirmed], [u].[HealthId], [u].[IsSetDefaultValues], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[MaxExp], [u].[NickName], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[Photo], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+ORDER BY [u].[Id]" (0723d8ff)
+2018-10-18T00:46:12.6214731+05:00 0HLHKD3HPM0HB:00000001 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-10-18T00:46:12.6341740+05:00 0HLHKD3HPM0HB:00000001 [INF] Executing action method "TaskProject.Controllers.UsersController.GetKarmaForUsers (TaskProject)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-10-18T00:46:12.6445308+05:00 0HLHKD3HPM0HA:00000001 [INF] Executed DbCommand ("12"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [u.Karma].[KarmaId], [u.Karma].[Date], [u.Karma].[IsGood], [u.Karma].[Name], [u.Karma].[UserId]
+FROM [Karma] AS [u.Karma]
+INNER JOIN (
+    SELECT [u0].[Id]
+    FROM [AspNetUsers] AS [u0]
+) AS [t] ON [u.Karma].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-18T00:46:12.6470359+05:00 0HLHKD3HPM0HB:00000001 [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-18T00:46:12.6632243+05:00 0HLHKD3HPM0HA:00000001 [INF] Executing ViewResult, running view at path "/Views/Users/GetKarmaForUsers.cshtml". (9707eebe)
+2018-10-18T00:46:12.6716991+05:00 0HLHKD3HPM0HB:00000001 [INF] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [u].[Id], [u].[AccessFailedCount], [u].[AligmentId], [u].[ConcurrencyStamp], [u].[CurrentExp], [u].[CurrentGold], [u].[CurrentKarma], [u].[CurrentLevel], [u].[Email], [u].[EmailConfirmed], [u].[HealthId], [u].[IsSetDefaultValues], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[MaxExp], [u].[NickName], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[Photo], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+ORDER BY [u].[Id]" (0723d8ff)
+2018-10-18T00:46:12.6949592+05:00 0HLHKD3HPM0HB:00000001 [INF] Executed DbCommand ("8"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [u.Karma].[KarmaId], [u.Karma].[Date], [u.Karma].[IsGood], [u.Karma].[Name], [u.Karma].[UserId]
+FROM [Karma] AS [u.Karma]
+INNER JOIN (
+    SELECT [u0].[Id]
+    FROM [AspNetUsers] AS [u0]
+) AS [t] ON [u.Karma].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-18T00:46:12.7039511+05:00 0HLHKD3HPM0HB:00000001 [INF] Executing ViewResult, running view at path "/Views/Users/GetKarmaForUsers.cshtml". (9707eebe)
+2018-10-18T00:46:12.7316234+05:00 0HLHKD3HPM0HB:00000001 [INF] Executed DbCommand ("6"ms) [Parameters=["@__userid_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [c].[NotificationID], [c].[DateCreate], [c].[Name], [c].[UserId]
+FROM [Notifications] AS [c]
+WHERE [c].[UserId] = @__userid_0
+ORDER BY [c].[DateCreate] DESC" (0723d8ff)
+2018-10-18T00:46:12.7385317+05:00 0HLHKD3HPM0HA:00000001 [INF] Executed DbCommand ("5"ms) [Parameters=["@__userid_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [c].[NotificationID], [c].[DateCreate], [c].[Name], [c].[UserId]
+FROM [Notifications] AS [c]
+WHERE [c].[UserId] = @__userid_0
+ORDER BY [c].[DateCreate] DESC" (0723d8ff)
+2018-10-18T00:46:12.7540192+05:00 0HLHKD3HPM0HA:00000001 [INF] Executed DbCommand ("3"ms) [Parameters=["@__userid_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [c].[CatalogId], [c].[Name], [c].[UserId]
+FROM [Catalogs] AS [c]
+WHERE [c].[UserId] = @__userid_0" (0723d8ff)
+2018-10-18T00:46:12.7560224+05:00 0HLHKD3HPM0HB:00000001 [INF] Executed DbCommand ("3"ms) [Parameters=["@__userid_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [c].[CatalogId], [c].[Name], [c].[UserId]
+FROM [Catalogs] AS [c]
+WHERE [c].[UserId] = @__userid_0" (0723d8ff)
+2018-10-18T00:46:12.8098032+05:00 0HLHKD3HPM0HB:00000001 [INF] Executed action "TaskProject.Controllers.UsersController.GetKarmaForUsers (TaskProject)" in 136.2348ms (afa2e885)
+2018-10-18T00:46:12.8163224+05:00 0HLHKD3HPM0HA:00000001 [INF] Executed action "TaskProject.Controllers.UsersController.GetKarmaForUsers (TaskProject)" in 203.5009ms (afa2e885)
+2018-10-18T00:46:12.8855551+05:00 0HLHKD3HPM0HB:00000001 [INF] Request finished in 232.8246ms 200 text/html; charset=utf-8 (791a596a)
+2018-10-18T00:46:12.9298271+05:00 0HLHKD3HPM0HA:00000001 [INF] Request finished in 280.652ms 200 text/html; charset=utf-8 (791a596a)
+2018-10-18T00:46:12.9484780+05:00 0HLHKD3HPM0HC:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/iCheck/flat/blue.css?v=w-71cB3p1q0C30xFtffGVRCQqZY6IpbbW-8698qGFxk   (ca22a1cb)
+2018-10-18T00:46:12.9578511+05:00 0HLHKD3HPM0HG:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:1282/img/primary/inferno.svg   (ca22a1cb)
+2018-10-18T00:46:13.0034990+05:00 0HLHKD3HPM0HD:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:1282/css/main.min.css   (ca22a1cb)
+2018-10-18T00:46:13.0098621+05:00 0HLHKD3HPM0HF:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/datatables/dataTables.bootstrap4.css   (ca22a1cb)
+2018-10-18T00:46:13.0150932+05:00 0HLHKD3HPM0HE:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/select2/select2.min.css?v=Zlen06xFBs47DKkjTfT2O2v_jpTpLyH513khsWb8aSU   (ca22a1cb)
+2018-10-18T00:46:13.0269896+05:00 0HLHKD3HPM0HC:00000001 [INF] Sending file. Request path: '"/plugins/iCheck/flat/blue.css"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\iCheck\flat\blue.css"' (27b0a520)
+2018-10-18T00:46:13.0313598+05:00 0HLHKD3HPM0HB:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/font-awesome/css/font-awesome.min.css?v=eZrrJcwDc_3uDhsdt61sL2oOBY362qM3lon1gyExkL0   (ca22a1cb)
+2018-10-18T00:46:13.0932890+05:00 0HLHKD3HPM0HE:00000001 [INF] Sending file. Request path: '"/plugins/select2/select2.min.css"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\select2\select2.min.css"' (27b0a520)
+2018-10-18T00:46:13.0970911+05:00 0HLHKD3HPM0HG:00000001 [INF] Sending file. Request path: '"/img/primary/inferno.svg"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\img\primary\inferno.svg"' (27b0a520)
+2018-10-18T00:46:13.1308067+05:00 0HLHKD3HPM0HF:00000001 [INF] Sending file. Request path: '"/plugins/datatables/dataTables.bootstrap4.css"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\datatables\dataTables.bootstrap4.css"' (27b0a520)
+2018-10-18T00:46:13.1401114+05:00 0HLHKD3HPM0HD:00000001 [INF] Sending file. Request path: '"/css/main.min.css"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\css\main.min.css"' (27b0a520)
+2018-10-18T00:46:13.1484377+05:00 0HLHKD3HPM0HC:00000001 [INF] Request finished in 207.7797ms 200 text/css (791a596a)
+2018-10-18T00:46:13.1551992+05:00 0HLHKD3HPM0HB:00000002 [INF] Sending file. Request path: '"/plugins/font-awesome/css/font-awesome.min.css"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\font-awesome\css\font-awesome.min.css"' (27b0a520)
+2018-10-18T00:46:13.1697436+05:00 0HLHKD3HPM0HG:00000001 [INF] Request finished in 236.5194ms 200 image/svg+xml (791a596a)
+2018-10-18T00:46:13.1963063+05:00 0HLHKD3HPM0HE:00000001 [INF] Request finished in 231.0157ms 200 text/css (791a596a)
+2018-10-18T00:46:13.2222075+05:00 0HLHKD3HPM0HC:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/jquery/jquery.min.js?v=FgpCb_KJQlLNfOu91ta32o_NMZxltwRo8QtmkMRdAu8   (ca22a1cb)
+2018-10-18T00:46:13.2260861+05:00 0HLHKD3HPM0HF:00000001 [INF] Request finished in 296.5164ms 200 text/css (791a596a)
+2018-10-18T00:46:13.2657725+05:00 0HLHKD3HPM0HC:00000002 [INF] Sending file. Request path: '"/plugins/jquery/jquery.min.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\jquery\jquery.min.js"' (27b0a520)
+2018-10-18T00:46:13.2785422+05:00 0HLHKD3HPM0HB:00000002 [INF] Request finished in 258.0836ms 200 text/css (791a596a)
+2018-10-18T00:46:13.3080251+05:00 0HLHKD3HPM0HD:00000001 [INF] Request finished in 308.334ms 200 text/css (791a596a)
+2018-10-18T00:46:13.3112185+05:00 0HLHKD3HPM0HC:00000002 [INF] Request finished in 92.9085ms 200 application/javascript (791a596a)
+2018-10-18T00:46:13.5299972+05:00 0HLHKD3HPM0HC:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/bootstrap/js/bootstrap.bundle.min.js?v=78rSZBnBJXmJ5VGuWL8mkunvhy94g99Rw53bssjHSUk   (ca22a1cb)
+2018-10-18T00:46:13.5387440+05:00 0HLHKD3HPM0HG:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/input-mask/jquery.inputmask.js?v=pp0oIHHWcYkpwhFeUiCut1N8Ov_noE7jWugU6sJFV0w   (ca22a1cb)
+2018-10-18T00:46:13.5482541+05:00 0HLHKD3HPM0HE:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/input-mask/jquery.inputmask.date.extensions.js?v=FOj_bTmtyvTbGyANspkVpKAHRPJ_0QYU729JlJ9TTtw   (ca22a1cb)
+2018-10-18T00:46:13.5873608+05:00 0HLHKD3HPM0HB:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/fastclick/fastclick.min.js?v=MsmDpLO4fY9-r6QIQMh5E1Glk8hpowKdi3NWqM9tKpQ   (ca22a1cb)
+2018-10-18T00:46:13.6511715+05:00 0HLHKD3HPM0HF:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/select2/select2.full.min.js?v=S0OSS1VIFhO4U2RG9P5K0TuApj8mW6JYMGFFVbCNaPw   (ca22a1cb)
+2018-10-18T00:46:13.7622697+05:00 0HLHKD3HPM0HF:00000002 [INF] Sending file. Request path: '"/plugins/select2/select2.full.min.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\select2\select2.full.min.js"' (27b0a520)
+2018-10-18T00:46:13.7778837+05:00 0HLHKD3HPM0HC:00000003 [INF] Sending file. Request path: '"/plugins/bootstrap/js/bootstrap.bundle.min.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\bootstrap\js\bootstrap.bundle.min.js"' (27b0a520)
+2018-10-18T00:46:13.7823202+05:00 0HLHKD3HPM0HD:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/slimScroll/jquery.slimscroll.min.js?v=91NKPpYtpwjHuKO18SJmnkaIocF_hun9sbJoTtyk81E   (ca22a1cb)
+2018-10-18T00:46:13.7873574+05:00 0HLHKD3HPM0HG:00000002 [INF] Sending file. Request path: '"/plugins/input-mask/jquery.inputmask.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\input-mask\jquery.inputmask.js"' (27b0a520)
+2018-10-18T00:46:13.7922227+05:00 0HLHKD3HPM0HE:00000002 [INF] Sending file. Request path: '"/plugins/input-mask/jquery.inputmask.date.extensions.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\input-mask\jquery.inputmask.date.extensions.js"' (27b0a520)
+2018-10-18T00:46:13.8024643+05:00 0HLHKD3HPM0HB:00000003 [INF] Sending file. Request path: '"/plugins/fastclick/fastclick.min.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\fastclick\fastclick.min.js"' (27b0a520)
+2018-10-18T00:46:13.9159391+05:00 0HLHKD3HPM0HF:00000002 [INF] Request finished in 298.9585ms 200 application/javascript (791a596a)
+2018-10-18T00:46:13.9379845+05:00 0HLHKD3HPM0HC:00000003 [INF] Request finished in 334.3946ms 200 application/javascript (791a596a)
+2018-10-18T00:46:14.0042196+05:00 0HLHKD3HPM0HG:00000002 [INF] Request finished in 369.9054ms 200 application/javascript (791a596a)
+2018-10-18T00:46:14.0292706+05:00 0HLHKD3HPM0HB:00000003 [INF] Request finished in 426.9928ms 200 application/javascript (791a596a)
+2018-10-18T00:46:14.0748206+05:00 0HLHKD3HPM0HF:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/input-mask/jquery.inputmask.regex.extensions.js?v=szi1DxBwty2OyVrCCqOg9tjqvzdEX6eqFV3lFcS0iK0   (ca22a1cb)
+2018-10-18T00:46:14.1173395+05:00 0HLHKD3HPM0HC:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/datatables/jquery.dataTables.js   (ca22a1cb)
+2018-10-18T00:46:14.1510618+05:00 0HLHKD3HPM0HE:00000002 [INF] Request finished in 430.1919ms 200 application/javascript (791a596a)
+2018-10-18T00:46:14.1849935+05:00 0HLHKD3HPM0HB:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/datatables/dataTables.bootstrap4.js   (ca22a1cb)
+2018-10-18T00:46:14.2150507+05:00 0HLHKD3HPM0HF:00000003 [INF] Sending file. Request path: '"/plugins/input-mask/jquery.inputmask.regex.extensions.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\input-mask\jquery.inputmask.regex.extensions.js"' (27b0a520)
+2018-10-18T00:46:14.2282174+05:00 0HLHKD3HPM0HC:00000004 [INF] Sending file. Request path: '"/plugins/datatables/jquery.dataTables.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\datatables\jquery.dataTables.js"' (27b0a520)
+2018-10-18T00:46:14.2696575+05:00 0HLHKD3HPM0HG:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:1282/js/main.min.js   (ca22a1cb)
+2018-10-18T00:46:14.2736947+05:00 0HLHKD3HPM0HB:00000004 [INF] Sending file. Request path: '"/plugins/datatables/dataTables.bootstrap4.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\datatables\dataTables.bootstrap4.js"' (27b0a520)
+2018-10-18T00:46:14.2783229+05:00 0HLHKD3HPM0HE:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/input-mask/jquery.inputmask.numeric.extensions.js?v=zusZuHdA77D2uaY0gt_c1lD6_rb26CSV_DXy3Hh1dk0   (ca22a1cb)
+2018-10-18T00:46:14.2850310+05:00 0HLHKD3HPM0HF:00000003 [INF] Request finished in 260.7761ms 200 application/javascript (791a596a)
+2018-10-18T00:46:14.3886327+05:00 0HLHKD3HPM0HD:00000002 [INF] Sending file. Request path: '"/plugins/slimScroll/jquery.slimscroll.min.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\slimScroll\jquery.slimscroll.min.js"' (27b0a520)
+2018-10-18T00:46:14.4007176+05:00 0HLHKD3HPM0HE:00000003 [INF] Sending file. Request path: '"/plugins/input-mask/jquery.inputmask.numeric.extensions.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\input-mask\jquery.inputmask.numeric.extensions.js"' (27b0a520)
+2018-10-18T00:46:14.4204211+05:00 0HLHKD3HPM0HB:00000004 [INF] Request finished in 197.4524ms 200 application/javascript (791a596a)
+2018-10-18T00:46:14.4271214+05:00 0HLHKD3HPM0HG:00000003 [INF] Sending file. Request path: '"/js/main.min.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\js\main.min.js"' (27b0a520)
+2018-10-18T00:46:14.4633161+05:00 0HLHKD3HPM0HC:00000004 [INF] Request finished in 317.8777ms 200 application/javascript (791a596a)
+2018-10-18T00:46:14.4930309+05:00 0HLHKD3HPM0HE:00000003 [INF] Request finished in 181.5007ms 200 application/javascript (791a596a)
+2018-10-18T00:46:14.5264399+05:00 0HLHKD3HPM0HG:00000003 [INF] Request finished in 293.1946ms 200 application/javascript (791a596a)
+2018-10-18T00:46:14.5565864+05:00 0HLHKD3HPM0HD:00000002 [INF] Request finished in 990.1255ms 200 application/javascript (791a596a)
+2018-10-18T00:55:01.7285387+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-18T00:55:03.3830817+05:00  [INF] Executed DbCommand ("30"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Repeats] AS [r])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-10-18T00:55:03.4161025+05:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Complications] AS [c])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-10-18T00:55:03.4324107+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Ratings] AS [r])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-10-18T00:55:03.4514906+05:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Aligments] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-10-18T00:55:03.4749639+05:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Moods] AS [m])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-10-18T00:55:03.4933628+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Achievements] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-10-18T00:55:03.5199086+05:00  [INF] Executed DbCommand ("11"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Hobbies] AS [h])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-10-18T00:55:06.5646172+05:00 0HLHKD9N1B4NO:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:1282/   (ca22a1cb)
+2018-10-18T00:55:06.7716169+05:00 0HLHKD9N1B4NO:00000001 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-10-18T00:55:07.3415308+05:00 0HLHKD9N1B4NO:00000001 [INF] Executing action method "TaskProject.Controllers.HomeController.Index (TaskProject)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-10-18T00:55:07.3622750+05:00 0HLHKD9N1B4NO:00000001 [INF] Executing RedirectResult, redirecting to "/Home/GameRoom". (d98d540e)
+2018-10-18T00:55:07.3800840+05:00 0HLHKD9N1B4NO:00000001 [INF] Executed action "TaskProject.Controllers.HomeController.Index (TaskProject)" in 54.7048ms (afa2e885)
+2018-10-18T00:55:07.3982949+05:00 0HLHKD9N1B4NO:00000001 [INF] Request finished in 890.3313ms 302  (791a596a)
+2018-10-18T00:55:07.4239086+05:00 0HLHKD9N1B4NO:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:1282/Home/GameRoom   (ca22a1cb)
+2018-10-18T00:55:07.4756240+05:00 0HLHKD9N1B4NO:00000002 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-10-18T00:55:07.5129457+05:00 0HLHKD9N1B4NO:00000002 [INF] Executing action method "TaskProject.Controllers.HomeController.GameRoom (TaskProject)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-10-18T00:55:07.5763535+05:00 0HLHKD9N1B4NO:00000002 [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-18T00:55:07.7614919+05:00 0HLHKD9N1B4NO:00000002 [INF] Executed DbCommand ("70"ms) [Parameters=["@__get_Item_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[AligmentId], [e].[ConcurrencyStamp], [e].[CurrentExp], [e].[CurrentGold], [e].[CurrentKarma], [e].[CurrentLevel], [e].[Email], [e].[EmailConfirmed], [e].[HealthId], [e].[IsSetDefaultValues], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[MaxExp], [e].[NickName], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[Photo], [e].[SecurityStamp], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0" (0723d8ff)
+2018-10-18T00:55:08.3705525+05:00 0HLHKD9N1B4NO:00000002 [INF] Executed DbCommand ("7"ms) [Parameters=["@__userId_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [u].[Id], [u].[AccessFailedCount], [u].[AligmentId], [u].[ConcurrencyStamp], [u].[CurrentExp], [u].[CurrentGold], [u].[CurrentKarma], [u].[CurrentLevel], [u].[Email], [u].[EmailConfirmed], [u].[HealthId], [u].[IsSetDefaultValues], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[MaxExp], [u].[NickName], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[Photo], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName], [u.Aligment].[AligmentId], [u.Aligment].[Description], [u.Aligment].[Name]
+FROM [AspNetUsers] AS [u]
+LEFT JOIN [Aligments] AS [u.Aligment] ON [u].[AligmentId] = [u.Aligment].[AligmentId]
+WHERE [u].[Id] = @__userId_0
+ORDER BY [u].[Id]" (0723d8ff)
+2018-10-18T00:55:08.7652481+05:00 0HLHKD9N1B4NO:00000002 [INF] Executed DbCommand ("105"ms) [Parameters=["@__userId_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [u.Catalogs].[CatalogId], [u.Catalogs].[Name], [u.Catalogs].[UserId]
+FROM [Catalogs] AS [u.Catalogs]
+INNER JOIN (
+    SELECT DISTINCT [t].*
+    FROM (
+        SELECT TOP(1) [u0].[Id]
+        FROM [AspNetUsers] AS [u0]
+        LEFT JOIN [Aligments] AS [u.Aligment0] ON [u0].[AligmentId] = [u.Aligment0].[AligmentId]
+        WHERE [u0].[Id] = @__userId_0
+        ORDER BY [u0].[Id]
+    ) AS [t]
+) AS [t0] ON [u.Catalogs].[UserId] = [t0].[Id]
+ORDER BY [t0].[Id]" (0723d8ff)
+2018-10-18T00:55:08.8720462+05:00 0HLHKD9N1B4NO:00000002 [INF] Executed DbCommand ("56"ms) [Parameters=["@__userId_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [u.Goals].[GoalId], [u.Goals].[CatalogId], [u.Goals].[ComplicationId], [u.Goals].[Description], [u.Goals].[FinishCount], [u.Goals].[GoalEnd], [u.Goals].[GoalStart], [u.Goals].[IsComplete], [u.Goals].[Name], [u.Goals].[PassCount], [u.Goals].[RepeatId], [u.Goals].[SeriesCount], [u.Goals].[SkillId], [u.Goals].[UserId]
+FROM [Goals] AS [u.Goals]
+INNER JOIN (
+    SELECT DISTINCT [t1].*
+    FROM (
+        SELECT TOP(1) [u1].[Id]
+        FROM [AspNetUsers] AS [u1]
+        LEFT JOIN [Aligments] AS [u.Aligment1] ON [u1].[AligmentId] = [u.Aligment1].[AligmentId]
+        WHERE [u1].[Id] = @__userId_0
+        ORDER BY [u1].[Id]
+    ) AS [t1]
+) AS [t2] ON [u.Goals].[UserId] = [t2].[Id]
+ORDER BY [t2].[Id]" (0723d8ff)
+2018-10-18T00:55:08.9025249+05:00 0HLHKD9N1B4NO:00000002 [INF] Executed DbCommand ("8"ms) [Parameters=["@__userId_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [u.Skills].[SkillId], [u.Skills].[AtributeId], [u.Skills].[CurrentExp], [u.Skills].[Lvl], [u.Skills].[MaxExp], [u.Skills].[Name], [u.Skills].[RatingId], [u.Skills].[UserId]
+FROM [Skills] AS [u.Skills]
+INNER JOIN (
+    SELECT DISTINCT [t3].*
+    FROM (
+        SELECT TOP(1) [u2].[Id]
+        FROM [AspNetUsers] AS [u2]
+        LEFT JOIN [Aligments] AS [u.Aligment2] ON [u2].[AligmentId] = [u.Aligment2].[AligmentId]
+        WHERE [u2].[Id] = @__userId_0
+        ORDER BY [u2].[Id]
+    ) AS [t3]
+) AS [t4] ON [u.Skills].[UserId] = [t4].[Id]
+ORDER BY [t4].[Id]" (0723d8ff)
+2018-10-18T00:55:08.9757006+05:00 0HLHKD9N1B4NO:00000002 [INF] Executed DbCommand ("10"ms) [Parameters=["@__userId_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [u.Atributes].[AtributeId], [u.Atributes].[CurrentExp], [u.Atributes].[Description], [u.Atributes].[Lvl], [u.Atributes].[MaxExp], [u.Atributes].[Name], [u.Atributes].[UserId]
+FROM [Atributes] AS [u.Atributes]
+INNER JOIN (
+    SELECT DISTINCT [t5].*
+    FROM (
+        SELECT TOP(1) [u3].[Id]
+        FROM [AspNetUsers] AS [u3]
+        LEFT JOIN [Aligments] AS [u.Aligment3] ON [u3].[AligmentId] = [u.Aligment3].[AligmentId]
+        WHERE [u3].[Id] = @__userId_0
+        ORDER BY [u3].[Id]
+    ) AS [t5]
+) AS [t6] ON [u.Atributes].[UserId] = [t6].[Id]
+ORDER BY [t6].[Id]" (0723d8ff)
+2018-10-18T00:55:09.0766445+05:00 0HLHKD9N1B4NO:00000002 [INF] Executed DbCommand ("23"ms) [Parameters=["@__userId_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [u.UserMoods].[UserMoodId], [u.UserMoods].[Comment], [u.UserMoods].[Date], [u.UserMoods].[MoodId], [u.UserMoods].[UserId]
+FROM [UserMoods] AS [u.UserMoods]
+INNER JOIN (
+    SELECT DISTINCT [t7].*
+    FROM (
+        SELECT TOP(1) [u4].[Id]
+        FROM [AspNetUsers] AS [u4]
+        LEFT JOIN [Aligments] AS [u.Aligment4] ON [u4].[AligmentId] = [u.Aligment4].[AligmentId]
+        WHERE [u4].[Id] = @__userId_0
+        ORDER BY [u4].[Id]
+    ) AS [t7]
+) AS [t8] ON [u.UserMoods].[UserId] = [t8].[Id]
+ORDER BY [t8].[Id]" (0723d8ff)
+2018-10-18T00:55:09.1045357+05:00 0HLHKD9N1B4NO:00000002 [INF] Executed DbCommand ("5"ms) [Parameters=["@__userId_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [u.Notes].[NoteId], [u.Notes].[DateCreate], [u.Notes].[Text], [u.Notes].[Theme], [u.Notes].[UserId]
+FROM [Notes] AS [u.Notes]
+INNER JOIN (
+    SELECT DISTINCT [t9].*
+    FROM (
+        SELECT TOP(1) [u5].[Id]
+        FROM [AspNetUsers] AS [u5]
+        LEFT JOIN [Aligments] AS [u.Aligment5] ON [u5].[AligmentId] = [u.Aligment5].[AligmentId]
+        WHERE [u5].[Id] = @__userId_0
+        ORDER BY [u5].[Id]
+    ) AS [t9]
+) AS [t10] ON [u.Notes].[UserId] = [t10].[Id]
+ORDER BY [t10].[Id]" (0723d8ff)
+2018-10-18T00:55:09.1497962+05:00 0HLHKD9N1B4NO:00000002 [INF] Executed DbCommand ("8"ms) [Parameters=["@__userId_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [u.UserAchievements].[UserAchievementId], [u.UserAchievements].[AchievementId], [u.UserAchievements].[IsOpen], [u.UserAchievements].[SetDate], [u.UserAchievements].[UserId]
+FROM [UserAchievements] AS [u.UserAchievements]
+INNER JOIN (
+    SELECT DISTINCT [t11].*
+    FROM (
+        SELECT TOP(1) [u6].[Id]
+        FROM [AspNetUsers] AS [u6]
+        LEFT JOIN [Aligments] AS [u.Aligment6] ON [u6].[AligmentId] = [u.Aligment6].[AligmentId]
+        WHERE [u6].[Id] = @__userId_0
+        ORDER BY [u6].[Id]
+    ) AS [t11]
+) AS [t12] ON [u.UserAchievements].[UserId] = [t12].[Id]
+ORDER BY [t12].[Id]" (0723d8ff)
+2018-10-18T00:55:09.2194857+05:00 0HLHKD9N1B4NO:00000002 [INF] Executed DbCommand ("9"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [m].[MoodId], [m].[LinkImg], [m].[Name]
+FROM [Moods] AS [m]" (0723d8ff)
+2018-10-18T00:55:15.2514440+05:00 0HLHKD9N1B4NO:00000002 [INF] Executing ViewResult, running view at path "/Views/Home/GameRoom.cshtml". (9707eebe)
+2018-10-18T00:55:17.6529848+05:00 0HLHKD9N1B4NO:00000002 [INF] Executed DbCommand ("5"ms) [Parameters=["@__userid_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [c].[NotificationID], [c].[DateCreate], [c].[Name], [c].[UserId]
+FROM [Notifications] AS [c]
+WHERE [c].[UserId] = @__userid_0
+ORDER BY [c].[DateCreate] DESC" (0723d8ff)
+2018-10-18T00:55:18.4890195+05:00 0HLHKD9N1B4NO:00000002 [INF] Executed DbCommand ("11"ms) [Parameters=["@__userid_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [c].[CatalogId], [c].[Name], [c].[UserId]
+FROM [Catalogs] AS [c]
+WHERE [c].[UserId] = @__userid_0" (0723d8ff)
+2018-10-18T00:55:19.7818546+05:00 0HLHKD9N1B4NO:00000002 [INF] Executed action "TaskProject.Controllers.HomeController.GameRoom (TaskProject)" in 12278.4018ms (afa2e885)
+2018-10-18T00:55:19.7998666+05:00 0HLHKD9N1B4NO:00000002 [INF] Request finished in 12368.5671ms 200 text/html; charset=utf-8 (791a596a)
+2018-10-18T00:55:20.0474660+05:00 0HLHKD9N1B4NO:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/font-awesome/css/font-awesome.min.css?v=eZrrJcwDc_3uDhsdt61sL2oOBY362qM3lon1gyExkL0   (ca22a1cb)
+2018-10-18T00:55:20.1135054+05:00 0HLHKD9N1B4NR:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/iCheck/flat/blue.css?v=w-71cB3p1q0C30xFtffGVRCQqZY6IpbbW-8698qGFxk   (ca22a1cb)
+2018-10-18T00:55:20.1206314+05:00 0HLHKD9N1B4NT:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:1282/img/primary/inferno.svg   (ca22a1cb)
+2018-10-18T00:55:20.1285143+05:00 0HLHKD9N1B4NU:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:1282/img/moods/crying.svg?v=oN1XGPIZT6so8DqAYcBl50oyUp0Ps5znSo3bWTTRALM   (ca22a1cb)
+2018-10-18T00:55:20.1378861+05:00 0HLHKD9N1B4NQ:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/select2/select2.min.css?v=Zlen06xFBs47DKkjTfT2O2v_jpTpLyH513khsWb8aSU   (ca22a1cb)
+2018-10-18T00:55:20.1646149+05:00 0HLHKD9N1B4NS:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:1282/css/main.min.css   (ca22a1cb)
+2018-10-18T00:55:20.2108513+05:00 0HLHKD9N1B4NO:00000003 [INF] Sending file. Request path: '"/plugins/font-awesome/css/font-awesome.min.css"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\font-awesome\css\font-awesome.min.css"' (27b0a520)
+2018-10-18T00:55:20.2248268+05:00 0HLHKD9N1B4NS:00000001 [INF] Sending file. Request path: '"/css/main.min.css"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\css\main.min.css"' (27b0a520)
+2018-10-18T00:55:20.2344787+05:00 0HLHKD9N1B4NR:00000001 [INF] Sending file. Request path: '"/plugins/iCheck/flat/blue.css"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\iCheck\flat\blue.css"' (27b0a520)
+2018-10-18T00:55:20.2953533+05:00 0HLHKD9N1B4NU:00000001 [INF] Sending file. Request path: '"/img/moods/crying.svg"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\img\moods\crying.svg"' (27b0a520)
+2018-10-18T00:55:20.3671350+05:00 0HLHKD9N1B4NR:00000001 [INF] Request finished in 275.025ms 200 text/css (791a596a)
+2018-10-18T00:55:20.4816280+05:00 0HLHKD9N1B4NT:00000001 [INF] Sending file. Request path: '"/img/primary/inferno.svg"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\img\primary\inferno.svg"' (27b0a520)
+2018-10-18T00:55:20.4970790+05:00 0HLHKD9N1B4NQ:00000001 [INF] Sending file. Request path: '"/plugins/select2/select2.min.css"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\select2\select2.min.css"' (27b0a520)
+2018-10-18T00:55:20.5115528+05:00 0HLHKD9N1B4NO:00000003 [INF] Request finished in 325.4107ms 200 text/css (791a596a)
+2018-10-18T00:55:20.6960533+05:00 0HLHKD9N1B4NU:00000001 [INF] Request finished in 316.4351ms 200 image/svg+xml (791a596a)
+2018-10-18T00:55:20.7065914+05:00 0HLHKD9N1B4NS:00000001 [INF] Request finished in 309.7705ms 200 text/css (791a596a)
+2018-10-18T00:55:20.7363138+05:00 0HLHKD9N1B4NT:00000001 [INF] Request finished in 446.1857ms 200 image/svg+xml (791a596a)
+2018-10-18T00:55:20.9030401+05:00 0HLHKD9N1B4NR:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/input-mask/jquery.inputmask.js?v=pp0oIHHWcYkpwhFeUiCut1N8Ov_noE7jWugU6sJFV0w   (ca22a1cb)
+2018-10-18T00:55:20.9082942+05:00 0HLHKD9N1B4NO:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/select2/select2.full.min.js?v=S0OSS1VIFhO4U2RG9P5K0TuApj8mW6JYMGFFVbCNaPw   (ca22a1cb)
+2018-10-18T00:55:20.9146699+05:00 0HLHKD9N1B4NU:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/jquery/jquery.min.js?v=FgpCb_KJQlLNfOu91ta32o_NMZxltwRo8QtmkMRdAu8   (ca22a1cb)
+2018-10-18T00:55:20.9704173+05:00 0HLHKD9N1B4NS:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/fastclick/fastclick.min.js?v=MsmDpLO4fY9-r6QIQMh5E1Glk8hpowKdi3NWqM9tKpQ   (ca22a1cb)
+2018-10-18T00:55:21.0308394+05:00 0HLHKD9N1B4NQ:00000001 [INF] Request finished in 592.8852ms 200 text/css (791a596a)
+2018-10-18T00:55:21.0827122+05:00 0HLHKD9N1B4NU:00000002 [INF] Sending file. Request path: '"/plugins/jquery/jquery.min.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\jquery\jquery.min.js"' (27b0a520)
+2018-10-18T00:55:21.0999959+05:00 0HLHKD9N1B4NT:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/slimScroll/jquery.slimscroll.min.js?v=91NKPpYtpwjHuKO18SJmnkaIocF_hun9sbJoTtyk81E   (ca22a1cb)
+2018-10-18T00:55:21.3362755+05:00 0HLHKD9N1B4NR:00000002 [INF] Sending file. Request path: '"/plugins/input-mask/jquery.inputmask.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\input-mask\jquery.inputmask.js"' (27b0a520)
+2018-10-18T00:55:21.4458688+05:00 0HLHKD9N1B4NO:00000004 [INF] Sending file. Request path: '"/plugins/select2/select2.full.min.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\select2\select2.full.min.js"' (27b0a520)
+2018-10-18T00:55:21.5881126+05:00 0HLHKD9N1B4NS:00000002 [INF] Sending file. Request path: '"/plugins/fastclick/fastclick.min.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\fastclick\fastclick.min.js"' (27b0a520)
+2018-10-18T00:55:21.8983186+05:00 0HLHKD9N1B4NU:00000002 [INF] Request finished in 698.692ms 200 application/javascript (791a596a)
+2018-10-18T00:55:21.9468707+05:00 0HLHKD9N1B4NT:00000002 [INF] Sending file. Request path: '"/plugins/slimScroll/jquery.slimscroll.min.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\slimScroll\jquery.slimscroll.min.js"' (27b0a520)
+2018-10-18T00:55:21.9640808+05:00 0HLHKD9N1B4NS:00000002 [INF] Request finished in 994.6923ms 200 application/javascript (791a596a)
+2018-10-18T00:55:22.0281123+05:00 0HLHKD9N1B4NO:00000004 [INF] Request finished in 985.533ms 200 application/javascript (791a596a)
+2018-10-18T00:55:22.2871944+05:00 0HLHKD9N1B4NR:00000002 [INF] Request finished in 1131.9126ms 200 application/javascript (791a596a)
+2018-10-18T00:55:22.3154164+05:00 0HLHKD9N1B4NS:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:1282/img/moods/happy.svg?v=ZFMznT0ez_luSwPTAFpWAIvYaCxova-PoDYTWrkFSP0   (ca22a1cb)
+2018-10-18T00:55:22.3337946+05:00 0HLHKD9N1B4NU:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:1282/img/moods/laughing.svg?v=3I1JwqLUqTIbkrYWQ-7Rq3DK7awDP2WS6GXAXVz78vI   (ca22a1cb)
+2018-10-18T00:55:22.3455942+05:00 0HLHKD9N1B4NO:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:1282/img/moods/normal.svg?v=9G6rKkSvjslv5wKaDJkwLIk6NYms3Gr0wO7bFX-5ZQM   (ca22a1cb)
+2018-10-18T00:55:22.3652216+05:00 0HLHKD9N1B4NQ:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/bootstrap/js/bootstrap.bundle.min.js?v=78rSZBnBJXmJ5VGuWL8mkunvhy94g99Rw53bssjHSUk   (ca22a1cb)
+2018-10-18T00:55:22.3698128+05:00 0HLHKD9N1B4NT:00000002 [INF] Request finished in 1275.3418ms 200 application/javascript (791a596a)
+2018-10-18T00:55:22.3898082+05:00 0HLHKD9N1B4NS:00000003 [INF] Sending file. Request path: '"/img/moods/happy.svg"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\img\moods\happy.svg"' (27b0a520)
+2018-10-18T00:55:22.4438392+05:00 0HLHKD9N1B4NO:00000005 [INF] Sending file. Request path: '"/img/moods/normal.svg"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\img\moods\normal.svg"' (27b0a520)
+2018-10-18T00:55:22.4544720+05:00 0HLHKD9N1B4NU:00000003 [INF] Sending file. Request path: '"/img/moods/laughing.svg"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\img\moods\laughing.svg"' (27b0a520)
+2018-10-18T00:55:22.4676232+05:00 0HLHKD9N1B4NR:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:1282/img/moods/sleepy.svg?v=q5VJ0bezgLuQxFKceT_KR_9FBw_9gqtB0JPry3L6meI   (ca22a1cb)
+2018-10-18T00:55:22.5525323+05:00 0HLHKD9N1B4NR:00000003 [INF] Sending file. Request path: '"/img/moods/sleepy.svg"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\img\moods\sleepy.svg"' (27b0a520)
+2018-10-18T00:55:22.5727754+05:00 0HLHKD9N1B4NS:00000003 [INF] Request finished in 326.7554ms 200 image/svg+xml (791a596a)
+2018-10-18T00:55:22.6285853+05:00 0HLHKD9N1B4NQ:00000002 [INF] Sending file. Request path: '"/plugins/bootstrap/js/bootstrap.bundle.min.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\bootstrap\js\bootstrap.bundle.min.js"' (27b0a520)
+2018-10-18T00:55:22.6877524+05:00 0HLHKD9N1B4NR:00000003 [INF] Request finished in 222.9694ms 200 image/svg+xml (791a596a)
+2018-10-18T00:55:22.7713773+05:00 0HLHKD9N1B4NU:00000003 [INF] Request finished in 442.8687ms 200 image/svg+xml (791a596a)
+2018-10-18T00:55:22.7987405+05:00 0HLHKD9N1B4NT:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/input-mask/jquery.inputmask.date.extensions.js?v=FOj_bTmtyvTbGyANspkVpKAHRPJ_0QYU729JlJ9TTtw   (ca22a1cb)
+2018-10-18T00:55:22.8646858+05:00 0HLHKD9N1B4NO:00000005 [INF] Request finished in 407.7012ms 200 image/svg+xml (791a596a)
+2018-10-18T00:55:22.9824682+05:00 0HLHKD9N1B4NS:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/input-mask/jquery.inputmask.numeric.extensions.js?v=zusZuHdA77D2uaY0gt_c1lD6_rb26CSV_DXy3Hh1dk0   (ca22a1cb)
+2018-10-18T00:55:23.0185042+05:00 0HLHKD9N1B4NU:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:1282/js/main.min.js   (ca22a1cb)
+2018-10-18T00:55:23.0793418+05:00 0HLHKD9N1B4NT:00000003 [INF] Sending file. Request path: '"/plugins/input-mask/jquery.inputmask.date.extensions.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\input-mask\jquery.inputmask.date.extensions.js"' (27b0a520)
+2018-10-18T00:55:23.0927666+05:00 0HLHKD9N1B4NS:00000004 [INF] Sending file. Request path: '"/plugins/input-mask/jquery.inputmask.numeric.extensions.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\input-mask\jquery.inputmask.numeric.extensions.js"' (27b0a520)
+2018-10-18T00:55:23.1797059+05:00 0HLHKD9N1B4NQ:00000002 [INF] Request finished in 887.4936ms 200 application/javascript (791a596a)
+2018-10-18T00:55:23.1955182+05:00 0HLHKD9N1B4NU:00000004 [INF] Sending file. Request path: '"/js/main.min.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\js\main.min.js"' (27b0a520)
+2018-10-18T00:55:23.2327782+05:00 0HLHKD9N1B4NO:00000006 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/input-mask/jquery.inputmask.regex.extensions.js?v=szi1DxBwty2OyVrCCqOg9tjqvzdEX6eqFV3lFcS0iK0   (ca22a1cb)
+2018-10-18T00:55:23.2479171+05:00 0HLHKD9N1B4NS:00000004 [INF] Request finished in 480.384ms 200 application/javascript (791a596a)
+2018-10-18T00:55:23.3631309+05:00 0HLHKD9N1B4NT:00000003 [INF] Request finished in 558.217ms 200 application/javascript (791a596a)
+2018-10-18T00:55:23.3970299+05:00 0HLHKD9N1B4NU:00000004 [INF] Request finished in 302.4345ms 200 application/javascript (791a596a)
+2018-10-18T00:55:23.4067815+05:00 0HLHKD9N1B4NO:00000006 [INF] Sending file. Request path: '"/plugins/input-mask/jquery.inputmask.regex.extensions.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\input-mask\jquery.inputmask.regex.extensions.js"' (27b0a520)
+2018-10-18T00:55:23.4333030+05:00 0HLHKD9N1B4NO:00000006 [INF] Request finished in 390.4883ms 200 application/javascript (791a596a)
+2018-10-18T00:55:25.7856110+05:00 0HLHKD9N1B4NO:00000007 [INF] Request starting HTTP/1.1 GET http://localhost:1282/Users/GetGoalsForUsers   (ca22a1cb)
+2018-10-18T00:55:25.7965839+05:00 0HLHKD9N1B4NO:00000007 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-10-18T00:55:25.8146393+05:00 0HLHKD9N1B4NO:00000007 [INF] Executing action method "TaskProject.Controllers.UsersController.GetGoalsForUsers (TaskProject)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-10-18T00:55:25.8278333+05:00 0HLHKD9N1B4NO:00000007 [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-18T00:55:25.8810986+05:00 0HLHKD9N1B4NO:00000007 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [u].[Id], [u].[AccessFailedCount], [u].[AligmentId], [u].[ConcurrencyStamp], [u].[CurrentExp], [u].[CurrentGold], [u].[CurrentKarma], [u].[CurrentLevel], [u].[Email], [u].[EmailConfirmed], [u].[HealthId], [u].[IsSetDefaultValues], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[MaxExp], [u].[NickName], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[Photo], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+ORDER BY [u].[Id]" (0723d8ff)
+2018-10-18T00:55:25.9037051+05:00 0HLHKD9N1B4NO:00000007 [INF] Executed DbCommand ("6"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [u.Goals].[GoalId], [u.Goals].[CatalogId], [u.Goals].[ComplicationId], [u.Goals].[Description], [u.Goals].[FinishCount], [u.Goals].[GoalEnd], [u.Goals].[GoalStart], [u.Goals].[IsComplete], [u.Goals].[Name], [u.Goals].[PassCount], [u.Goals].[RepeatId], [u.Goals].[SeriesCount], [u.Goals].[SkillId], [u.Goals].[UserId]
+FROM [Goals] AS [u.Goals]
+INNER JOIN (
+    SELECT [u0].[Id]
+    FROM [AspNetUsers] AS [u0]
+) AS [t] ON [u.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-18T00:55:27.0554291+05:00 0HLHKD9N1B4NO:00000007 [INF] Executing ViewResult, running view at path "/Views/Users/GetGoalsForUsers.cshtml". (9707eebe)
+2018-10-18T00:55:27.1287457+05:00 0HLHKD9N1B4NO:00000007 [INF] Executed DbCommand ("8"ms) [Parameters=["@__userid_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [c].[NotificationID], [c].[DateCreate], [c].[Name], [c].[UserId]
+FROM [Notifications] AS [c]
+WHERE [c].[UserId] = @__userid_0
+ORDER BY [c].[DateCreate] DESC" (0723d8ff)
+2018-10-18T00:55:27.1561130+05:00 0HLHKD9N1B4NO:00000007 [INF] Executed DbCommand ("1"ms) [Parameters=["@__userid_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [c].[CatalogId], [c].[Name], [c].[UserId]
+FROM [Catalogs] AS [c]
+WHERE [c].[UserId] = @__userid_0" (0723d8ff)
+2018-10-18T00:55:27.2133142+05:00 0HLHKD9N1B4NO:00000007 [INF] Executed action "TaskProject.Controllers.UsersController.GetGoalsForUsers (TaskProject)" in 1374.9215ms (afa2e885)
+2018-10-18T00:55:27.4375785+05:00 0HLHKD9N1B4NQ:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:1282/css/main.min.css   (ca22a1cb)
+2018-10-18T00:55:27.4618733+05:00 0HLHKD9N1B4NU:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/iCheck/flat/blue.css?v=w-71cB3p1q0C30xFtffGVRCQqZY6IpbbW-8698qGFxk   (ca22a1cb)
+2018-10-18T00:55:27.5278320+05:00 0HLHKD9N1B4NR:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:1282/img/primary/inferno.svg   (ca22a1cb)
+2018-10-18T00:55:27.5426579+05:00 0HLHKD9N1B4NS:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/select2/select2.min.css?v=Zlen06xFBs47DKkjTfT2O2v_jpTpLyH513khsWb8aSU   (ca22a1cb)
+2018-10-18T00:55:27.5625663+05:00 0HLHKD9N1B4NT:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/datatables/dataTables.bootstrap4.css   (ca22a1cb)
+2018-10-18T00:55:27.5752471+05:00 0HLHKD9N1B4NO:00000007 [INF] Request finished in 1475.1111ms 200 text/html; charset=utf-8 (791a596a)
+2018-10-18T00:55:27.6320033+05:00 0HLHKD9N1B4NQ:00000003 [INF] Sending file. Request path: '"/css/main.min.css"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\css\main.min.css"' (27b0a520)
+2018-10-18T00:55:27.6374146+05:00 0HLHKD9N1B4NU:00000005 [INF] Sending file. Request path: '"/plugins/iCheck/flat/blue.css"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\iCheck\flat\blue.css"' (27b0a520)
+2018-10-18T00:55:27.6749467+05:00 0HLHKD9N1B4NR:00000004 [INF] Sending file. Request path: '"/img/primary/inferno.svg"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\img\primary\inferno.svg"' (27b0a520)
+2018-10-18T00:55:27.7350421+05:00 0HLHKD9N1B4NQ:00000003 [INF] Request finished in 348.8426ms 200 text/css (791a596a)
+2018-10-18T00:55:27.7402649+05:00 0HLHKD9N1B4NS:00000005 [INF] Sending file. Request path: '"/plugins/select2/select2.min.css"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\select2\select2.min.css"' (27b0a520)
+2018-10-18T00:55:27.7456498+05:00 0HLHKD9N1B4NU:00000005 [INF] Request finished in 326.5971ms 200 text/css (791a596a)
+2018-10-18T00:55:27.7692896+05:00 0HLHKD9N1B4NT:00000004 [INF] Sending file. Request path: '"/plugins/datatables/dataTables.bootstrap4.css"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\datatables\dataTables.bootstrap4.css"' (27b0a520)
+2018-10-18T00:55:27.7759056+05:00 0HLHKD9N1B4NO:00000008 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/font-awesome/css/font-awesome.min.css?v=eZrrJcwDc_3uDhsdt61sL2oOBY362qM3lon1gyExkL0   (ca22a1cb)
+2018-10-18T00:55:27.8151892+05:00 0HLHKD9N1B4NR:00000004 [INF] Request finished in 376.2471ms 200 image/svg+xml (791a596a)
+2018-10-18T00:55:27.8364332+05:00 0HLHKD9N1B4NS:00000005 [INF] Request finished in 470.7309ms 200 text/css (791a596a)
+2018-10-18T00:55:27.8683719+05:00 0HLHKD9N1B4NO:00000008 [INF] Sending file. Request path: '"/plugins/font-awesome/css/font-awesome.min.css"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\font-awesome\css\font-awesome.min.css"' (27b0a520)
+2018-10-18T00:55:27.8825984+05:00 0HLHKD9N1B4NT:00000004 [INF] Request finished in 492.5203ms 200 text/css (791a596a)
+2018-10-18T00:55:27.8862795+05:00 0HLHKD9N1B4NU:00000006 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/jquery/jquery.min.js?v=FgpCb_KJQlLNfOu91ta32o_NMZxltwRo8QtmkMRdAu8   (ca22a1cb)
+2018-10-18T00:55:27.9182429+05:00 0HLHKD9N1B4NU:00000006 [INF] Sending file. Request path: '"/plugins/jquery/jquery.min.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\jquery\jquery.min.js"' (27b0a520)
+2018-10-18T00:55:28.0472920+05:00 0HLHKD9N1B4NO:00000008 [INF] Request finished in 253.5872ms 200 text/css (791a596a)
+2018-10-18T00:55:28.1448502+05:00 0HLHKD9N1B4NU:00000006 [INF] Request finished in 233.5803ms 200 application/javascript (791a596a)
+2018-10-18T00:55:28.1728392+05:00 0HLHKD9N1B4NR:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/input-mask/jquery.inputmask.js?v=pp0oIHHWcYkpwhFeUiCut1N8Ov_noE7jWugU6sJFV0w   (ca22a1cb)
+2018-10-18T00:55:28.2349430+05:00 0HLHKD9N1B4NT:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/slimScroll/jquery.slimscroll.min.js?v=91NKPpYtpwjHuKO18SJmnkaIocF_hun9sbJoTtyk81E   (ca22a1cb)
+2018-10-18T00:55:28.2514462+05:00 0HLHKD9N1B4NS:00000006 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/fastclick/fastclick.min.js?v=MsmDpLO4fY9-r6QIQMh5E1Glk8hpowKdi3NWqM9tKpQ   (ca22a1cb)
+2018-10-18T00:55:28.2637279+05:00 0HLHKD9N1B4NU:00000007 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/input-mask/jquery.inputmask.date.extensions.js?v=FOj_bTmtyvTbGyANspkVpKAHRPJ_0QYU729JlJ9TTtw   (ca22a1cb)
+2018-10-18T00:55:28.3018715+05:00 0HLHKD9N1B4NQ:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/select2/select2.full.min.js?v=S0OSS1VIFhO4U2RG9P5K0TuApj8mW6JYMGFFVbCNaPw   (ca22a1cb)
+2018-10-18T00:55:28.3230142+05:00 0HLHKD9N1B4NR:00000005 [INF] Sending file. Request path: '"/plugins/input-mask/jquery.inputmask.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\input-mask\jquery.inputmask.js"' (27b0a520)
+2018-10-18T00:55:28.3704153+05:00 0HLHKD9N1B4NT:00000005 [INF] Sending file. Request path: '"/plugins/slimScroll/jquery.slimscroll.min.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\slimScroll\jquery.slimscroll.min.js"' (27b0a520)
+2018-10-18T00:55:28.3790953+05:00 0HLHKD9N1B4NS:00000006 [INF] Sending file. Request path: '"/plugins/fastclick/fastclick.min.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\fastclick\fastclick.min.js"' (27b0a520)
+2018-10-18T00:55:28.3838761+05:00 0HLHKD9N1B4NU:00000007 [INF] Sending file. Request path: '"/plugins/input-mask/jquery.inputmask.date.extensions.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\input-mask\jquery.inputmask.date.extensions.js"' (27b0a520)
+2018-10-18T00:55:28.4211433+05:00 0HLHKD9N1B4NQ:00000004 [INF] Sending file. Request path: '"/plugins/select2/select2.full.min.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\select2\select2.full.min.js"' (27b0a520)
+2018-10-18T00:55:28.4277684+05:00 0HLHKD9N1B4NS:00000006 [INF] Request finished in 456.282ms 200 application/javascript (791a596a)
+2018-10-18T00:55:28.4328340+05:00 0HLHKD9N1B4NO:00000009 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/bootstrap/js/bootstrap.bundle.min.js?v=78rSZBnBJXmJ5VGuWL8mkunvhy94g99Rw53bssjHSUk   (ca22a1cb)
+2018-10-18T00:55:28.4775394+05:00 0HLHKD9N1B4NR:00000005 [INF] Request finished in 393.3633ms 200 application/javascript (791a596a)
+2018-10-18T00:55:28.4819763+05:00 0HLHKD9N1B4NT:00000005 [INF] Request finished in 440.6487ms 200 application/javascript (791a596a)
+2018-10-18T00:55:28.5701886+05:00 0HLHKD9N1B4NU:00000007 [INF] Request finished in 215.718ms 200 application/javascript (791a596a)
+2018-10-18T00:55:28.6144892+05:00 0HLHKD9N1B4NQ:00000004 [INF] Request finished in 522.181ms 200 application/javascript (791a596a)
+2018-10-18T00:55:28.6197583+05:00 0HLHKD9N1B4NO:00000009 [INF] Sending file. Request path: '"/plugins/bootstrap/js/bootstrap.bundle.min.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\bootstrap\js\bootstrap.bundle.min.js"' (27b0a520)
+2018-10-18T00:55:28.6484147+05:00 0HLHKD9N1B4NS:00000007 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/datatables/jquery.dataTables.js   (ca22a1cb)
+2018-10-18T00:55:28.6682736+05:00 0HLHKD9N1B4NT:00000006 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/input-mask/jquery.inputmask.regex.extensions.js?v=szi1DxBwty2OyVrCCqOg9tjqvzdEX6eqFV3lFcS0iK0   (ca22a1cb)
+2018-10-18T00:55:28.6762767+05:00 0HLHKD9N1B4NU:00000008 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/datatables/dataTables.bootstrap4.js   (ca22a1cb)
+2018-10-18T00:55:28.6963436+05:00 0HLHKD9N1B4NS:00000007 [INF] Sending file. Request path: '"/plugins/datatables/jquery.dataTables.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\datatables\jquery.dataTables.js"' (27b0a520)
+2018-10-18T00:55:28.7265748+05:00 0HLHKD9N1B4NR:00000006 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/input-mask/jquery.inputmask.numeric.extensions.js?v=zusZuHdA77D2uaY0gt_c1lD6_rb26CSV_DXy3Hh1dk0   (ca22a1cb)
+2018-10-18T00:55:28.7330841+05:00 0HLHKD9N1B4NU:00000008 [INF] Sending file. Request path: '"/plugins/datatables/dataTables.bootstrap4.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\datatables\dataTables.bootstrap4.js"' (27b0a520)
+2018-10-18T00:55:28.7987758+05:00 0HLHKD9N1B4NT:00000006 [INF] Sending file. Request path: '"/plugins/input-mask/jquery.inputmask.regex.extensions.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\input-mask\jquery.inputmask.regex.extensions.js"' (27b0a520)
+2018-10-18T00:55:28.8050222+05:00 0HLHKD9N1B4NO:00000009 [INF] Request finished in 408.5606ms 200 application/javascript (791a596a)
+2018-10-18T00:55:28.8458290+05:00 0HLHKD9N1B4NQ:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:1282/js/main.min.js   (ca22a1cb)
+2018-10-18T00:55:28.8493603+05:00 0HLHKD9N1B4NR:00000006 [INF] Sending file. Request path: '"/plugins/input-mask/jquery.inputmask.numeric.extensions.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\plugins\input-mask\jquery.inputmask.numeric.extensions.js"' (27b0a520)
+2018-10-18T00:55:28.8704421+05:00 0HLHKD9N1B4NT:00000006 [INF] Request finished in 209.1304ms 200 application/javascript (791a596a)
+2018-10-18T00:55:28.9021923+05:00 0HLHKD9N1B4NU:00000008 [INF] Request finished in 123.6884ms 200 application/javascript (791a596a)
+2018-10-18T00:55:28.9699634+05:00 0HLHKD9N1B4NS:00000007 [INF] Request finished in 383.6189ms 200 application/javascript (791a596a)
+2018-10-18T00:55:29.0800167+05:00 0HLHKD9N1B4NQ:00000005 [INF] Sending file. Request path: '"/js/main.min.js"'. Physical path: '"F:\Git\EvolveMe\TaskProject\TaskProject\wwwroot\js\main.min.js"' (27b0a520)
+2018-10-18T00:55:29.1426212+05:00 0HLHKD9N1B4NR:00000006 [INF] Request finished in 257.2236ms 200 application/javascript (791a596a)
+2018-10-18T00:55:29.2593179+05:00 0HLHKD9N1B4NQ:00000005 [INF] Request finished in 427.198ms 200 application/javascript (791a596a)

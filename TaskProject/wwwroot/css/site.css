@@ -57,7 +57,7 @@
 }
 
 .notify_image img {
-    filter: grayscale();
+    filter: grayscale(0.5);
     width:150px;
 }
 

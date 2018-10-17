@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using TaskProject;
 using TaskProject.Models;
+using TaskProject.Models.AccountViewModels;
 
 namespace TaskProject.Controllers
 {
@@ -86,15 +87,76 @@ namespace TaskProject.Controllers
             return View(user);
         }
 
-        //Todo Сделать
         public ActionResult AddNickName()
         {
-            throw new NotImplementedException();
+            return View();
         }
-        //Todo Сделать
-        public IActionResult GetNickName()
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> AddNickName(NickNameViewModel model)
         {
-            throw new NotImplementedException();
+            if (db.Users.Any(u => u.NickName == model.NickName))
+            {
+                ModelState.AddModelError("NickName", "Пользователь с данным ником уже существует");
+            }
+
+            if (ModelState.IsValid)
+            {
+                var user = await usermanager.GetUserAsync(User);
+
+                if (user == null)
+                {
+                    RedirectToAction("Logout", "Account");
+                }
+
+                user.NickName = model.NickName;
+                await db.SaveChangesAsync();
+
+                return PartialView("_Success");
+            }
+
+            return View(model);
+        }
+
+        public async Task<IActionResult> EditNickName()
+        {
+            var user = await usermanager.GetUserAsync(User);
+
+            if (user == null)
+            {
+                RedirectToAction("Logout", "Account");
+            }
+
+            NickNameViewModel model = new NickNameViewModel();
+            model.NickName = user.NickName;
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditNickName(NickNameViewModel model)
+        {
+            if (db.Users.Any(u => u.NickName == model.NickName))
+            {
+                ModelState.AddModelError("NickName", "Пользователь с данным ником уже существует");
+            }
+
+            if (ModelState.IsValid)
+            {
+                var user = await usermanager.GetUserAsync(User);
+
+                if (user == null)
+                {
+                    RedirectToAction("Logout", "Account");
+                }
+                user.NickName = model.NickName;
+                await db.SaveChangesAsync();
+
+                return PartialView("_Success");
+            }
+            return View(model);
         }
 
         public ActionResult Error(string id = null)

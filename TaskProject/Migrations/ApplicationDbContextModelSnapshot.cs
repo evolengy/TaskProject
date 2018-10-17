@@ -2,6 +2,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.EntityFrameworkCore.Storage;
+using Microsoft.EntityFrameworkCore.Storage.Internal;
 using System;
 using TaskProject.Models;
 
@@ -14,8 +17,7 @@ namespace TaskProject.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.4-rtm-31024")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128)
+                .HasAnnotation("ProductVersion", "2.0.3-rtm-10026")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -45,8 +47,7 @@ namespace TaskProject.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("ClaimType");
 
@@ -65,8 +66,7 @@ namespace TaskProject.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("ClaimType");
 
@@ -131,8 +131,7 @@ namespace TaskProject.Migrations
             modelBuilder.Entity("TaskProject.Models.AchievementModels.Achievement", b =>
                 {
                     b.Property<int>("AchievementId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int>("AchievementType");
 
@@ -150,8 +149,7 @@ namespace TaskProject.Migrations
             modelBuilder.Entity("TaskProject.Models.AchievementModels.UserAchievement", b =>
                 {
                     b.Property<int>("UserAchievementId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int>("AchievementId");
 
@@ -198,6 +196,8 @@ namespace TaskProject.Migrations
                     b.Property<long>("CurrentExp");
 
                     b.Property<int>("CurrentGold");
+
+                    b.Property<int>("CurrentKarma");
 
                     b.Property<int>("CurrentLevel");
 
@@ -257,8 +257,7 @@ namespace TaskProject.Migrations
             modelBuilder.Entity("TaskProject.Models.Atribute", b =>
                 {
                     b.Property<int>("AtributeId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int>("CurrentExp");
 
@@ -282,8 +281,7 @@ namespace TaskProject.Migrations
             modelBuilder.Entity("TaskProject.Models.GoalModels.Catalog", b =>
                 {
                     b.Property<int>("CatalogId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -318,8 +316,7 @@ namespace TaskProject.Migrations
             modelBuilder.Entity("TaskProject.Models.GoalModels.Goal", b =>
                 {
                     b.Property<int>("GoalId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int>("CatalogId");
 
@@ -380,8 +377,7 @@ namespace TaskProject.Migrations
             modelBuilder.Entity("TaskProject.Models.Health", b =>
                 {
                     b.Property<int>("HealthId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<DateTime?>("DateBirth");
 
@@ -407,8 +403,7 @@ namespace TaskProject.Migrations
             modelBuilder.Entity("TaskProject.Models.Hobby", b =>
                 {
                     b.Property<int>("HobbyId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Description");
 
@@ -419,11 +414,31 @@ namespace TaskProject.Migrations
                     b.ToTable("Hobbies");
                 });
 
+            modelBuilder.Entity("TaskProject.Models.Karma", b =>
+                {
+                    b.Property<int>("KarmaId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("Date");
+
+                    b.Property<bool>("IsGood");
+
+                    b.Property<string>("Name")
+                        .IsRequired();
+
+                    b.Property<string>("UserId");
+
+                    b.HasKey("KarmaId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Karma");
+                });
+
             modelBuilder.Entity("TaskProject.Models.LogsModels.LogAccess", b =>
                 {
                     b.Property<int>("LogAccessId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<DateTime>("Date");
 
@@ -441,8 +456,7 @@ namespace TaskProject.Migrations
             modelBuilder.Entity("TaskProject.Models.LogsModels.LogEvent", b =>
                 {
                     b.Property<int>("LogEventId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<DateTime>("Date");
 
@@ -460,8 +474,7 @@ namespace TaskProject.Migrations
             modelBuilder.Entity("TaskProject.Models.Message", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Body")
                         .IsRequired();
@@ -484,8 +497,7 @@ namespace TaskProject.Migrations
             modelBuilder.Entity("TaskProject.Models.Mood", b =>
                 {
                     b.Property<int>("MoodId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("LinkImg");
 
@@ -500,8 +512,7 @@ namespace TaskProject.Migrations
             modelBuilder.Entity("TaskProject.Models.Note", b =>
                 {
                     b.Property<int>("NoteId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<DateTime?>("DateCreate")
                         .IsRequired();
@@ -522,8 +533,7 @@ namespace TaskProject.Migrations
             modelBuilder.Entity("TaskProject.Models.Notification", b =>
                 {
                     b.Property<int>("NotificationID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<DateTime>("DateCreate");
 
@@ -552,8 +562,7 @@ namespace TaskProject.Migrations
             modelBuilder.Entity("TaskProject.Models.Skill", b =>
                 {
                     b.Property<int>("SkillId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int>("AtributeId");
 
@@ -584,8 +593,7 @@ namespace TaskProject.Migrations
             modelBuilder.Entity("TaskProject.Models.UserGrowth", b =>
                 {
                     b.Property<int>("UserGrowthId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<DateTime>("Date");
 
@@ -603,8 +611,7 @@ namespace TaskProject.Migrations
             modelBuilder.Entity("TaskProject.Models.UserMood", b =>
                 {
                     b.Property<int>("UserMoodId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Comment");
 
@@ -626,8 +633,7 @@ namespace TaskProject.Migrations
             modelBuilder.Entity("TaskProject.Models.UserReward", b =>
                 {
                     b.Property<int>("UserRewardId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int?>("Cost");
 
@@ -648,8 +654,7 @@ namespace TaskProject.Migrations
             modelBuilder.Entity("TaskProject.Models.UserWeight", b =>
                 {
                     b.Property<int>("UserWeightId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<DateTime>("Date");
 
@@ -764,8 +769,7 @@ namespace TaskProject.Migrations
 
                     b.HasOne("TaskProject.Models.Skill", "Skill")
                         .WithMany("Goals")
-                        .HasForeignKey("SkillId")
-                        .OnDelete(DeleteBehavior.SetNull);
+                        .HasForeignKey("SkillId");
 
                     b.HasOne("TaskProject.Models.ApplicationUser", "User")
                         .WithMany("Goals")
@@ -777,6 +781,14 @@ namespace TaskProject.Migrations
                     b.HasOne("TaskProject.Models.ApplicationUser", "User")
                         .WithOne("Health")
                         .HasForeignKey("TaskProject.Models.Health", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("TaskProject.Models.Karma", b =>
+                {
+                    b.HasOne("TaskProject.Models.ApplicationUser", "User")
+                        .WithMany("Karma")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

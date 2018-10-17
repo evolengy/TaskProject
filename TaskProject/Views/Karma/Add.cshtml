@@ -1,0 +1,21 @@
+﻿@model Karma
+
+@{
+    Layout = null;
+}
+
+<form asp-action="Add" class="form-modal">
+    @Html.AntiForgeryToken()
+
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="Name" class="control-label"></label>
+        <input asp-for="Name" class="form-control" maxlength="50" onkeydown="keydownenter(event)" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.IsGood, "Хороший поступок", htmlAttributes: new { @class = "control-label" })
+        @Html.CheckBox("IsGood", false)
+    </div>
+</form>

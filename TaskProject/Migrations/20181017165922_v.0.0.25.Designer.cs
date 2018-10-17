@@ -11,8 +11,8 @@ using TaskProject.Models;
 namespace TaskProject.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20181015174807_v.0.0.14")]
-    partial class v0014
+    [Migration("20181017165922_v.0.0.25")]
+    partial class v0025
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -198,6 +198,8 @@ namespace TaskProject.Migrations
 
                     b.Property<int>("CurrentGold");
 
+                    b.Property<int>("CurrentKarma");
+
                     b.Property<int>("CurrentLevel");
 
                     b.Property<string>("Email")
@@ -241,8 +243,6 @@ namespace TaskProject.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("AligmentId");
-
-                    b.HasIndex("HealthId");
 
                     b.HasIndex("NormalizedEmail")
                         .HasName("EmailIndex");
@@ -394,7 +394,9 @@ namespace TaskProject.Migrations
 
                     b.HasKey("HealthId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserId")
+                        .IsUnique()
+                        .HasFilter("[UserId] IS NOT NULL");
 
                     b.ToTable("Healths");
                 });
@@ -411,6 +413,27 @@ namespace TaskProject.Migrations
                     b.HasKey("HobbyId");
 
                     b.ToTable("Hobbies");
+                });
+
+            modelBuilder.Entity("TaskProject.Models.Karma", b =>
+                {
+                    b.Property<int>("KarmaId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("Date");
+
+                    b.Property<bool>("IsGood");
+
+                    b.Property<string>("Name")
+                        .IsRequired();
+
+                    b.Property<string>("UserId");
+
+                    b.HasKey("KarmaId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Karma");
                 });
 
             modelBuilder.Entity("TaskProject.Models.LogsModels.LogAccess", b =>
@@ -701,7 +724,8 @@ namespace TaskProject.Migrations
 
                     b.HasOne("TaskProject.Models.ApplicationUser", "User")
                         .WithMany("UserAchievements")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("TaskProject.Models.ApplicationUser", b =>
@@ -709,10 +733,6 @@ namespace TaskProject.Migrations
                     b.HasOne("TaskProject.Models.Aligment", "Aligment")
                         .WithMany()
                         .HasForeignKey("AligmentId");
-
-                    b.HasOne("TaskProject.Models.Health", "Health")
-                        .WithMany()
-                        .HasForeignKey("HealthId");
                 });
 
             modelBuilder.Entity("TaskProject.Models.Atribute", b =>
@@ -727,7 +747,8 @@ namespace TaskProject.Migrations
                 {
                     b.HasOne("TaskProject.Models.ApplicationUser", "User")
                         .WithMany("Catalogs")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("TaskProject.Models.GoalModels.Goal", b =>
@@ -749,8 +770,7 @@ namespace TaskProject.Migrations
 
                     b.HasOne("TaskProject.Models.Skill", "Skill")
                         .WithMany("Goals")
-                        .HasForeignKey("SkillId")
-                        .OnDelete(DeleteBehavior.SetNull);
+                        .HasForeignKey("SkillId");
 
                     b.HasOne("TaskProject.Models.ApplicationUser", "User")
                         .WithMany("Goals")
@@ -760,22 +780,33 @@ namespace TaskProject.Migrations
             modelBuilder.Entity("TaskProject.Models.Health", b =>
                 {
                     b.HasOne("TaskProject.Models.ApplicationUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
+                        .WithOne("Health")
+                        .HasForeignKey("TaskProject.Models.Health", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("TaskProject.Models.Karma", b =>
+                {
+                    b.HasOne("TaskProject.Models.ApplicationUser", "User")
+                        .WithMany("Karma")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("TaskProject.Models.Note", b =>
                 {
                     b.HasOne("TaskProject.Models.ApplicationUser", "User")
                         .WithMany("Notes")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("TaskProject.Models.Notification", b =>
                 {
                     b.HasOne("TaskProject.Models.ApplicationUser", "User")
                         .WithMany("Notifications")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("TaskProject.Models.Skill", b =>
@@ -812,7 +843,8 @@ namespace TaskProject.Migrations
 
                     b.HasOne("TaskProject.Models.ApplicationUser", "User")
                         .WithMany("UserMoods")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("TaskProject.Models.UserReward", b =>
