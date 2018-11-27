@@ -5,42 +5,46 @@
         <!-- Small boxes (Stat box) -->
         <div class="row">
 
-            <!-- Physic Params -->
-            <div class="col-md-6 col-12">
-                <div class="card card-primary">
-                    <div class="card-header">
-                        <div class="card-title">
-                            Ваши параметры
+            @if (!Model.IsSetValue)
+            {
+                <div class="col-md-6 col-12">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <div class="card-title">
+                                Пройти тест
+                            </div>
                         </div>
-                    </div>
-                    <div class="card-body">
-                        @if (!Model.IsSetValue)
-                        {
+                        <div class="card-body">
                             <p>
                                 Для отображения сведений о здоровье необходимо заполнить небольшую анкету, которая позволит
                                 собрать необходимую информацию и рассчитать ваши значения.
                             </p>
                             <div class="text-center">
-                                <a class="btn btn-primary" href="@Url.Action("SetProfile","Healths")">Заполнить анкету</a>
+                                <a class="btn btn-primary" href="@Url.Action("SetProfile", "Healths")">Заполнить анкету</a>
                             </div>
-
-                        }
-                        else
-                        {
+                        </div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <!-- Данные о возрасте -->
+                <div class="col-md-6 col-12">
+                    <div class="card card-dark">
+                        <div class="card-header">
+                            <div class="card-title">
+                                Физические данные
+                            </div>
+                        </div>
+                        <div class="card-body">
                             <ul class="list-group list-group-unbordered">
-                                <li class="list-group-item text-center">
-                                    Физические данные
-                                </li>
-                                <li class="list-group-item js-datedeath">
+                                <li class="list-group-item">
                                     <b>Рост </b>
                                     <div class="float-right">@ViewBag.Growth см</div>
                                 </li>
-                                <li class="list-group-item js-datedeath">
+                                <li class="list-group-item">
                                     <b>Вес </b>
                                     <div class="float-right">@ViewBag.Weight кг</div>
-                                </li>
-                                <li class="list-group-item text-center">
-                                    Данные о возрасте
                                 </li>
                                 <li class="list-group-item">
                                     <b>Возраст </b>
@@ -52,19 +56,29 @@
                                 </li>
                                 <li class="list-group-item">
                                     <div class="progress-group js-health">
-                                        <b>Здоровье </b>
+                                        <b>Рассчитанное количество прожитых дней </b>
                                         <span class="float-right">@Model.GetCurrentHealth() из @Model.GetMaxHealth() дней</span>
                                         <div class="progress progress-sm">
-                                            <div class="progress-bar bg-danger" style="width:@((int)(100 * Model.GetCurrentHealth() / Model.GetMaxHealth()))%"></div>
+                                            <div class="progress-bar bg-danger" style="width: @((int) (100 * Model.GetCurrentHealth() / Model.GetMaxHealth()))%"></div>
                                         </div>
                                     </div>
                                 </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 
-                                <li class="list-group-item text-center">
-                                    Индекс массы тела
-                                </li>
+                <!-- ИМТ -->
+                <div class="col-md-6 col-12">
+                    <div class="card card-dark">
+                        <div class="card-header">
+                            <div class="card-title">
+                                Индекс массы тела
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-group list-group-unbordered">
                                 <li class="list-group-item">
-
                                     <b>Ваш ИМТ</b>
                                     <span class="float-right">@Math.Round(ViewBag.IMT.Count, 2)</span>
 
@@ -98,23 +112,20 @@
                                     </span>
                                 </li>
                             </ul>
-                        }
-                    </div>
-                </div>
-            </div>
-            <!-- End Physic Params -->
-
-            <!-- Change Width and Growth -->
-            <div class="col-md-6 col-12">
-                <div class="card card-primary card-outline">
-                    <div class="card-header">
-                        <div class="card-title">
-                            Изменить ваши параметры
                         </div>
                     </div>
-                    <div class="card-body">
-                        <div class="text-center">
-                            <form asp-action="ChangeParam">
+                </div>
+
+                <!-- Физические данные -->
+                <div class="col-md-6 col-12">
+                    <div class="card card-dark">
+                        <div class="card-header">
+                            <div class="card-title">
+                                Изменить ваши физические данные
+                            </div>
+                        </div>
+                        <div class="card-body">
+                              <form asp-action="ChangeParam">
                                 <div class="form-group">
                                     <label name="growth" class="control-label">Рост</label>
                                     <input id="growth" name="growth" class="form-control" value="@ViewBag.Growth" />
@@ -128,8 +139,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- End Change Width and Growth-->
+            }
 
         </div>
     </div>
