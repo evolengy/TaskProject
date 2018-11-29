@@ -1,4 +1,6 @@
-﻿@using TaskProject.Views.Manage
+﻿@using Microsoft.AspNetCore.Identity
+@using TaskProject.Models
+@using TaskProject.Views.Manage
 @inject SignInManager<ApplicationUser> SignInManager
 @{
     var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();

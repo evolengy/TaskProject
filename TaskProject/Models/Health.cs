@@ -56,10 +56,6 @@ namespace TaskProject.Models
             IMTAgeGroup group = new IMTAgeGroup();
 
             int age = GetAge();
-            if (age == 0)
-            {
-                return group = null;
-            }
 
             group = ListAges.Where(a => a.MinAge <= age && a.MaxAge >= age).SingleOrDefault();
             return group;
@@ -128,7 +124,7 @@ namespace TaskProject.Models
         {
             new IMTAgeGroup
             {
-                MinAge = 19,
+                MinAge = 0,
                 MaxAge = 24,
                 MinIMTCount = 19,
                 MaxIMTCount = 24
