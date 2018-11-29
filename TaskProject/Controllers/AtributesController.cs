@@ -29,7 +29,7 @@ namespace TaskProject.Controllers
                 RedirectToAction("Logout", "Account");
             }
 
-            var atributes = await db.Atributes.Where(a => a.UserId == user.Id).ToListAsync();
+            var atributes = await db.Atributes.Where(a => a.UserId == user.Id).Include(a => a.Skills).ToListAsync();
 
             ViewBag.BreadCrumb = "Характеристики";
 

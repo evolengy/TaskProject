@@ -15,12 +15,12 @@ namespace TaskProject.Models
 
         public int NoteId { get; set; }
 
-        [Display(Name="Тема")]
+        [Display(Name="Тема"),StringLength(50, ErrorMessage = "Название не больше 50 символов.")]
         public string Theme { get; set; }
         [Display(Name = "Текст")]
         public string Text { get; set; }
         [Required(ErrorMessage = "Укажите дату создания заметки")]
-        [Display(Name = "Дата создания")]
+        [Display(Name = "Дата")]
         public DateTime? DateCreate { get; set; }
 
         [ForeignKey("User")]

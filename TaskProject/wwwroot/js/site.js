@@ -1,4 +1,4 @@
-﻿$(document).ready(function () { 
+﻿$(document).ready(function () {
     $.ajaxSetup({ cache: false });
 
     $(function () {
@@ -8,7 +8,7 @@
         $("#sortable").disableSelection();
     });
 
-// Popovers Bootstrap
+    // Popovers Bootstrap
 
     $(function () {
         $('[data-toggle="popover"]').popover()
@@ -61,7 +61,7 @@
     });
 
 
-//CRUD Modal Form
+    //CRUD Modal Form
 
     var link;
 
@@ -226,10 +226,10 @@
 });
 
 function keydownenter(event) {
-        if (event.keyCode == 13) {
-            event.preventDefault();
-            return false;
-        }
+    if (event.keyCode == 13) {
+        event.preventDefault();
+        return false;
+    }
 };
 
 //Delete Element without load
@@ -294,3 +294,4 @@ function deletereward(rewardid) {
 //        })
 //    }
 //});
+

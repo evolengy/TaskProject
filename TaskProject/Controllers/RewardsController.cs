@@ -70,7 +70,7 @@ namespace TaskProject.Controllers
                 await db.Notifications.AddAsync(new Notification()
                 {
                     Name = "Добавлена новая награда: " + reward.Name,
-                    DateCreate = DateTime.Now,
+                    DateCreate = TimeZoneInfo.ConvertTimeToUtc(DateTime.Now),
                     UserId = user.Id
                 });
 
@@ -153,7 +153,7 @@ namespace TaskProject.Controllers
             db.Notifications.Add(new Notification()
             {
                 Name = "Удалена награда: " + reward.Name,
-                DateCreate = DateTime.Now,
+                DateCreate = TimeZoneInfo.ConvertTimeToUtc(DateTime.Now),
                 UserId = reward.UserId
             });
 

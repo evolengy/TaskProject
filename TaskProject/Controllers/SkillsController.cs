@@ -46,7 +46,7 @@ namespace TaskProject.Controllers
                 await db.Notifications.AddAsync(new Notification()
                 {
                     Name = "Добавлен новый навык: " + skill.Name,
-                    DateCreate = DateTime.Now,
+                    DateCreate = TimeZoneInfo.ConvertTimeToUtc(DateTime.Now),
                     UserId = user.Id
                 });
 
@@ -123,7 +123,7 @@ namespace TaskProject.Controllers
             db.Notifications.Add(new Notification()
             {
                 Name = "Удален навык: " + skill.Name,
-                DateCreate = DateTime.Now,
+                DateCreate = TimeZoneInfo.ConvertTimeToUtc(DateTime.Now),
                 UserId = skill.UserId
             });
 

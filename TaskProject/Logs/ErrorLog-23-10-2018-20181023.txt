@@ -1,0 +1,808 @@
+2018-10-23T22:07:37.5331469+05:00  [INF] Start installing Hangfire SQL objects... (c7f12654)
+2018-10-23T22:07:37.7999698+05:00  [INF] Hangfire SQL objects installed. (3fbb82fb)
+2018-10-23T22:07:37.8273580+05:00  [INF] Starting Hangfire Server (a3381deb)
+2018-10-23T22:07:37.8316401+05:00  [INF] Using job storage: 'SQL Server: 31.31.196.89@u0529977_evolveme' (2c743461)
+2018-10-23T22:07:37.8321311+05:00  [INF] Using the following options for SQL Server job storage: (29c76527)
+2018-10-23T22:07:37.8321690+05:00  [INF]     Queue poll interval: 00:00:15. (8e4e0bf5)
+2018-10-23T22:07:37.8321831+05:00  [INF] Using the following options for Hangfire Server: (3b129e02)
+2018-10-23T22:07:37.8321940+05:00  [INF]     Worker count: 20 (10318138)
+2018-10-23T22:07:37.8325778+05:00  [INF]     Listening queues: 'default' (3f0cb32f)
+2018-10-23T22:07:37.8326184+05:00  [INF]     Shutdown timeout: 00:00:15 (57ff5852)
+2018-10-23T22:07:37.8326322+05:00  [INF]     Schedule polling interval: 00:00:15 (95e7a17b)
+2018-10-23T22:07:38.6176537+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-23T22:07:38.9477015+05:00  [INF] Executed DbCommand ("37"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'__EFMigrationsHistory');" (0723d8ff)
+2018-10-23T22:07:39.0333083+05:00  [INF] Executed DbCommand ("47"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [__EFMigrationsHistory] (
+    [MigrationId] nvarchar(150) NOT NULL,
+    [ProductVersion] nvarchar(32) NOT NULL,
+    CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+);" (0723d8ff)
+2018-10-23T22:07:39.0667366+05:00  [INF] Executed DbCommand ("31"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'__EFMigrationsHistory');" (0723d8ff)
+2018-10-23T22:07:39.0948184+05:00  [INF] Executed DbCommand ("27"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];" (0723d8ff)
+2018-10-23T22:07:39.1007636+05:00  [INF] Applying migration '"20181017165922_v.0.0.25"'. (0e2ac64d)
+2018-10-23T22:07:39.4734233+05:00  [INF] Executed DbCommand ("34"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Achievements] (
+    [AchievementId] int NOT NULL IDENTITY,
+    [AchievementType] int NOT NULL,
+    [Description] nvarchar(max) NULL,
+    [LinkImg] nvarchar(max) NULL,
+    [Name] nvarchar(max) NULL,
+    CONSTRAINT [PK_Achievements] PRIMARY KEY ([AchievementId])
+);" (0723d8ff)
+2018-10-23T22:07:39.5087555+05:00  [INF] Executed DbCommand ("34"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Aligments] (
+    [AligmentId] int NOT NULL,
+    [Description] nvarchar(max) NULL,
+    [Name] nvarchar(max) NULL,
+    CONSTRAINT [PK_Aligments] PRIMARY KEY ([AligmentId])
+);" (0723d8ff)
+2018-10-23T22:07:39.5444274+05:00  [INF] Executed DbCommand ("35"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [AspNetRoles] (
+    [Id] nvarchar(450) NOT NULL,
+    [ConcurrencyStamp] nvarchar(max) NULL,
+    [Name] nvarchar(256) NULL,
+    [NormalizedName] nvarchar(256) NULL,
+    CONSTRAINT [PK_AspNetRoles] PRIMARY KEY ([Id])
+);" (0723d8ff)
+2018-10-23T22:07:41.4618111+05:00  [INF] Executed DbCommand ("35"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Complications] (
+    [ComplicationId] int NOT NULL,
+    [Damage] int NOT NULL,
+    [Exp] int NOT NULL,
+    [Gold] int NOT NULL,
+    [Name] nvarchar(max) NULL,
+    CONSTRAINT [PK_Complications] PRIMARY KEY ([ComplicationId])
+);" (0723d8ff)
+2018-10-23T22:07:41.4979441+05:00  [INF] Executed DbCommand ("35"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Hobbies] (
+    [HobbyId] int NOT NULL IDENTITY,
+    [Description] nvarchar(max) NULL,
+    [Name] nvarchar(max) NULL,
+    CONSTRAINT [PK_Hobbies] PRIMARY KEY ([HobbyId])
+);" (0723d8ff)
+2018-10-23T22:07:41.5335621+05:00  [INF] Executed DbCommand ("35"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [LogAccess] (
+    [LogAccessId] int NOT NULL IDENTITY,
+    [Date] datetime2 NOT NULL,
+    [Log] nvarchar(max) NULL,
+    [UserAgent] nvarchar(max) NULL,
+    [UserName] nvarchar(max) NULL,
+    CONSTRAINT [PK_LogAccess] PRIMARY KEY ([LogAccessId])
+);" (0723d8ff)
+2018-10-23T22:07:41.5686052+05:00  [INF] Executed DbCommand ("34"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [LogEvents] (
+    [LogEventId] int NOT NULL IDENTITY,
+    [Date] datetime2 NOT NULL,
+    [EventId] int NOT NULL,
+    [LogLevel] nvarchar(max) NULL,
+    [Message] nvarchar(max) NULL,
+    CONSTRAINT [PK_LogEvents] PRIMARY KEY ([LogEventId])
+);" (0723d8ff)
+2018-10-23T22:07:41.6045684+05:00  [INF] Executed DbCommand ("35"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Messages] (
+    [Id] int NOT NULL IDENTITY,
+    [Body] nvarchar(max) NOT NULL,
+    [DateCreate] nvarchar(max) NULL,
+    [Email] nvarchar(max) NOT NULL,
+    [Name] nvarchar(max) NOT NULL,
+    [Theme] nvarchar(max) NULL,
+    CONSTRAINT [PK_Messages] PRIMARY KEY ([Id])
+);" (0723d8ff)
+2018-10-23T22:07:42.7879713+05:00  [INF] Executed DbCommand ("35"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Moods] (
+    [MoodId] int NOT NULL IDENTITY,
+    [LinkImg] nvarchar(max) NULL,
+    [Name] nvarchar(max) NOT NULL,
+    CONSTRAINT [PK_Moods] PRIMARY KEY ([MoodId])
+);" (0723d8ff)
+2018-10-23T22:07:42.8242460+05:00  [INF] Executed DbCommand ("35"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Ratings] (
+    [RatingId] int NOT NULL,
+    [Name] nvarchar(max) NULL,
+    CONSTRAINT [PK_Ratings] PRIMARY KEY ([RatingId])
+);" (0723d8ff)
+2018-10-23T22:07:42.8604062+05:00  [INF] Executed DbCommand ("35"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Repeats] (
+    [RepeatId] int NOT NULL,
+    [Name] nvarchar(max) NULL,
+    CONSTRAINT [PK_Repeats] PRIMARY KEY ([RepeatId])
+);" (0723d8ff)
+2018-10-23T22:07:42.9106683+05:00  [INF] Executed DbCommand ("49"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [AspNetUsers] (
+    [Id] nvarchar(450) NOT NULL,
+    [AccessFailedCount] int NOT NULL,
+    [AligmentId] int NULL,
+    [ConcurrencyStamp] nvarchar(max) NULL,
+    [CurrentExp] bigint NOT NULL,
+    [CurrentGold] int NOT NULL,
+    [CurrentKarma] int NOT NULL,
+    [CurrentLevel] int NOT NULL,
+    [Email] nvarchar(256) NULL,
+    [EmailConfirmed] bit NOT NULL,
+    [HealthId] int NULL,
+    [IsSetDefaultValues] bit NOT NULL,
+    [LockoutEnabled] bit NOT NULL,
+    [LockoutEnd] datetimeoffset NULL,
+    [MaxExp] bigint NOT NULL,
+    [NickName] nvarchar(max) NULL,
+    [NormalizedEmail] nvarchar(256) NULL,
+    [NormalizedUserName] nvarchar(256) NULL,
+    [PasswordHash] nvarchar(max) NULL,
+    [PhoneNumber] nvarchar(max) NULL,
+    [PhoneNumberConfirmed] bit NOT NULL,
+    [Photo] varbinary(max) NULL,
+    [SecurityStamp] nvarchar(max) NULL,
+    [TwoFactorEnabled] bit NOT NULL,
+    [UserName] nvarchar(256) NULL,
+    CONSTRAINT [PK_AspNetUsers] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_AspNetUsers_Aligments_AligmentId] FOREIGN KEY ([AligmentId]) REFERENCES [Aligments] ([AligmentId]) ON DELETE NO ACTION
+);" (0723d8ff)
+2018-10-23T22:07:44.3661376+05:00  [INF] Executed DbCommand ("39"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [AspNetRoleClaims] (
+    [Id] int NOT NULL IDENTITY,
+    [ClaimType] nvarchar(max) NULL,
+    [ClaimValue] nvarchar(max) NULL,
+    [RoleId] nvarchar(450) NOT NULL,
+    CONSTRAINT [PK_AspNetRoleClaims] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_AspNetRoleClaims_AspNetRoles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [AspNetRoles] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2018-10-23T22:07:44.4024561+05:00  [INF] Executed DbCommand ("35"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [AspNetUserClaims] (
+    [Id] int NOT NULL IDENTITY,
+    [ClaimType] nvarchar(max) NULL,
+    [ClaimValue] nvarchar(max) NULL,
+    [UserId] nvarchar(450) NOT NULL,
+    CONSTRAINT [PK_AspNetUserClaims] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_AspNetUserClaims_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2018-10-23T22:07:44.4427802+05:00  [INF] Executed DbCommand ("39"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [AspNetUserLogins] (
+    [LoginProvider] nvarchar(450) NOT NULL,
+    [ProviderKey] nvarchar(450) NOT NULL,
+    [ProviderDisplayName] nvarchar(max) NULL,
+    [UserId] nvarchar(450) NOT NULL,
+    CONSTRAINT [PK_AspNetUserLogins] PRIMARY KEY ([LoginProvider], [ProviderKey]),
+    CONSTRAINT [FK_AspNetUserLogins_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2018-10-23T22:07:46.1515197+05:00  [INF] Executed DbCommand ("43"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [AspNetUserRoles] (
+    [UserId] nvarchar(450) NOT NULL,
+    [RoleId] nvarchar(450) NOT NULL,
+    CONSTRAINT [PK_AspNetUserRoles] PRIMARY KEY ([UserId], [RoleId]),
+    CONSTRAINT [FK_AspNetUserRoles_AspNetRoles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [AspNetRoles] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_AspNetUserRoles_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2018-10-23T22:07:46.1865339+05:00  [INF] Executed DbCommand ("34"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [AspNetUserTokens] (
+    [UserId] nvarchar(450) NOT NULL,
+    [LoginProvider] nvarchar(450) NOT NULL,
+    [Name] nvarchar(450) NOT NULL,
+    [Value] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetUserTokens] PRIMARY KEY ([UserId], [LoginProvider], [Name]),
+    CONSTRAINT [FK_AspNetUserTokens_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2018-10-23T22:07:46.2261468+05:00  [INF] Executed DbCommand ("39"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Atributes] (
+    [AtributeId] int NOT NULL IDENTITY,
+    [CurrentExp] int NOT NULL,
+    [Description] nvarchar(max) NULL,
+    [Lvl] int NOT NULL,
+    [MaxExp] int NOT NULL,
+    [Name] nvarchar(max) NULL,
+    [UserId] nvarchar(450) NULL,
+    CONSTRAINT [PK_Atributes] PRIMARY KEY ([AtributeId]),
+    CONSTRAINT [FK_Atributes_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2018-10-23T22:07:46.9627090+05:00  [INF] Executed DbCommand ("39"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Catalogs] (
+    [CatalogId] int NOT NULL IDENTITY,
+    [Name] nvarchar(30) NOT NULL,
+    [UserId] nvarchar(450) NULL,
+    CONSTRAINT [PK_Catalogs] PRIMARY KEY ([CatalogId]),
+    CONSTRAINT [FK_Catalogs_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2018-10-23T22:07:47.0030913+05:00  [INF] Executed DbCommand ("40"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Healths] (
+    [HealthId] int NOT NULL IDENTITY,
+    [DateBirth] datetime2 NULL,
+    [DateDeath] datetime2 NULL,
+    [IsDead] bit NOT NULL,
+    [IsSetValue] bit NOT NULL,
+    [Sex] nvarchar(max) NULL,
+    [UserId] nvarchar(450) NULL,
+    CONSTRAINT [PK_Healths] PRIMARY KEY ([HealthId]),
+    CONSTRAINT [FK_Healths_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2018-10-23T22:07:47.0379023+05:00  [INF] Executed DbCommand ("34"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Karma] (
+    [KarmaId] int NOT NULL IDENTITY,
+    [Date] datetime2 NOT NULL,
+    [IsGood] bit NOT NULL,
+    [Name] nvarchar(max) NOT NULL,
+    [UserId] nvarchar(450) NULL,
+    CONSTRAINT [PK_Karma] PRIMARY KEY ([KarmaId]),
+    CONSTRAINT [FK_Karma_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2018-10-23T22:07:47.0741360+05:00  [INF] Executed DbCommand ("35"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Notes] (
+    [NoteId] int NOT NULL IDENTITY,
+    [DateCreate] datetime2 NOT NULL,
+    [Text] nvarchar(max) NULL,
+    [Theme] nvarchar(max) NULL,
+    [UserId] nvarchar(450) NULL,
+    CONSTRAINT [PK_Notes] PRIMARY KEY ([NoteId]),
+    CONSTRAINT [FK_Notes_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2018-10-23T22:07:47.8309681+05:00  [INF] Executed DbCommand ("38"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Notifications] (
+    [NotificationID] int NOT NULL IDENTITY,
+    [DateCreate] datetime2 NOT NULL,
+    [Name] nvarchar(max) NULL,
+    [UserId] nvarchar(450) NULL,
+    CONSTRAINT [PK_Notifications] PRIMARY KEY ([NotificationID]),
+    CONSTRAINT [FK_Notifications_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2018-10-23T22:07:47.8739790+05:00  [INF] Executed DbCommand ("42"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [UserAchievements] (
+    [UserAchievementId] int NOT NULL IDENTITY,
+    [AchievementId] int NOT NULL,
+    [IsOpen] bit NOT NULL,
+    [SetDate] datetime2 NULL,
+    [UserId] nvarchar(450) NULL,
+    CONSTRAINT [PK_UserAchievements] PRIMARY KEY ([UserAchievementId]),
+    CONSTRAINT [FK_UserAchievements_Achievements_AchievementId] FOREIGN KEY ([AchievementId]) REFERENCES [Achievements] ([AchievementId]) ON DELETE CASCADE,
+    CONSTRAINT [FK_UserAchievements_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2018-10-23T22:07:47.9162886+05:00  [INF] Executed DbCommand ("41"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [UserMoods] (
+    [UserMoodId] int NOT NULL IDENTITY,
+    [Comment] nvarchar(max) NULL,
+    [Date] datetime2 NOT NULL,
+    [MoodId] int NOT NULL,
+    [UserId] nvarchar(450) NULL,
+    CONSTRAINT [PK_UserMoods] PRIMARY KEY ([UserMoodId]),
+    CONSTRAINT [FK_UserMoods_Moods_MoodId] FOREIGN KEY ([MoodId]) REFERENCES [Moods] ([MoodId]) ON DELETE CASCADE,
+    CONSTRAINT [FK_UserMoods_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2018-10-23T22:07:49.0428227+05:00  [INF] Executed DbCommand ("41"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [UserRewards] (
+    [UserRewardId] int NOT NULL IDENTITY,
+    [Cost] int NULL,
+    [Description] nvarchar(max) NULL,
+    [Name] nvarchar(max) NOT NULL,
+    [UserId] nvarchar(450) NULL,
+    CONSTRAINT [PK_UserRewards] PRIMARY KEY ([UserRewardId]),
+    CONSTRAINT [FK_UserRewards_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE NO ACTION
+);" (0723d8ff)
+2018-10-23T22:07:49.0895115+05:00  [INF] Executed DbCommand ("46"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Skills] (
+    [SkillId] int NOT NULL IDENTITY,
+    [AtributeId] int NOT NULL,
+    [CurrentExp] int NOT NULL,
+    [Lvl] int NOT NULL,
+    [MaxExp] int NOT NULL,
+    [Name] nvarchar(max) NOT NULL,
+    [RatingId] int NOT NULL,
+    [UserId] nvarchar(450) NULL,
+    CONSTRAINT [PK_Skills] PRIMARY KEY ([SkillId]),
+    CONSTRAINT [FK_Skills_Atributes_AtributeId] FOREIGN KEY ([AtributeId]) REFERENCES [Atributes] ([AtributeId]) ON DELETE CASCADE,
+    CONSTRAINT [FK_Skills_Ratings_RatingId] FOREIGN KEY ([RatingId]) REFERENCES [Ratings] ([RatingId]) ON DELETE CASCADE,
+    CONSTRAINT [FK_Skills_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE NO ACTION
+);" (0723d8ff)
+2018-10-23T22:07:49.1271844+05:00  [INF] Executed DbCommand ("37"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [UserGrowth] (
+    [UserGrowthId] int NOT NULL IDENTITY,
+    [Date] datetime2 NOT NULL,
+    [HealthId] int NOT NULL,
+    [Value] real NOT NULL,
+    CONSTRAINT [PK_UserGrowth] PRIMARY KEY ([UserGrowthId]),
+    CONSTRAINT [FK_UserGrowth_Healths_HealthId] FOREIGN KEY ([HealthId]) REFERENCES [Healths] ([HealthId]) ON DELETE CASCADE
+);" (0723d8ff)
+2018-10-23T22:07:50.0871364+05:00  [INF] Executed DbCommand ("36"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [UserWeight] (
+    [UserWeightId] int NOT NULL IDENTITY,
+    [Date] datetime2 NOT NULL,
+    [HealthId] int NOT NULL,
+    [Value] real NOT NULL,
+    CONSTRAINT [PK_UserWeight] PRIMARY KEY ([UserWeightId]),
+    CONSTRAINT [FK_UserWeight_Healths_HealthId] FOREIGN KEY ([HealthId]) REFERENCES [Healths] ([HealthId]) ON DELETE CASCADE
+);" (0723d8ff)
+2018-10-23T22:07:50.1416595+05:00  [INF] Executed DbCommand ("54"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Goals] (
+    [GoalId] int NOT NULL IDENTITY,
+    [CatalogId] int NOT NULL,
+    [ComplicationId] int NOT NULL,
+    [Description] nvarchar(250) NULL,
+    [FinishCount] int NOT NULL,
+    [GoalEnd] datetime2 NULL,
+    [GoalStart] datetime2 NOT NULL,
+    [IsComplete] bit NOT NULL,
+    [Name] nvarchar(50) NOT NULL,
+    [PassCount] int NOT NULL,
+    [RepeatId] int NOT NULL,
+    [SeriesCount] int NOT NULL,
+    [SkillId] int NULL,
+    [UserId] nvarchar(450) NULL,
+    CONSTRAINT [PK_Goals] PRIMARY KEY ([GoalId]),
+    CONSTRAINT [FK_Goals_Catalogs_CatalogId] FOREIGN KEY ([CatalogId]) REFERENCES [Catalogs] ([CatalogId]) ON DELETE CASCADE,
+    CONSTRAINT [FK_Goals_Complications_ComplicationId] FOREIGN KEY ([ComplicationId]) REFERENCES [Complications] ([ComplicationId]) ON DELETE CASCADE,
+    CONSTRAINT [FK_Goals_Repeats_RepeatId] FOREIGN KEY ([RepeatId]) REFERENCES [Repeats] ([RepeatId]) ON DELETE CASCADE,
+    CONSTRAINT [FK_Goals_Skills_SkillId] FOREIGN KEY ([SkillId]) REFERENCES [Skills] ([SkillId]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Goals_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE NO ACTION
+);" (0723d8ff)
+2018-10-23T22:07:50.1710983+05:00  [INF] Executed DbCommand ("29"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_AspNetRoleClaims_RoleId] ON [AspNetRoleClaims] ([RoleId]);" (0723d8ff)
+2018-10-23T22:07:51.0193452+05:00  [INF] Executed DbCommand ("34"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE UNIQUE INDEX [RoleNameIndex] ON [AspNetRoles] ([NormalizedName]) WHERE [NormalizedName] IS NOT NULL;" (0723d8ff)
+2018-10-23T22:07:51.0471017+05:00  [INF] Executed DbCommand ("27"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_AspNetUserClaims_UserId] ON [AspNetUserClaims] ([UserId]);" (0723d8ff)
+2018-10-23T22:07:51.0752016+05:00  [INF] Executed DbCommand ("27"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_AspNetUserLogins_UserId] ON [AspNetUserLogins] ([UserId]);" (0723d8ff)
+2018-10-23T22:07:51.1033420+05:00  [INF] Executed DbCommand ("27"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_AspNetUserRoles_RoleId] ON [AspNetUserRoles] ([RoleId]);" (0723d8ff)
+2018-10-23T22:07:51.1313162+05:00  [INF] Executed DbCommand ("27"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_AspNetUsers_AligmentId] ON [AspNetUsers] ([AligmentId]);" (0723d8ff)
+2018-10-23T22:07:51.1592640+05:00  [INF] Executed DbCommand ("27"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [EmailIndex] ON [AspNetUsers] ([NormalizedEmail]);" (0723d8ff)
+2018-10-23T22:07:51.6790931+05:00  [INF] Executed DbCommand ("34"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE UNIQUE INDEX [UserNameIndex] ON [AspNetUsers] ([NormalizedUserName]) WHERE [NormalizedUserName] IS NOT NULL;" (0723d8ff)
+2018-10-23T22:07:51.7065298+05:00  [INF] Executed DbCommand ("27"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Atributes_UserId] ON [Atributes] ([UserId]);" (0723d8ff)
+2018-10-23T22:07:51.7347126+05:00  [INF] Executed DbCommand ("27"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Catalogs_UserId] ON [Catalogs] ([UserId]);" (0723d8ff)
+2018-10-23T22:07:51.7626885+05:00  [INF] Executed DbCommand ("27"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Goals_CatalogId] ON [Goals] ([CatalogId]);" (0723d8ff)
+2018-10-23T22:07:51.7904700+05:00  [INF] Executed DbCommand ("27"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Goals_ComplicationId] ON [Goals] ([ComplicationId]);" (0723d8ff)
+2018-10-23T22:07:51.8184603+05:00  [INF] Executed DbCommand ("27"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Goals_RepeatId] ON [Goals] ([RepeatId]);" (0723d8ff)
+2018-10-23T22:07:51.8466183+05:00  [INF] Executed DbCommand ("27"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Goals_SkillId] ON [Goals] ([SkillId]);" (0723d8ff)
+2018-10-23T22:07:51.8748210+05:00  [INF] Executed DbCommand ("27"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Goals_UserId] ON [Goals] ([UserId]);" (0723d8ff)
+2018-10-23T22:07:51.9029134+05:00  [INF] Executed DbCommand ("27"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE UNIQUE INDEX [IX_Healths_UserId] ON [Healths] ([UserId]) WHERE [UserId] IS NOT NULL;" (0723d8ff)
+2018-10-23T22:07:51.9308392+05:00  [INF] Executed DbCommand ("27"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Karma_UserId] ON [Karma] ([UserId]);" (0723d8ff)
+2018-10-23T22:07:51.9584926+05:00  [INF] Executed DbCommand ("27"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Notes_UserId] ON [Notes] ([UserId]);" (0723d8ff)
+2018-10-23T22:07:52.9112011+05:00  [INF] Executed DbCommand ("33"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Notifications_UserId] ON [Notifications] ([UserId]);" (0723d8ff)
+2018-10-23T22:07:52.9391044+05:00  [INF] Executed DbCommand ("27"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Skills_AtributeId] ON [Skills] ([AtributeId]);" (0723d8ff)
+2018-10-23T22:07:52.9668044+05:00  [INF] Executed DbCommand ("27"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Skills_RatingId] ON [Skills] ([RatingId]);" (0723d8ff)
+2018-10-23T22:07:52.9948965+05:00  [INF] Executed DbCommand ("27"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Skills_UserId] ON [Skills] ([UserId]);" (0723d8ff)
+2018-10-23T22:07:53.0231493+05:00  [INF] Executed DbCommand ("27"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_UserAchievements_AchievementId] ON [UserAchievements] ([AchievementId]);" (0723d8ff)
+2018-10-23T22:07:53.0506512+05:00  [INF] Executed DbCommand ("27"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_UserAchievements_UserId] ON [UserAchievements] ([UserId]);" (0723d8ff)
+2018-10-23T22:07:53.0792272+05:00  [INF] Executed DbCommand ("28"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_UserGrowth_HealthId] ON [UserGrowth] ([HealthId]);" (0723d8ff)
+2018-10-23T22:07:53.1068951+05:00  [INF] Executed DbCommand ("27"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_UserMoods_MoodId] ON [UserMoods] ([MoodId]);" (0723d8ff)
+2018-10-23T22:07:53.1348390+05:00  [INF] Executed DbCommand ("27"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_UserMoods_UserId] ON [UserMoods] ([UserId]);" (0723d8ff)
+2018-10-23T22:07:53.1629276+05:00  [INF] Executed DbCommand ("27"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_UserRewards_UserId] ON [UserRewards] ([UserId]);" (0723d8ff)
+2018-10-23T22:07:53.1909459+05:00  [INF] Executed DbCommand ("27"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_UserWeight_HealthId] ON [UserWeight] ([HealthId]);" (0723d8ff)
+2018-10-23T22:07:53.8272458+05:00  [INF] Executed DbCommand ("31"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20181017165922_v.0.0.25', N'2.0.3-rtm-10026');" (0723d8ff)
+2018-10-23T22:11:44.0245948+05:00  [INF] Start installing Hangfire SQL objects... (c7f12654)
+2018-10-23T22:11:44.2968257+05:00  [INF] Hangfire SQL objects installed. (3fbb82fb)
+2018-10-23T22:11:44.3196053+05:00  [INF] Starting Hangfire Server (a3381deb)
+2018-10-23T22:11:44.3233973+05:00  [INF] Using job storage: 'SQL Server: 31.31.196.89@u0529977_evolveme' (2c743461)
+2018-10-23T22:11:44.3238590+05:00  [INF] Using the following options for SQL Server job storage: (29c76527)
+2018-10-23T22:11:44.3238935+05:00  [INF]     Queue poll interval: 00:00:15. (8e4e0bf5)
+2018-10-23T22:11:44.3239064+05:00  [INF] Using the following options for Hangfire Server: (3b129e02)
+2018-10-23T22:11:44.3239233+05:00  [INF]     Worker count: 20 (10318138)
+2018-10-23T22:11:44.3244107+05:00  [INF]     Listening queues: 'default' (3f0cb32f)
+2018-10-23T22:11:44.3244313+05:00  [INF]     Shutdown timeout: 00:00:15 (57ff5852)
+2018-10-23T22:11:44.3244499+05:00  [INF]     Schedule polling interval: 00:00:15 (95e7a17b)
+2018-10-23T22:11:44.8568230+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-23T22:12:09.3103705+05:00  [INF] Start installing Hangfire SQL objects... (c7f12654)
+2018-10-23T22:12:09.4882188+05:00  [INF] Hangfire SQL objects installed. (3fbb82fb)
+2018-10-23T22:12:09.5188028+05:00  [INF] Starting Hangfire Server (a3381deb)
+2018-10-23T22:12:09.5253739+05:00  [INF] Using job storage: 'SQL Server: 31.31.196.89@u0529977_evolveme' (2c743461)
+2018-10-23T22:12:09.5258997+05:00  [INF] Using the following options for SQL Server job storage: (29c76527)
+2018-10-23T22:12:09.5259725+05:00  [INF]     Queue poll interval: 00:00:15. (8e4e0bf5)
+2018-10-23T22:12:09.5260000+05:00  [INF] Using the following options for Hangfire Server: (3b129e02)
+2018-10-23T22:12:09.5260257+05:00  [INF]     Worker count: 20 (10318138)
+2018-10-23T22:12:09.5264650+05:00  [INF]     Listening queues: 'default' (3f0cb32f)
+2018-10-23T22:12:09.5265142+05:00  [INF]     Shutdown timeout: 00:00:15 (57ff5852)
+2018-10-23T22:12:09.5265493+05:00  [INF]     Schedule polling interval: 00:00:15 (95e7a17b)
+2018-10-23T22:12:10.3061875+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-23T22:12:10.7154181+05:00  [INF] Executed DbCommand ("32"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'__EFMigrationsHistory');" (0723d8ff)
+2018-10-23T22:12:10.7786381+05:00  [INF] Executed DbCommand ("36"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [__EFMigrationsHistory] (
+    [MigrationId] nvarchar(150) NOT NULL,
+    [ProductVersion] nvarchar(32) NOT NULL,
+    CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+);" (0723d8ff)
+2018-10-23T22:12:10.8075476+05:00  [INF] Executed DbCommand ("28"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'__EFMigrationsHistory');" (0723d8ff)
+2018-10-23T22:12:10.8361511+05:00  [INF] Executed DbCommand ("28"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];" (0723d8ff)
+2018-10-23T22:12:10.8416572+05:00  [INF] Applying migration '"20181017165922_v.0.0.25"'. (0e2ac64d)
+2018-10-23T22:12:11.1182471+05:00  [INF] Executed DbCommand ("34"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Achievements] (
+    [AchievementId] int NOT NULL IDENTITY,
+    [AchievementType] int NOT NULL,
+    [Description] nvarchar(max) NULL,
+    [LinkImg] nvarchar(max) NULL,
+    [Name] nvarchar(max) NULL,
+    CONSTRAINT [PK_Achievements] PRIMARY KEY ([AchievementId])
+);" (0723d8ff)
+2018-10-23T22:12:11.5904495+05:00  [INF] Executed DbCommand ("34"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Aligments] (
+    [AligmentId] int NOT NULL,
+    [Description] nvarchar(max) NULL,
+    [Name] nvarchar(max) NULL,
+    CONSTRAINT [PK_Aligments] PRIMARY KEY ([AligmentId])
+);" (0723d8ff)
+2018-10-23T22:12:11.6265131+05:00  [INF] Executed DbCommand ("35"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [AspNetRoles] (
+    [Id] nvarchar(450) NOT NULL,
+    [ConcurrencyStamp] nvarchar(max) NULL,
+    [Name] nvarchar(256) NULL,
+    [NormalizedName] nvarchar(256) NULL,
+    CONSTRAINT [PK_AspNetRoles] PRIMARY KEY ([Id])
+);" (0723d8ff)
+2018-10-23T22:12:11.6622196+05:00  [INF] Executed DbCommand ("35"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Complications] (
+    [ComplicationId] int NOT NULL,
+    [Damage] int NOT NULL,
+    [Exp] int NOT NULL,
+    [Gold] int NOT NULL,
+    [Name] nvarchar(max) NULL,
+    CONSTRAINT [PK_Complications] PRIMARY KEY ([ComplicationId])
+);" (0723d8ff)
+2018-10-23T22:12:11.6980123+05:00  [INF] Executed DbCommand ("35"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Hobbies] (
+    [HobbyId] int NOT NULL IDENTITY,
+    [Description] nvarchar(max) NULL,
+    [Name] nvarchar(max) NULL,
+    CONSTRAINT [PK_Hobbies] PRIMARY KEY ([HobbyId])
+);" (0723d8ff)
+2018-10-23T22:12:11.7345215+05:00  [INF] Executed DbCommand ("36"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [LogAccess] (
+    [LogAccessId] int NOT NULL IDENTITY,
+    [Date] datetime2 NOT NULL,
+    [Log] nvarchar(max) NULL,
+    [UserAgent] nvarchar(max) NULL,
+    [UserName] nvarchar(max) NULL,
+    CONSTRAINT [PK_LogAccess] PRIMARY KEY ([LogAccessId])
+);" (0723d8ff)
+2018-10-23T22:12:11.7698854+05:00  [INF] Executed DbCommand ("34"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [LogEvents] (
+    [LogEventId] int NOT NULL IDENTITY,
+    [Date] datetime2 NOT NULL,
+    [EventId] int NOT NULL,
+    [LogLevel] nvarchar(max) NULL,
+    [Message] nvarchar(max) NULL,
+    CONSTRAINT [PK_LogEvents] PRIMARY KEY ([LogEventId])
+);" (0723d8ff)
+2018-10-23T22:12:12.6138565+05:00  [INF] Executed DbCommand ("36"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Messages] (
+    [Id] int NOT NULL IDENTITY,
+    [Body] nvarchar(max) NOT NULL,
+    [DateCreate] nvarchar(max) NULL,
+    [Email] nvarchar(max) NOT NULL,
+    [Name] nvarchar(max) NOT NULL,
+    [Theme] nvarchar(max) NULL,
+    CONSTRAINT [PK_Messages] PRIMARY KEY ([Id])
+);" (0723d8ff)
+2018-10-23T22:12:12.6502069+05:00  [INF] Executed DbCommand ("36"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Moods] (
+    [MoodId] int NOT NULL IDENTITY,
+    [LinkImg] nvarchar(max) NULL,
+    [Name] nvarchar(max) NOT NULL,
+    CONSTRAINT [PK_Moods] PRIMARY KEY ([MoodId])
+);" (0723d8ff)
+2018-10-23T22:12:12.6857010+05:00  [INF] Executed DbCommand ("34"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Ratings] (
+    [RatingId] int NOT NULL,
+    [Name] nvarchar(max) NULL,
+    CONSTRAINT [PK_Ratings] PRIMARY KEY ([RatingId])
+);" (0723d8ff)
+2018-10-23T22:12:12.7223171+05:00  [INF] Executed DbCommand ("35"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Repeats] (
+    [RepeatId] int NOT NULL,
+    [Name] nvarchar(max) NULL,
+    CONSTRAINT [PK_Repeats] PRIMARY KEY ([RepeatId])
+);" (0723d8ff)
+2018-10-23T22:12:12.7721272+05:00  [INF] Executed DbCommand ("49"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [AspNetUsers] (
+    [Id] nvarchar(450) NOT NULL,
+    [AccessFailedCount] int NOT NULL,
+    [AligmentId] int NULL,
+    [ConcurrencyStamp] nvarchar(max) NULL,
+    [CurrentExp] bigint NOT NULL,
+    [CurrentGold] int NOT NULL,
+    [CurrentKarma] int NOT NULL,
+    [CurrentLevel] int NOT NULL,
+    [Email] nvarchar(256) NULL,
+    [EmailConfirmed] bit NOT NULL,
+    [HealthId] int NULL,
+    [IsSetDefaultValues] bit NOT NULL,
+    [LockoutEnabled] bit NOT NULL,
+    [LockoutEnd] datetimeoffset NULL,
+    [MaxExp] bigint NOT NULL,
+    [NickName] nvarchar(max) NULL,
+    [NormalizedEmail] nvarchar(256) NULL,
+    [NormalizedUserName] nvarchar(256) NULL,
+    [PasswordHash] nvarchar(max) NULL,
+    [PhoneNumber] nvarchar(max) NULL,
+    [PhoneNumberConfirmed] bit NOT NULL,
+    [Photo] varbinary(max) NULL,
+    [SecurityStamp] nvarchar(max) NULL,
+    [TwoFactorEnabled] bit NOT NULL,
+    [UserName] nvarchar(256) NULL,
+    CONSTRAINT [PK_AspNetUsers] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_AspNetUsers_Aligments_AligmentId] FOREIGN KEY ([AligmentId]) REFERENCES [Aligments] ([AligmentId]) ON DELETE NO ACTION
+);" (0723d8ff)
+2018-10-23T22:12:13.8036805+05:00  [INF] Executed DbCommand ("34"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [AspNetRoleClaims] (
+    [Id] int NOT NULL IDENTITY,
+    [ClaimType] nvarchar(max) NULL,
+    [ClaimValue] nvarchar(max) NULL,
+    [RoleId] nvarchar(450) NOT NULL,
+    CONSTRAINT [PK_AspNetRoleClaims] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_AspNetRoleClaims_AspNetRoles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [AspNetRoles] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2018-10-23T22:12:13.8397051+05:00  [INF] Executed DbCommand ("35"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [AspNetUserClaims] (
+    [Id] int NOT NULL IDENTITY,
+    [ClaimType] nvarchar(max) NULL,
+    [ClaimValue] nvarchar(max) NULL,
+    [UserId] nvarchar(450) NOT NULL,
+    CONSTRAINT [PK_AspNetUserClaims] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_AspNetUserClaims_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2018-10-23T22:12:15.0601078+05:00  [INF] Executed DbCommand ("38"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [AspNetUserLogins] (
+    [LoginProvider] nvarchar(450) NOT NULL,
+    [ProviderKey] nvarchar(450) NOT NULL,
+    [ProviderDisplayName] nvarchar(max) NULL,
+    [UserId] nvarchar(450) NOT NULL,
+    CONSTRAINT [PK_AspNetUserLogins] PRIMARY KEY ([LoginProvider], [ProviderKey]),
+    CONSTRAINT [FK_AspNetUserLogins_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2018-10-23T22:12:15.1011780+05:00  [INF] Executed DbCommand ("40"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [AspNetUserRoles] (
+    [UserId] nvarchar(450) NOT NULL,
+    [RoleId] nvarchar(450) NOT NULL,
+    CONSTRAINT [PK_AspNetUserRoles] PRIMARY KEY ([UserId], [RoleId]),
+    CONSTRAINT [FK_AspNetUserRoles_AspNetRoles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [AspNetRoles] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_AspNetUserRoles_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2018-10-23T22:12:15.1440250+05:00  [INF] Executed DbCommand ("42"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [AspNetUserTokens] (
+    [UserId] nvarchar(450) NOT NULL,
+    [LoginProvider] nvarchar(450) NOT NULL,
+    [Name] nvarchar(450) NOT NULL,
+    [Value] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetUserTokens] PRIMARY KEY ([UserId], [LoginProvider], [Name]),
+    CONSTRAINT [FK_AspNetUserTokens_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2018-10-23T22:12:15.1839542+05:00  [INF] Executed DbCommand ("39"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Atributes] (
+    [AtributeId] int NOT NULL IDENTITY,
+    [CurrentExp] int NOT NULL,
+    [Description] nvarchar(max) NULL,
+    [Lvl] int NOT NULL,
+    [MaxExp] int NOT NULL,
+    [Name] nvarchar(max) NULL,
+    [UserId] nvarchar(450) NULL,
+    CONSTRAINT [PK_Atributes] PRIMARY KEY ([AtributeId]),
+    CONSTRAINT [FK_Atributes_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2018-10-23T22:12:16.1750124+05:00  [INF] Executed DbCommand ("35"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Catalogs] (
+    [CatalogId] int NOT NULL IDENTITY,
+    [Name] nvarchar(30) NOT NULL,
+    [UserId] nvarchar(450) NULL,
+    CONSTRAINT [PK_Catalogs] PRIMARY KEY ([CatalogId]),
+    CONSTRAINT [FK_Catalogs_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2018-10-23T22:12:16.2144155+05:00  [INF] Executed DbCommand ("39"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Healths] (
+    [HealthId] int NOT NULL IDENTITY,
+    [DateBirth] datetime2 NULL,
+    [DateDeath] datetime2 NULL,
+    [IsDead] bit NOT NULL,
+    [IsSetValue] bit NOT NULL,
+    [Sex] nvarchar(max) NULL,
+    [UserId] nvarchar(450) NULL,
+    CONSTRAINT [PK_Healths] PRIMARY KEY ([HealthId]),
+    CONSTRAINT [FK_Healths_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2018-10-23T22:12:16.2502250+05:00  [INF] Executed DbCommand ("35"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Karma] (
+    [KarmaId] int NOT NULL IDENTITY,
+    [Date] datetime2 NOT NULL,
+    [IsGood] bit NOT NULL,
+    [Name] nvarchar(max) NOT NULL,
+    [UserId] nvarchar(450) NULL,
+    CONSTRAINT [PK_Karma] PRIMARY KEY ([KarmaId]),
+    CONSTRAINT [FK_Karma_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2018-10-23T22:12:17.0402821+05:00  [INF] Executed DbCommand ("41"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Notes] (
+    [NoteId] int NOT NULL IDENTITY,
+    [DateCreate] datetime2 NOT NULL,
+    [Text] nvarchar(max) NULL,
+    [Theme] nvarchar(max) NULL,
+    [UserId] nvarchar(450) NULL,
+    CONSTRAINT [PK_Notes] PRIMARY KEY ([NoteId]),
+    CONSTRAINT [FK_Notes_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2018-10-23T22:12:17.0746882+05:00  [INF] Executed DbCommand ("34"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Notifications] (
+    [NotificationID] int NOT NULL IDENTITY,
+    [DateCreate] datetime2 NOT NULL,
+    [Name] nvarchar(max) NULL,
+    [UserId] nvarchar(450) NULL,
+    CONSTRAINT [PK_Notifications] PRIMARY KEY ([NotificationID]),
+    CONSTRAINT [FK_Notifications_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2018-10-23T22:12:17.1161020+05:00  [INF] Executed DbCommand ("41"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [UserAchievements] (
+    [UserAchievementId] int NOT NULL IDENTITY,
+    [AchievementId] int NOT NULL,
+    [IsOpen] bit NOT NULL,
+    [SetDate] datetime2 NULL,
+    [UserId] nvarchar(450) NULL,
+    CONSTRAINT [PK_UserAchievements] PRIMARY KEY ([UserAchievementId]),
+    CONSTRAINT [FK_UserAchievements_Achievements_AchievementId] FOREIGN KEY ([AchievementId]) REFERENCES [Achievements] ([AchievementId]) ON DELETE CASCADE,
+    CONSTRAINT [FK_UserAchievements_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2018-10-23T22:12:18.1327093+05:00  [INF] Executed DbCommand ("46"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [UserMoods] (
+    [UserMoodId] int NOT NULL IDENTITY,
+    [Comment] nvarchar(max) NULL,
+    [Date] datetime2 NOT NULL,
+    [MoodId] int NOT NULL,
+    [UserId] nvarchar(450) NULL,
+    CONSTRAINT [PK_UserMoods] PRIMARY KEY ([UserMoodId]),
+    CONSTRAINT [FK_UserMoods_Moods_MoodId] FOREIGN KEY ([MoodId]) REFERENCES [Moods] ([MoodId]) ON DELETE CASCADE,
+    CONSTRAINT [FK_UserMoods_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2018-10-23T22:12:18.1673994+05:00  [INF] Executed DbCommand ("34"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [UserRewards] (
+    [UserRewardId] int NOT NULL IDENTITY,
+    [Cost] int NULL,
+    [Description] nvarchar(max) NULL,
+    [Name] nvarchar(max) NOT NULL,
+    [UserId] nvarchar(450) NULL,
+    CONSTRAINT [PK_UserRewards] PRIMARY KEY ([UserRewardId]),
+    CONSTRAINT [FK_UserRewards_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE NO ACTION
+);" (0723d8ff)
+2018-10-23T22:12:18.2139606+05:00  [INF] Executed DbCommand ("46"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Skills] (
+    [SkillId] int NOT NULL IDENTITY,
+    [AtributeId] int NOT NULL,
+    [CurrentExp] int NOT NULL,
+    [Lvl] int NOT NULL,
+    [MaxExp] int NOT NULL,
+    [Name] nvarchar(max) NOT NULL,
+    [RatingId] int NOT NULL,
+    [UserId] nvarchar(450) NULL,
+    CONSTRAINT [PK_Skills] PRIMARY KEY ([SkillId]),
+    CONSTRAINT [FK_Skills_Atributes_AtributeId] FOREIGN KEY ([AtributeId]) REFERENCES [Atributes] ([AtributeId]) ON DELETE CASCADE,
+    CONSTRAINT [FK_Skills_Ratings_RatingId] FOREIGN KEY ([RatingId]) REFERENCES [Ratings] ([RatingId]) ON DELETE CASCADE,
+    CONSTRAINT [FK_Skills_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE NO ACTION
+);" (0723d8ff)
+2018-10-23T22:12:19.2913697+05:00  [INF] Executed DbCommand ("36"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [UserGrowth] (
+    [UserGrowthId] int NOT NULL IDENTITY,
+    [Date] datetime2 NOT NULL,
+    [HealthId] int NOT NULL,
+    [Value] real NOT NULL,
+    CONSTRAINT [PK_UserGrowth] PRIMARY KEY ([UserGrowthId]),
+    CONSTRAINT [FK_UserGrowth_Healths_HealthId] FOREIGN KEY ([HealthId]) REFERENCES [Healths] ([HealthId]) ON DELETE CASCADE
+);" (0723d8ff)
+2018-10-23T22:12:19.3282523+05:00  [INF] Executed DbCommand ("36"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [UserWeight] (
+    [UserWeightId] int NOT NULL IDENTITY,
+    [Date] datetime2 NOT NULL,
+    [HealthId] int NOT NULL,
+    [Value] real NOT NULL,
+    CONSTRAINT [PK_UserWeight] PRIMARY KEY ([UserWeightId]),
+    CONSTRAINT [FK_UserWeight_Healths_HealthId] FOREIGN KEY ([HealthId]) REFERENCES [Healths] ([HealthId]) ON DELETE CASCADE
+);" (0723d8ff)
+2018-10-23T22:12:19.3784454+05:00  [INF] Executed DbCommand ("49"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Goals] (
+    [GoalId] int NOT NULL IDENTITY,
+    [CatalogId] int NOT NULL,
+    [ComplicationId] int NOT NULL,
+    [Description] nvarchar(250) NULL,
+    [FinishCount] int NOT NULL,
+    [GoalEnd] datetime2 NULL,
+    [GoalStart] datetime2 NOT NULL,
+    [IsComplete] bit NOT NULL,
+    [Name] nvarchar(50) NOT NULL,
+    [PassCount] int NOT NULL,
+    [RepeatId] int NOT NULL,
+    [SeriesCount] int NOT NULL,
+    [SkillId] int NULL,
+    [UserId] nvarchar(450) NULL,
+    CONSTRAINT [PK_Goals] PRIMARY KEY ([GoalId]),
+    CONSTRAINT [FK_Goals_Catalogs_CatalogId] FOREIGN KEY ([CatalogId]) REFERENCES [Catalogs] ([CatalogId]) ON DELETE CASCADE,
+    CONSTRAINT [FK_Goals_Complications_ComplicationId] FOREIGN KEY ([ComplicationId]) REFERENCES [Complications] ([ComplicationId]) ON DELETE CASCADE,
+    CONSTRAINT [FK_Goals_Repeats_RepeatId] FOREIGN KEY ([RepeatId]) REFERENCES [Repeats] ([RepeatId]) ON DELETE CASCADE,
+    CONSTRAINT [FK_Goals_Skills_SkillId] FOREIGN KEY ([SkillId]) REFERENCES [Skills] ([SkillId]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Goals_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE NO ACTION
+);" (0723d8ff)
+2018-10-23T22:12:20.4202497+05:00  [INF] Executed DbCommand ("29"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_AspNetRoleClaims_RoleId] ON [AspNetRoleClaims] ([RoleId]);" (0723d8ff)
+2018-10-23T22:12:20.4482098+05:00  [INF] Executed DbCommand ("27"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE UNIQUE INDEX [RoleNameIndex] ON [AspNetRoles] ([NormalizedName]) WHERE [NormalizedName] IS NOT NULL;" (0723d8ff)
+2018-10-23T22:12:20.4757226+05:00  [INF] Executed DbCommand ("27"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_AspNetUserClaims_UserId] ON [AspNetUserClaims] ([UserId]);" (0723d8ff)
+2018-10-23T22:12:20.5037776+05:00  [INF] Executed DbCommand ("27"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_AspNetUserLogins_UserId] ON [AspNetUserLogins] ([UserId]);" (0723d8ff)
+2018-10-23T22:12:20.5321693+05:00  [INF] Executed DbCommand ("28"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_AspNetUserRoles_RoleId] ON [AspNetUserRoles] ([RoleId]);" (0723d8ff)
+2018-10-23T22:12:20.5600227+05:00  [INF] Executed DbCommand ("27"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_AspNetUsers_AligmentId] ON [AspNetUsers] ([AligmentId]);" (0723d8ff)
+2018-10-23T22:12:20.9600770+05:00  [INF] Executed DbCommand ("34"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [EmailIndex] ON [AspNetUsers] ([NormalizedEmail]);" (0723d8ff)
+2018-10-23T22:12:20.9884828+05:00  [INF] Executed DbCommand ("28"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE UNIQUE INDEX [UserNameIndex] ON [AspNetUsers] ([NormalizedUserName]) WHERE [NormalizedUserName] IS NOT NULL;" (0723d8ff)
+2018-10-23T22:12:21.0157445+05:00  [INF] Executed DbCommand ("26"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Atributes_UserId] ON [Atributes] ([UserId]);" (0723d8ff)
+2018-10-23T22:12:21.0435432+05:00  [INF] Executed DbCommand ("27"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Catalogs_UserId] ON [Catalogs] ([UserId]);" (0723d8ff)
+2018-10-23T22:12:21.0720383+05:00  [INF] Executed DbCommand ("28"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Goals_CatalogId] ON [Goals] ([CatalogId]);" (0723d8ff)
+2018-10-23T22:12:21.0999076+05:00  [INF] Executed DbCommand ("27"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Goals_ComplicationId] ON [Goals] ([ComplicationId]);" (0723d8ff)
+2018-10-23T22:12:21.1276375+05:00  [INF] Executed DbCommand ("27"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Goals_RepeatId] ON [Goals] ([RepeatId]);" (0723d8ff)
+2018-10-23T22:12:21.1555936+05:00  [INF] Executed DbCommand ("27"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Goals_SkillId] ON [Goals] ([SkillId]);" (0723d8ff)
+2018-10-23T22:12:21.1841659+05:00  [INF] Executed DbCommand ("28"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Goals_UserId] ON [Goals] ([UserId]);" (0723d8ff)
+2018-10-23T22:12:21.2123268+05:00  [INF] Executed DbCommand ("27"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE UNIQUE INDEX [IX_Healths_UserId] ON [Healths] ([UserId]) WHERE [UserId] IS NOT NULL;" (0723d8ff)
+2018-10-23T22:12:21.2401381+05:00  [INF] Executed DbCommand ("27"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Karma_UserId] ON [Karma] ([UserId]);" (0723d8ff)
+2018-10-23T22:12:22.0680829+05:00  [INF] Executed DbCommand ("32"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Notes_UserId] ON [Notes] ([UserId]);" (0723d8ff)
+2018-10-23T22:12:22.0963292+05:00  [INF] Executed DbCommand ("27"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Notifications_UserId] ON [Notifications] ([UserId]);" (0723d8ff)
+2018-10-23T22:12:22.1240269+05:00  [INF] Executed DbCommand ("27"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Skills_AtributeId] ON [Skills] ([AtributeId]);" (0723d8ff)
+2018-10-23T22:12:22.1541372+05:00  [INF] Executed DbCommand ("29"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Skills_RatingId] ON [Skills] ([RatingId]);" (0723d8ff)
+2018-10-23T22:12:22.1841862+05:00  [INF] Executed DbCommand ("29"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Skills_UserId] ON [Skills] ([UserId]);" (0723d8ff)
+2018-10-23T22:12:22.2120937+05:00  [INF] Executed DbCommand ("27"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_UserAchievements_AchievementId] ON [UserAchievements] ([AchievementId]);" (0723d8ff)
+2018-10-23T22:12:22.2404320+05:00  [INF] Executed DbCommand ("28"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_UserAchievements_UserId] ON [UserAchievements] ([UserId]);" (0723d8ff)
+2018-10-23T22:12:22.2682189+05:00  [INF] Executed DbCommand ("27"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_UserGrowth_HealthId] ON [UserGrowth] ([HealthId]);" (0723d8ff)
+2018-10-23T22:12:22.2961093+05:00  [INF] Executed DbCommand ("27"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_UserMoods_MoodId] ON [UserMoods] ([MoodId]);" (0723d8ff)
+2018-10-23T22:12:22.3241632+05:00  [INF] Executed DbCommand ("27"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_UserMoods_UserId] ON [UserMoods] ([UserId]);" (0723d8ff)
+2018-10-23T22:12:22.8242905+05:00  [INF] Executed DbCommand ("33"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_UserRewards_UserId] ON [UserRewards] ([UserId]);" (0723d8ff)
+2018-10-23T22:12:22.8522082+05:00  [INF] Executed DbCommand ("27"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_UserWeight_HealthId] ON [UserWeight] ([HealthId]);" (0723d8ff)
+2018-10-23T22:12:22.8804132+05:00  [INF] Executed DbCommand ("27"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20181017165922_v.0.0.25', N'2.0.3-rtm-10026');" (0723d8ff)

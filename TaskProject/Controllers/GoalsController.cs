@@ -276,13 +276,14 @@ namespace TaskProject.Controllers
                 catalog.UserId = user.Id;
                 await db.Catalogs.AddAsync(catalog);
 
+ 
                 await db.Notifications.AddAsync(new Notification()
                 {
+                    
                     Name = "Каталог добавлен: " + catalog.Name,
-                    DateCreate = DateTime.Now,
+                    DateCreate = TimeZoneInfo.ConvertTimeToUtc(DateTime.Now),
                     UserId = catalog.UserId
                 });
-
                 await db.SaveChangesAsync();
 
                 ViewBag.Message = "Список успешно создан.";
@@ -352,7 +353,7 @@ namespace TaskProject.Controllers
             await db.Notifications.AddAsync(new Notification()
             {
                 Name = "Каталог удален: " + catalog.Name,
-                DateCreate = DateTime.Now,
+                DateCreate = TimeZoneInfo.ConvertTimeToUtc(DateTime.Now),
                 UserId = catalog.UserId
             });
 

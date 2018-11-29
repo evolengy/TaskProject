@@ -12,7 +12,7 @@ namespace TaskProject.Models
     {
         public UserMood()
         {
-            Date = DateTime.Now.Date;
+            Date = TimeZoneInfo.ConvertTimeToUtc(DateTime.Now).Date;
         }
 
         public int UserMoodId { get; set; }

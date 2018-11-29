@@ -188,13 +188,13 @@ namespace TaskProject.Models
                 return age = 0;
             }
 
-            if (DateBirth.Value.Day <= DateTime.Now.Day && DateBirth.Value.Month <= DateTime.Now.Month)
+            if (DateBirth.Value.Day <= TimeZoneInfo.ConvertTimeToUtc(DateTime.Now).Day && DateBirth.Value.Month <= TimeZoneInfo.ConvertTimeToUtc(DateTime.Now).Month)
             {
-                return age = DateTime.Now.Year - DateBirth.Value.Year;
+                return age = TimeZoneInfo.ConvertTimeToUtc(DateTime.Now).Year - DateBirth.Value.Year;
             }
             else
             {
-                return age = DateTime.Now.AddYears(-1).Year - DateBirth.Value.Year;
+                return age = TimeZoneInfo.ConvertTimeToUtc(DateTime.Now).AddYears(-1).Year - DateBirth.Value.Year;
             }
 
         }
@@ -203,7 +203,7 @@ namespace TaskProject.Models
         public double GetCurrentHealth()
         {
             double currentHealth;
-            return currentHealth = ((DateDeath - DateBirth) - (DateTime.Now.Date - DateBirth)).Value.TotalDays;
+            return currentHealth = (DateDeath - DateBirth - (TimeZoneInfo.ConvertTimeToUtc(DateTime.Now).Date - DateBirth)).Value.TotalDays;
         }
 
         /*Получить количество дней от рождения до даты смерти*/

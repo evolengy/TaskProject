@@ -6,8 +6,8 @@
 
 @{
     float all = Model.Count(g => g.IsComplete && g.GoalEnd.HasValue);
-    float lastMonth = Model.Count(g => g.IsComplete && g.GoalEnd.HasValue && g.GoalEnd.Value.Month == DateTime.Now.Month - 1);
-    float curMonth = Model.Count(g => g.IsComplete && g.GoalEnd.HasValue && g.GoalEnd.Value.Month == DateTime.Now.Month);
+    float lastMonth = Model.Count(g => g.IsComplete && g.GoalEnd.HasValue && g.GoalEnd.Value.Month == TimeZoneInfo.ConvertTimeToUtc(DateTime.Now).Month - 1);
+    float curMonth = Model.Count(g => g.IsComplete && g.GoalEnd.HasValue && g.GoalEnd.Value.Month == TimeZoneInfo.ConvertTimeToUtc(DateTime.Now).Month);
 
     float procent;
 

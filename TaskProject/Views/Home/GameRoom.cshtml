@@ -8,168 +8,109 @@
         <!-- Small boxes (Stat box) -->
         <div class="row">
 
-            <div class="col-md-4">
-                <!-- Profile Image -->
-                <div class="card card-primary card-outline">
-                    <div class="card-body box-profile">
-
-                        <div class="text-center">
-                            <span style="font-size: 100px;">
-                                <i class="fa fa-user-circle"></i>
-                            </span>
-                        </div>
-                        <h3 class="profile-username text-center">
-
-                            @if (string.IsNullOrEmpty(Model.NickName))
-                            {
-                                <a href="@Url.Action("AddNickName","Home")" data_dialog_title="Добавить ник" class="btn btn-xs btn-light js-addnickname"><i class="fa fa-user-plus" style="color: black;"></i> Добавить ник</a>
-
-                            }
-                            else
-                            {
-                                <span>@Model.NickName </span>
-                                <a href="@Url.Action("EditNickName","Home")" data_dialog_title="Изменить ник" class="btn btn-xs btn-light js-editnickname"><i class="fa fa-user-edit" style="color: black;"></i></a>
-                            }
-                        </h3>
-
-                        <ul class="list-group list-group-unbordered mb-3">
-                            <li class="list-group-item">
-                                <b>Статус</b>
-                                <div class="float-right">Уровень @Html.DisplayFor(m => m.CurrentLevel)</div>
-                            </li>
-
-                            <li class="list-group-item">
-                                <div class="progress-group js-exp">
-                                    <b>Опыт </b>
-                                    <span class="float-right">@Html.DisplayFor(m => m.CurrentExp)/@Html.DisplayFor(m => m.MaxExp)</span>
-                                    <div class="progress progress-sm">
-                                        <div class="progress-bar bg-primary" style="width: @(100 * Model.CurrentExp / Model.MaxExp)%"></div>
-                                    </div>
-                                </div>
-                            </li>
-                            
-                            <li class="list-group-item">
-                                <div class="progress-group js-karma">
-                                    <b>Карма </b>
-                                    <span class="float-right">@Html.DisplayFor(m => m.CurrentKarma)</span>
-                                    <div class="progress progress-sm">
-                                        @if (Model.CurrentKarma > 0)
-                                        {
-                                            <div class="progress-bar bg-success" style="width: @(100 * Model.CurrentKarma / 1000)%"></div>
-                                        }
-                                        else if (Model.CurrentKarma < 0)
-                                        {
-                                            <div class="progress-bar bg-danger" style="width: @(100 * Model.CurrentKarma / 1000)%"></div>
-                                        }
-                                        else
-                                        {
-                                            <div class="progress-bar bg-info" style="width: 100%"></div>
-                                        }
-
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="list-group-item">
-                                <b>Монеты </b>
-                                <span class="float-right">
-                                    @Html.DisplayFor(m => m.CurrentGold)
-                                </span>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- /.card-body -->
-                </div>
-                <!-- /.card -->
-                <!--Now-->
-                <div class="card card-primary">
-                    <div class="card-header">
-                        <h3 class="card-title">Сегодня</h3>
-                    </div>
-                    <!-- /.card-header -->
-                    <div class="card-body">
-                        
-                        <strong class="js-mood">
-                            <i class="fa fa-smile-o"></i>
-                            Настроение
-                            @if (ViewBag.TodayMood != null)
-                            {
-                                <img class="mood-img pl-4" src="@ViewBag.TodayMood.Mood.LinkImg" alt="@ViewBag.TodayMood.Mood.Name" asp-append-version="true" />
-                            }
-                        </strong>
-                        <div class="mt-3">
-                            @if (ViewBag.TodayMood != null)
-                            {
-                                <form class="checkmood" asp-action="DeleteTodayMood" asp-controller="Moods">
-                                    <input type="hidden" name="Id" value="@ViewBag.TodayMood.UserMoodId" />
-                                    <div class="col text-center">
-                                        <button type="submit" class="btn btn-primary"><i class="fa fa-minus"></i> Удалить настроение</button>
-                                    </div>
-                                </form>
-                            }
-                            else
-                            {
-                                <form class="checkmood" asp-action="AddTodayMood" asp-controller="Moods">
-                                    <div class="form-row mb-1">
-                                        @foreach (Mood mood in ViewBag.ListMood)
-                                        {
-                                            <div class="mr-1 col">
-                                                <div class="text-center">
-                                                    <img src="@mood.LinkImg" alt="@mood.Name" class="mood-img" style="font-size: 1rem;" asp-append-version="true" />
-                                                </div>
-                                                <div class="text-center">
-                                                    @Html.RadioButton("MoodId", mood.MoodId)
-
-                                                    @Html.Hidden("Name", mood.Name)
-                                                </div>
-                                            </div>
-                                        }
-                                    </div>
-                                    <div class="col text-center">
-                                        <button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i> Добавить настроение</button>
-                                    </div>
-                                </form>
-                            }
-                            <hr />
-                        </div>
-                        
-                        <strong>
-                            <i class="fa fa-yin-yang mr-1"></i>
-                            Добавить себе поступок в карму
-                        </strong>
-
-                        <div class="text-center mt-3">
-                            <a class="btn btn-primary js-addkarma" data_dialog_title="Добавить новый поступок" href="@Url.Action("Add","Karma", new { today = true})"><i class="fa fa-plus"></i> Добавить поступок</a>
-                        </div>
-
-                        <strong>
-                            <i class="fa fa-book mr-1"></i>
-                            Заметка в дневнике
-                        </strong>
-
-                        <div class="text-center mt-3">
-                            @if (ViewBag.TodayNote == null)
-                            {
-                                bool today;
-                                <a class="btn btn-primary" href="@Url.Action("AddNote","Notes", new { today = true})"><i class="fa fa-plus"></i> Добавить заметку</a>
-                            }
-                            else
-                            {
-                                <a class="btn btn-primary" href="@Url.Action("ShowNote","Notes", new {id = ViewBag.TodayNote.NoteId })"><i class="fa fa-plus"></i> Посмотреть заметку</a>
-                            }
-                        </div>
-                    </div>
-                    <!-- /.card-body -->
-                </div>
-                <!--End Now-->
-            </div>
-
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <!-- Goals -->
                 @Html.Partial("Goals", Model.Goals)
                 <!-- End Goals -->
-                <!-- Skills -->
-                @Html.Partial("Skills", Model.Atributes)
-                <!-- End Skills-->
+            </div>
+
+            <div class="col-md-4">
+                <!-- Настроение -->
+                <div class="card card-widget" style="min-height: 241px;">
+                    <div class="card-header">
+                        <h3 class="card-title">Настроение</h3>
+                    </div>
+                    <div class="card-body">
+                        <p class="text-center">
+                            Настроение позволяет отслеживать эмоциональное состояние.
+                        </p>
+                    </div>
+
+                    <div class="mb-3">
+                        @if (ViewBag.TodayMood != null)
+                        {
+                            <form class="checkmood" asp-action="DeleteTodayMood" asp-controller="Moods">
+                                <p class="js-mood text-center">
+                                    <img class="mood-img" src="@ViewBag.TodayMood.Mood.LinkImg" alt="@ViewBag.TodayMood.Mood.Name" asp-append-version="true" />
+                                </p>
+                                <input type="hidden" name="Id" value="@ViewBag.TodayMood.UserMoodId" />
+                                <div class="col text-center">
+                                    <button type="submit" class="btn btn-dark"><i class="fa fa-minus"></i> Удалить настроение</button>
+                                </div>
+                            </form>
+                        }
+                        else
+                        {
+                            <form class="checkmood" asp-action="AddTodayMood" asp-controller="Moods">
+                                <div class="form-row mb-1">
+                                    @foreach (Mood mood in ViewBag.ListMood)
+                                    {
+                                        <div class="mr-1 col">
+                                            <div class="text-center">
+                                                <img src="@mood.LinkImg" alt="@mood.Name" class="mood-img" asp-append-version="true" />
+                                            </div>
+                                            <div class="text-center">
+                                                @Html.RadioButton("MoodId", mood.MoodId)
+
+                                                @Html.Hidden("Name", mood.Name)
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                                <div class="col text-center">
+                                    <button type="submit" class="btn btn-dark"><i class="fa fa-plus"></i> Добавить настроение</button>
+                                </div>
+                            </form>
+                        }
+
+                    </div>
+                </div>
+                <!-- /Настроение -->
+            </div>
+
+            <div class="col-md-4">
+                <!-- Карма -->
+                <div class="card card-widget" style="min-height: 241px;">
+                    <div class="card-header">
+                        <h3 class="card-title">Карма</h3>
+                    </div>
+                    <div class="card-body">
+                        <p class="text-center">
+                            Ежедневно отслеживайте свою карму, как много хороших или плохих дел вы сделали.
+                        </p>
+                    </div>
+                    <div class="text-center mb-3">
+                        <a class="btn btn-dark js-addkarma" data_dialog_title="Добавить новый поступок" href="@Url.Action("Add","Karma", new { today = true})"><i class="fa fa-plus"></i> Добавить поступок</a>
+                    </div>
+                </div>
+                <!-- /Карма -->
+            </div>
+
+            <div class="col-md-4">
+                <!-- Заметка -->
+                <div class="card card-widget" style="min-height: 241px;">
+                    <div class="card-header">
+                        <h3 class="card-title">Заметка</h3>
+                    </div>
+                    <div class="card-body">
+                        <p class="text-center">
+                            Ежедневные заметки помогут вам более запоминать прожитый опыт.
+                        </p>
+                    </div>
+
+                    <div class="text-center mb-3">
+                        @if (ViewBag.TodayNote == null)
+                        {
+                            bool today;
+                            <a class="btn btn-dark" href="@Url.Action("AddNote","Notes", new { today = true})"><i class="fa fa-plus"></i> Добавить заметку</a>
+                        }
+                        else
+                        {
+                            <a class="btn btn-dark" href="@Url.Action("ShowNote","Notes", new {id = ViewBag.TodayNote.NoteId })"><i class="fa fa-plus"></i> Посмотреть заметку</a>
+                        }
+                    </div>
+                </div>
+                <!-- /Заметка -->
             </div>
         </div>
     </div>

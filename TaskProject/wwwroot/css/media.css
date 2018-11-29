@@ -1,45 +1,42 @@
 /*==========  Desktop First Method  ==========*/
 
 @media screen and (max-width: 1680px) {
-
 }
 
 @media screen and (max-width: 1280px) {
-
 }
 
 @media screen and (max-width: 980px) {
-
 }
 
 @media screen and (max-width: 736px) {
-
 }
 
 @media screen and (max-width: 640px) {
-
 }
 
 @media screen and (max-width: 360px) {
-
 }
 
 
 
-/* Large Devices, Wide Screens */
+/* Large Devices, Wide Screens  XL */ 
 @media only screen and (max-width : 1200px) {
+
 }
 
 
-/* Medium Devices, Desktops */
+/* Medium Devices, Desktops LG*/
 @media only screen and (max-width : 992px) {
-
+ 
 }
 
-/* Small Devices, Tablets */
+/* Small Devices, Tablets MD*/
 @media only screen and (max-width : 768px) {
 
-
+    .mood-img {
+        width: 3em;
+    }
     /*Disable Animation on Mobile Devices*/
     .animated {
         /*CSS transitions*/
@@ -63,8 +60,21 @@
     }
 }
 
-/* Extra Small Devices, Phones */
+/* Extra Small Devices, Phones XS*/
 @media only screen and (max-width : 480px) {
+    .table .cell-span-note {
+        max-width: 70px;
+        display: block;
+    }
+
+    .table .cell-span-task {
+        max-width: 152px;
+        display: block;
+    }
+
+    .mood-img {
+        width: 2em;
+    }
 }
 
 /* Custom, iPhone Retina */
@@ -80,6 +90,7 @@
 
 /* Extra Small Devices, Phones */
 @media only screen and (min-width : 480px) {
+    
 }
 
 /* Small Devices, Tablets */
@@ -91,6 +102,10 @@
 @media only screen and (min-width : 992px) {
     .gamburger {
         display: none;
+    }
+
+    .mood-img {
+        width: 3em;
     }
 }
 

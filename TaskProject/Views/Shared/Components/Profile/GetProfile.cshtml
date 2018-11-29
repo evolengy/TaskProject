@@ -1,0 +1,75 @@
+﻿@model ApplicationUser
+
+<div class="user-panel mt-3 pb-3 mb-3 d-flex">
+    <ul class="nav flex-column w-100" data-widget="treeview" role="menu" data-accordion="false">
+        <div>
+            <div class="image mb-1 col-12 text-center">
+                <img src="/img/user.png" class="img-circle elevation-2">
+         
+            </div>
+        </div>
+        
+        <li class="nav-item text-center mb-3">
+            @if (string.IsNullOrEmpty(Model.NickName))
+            {
+                <a href="@Url.Action("AddNickName", "Home")" data_dialog_title="Добавить ник" class="js-addnickname">Добавить ник</a>
+
+            }
+            else
+            {
+                <a href="@Url.Action("EditNickName", "Home")" data_dialog_title="Изменить ник" class="js-editnickname">@Model.NickName</a>
+            }
+        </li>
+
+        <li class="nav-item  mb-1">
+            <a href="#" class="nav-status">
+                <span>Уровень</span>
+                <span class="float-right">@Html.DisplayFor(m => m.CurrentLevel)</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a href="#" class="nav-status">
+                <div class="progress-group">
+                    <span>Опыт </span>
+                    <span class="float-right">@Html.DisplayFor(m => m.CurrentExp)/@Html.DisplayFor(m => m.MaxExp)</span>
+                    <div class="progress progress-sm">
+                        <div class="progress-bar bg-primary" style="width: @(100 * Model.CurrentExp / Model.MaxExp)%"></div>
+                    </div>
+                </div>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a href="#" class="nav-status">
+                <div class="progress-group">
+                    <span>Карма </span>
+                    <span class="float-right">@Html.DisplayFor(m => m.CurrentKarma)</span>
+                    <div class="progress progress-sm">
+                        @if (Model.CurrentKarma > 0)
+                        {
+                            <div class="progress-bar bg-success" style="width: @(100 * Model.CurrentKarma / 1000)%"></div>
+                        }
+                        else if (Model.CurrentKarma < 0)
+                        {
+                            <div class="progress-bar bg-danger" style="width: @(100 * Model.CurrentKarma / 1000)%"></div>
+                        }
+                        else
+                        {
+                            <div class="progress-bar bg-info" style="width: 100%"></div>
+                        }
+                    </div>
+                </div>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a href="#" class="nav-status">
+                <span>Монеты</span>
+                <span class="float-right">
+                    @Html.DisplayFor(m => m.CurrentGold)
+                </span>
+            </a>
+        </li>
+    </ul>
+</div>

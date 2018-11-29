@@ -19,10 +19,10 @@ namespace TaskProject.Controllers
         private readonly ApplicationDbContext db;
         private readonly UserManager<ApplicationUser> userManager;
 
-        public MoodsController(ApplicationDbContext _db, UserManager<ApplicationUser> _userManager)
+        public MoodsController(ApplicationDbContext db, UserManager<ApplicationUser> userManager)
         {
-            db = _db;
-            userManager = _userManager;
+            this.db = db;
+            this.userManager = userManager;
         }
 
         [HttpPost]
@@ -49,7 +49,7 @@ namespace TaskProject.Controllers
                 db.Notifications.Add(new Notification()
                 {
                     Name = "Отмечено настроение за день",
-                    DateCreate = DateTime.Now,
+                    DateCreate = TimeZoneInfo.ConvertTimeToUtc(DateTime.Now),
                     UserId = user.Id
                 });
 
@@ -81,7 +81,7 @@ namespace TaskProject.Controllers
             db.Notifications.Add(new Notification()
             {
                 Name = "Удалено настроение за день",
-                DateCreate = DateTime.Now,
+                DateCreate = TimeZoneInfo.ConvertTimeToUtc(DateTime.Now),
                 UserId = user.Id
             });
 
@@ -97,7 +97,7 @@ namespace TaskProject.Controllers
 
             if (month == 0)
             {
-                selectmonth = year.Months.Single(m => m.MonthId == DateTime.Now.Month);
+                selectmonth = year.Months.Single(m => m.MonthId == TimeZoneInfo.ConvertTimeToUtc(DateTime.Now).Month);
             }
             else
             {
@@ -191,7 +191,7 @@ namespace TaskProject.Controllers
 
         public Chart GetYearMood()
         {
-            Year currentyear = new Year(DateTime.Now.Year);
+            Year currentyear = new Year(TimeZoneInfo.ConvertTimeToUtc(DateTime.Now).Year);
 
             Chart chart = new Chart();
             chart.Type = "bar";

@@ -33,6 +33,7 @@
                                 <div class="form-group col-md-4 col-8 mb-3">
                                     <label asp-for="Theme" class="control-label"></label>
                                     <input asp-for="Theme" class="form-control" />
+                                    <span asp-validation-for="Theme" class="text-danger"></span>
                                 </div>
 
                                 @if (ViewBag.TodayNote == true)
@@ -43,7 +44,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="fa fa-calendar"></i></span>
                                             </div>
-                                            <input class="form-control d-inline-block" type="date" name="DateCreate" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
+                                            <input class="form-control d-inline-block" type="date" name="DateCreate" value="@TimeZoneInfo.ConvertTimeToUtc(DateTime.Now).ToString("yyyy-MM-dd")" />
                                         </div>
                                         <span asp-validation-for="DateCreate" class="text-danger"></span>
                                     </div>

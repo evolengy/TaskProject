@@ -10,6 +10,9 @@ using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Logging;
 using System;
 using System.IO;
+using Hangfire;
+using Microsoft.AspNetCore.DataProtection;
+using StackExchange.Redis;
 using TaskProject.Models;
 using TaskProject.Services.EmailSender;
 
@@ -34,9 +37,16 @@ namespace TaskProject
         // Подключение сервисов
         public void ConfigureServices(IServiceCollection services)
         {
+            // Создание хранилища ключей (решение ошибки)
+            services.AddDataProtection()
+                .PersistKeysToFileSystem(new DirectoryInfo($"Keys\\"));
+
             // Подключение контекста базы данных
             services.AddDbContext<ApplicationDbContext>(options =>
              options.UseSqlServer(Configuration.GetConnectionString("DbConnection")));
+
+            // Запуск фоновых процессов с помощью Hangfire
+            services.AddHangfire(configuration => configuration.UseSqlServerStorage(Configuration.GetConnectionString("DbConnection")));
 
             // Идентификация пароля
             services.AddIdentity<ApplicationUser, IdentityRole>(options => options.Password = new PasswordOptions()
@@ -75,10 +85,16 @@ namespace TaskProject
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             // Логи
-            loggerFactory.AddFile($"Logs\\ErrorLog-{DateTime.Now.Date.ToString("dd-MM-yyyy")}.txt");
+            loggerFactory.AddFile($"Logs\\ErrorLog-{TimeZoneInfo.ConvertTimeToUtc(DateTime.Now).Date.ToString("dd-MM-yyyy")}.txt");
+
+            // Подключаем базы данных Hangfire
+            app.UseHangfireServer();          
 
             if (env.IsDevelopment())
             {
+                // Подключаем админку Hangire
+                app.UseHangfireDashboard();
+
                 app.UseBrowserLink();
 
                 // Добавление поддержки ошибок для разработки

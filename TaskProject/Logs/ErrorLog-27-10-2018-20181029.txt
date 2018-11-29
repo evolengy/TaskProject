@@ -1,0 +1,1248 @@
+2018-10-29T00:00:00.3859669+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T00:00:00.4169528+05:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T00:00:00.4292016+05:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T00:15:00.6186301+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T00:15:00.6269301+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T00:15:00.6371675+05:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T00:30:00.8437798+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T00:30:00.8528034+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T00:30:00.8625722+05:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T00:45:00.0887293+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T00:45:00.0977595+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T00:45:00.1173651+05:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T01:00:00.3342573+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T01:00:00.3428723+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T01:00:00.3576020+05:00  [INF] Executed DbCommand ("8"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T01:15:00.5552808+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T01:15:00.5637122+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T01:15:00.5735170+05:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T01:30:00.7987823+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T01:30:00.8071883+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T01:30:00.8169718+05:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T01:45:01.0440829+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T01:45:01.0528846+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T01:45:01.0711659+05:00  [INF] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T02:00:00.2703403+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T02:00:00.2788803+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T02:00:00.2888416+05:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T02:15:00.5088073+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T02:15:00.5202540+05:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T02:15:00.5325572+05:00  [INF] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T02:30:00.7436053+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T02:30:00.7521870+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T02:30:00.7617320+05:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T02:45:01.0064761+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T02:45:01.0154269+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T02:45:01.0335137+05:00  [INF] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T03:00:00.2544740+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T03:00:00.2643824+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T03:00:00.2765721+05:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T03:15:00.4851907+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T03:15:00.4935448+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T03:15:00.5029588+05:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T03:30:00.6991192+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T03:30:00.7084415+05:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T03:30:00.7189075+05:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T03:45:00.9678405+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T03:45:00.9769503+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T03:45:00.9947321+05:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T04:00:00.2807410+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T04:00:00.2894570+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T04:00:00.3002272+05:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T04:15:00.4794941+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T04:15:00.4889664+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T04:15:00.4995390+05:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T04:30:00.7169337+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T04:30:00.7257240+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T04:30:00.7358846+05:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T04:45:00.9588507+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T04:45:00.9679322+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T04:45:00.9784263+05:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T05:00:00.2170668+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T05:00:00.2289042+05:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T05:00:00.2431782+05:00  [INF] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T05:15:00.4588467+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T05:15:00.4685408+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T05:15:00.4797816+05:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T05:30:00.7006891+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T05:30:00.7098877+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T05:30:00.7203039+05:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T05:45:00.9602749+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T05:45:00.9693107+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T05:45:00.9841647+05:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T06:00:00.2592061+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T06:00:00.2685900+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T06:00:00.2789069+05:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T06:15:00.4745977+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T06:15:00.4843379+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T06:15:00.4960645+05:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T06:30:00.7380489+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T06:30:00.7493400+05:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T06:30:00.7633596+05:00  [INF] Executed DbCommand ("7"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T06:45:01.0385352+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T06:45:01.0477751+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T06:45:01.0666063+05:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T07:00:00.2594680+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T07:00:00.2681292+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T07:00:00.2775821+05:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T07:15:00.5008071+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T07:15:00.5098934+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T07:15:00.5198500+05:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T07:30:00.7257712+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T07:30:00.7347785+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T07:30:00.7538787+05:00  [INF] Executed DbCommand ("8"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T07:45:00.9808995+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T07:45:00.9906795+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T07:45:01.0014348+05:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T08:00:00.2332832+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T08:00:00.2438826+05:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T08:00:00.2558949+05:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T08:15:00.4641431+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T08:15:00.4723007+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T08:15:00.4814892+05:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T08:30:00.6890577+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T08:30:00.6975249+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T08:30:00.7071860+05:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T08:45:00.9364590+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T08:45:00.9446905+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T08:45:00.9554992+05:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T09:00:00.2012934+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T09:00:00.2105854+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T09:00:00.2202832+05:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T09:15:00.4163851+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T09:15:00.4249751+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T09:15:00.4347105+05:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T09:30:00.6513341+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T09:30:00.6617426+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T09:30:00.6742847+05:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T09:45:00.8909372+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T09:45:00.9000916+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T09:45:00.9118734+05:00  [INF] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T10:00:00.1432533+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T10:00:00.1516355+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T10:00:00.1616091+05:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T10:15:00.3781501+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T10:15:00.3870516+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T10:15:00.4103586+05:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T10:30:00.6091145+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T10:30:00.6174834+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T10:30:00.6270835+05:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T10:45:00.8342920+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T10:45:00.8879068+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T10:45:00.8980324+05:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T11:00:00.0787346+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T11:00:00.0866766+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T11:00:00.0966776+05:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T11:15:00.3294705+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T11:15:00.3377333+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T11:15:00.3500106+05:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T11:30:00.5677093+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T11:30:00.5758831+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T11:30:00.5856122+05:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T11:45:00.7978466+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T11:45:00.8067121+05:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T11:45:00.8167189+05:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T12:00:00.0585896+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T12:00:00.0678984+05:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T12:00:00.0784130+05:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T12:15:00.2819109+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T12:15:00.2908955+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T12:15:00.3058869+05:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T12:30:00.5149522+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T12:30:00.5241662+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T12:30:00.5338994+05:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T12:45:00.7409056+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T12:45:00.7517227+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T12:45:00.7630381+05:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T13:00:00.9772234+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T13:00:00.9872429+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T13:00:00.9968381+05:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T13:15:00.2282231+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T13:15:00.2372200+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T13:15:00.2522070+05:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T13:30:00.4677675+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T13:30:00.4765259+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T13:30:00.4945777+05:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T13:45:00.6964359+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T13:45:00.7048733+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T13:45:00.7146730+05:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T14:00:00.9608168+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T14:00:00.9722942+05:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T14:00:00.9964498+05:00  [INF] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T14:15:00.1880411+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T14:15:00.1976635+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T14:15:00.2080253+05:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T14:30:00.4117542+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T14:30:00.4209035+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T14:30:00.4307782+05:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T14:45:00.6375390+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T14:45:00.6458535+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T14:45:00.6556573+05:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T15:00:00.8723398+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T15:00:00.8808278+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T15:00:00.8909142+05:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T15:15:00.1208295+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T15:15:00.1292529+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T15:15:00.1388355+05:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T15:30:00.3567588+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T15:30:00.3656133+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T15:30:00.3838707+05:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T15:45:00.5901881+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T15:45:00.5991010+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T15:45:00.6168850+05:00  [INF] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T16:00:00.8313017+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T16:00:00.8396338+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T16:00:00.8500041+05:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T16:15:00.0765963+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T16:15:00.0852815+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T16:15:00.0951178+05:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T16:30:00.3177866+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T16:30:00.3267611+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T16:30:00.3370944+05:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T16:45:00.5196081+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T16:45:00.5279578+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T16:45:00.5378093+05:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T17:00:00.7721014+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T17:00:00.7836136+05:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T17:00:00.8059095+05:00  [INF] Executed DbCommand ("7"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T17:15:00.0634156+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T17:15:00.0733933+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T17:15:00.0856111+05:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T17:30:00.2915902+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T17:30:00.2999365+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T17:30:00.3092689+05:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T17:45:00.5167685+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T17:45:00.5275234+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T17:45:00.5373833+05:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T18:00:00.7457272+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T18:00:00.7547218+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T18:00:00.7649329+05:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T18:15:00.9777641+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T18:15:00.9888402+05:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T18:15:01.0106149+05:00  [INF] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T18:30:00.2128977+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T18:30:00.2216410+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T18:30:00.2315333+05:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T18:45:00.4424501+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T18:45:00.4526142+05:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T18:45:00.4711275+05:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T19:00:00.6589955+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T19:00:00.6690378+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T19:00:00.6805330+05:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T19:15:00.9140384+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T19:15:00.9242311+05:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T19:15:00.9355068+05:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T19:30:00.1722659+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T19:30:00.1811861+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T19:30:00.1906920+05:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T19:45:00.4097272+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T19:45:00.4186686+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T19:45:00.4287693+05:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T20:00:00.6760448+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T20:00:00.6878559+05:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T20:00:00.7090562+05:00  [INF] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T20:15:00.9153752+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T20:15:00.9247990+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T20:15:00.9352306+05:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T20:30:00.1493990+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T20:30:00.1581324+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T20:30:00.1680002+05:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T20:45:00.3692902+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T20:45:00.3775379+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T20:45:00.3876477+05:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T21:00:00.6264041+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T21:00:00.6377466+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T21:00:00.6498899+05:00  [INF] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T21:15:00.8678564+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T21:15:00.8776570+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T21:15:00.8877265+05:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T21:30:00.0960533+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T21:30:00.1528771+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T21:30:00.1646901+05:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T21:45:00.3210750+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T21:45:00.3304268+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T21:45:00.3530547+05:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T22:00:00.5635635+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T22:00:00.5765004+05:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T22:00:00.6067016+05:00  [INF] Executed DbCommand ("7"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T22:15:00.3561378+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T22:15:00.4456991+05:00  [INF] Executed DbCommand ("81"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T22:15:00.4816654+05:00  [INF] Executed DbCommand ("29"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T22:30:00.1398464+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T22:30:00.1505452+05:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T22:30:00.1625590+05:00  [INF] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T22:45:00.9269198+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T22:45:00.9383167+05:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T22:45:00.9526617+05:00  [INF] Executed DbCommand ("7"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T23:00:01.0326014+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T23:00:01.0426064+05:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T23:00:01.0544058+05:00  [INF] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T23:15:00.2967164+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T23:15:00.3068655+05:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T23:15:00.3182756+05:00  [INF] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T23:30:00.6007096+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T23:30:00.6109723+05:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T23:30:00.6239322+05:00  [INF] Executed DbCommand ("6"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-10-29T23:45:02.2518471+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2018-10-29T23:45:02.3360232+05:00  [INF] Executed DbCommand ("77"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g].[Id], [g].[AccessFailedCount], [g].[AligmentId], [g].[ConcurrencyStamp], [g].[CurrentExp], [g].[CurrentGold], [g].[CurrentKarma], [g].[CurrentLevel], [g].[Email], [g].[EmailConfirmed], [g].[HealthId], [g].[IsSetDefaultValues], [g].[LockoutEnabled], [g].[LockoutEnd], [g].[MaxExp], [g].[NickName], [g].[NormalizedEmail], [g].[NormalizedUserName], [g].[PasswordHash], [g].[PhoneNumber], [g].[PhoneNumberConfirmed], [g].[Photo], [g].[SecurityStamp], [g].[TwoFactorEnabled], [g].[UserName]
+FROM [AspNetUsers] AS [g]
+ORDER BY [g].[Id]" (0723d8ff)
+2018-10-29T23:45:02.9849824+05:00  [INF] Executed DbCommand ("640"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [g.Goals].[GoalId], [g.Goals].[CatalogId], [g.Goals].[ComplicationId], [g.Goals].[Description], [g.Goals].[FinishCount], [g.Goals].[GoalEnd], [g.Goals].[GoalStart], [g.Goals].[IsComplete], [g.Goals].[Name], [g.Goals].[PassCount], [g.Goals].[RepeatId], [g.Goals].[SeriesCount], [g.Goals].[SkillId], [g.Goals].[UserId]
+FROM [Goals] AS [g.Goals]
+INNER JOIN (
+    SELECT [g0].[Id]
+    FROM [AspNetUsers] AS [g0]
+) AS [t] ON [g.Goals].[UserId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)

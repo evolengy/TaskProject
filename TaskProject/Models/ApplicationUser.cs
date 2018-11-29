@@ -65,7 +65,7 @@ namespace TaskProject.Models
 
         public UserMood GetTodayMood()
         {
-            return UserMoods.Where(m => m.Date.ToShortDateString() == DateTime.Now.ToShortDateString()).SingleOrDefault();
+            return UserMoods.FirstOrDefault(m => m.Date == TimeZoneInfo.ConvertTimeToUtc(DateTime.Now).Date);
         }
 
         public bool IsSetDefaultValues { get; set; }
@@ -143,8 +143,8 @@ namespace TaskProject.Models
                 {
                     Name = "Сходить в кино с друзьями",
                     Description = "",
-                    GoalStart = DateTime.Now,
-                    GoalEnd = DateTime.Now.AddDays(1),
+                    GoalStart = TimeZoneInfo.ConvertTimeToUtc(DateTime.Now),
+                    GoalEnd = TimeZoneInfo.ConvertTimeToUtc(DateTime.Now).AddDays(1),
                     RepeatId = 1,
                     ComplicationId = 1,
                     Catalog = DefaultCatalog
@@ -154,8 +154,8 @@ namespace TaskProject.Models
                 {
                     Name = "Прочитать \" Горе от ума\"",
                     Description = "",
-                    GoalStart = DateTime.Now,
-                    GoalEnd = DateTime.Now.AddDays(5),
+                    GoalStart = TimeZoneInfo.ConvertTimeToUtc(DateTime.Now),
+                    GoalEnd = TimeZoneInfo.ConvertTimeToUtc(DateTime.Now).AddDays(5),
                     RepeatId = 1,
                     ComplicationId = 2,
                     Skill = this.Skills.Where( c => c.Name == "Чтение").Single(),

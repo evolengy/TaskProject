@@ -15,7 +15,7 @@ namespace TaskProject.Controllers
         private readonly ApplicationDbContext db;
         private readonly UserManager<ApplicationUser> userManager;
 
-        public NotesController(ApplicationDbContext _db,UserManager<ApplicationUser> _userManager)
+        public NotesController(ApplicationDbContext _db, UserManager<ApplicationUser> _userManager)
         {
             db = _db;
             userManager = _userManager;
@@ -57,28 +57,15 @@ namespace TaskProject.Controllers
                 {
                     ModelState.AddModelError("DateCreate", "Заметка с такой датой уже существует");
                 }
-            }    
+            }
 
             if (ModelState.IsValid)
             {
                 note.User = user;
 
-                if (string.IsNullOrEmpty(note.Theme))
-                {
-                    note.Theme = "Без названия";
-                }
+                await db.AddNoteAsync(note);
 
-                await db.AddAsync(note);
-
-                await db.Notifications.AddAsync(new Notification()
-                {
-                    Name = "Добавлена новая запись в дневнике: " + note.Theme,
-                    DateCreate = DateTime.Now,
-                    UserId = user.Id
-                });
-
-                await db.SaveChangesAsync();
-                return RedirectToAction("ShowNotes","Notes");
+                return RedirectToAction("ShowNotes", "Notes");
             }
 
             ViewBag.BreadCrumb = "Новая заметка";
@@ -117,6 +104,7 @@ namespace TaskProject.Controllers
                 {
                     ApplicationUser user = await userManager.GetUserAsync(User);
                     note.User = user;
+                    if (note.DateCreate != null) note.DateCreate = TimeZoneInfo.ConvertTimeToUtc(note.DateCreate.Value);
 
                     if (string.IsNullOrEmpty(note.Theme))
                     {
@@ -137,7 +125,7 @@ namespace TaskProject.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction("GameRoom","Home");
+                return RedirectToAction("GameRoom", "Home");
             }
 
             ViewBag.BreadCrumb = "Просмотр заметки";
@@ -160,16 +148,8 @@ namespace TaskProject.Controllers
                 return NotFound();
             }
 
-            db.Notifications.Add(new Notification()
-            {
-                Name = "Удалена запись в дневнике: " + note.Theme,
-                DateCreate = DateTime.Now,
-                UserId = note.UserId
-            });
+            await db.DeleteNoteAsync(note);
 
-            db.Notes.Remove(note);
-
-            await db.SaveChangesAsync();
             return RedirectToAction("ShowNotes", "Notes");
         }
 

@@ -84,7 +84,7 @@ namespace TaskProject.Models
                 .HasOne(n => n.User)
                 .WithMany(u => u.Karma)
                 .OnDelete(DeleteBehavior.Cascade);
-              
+
 
             builder.Entity<Notification>()
                 .HasOne<ApplicationUser>(n => n.User)
@@ -857,7 +857,7 @@ namespace TaskProject.Models
             Notifications.Add(new Notification()
             {
                 Name = e.Name,
-                DateCreate = DateTime.Now,
+                DateCreate = TimeZoneInfo.ConvertTimeToUtc(DateTime.Now),
                 UserId = e.UserId
             });
 
@@ -869,7 +869,7 @@ namespace TaskProject.Models
             await LogAccess.AddAsync(new LogAccess()
             {
                 UserName = email,
-                Date = DateTime.Now,
+                Date = TimeZoneInfo.ConvertTimeToUtc(DateTime.Now),
                 Log = log,
                 UserAgent = userAgent
             });
@@ -895,7 +895,7 @@ namespace TaskProject.Models
         private void CompleteAchievement(UserAchievement achievement)
         {
             achievement.IsOpen = true;
-            achievement.SetDate = DateTime.Now;
+            achievement.SetDate = TimeZoneInfo.ConvertTimeToUtc(DateTime.Now);
 
             Update(achievement);
             SaveChanges();
@@ -1010,6 +1010,9 @@ namespace TaskProject.Models
 
         public async Task AddGoalAsync(Goal goal)
         {
+
+            if (goal.GoalStart != null) goal.GoalStart = TimeZoneInfo.ConvertTimeToUtc(goal.GoalStart.Value);
+            if (goal.GoalEnd != null) goal.GoalEnd = TimeZoneInfo.ConvertTimeToUtc(goal.GoalEnd.Value);
             switch (goal.RepeatId)
             {
                 case 1:
@@ -1022,6 +1025,7 @@ namespace TaskProject.Models
                         break;
                     }
             }
+
 
             if (goal.SkillId == 0)
             {
@@ -1036,6 +1040,9 @@ namespace TaskProject.Models
         }
         public async Task EditGoalAsync(Goal goal)
         {
+            if (goal.GoalStart != null) goal.GoalStart = TimeZoneInfo.ConvertTimeToUtc(goal.GoalStart.Value);
+            if (goal.GoalEnd != null) goal.GoalEnd = TimeZoneInfo.ConvertTimeToUtc(goal.GoalEnd.Value);
+
             if (goal.SkillId == 0)
             {
                 goal.SkillId = null;
@@ -1133,7 +1140,7 @@ namespace TaskProject.Models
                 {
                     if (!userGoal.IsComplete)
                     {
-                        DateTime finishTime = DateTime.Now;
+                        DateTime finishTime = TimeZoneInfo.ConvertTimeToUtc(DateTime.Now);
 
                         if (userGoal.GoalEnd.HasValue && userGoal.GoalEnd.Value <= finishTime)
                         {
@@ -1187,11 +1194,10 @@ namespace TaskProject.Models
                             Update(userGoal);
                             await SaveChangesAsync();
                         }
-                    }            
+                    }
                 }
             }
         }
-
 
         public async Task AddKarmaAsync(Karma karma)
         {
@@ -1207,6 +1213,31 @@ namespace TaskProject.Models
             await SaveChangesAsync();
 
             AddNotification(karma, new NotificationEventArgs($"Поступок добавлен: {karma.Name}", karma.UserId));
+        }
+
+        public async Task AddNoteAsync(Note note)
+        {
+            note.DateCreate = TimeZoneInfo.ConvertTimeToUtc(DateTime.Now);
+
+            if (string.IsNullOrEmpty(note.Theme))
+            {
+                note.Theme = "Без названия";
+            }
+
+            await AddAsync(note);
+            await SaveChangesAsync();
+
+            AddNotification(note, new NotificationEventArgs($"Добавлена новая запись в дневнике: " + note.Theme, note.UserId));
+
+        }
+        public async Task DeleteNoteAsync(Note note)
+        {
+
+            Notes.Remove(note);
+
+            await SaveChangesAsync();
+
+            AddNotification(note, new NotificationEventArgs("Удалена запись в дневнике: " + note.Theme, note.UserId));
         }
 
         public async Task<ApplicationUser> GetUser(string userId)
@@ -1226,6 +1257,6 @@ namespace TaskProject.Models
 
             return user;
         }
- 
+
     }
 }

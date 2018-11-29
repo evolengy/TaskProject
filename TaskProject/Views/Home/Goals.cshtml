@@ -1,9 +1,9 @@
 ﻿@model List<TaskProject.Models.GoalModels.Goal>
 
 
-<div class="card">
+<div class="card" style="min-height: 300px">
     <div class="card-header d-flex p-0">
-        <h3 class="card-title p-3">Задачи</h3>
+        <h3 class="card-title p-3 d-none d-md-block">Задачи</h3>
         <ul class="nav nav-pills ml-auto p-2">
             <li class="nav-item"><a class="nav-link active show" href="#now" data-toggle="tab">Сегодня </a></li>
             <li class="nav-item"><a class="nav-link" href="#week" data-toggle="tab">Неделя</a></li>
@@ -12,44 +12,47 @@
     </div><!-- /.card-header -->
     <div class="card-body">
         <h3 class="mb-3 text-center">
-            <a class="btn btn-primary js-addgoal" data_dialog_title="Создание новой задачи" href="@Url.Action("AddGoal","Goals")"><i class="fa fa-plus"></i> Добавить задачу</a>
+            <a class="btn btn-dark js-addgoal" data_dialog_title="Создание новой задачи" href="@Url.Action("AddGoal","Goals")"> Добавить задачу</a>
         </h3>
         <div class="tab-content">
             <div class="tab-pane active show" id="now">
                 <ul class="todo-list ui-sortable">
-                    @foreach (var goal in Model.Where(g => g.IsComplete == false && g.GoalEnd.HasValue && g.GoalEnd.Value.Date <= DateTime.Now.Date))
+                    @foreach (var goal in Model.Where(g => g.IsComplete == false && g.GoalEnd.HasValue && g.GoalEnd.Value.Date <= TimeZoneInfo.ConvertTimeToUtc(DateTime.Now).Date))
                     {
-                        <li id="goal-@goal.GoalId">
-                            <!-- checkbox -->
-                            <a href="@Url.Action("CompleteGoal","Goals",new { id = goal.GoalId})" class="btn btn-xs btn-light js-completegoal"><i class="fa fa-calendar-check" style="color: black;"></i></a>
-                            <span class="text">@goal.Name</span>
-                            <!-- Emphasis label -->
-
-                            @if (goal.GoalEnd == null)
-                            {
-                                <small class="badge badge-success"><i class="fa fa-clock-o"></i> Без срока</small>
-                            }
-                            else if (goal.GoalEnd < DateTime.Now)
-                            {
-                                <small class="badge badge-danger"><i class="fa fa-clock-o"></i> @goal.GoalEnd.Value.ToString("dd.MM.yyyy HH:mm")</small>
-                            }
-                            else
-                            {
-                                <small class="badge badge-success"><i class="fa fa-clock-o"></i> @goal.GoalEnd.Value.ToString("dd.MM.yyyy HH:mm")</small>
-
-                            }
-
-                            @if (goal.PassCount != 0)
-                            {
-                                <small class="badge badge-danger"><i class="fa fa-calendar-minus"></i> Пропущено раз: @goal.PassCount </small>
-                            }
-
-                            <!-- General tools such as edit or delete-->
-                            <div class="pull-right btn-group">
-                                <a class="js-editgoal btn btn-xs btn-primary" data_dialog_title="Редактирование задачи" href="@Url.Action("EditGoal","Goals",new {id = goal.GoalId })"><i class="fa fa-edit"></i></a>
-                                <a class="js-deletegoal btn btn-xs  btn-danger" href="#" onclick="deletegoal(@goal.GoalId)"><i class="fa fa-trash"></i></a>
+                    <li id="goal-@goal.GoalId">
+                        <div class="row">
+                            <div class="col-8 col-md-10 col-lg-11">
+                                <div class="float-left pr-2 h-100">
+                                    <a href="@Url.Action("CompleteGoal", "Goals", new {id = goal.GoalId})" class="btn btn-sm btn-success js-completegoal"><i class="fa fa-plus"></i></a>
+                                </div>
+                                <span>@goal.Name</span>
                             </div>
-                        </li>
+                            <div class="col-4 col-md-2 col-lg-1 btn-group">
+                                <a class="js-editgoal btn btn-sm btn-primary" data_dialog_title="Редактирование задачи" href="@Url.Action("EditGoal", "Goals", new {id = goal.GoalId})"><i class="fa fa-edit"></i></a>
+                                <a class="js-deletegoal btn btn-sm  btn-danger" href="#" onclick="deletegoal(@goal.GoalId)"><i class="fa fa-trash"></i></a>
+                            </div>
+                        </div>
+
+                        @if (goal.GoalEnd == null)
+                        {
+                            <small class="badge badge-success"><i class="fa fa-clock-o"></i> Без срока</small>
+                        }
+                        else if (goal.GoalEnd.Value < TimeZoneInfo.ConvertTimeToUtc(DateTime.Now))
+                        {
+                            <small class="badge badge-danger"><i class="fa fa-clock-o"></i> Дата: @goal.GoalEnd.Value.ToLocalTime().ToString("dd.MM.yyyy HH:mm")</small>
+                        }
+                        else
+                        {
+                            <small class="badge badge-success"><i class="fa fa-clock-o"></i> Дата: @goal.GoalEnd.Value.ToLocalTime().ToString("dd.MM.yyyy HH:mm")</small>
+
+                        }
+
+                        @if (goal.PassCount != 0)
+                        {
+                            <small class="badge badge-danger"><i class="fa fa-calendar-minus"></i> Пропуск: @goal.PassCount </small>
+                        }
+                        
+                    </li>
                     }
                 </ul>
             </div>
@@ -58,38 +61,41 @@
             <!-- /.tab-pane -->
             <div class="tab-pane" id="week">
                 <ul class="todo-list ui-sortable">
-                    @foreach (var goal in Model.Where(g => g.IsComplete == false && g.GoalEnd.HasValue && g.GoalEnd.Value.Date <= DateTime.Now.AddDays(7)))
+                    @foreach (var goal in Model.Where(g => g.IsComplete == false && g.GoalEnd.HasValue && g.GoalEnd.Value.Date <= TimeZoneInfo.ConvertTimeToUtc(DateTime.Now).AddDays(7)))
                     {
                         <li id="goal-@goal.GoalId">
-                            <!-- checkbox -->
-                            <a href="@Url.Action("CompleteGoal","Goals",new { id = goal.GoalId})" class="btn btn-xs btn-light js-completegoal"><i class=" fa fa-calendar-check" style="color: black;"></i></a>
-                            <span class="text">@goal.Name</span>
-                            <!-- Emphasis label -->
+                            <div class="row">
+                                <div class="col-8 col-md-10 col-lg-11">
+                                    <div class="float-left pr-2 h-100">
+                                        <a href="@Url.Action("CompleteGoal", "Goals", new {id = goal.GoalId})" class="btn btn-sm btn-success js-completegoal"><i class="fa fa-plus"></i></a>
+                                    </div>
+                                    <span>@goal.Name</span>
+                                </div>
+                                <div class="col-4 col-md-2 col-lg-1 btn-group">
+                                    <a class="js-editgoal btn btn-sm btn-primary" data_dialog_title="Редактирование задачи" href="@Url.Action("EditGoal", "Goals", new {id = goal.GoalId})"><i class="fa fa-edit"></i></a>
+                                    <a class="js-deletegoal btn btn-sm  btn-danger" href="#" onclick="deletegoal(@goal.GoalId)"><i class="fa fa-trash"></i></a>
+                                </div>
+                            </div>
+
 
                             @if (goal.GoalEnd == null)
                             {
                                 <small class="badge badge-success"><i class="fa fa-clock-o"></i> Без срока</small>
                             }
-                            else if (goal.GoalEnd < DateTime.Now)
+                            else if (goal.GoalEnd.Value < TimeZoneInfo.ConvertTimeToUtc(DateTime.Now))
                             {
-                                <small class="badge badge-danger"><i class="fa fa-clock-o"></i> @goal.GoalEnd.Value.ToString("dd.MM.yyyy HH:mm")</small>
+                                <small class="badge badge-danger"><i class="fa fa-clock-o"></i> Дата: @goal.GoalEnd.Value.ToLocalTime().ToString("dd.MM.yyyy HH:mm")</small>
                             }
                             else
                             {
-                                <small class="badge badge-success"><i class="fa fa-clock-o"></i> @goal.GoalEnd.Value.ToString("dd.MM.yyyy HH:mm")</small>
+                                <small class="badge badge-success"><i class="fa fa-clock-o"></i> Дата: @goal.GoalEnd.Value.ToLocalTime().ToString("dd.MM.yyyy HH:mm")</small>
 
                             }
 
                             @if (goal.PassCount != 0)
                             {
-                                <small class="badge badge-danger"><i class="fa fa-calendar-minus"></i> Пропущено раз: @goal.PassCount </small>
+                                <small class="badge badge-danger"><i class="fa fa-calendar-minus"></i> Пропуск: @goal.PassCount </small>
                             }
-
-                            <!-- General tools such as edit or delete-->
-                            <div class="pull-right btn-group">
-                                <a class="js-editgoal btn btn-xs btn-primary" data_dialog_title="Редактирование задачи" href="@Url.Action("EditGoal","Goals",new {id = goal.GoalId })"><i class="fa fa-edit"></i></a>
-                                <a class="js-deletegoal btn btn-xs  btn-danger" href="#" onclick="deletegoal(@goal.GoalId)"><i class="fa fa-trash"></i></a>
-                            </div>
                         </li>
                     }
                 </ul>
@@ -97,38 +103,41 @@
             <!-- /.tab-pane -->
             <div class="tab-pane" id="month">
                 <ul class="todo-list ui-sortable">
-                    @foreach (var goal in Model.Where(g => g.IsComplete == false && g.GoalEnd.HasValue && g.GoalEnd.Value.Date <= DateTime.Now.AddDays(30)))
+                    @foreach (var goal in Model.Where(g => g.IsComplete == false && g.GoalEnd.HasValue && g.GoalEnd.Value.Date <= TimeZoneInfo.ConvertTimeToUtc(DateTime.Now).AddDays(30)))
                     {
                         <li id="goal-@goal.GoalId">
-                            <!-- checkbox -->
-                            <a href="@Url.Action("CompleteGoal","Goals",new { id = goal.GoalId})" class="btn btn-xs btn-light js-completegoal"><i class=" fa fa-calendar-check" style="color: black;"></i></a>
-                            <span class="text">@goal.Name</span>
-                            <!-- Emphasis label -->
+                            <div class="row">
+                                <div class="col-8 col-md-10 col-lg-11">
+                                    <div class="float-left pr-2 h-100">
+                                        <a href="@Url.Action("CompleteGoal", "Goals", new {id = goal.GoalId})" class="btn btn-sm btn-success js-completegoal"><i class="fa fa-plus"></i></a>
+                                    </div>
+                                    <span>@goal.Name</span>
+                                </div>
+                                <div class="col-4 col-md-2 col-lg-1 btn-group">
+                                    <a class="js-editgoal btn btn-sm btn-primary" data_dialog_title="Редактирование задачи" href="@Url.Action("EditGoal", "Goals", new {id = goal.GoalId})"><i class="fa fa-edit"></i></a>
+                                    <a class="js-deletegoal btn btn-sm  btn-danger" href="#" onclick="deletegoal(@goal.GoalId)"><i class="fa fa-trash"></i></a>
+                                </div>
+                            </div>
+
 
                             @if (goal.GoalEnd == null)
                             {
                                 <small class="badge badge-success"><i class="fa fa-clock-o"></i> Без срока</small>
                             }
-                            else if (goal.GoalEnd < DateTime.Now)
+                            else if (goal.GoalEnd.Value < TimeZoneInfo.ConvertTimeToUtc(DateTime.Now))
                             {
-                                <small class="badge badge-danger"><i class="fa fa-clock-o"></i> @goal.GoalEnd.Value.ToString("dd.MM.yyyy HH:mm")</small>
+                                <small class="badge badge-danger"><i class="fa fa-clock-o"></i> Дата: @goal.GoalEnd.Value.ToLocalTime().ToString("dd.MM.yyyy HH:mm")</small>
                             }
                             else
                             {
-                                <small class="badge badge-success"><i class="fa fa-clock-o"></i> @goal.GoalEnd.Value.ToString("dd.MM.yyyy HH:mm")</small>
+                                <small class="badge badge-success"><i class="fa fa-clock-o"></i> Дата: @goal.GoalEnd.Value.ToLocalTime().ToString("dd.MM.yyyy HH:mm")</small>
 
                             }
 
                             @if (goal.PassCount != 0)
                             {
-                                <small class="badge badge-danger"><i class="fa fa-calendar-minus"></i> Пропущено раз: @goal.PassCount </small>
+                                <small class="badge badge-danger"><i class="fa fa-calendar-minus"></i> Пропуск: @goal.PassCount </small>
                             }
-
-                            <!-- General tools such as edit or delete-->
-                            <div class="pull-right btn-group">
-                                <a class="js-editgoal btn btn-xs btn-primary" data_dialog_title="Редактирование задачи" href="@Url.Action("EditGoal","Goals",new {id = goal.GoalId })"><i class="fa fa-edit"></i></a>
-                                <a class="js-deletegoal btn btn-xs  btn-danger" href="#" onclick="deletegoal(@goal.GoalId)"><i class="fa fa-trash"></i></a>
-                            </div>
                         </li>
                     }
                 </ul>

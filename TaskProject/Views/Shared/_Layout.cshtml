@@ -10,6 +10,7 @@
 
     <!-- Theme style -->
     <link rel="stylesheet" href="~/css/main.min.css">
+
 </head>
 
 
@@ -73,12 +74,10 @@
                 <li class="nav-item">
                     <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
                 </li>
-
             </ul>
 
             <!-- Правое меню -->
             <ul class="navbar-nav ml-auto">
-
                 @await Component.InvokeAsync("Notifications")
 
                 <!-- Help Dropdown Menu-->
@@ -89,15 +88,15 @@
                     <div class="dropdown-menu dropdown-menu-right">
                         <span class="dropdown-item dropdown-header">Решение вопросов</span>
                         <div class="dropdown-divider"></div>
-                        <a href="@Url.Action("FAQ","Info")" class="dropdown-item">
+                        <a href="@Url.Action("FAQ", "Info")" class="dropdown-item">
                             Руководство
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a href="@Url.Action("QuestionAndSuggestion","Info")" class="dropdown-item">
+                        <a href="@Url.Action("QuestionAndSuggestion", "Info")" class="dropdown-item">
                             Вопросы и предложения
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a href="@Url.Action("Report","Info")" class="dropdown-item">
+                        <a href="@Url.Action("Report", "Info")" class="dropdown-item">
                             Сообщить об ошибке
                         </a>
                     </div>
@@ -111,11 +110,11 @@
                     <div class="dropdown-menu dropdown-menu-right">
                         <span class="dropdown-item dropdown-header">Управление пользователем</span>
                         <div class="dropdown-divider"></div>
-                        <a href="@Url.Action("Index","Manage")" class="dropdown-item">
+                        <a href="@Url.Action("Index", "Manage")" class="dropdown-item">
                             Настройка профиля
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a href="@Url.Action("Logout","Account")" class="dropdown-item">
+                        <a href="@Url.Action("Logout", "Account")" class="dropdown-item">
                             Выход
                         </a>
                     </div>
@@ -133,13 +132,18 @@
                 <span class="brand-text font-weight-light">Evolve Me!</span>
             </a>
 
-            <!-- Sidebar -->
+            <!-- Сайдбар -->
             <div class="sidebar">
-                <!-- Sidebar Menu -->
+                
+                <!-- Статистика профиля -->
+                @await Component.InvokeAsync("Profile")
+
+                <!-- Левое меню -->
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+
                         <li class="nav-item">
-                            <a href="@Url.Action("GameRoom","Home")" class="nav-link">
+                            <a href="@Url.Action("GameRoom", "Home")" class="nav-link">
                                 <i class="nav-icon fa fa-home"></i>
                                 <p>
                                     Главная
@@ -147,7 +151,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="@Url.Action("ShowNotes","Notes")" class="nav-link">
+                            <a href="@Url.Action("ShowNotes", "Notes")" class="nav-link">
                                 <i class="nav-icon fa fa-book"></i>
                                 <p>
                                     Дневник
@@ -155,7 +159,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="@Url.Action("Index","Healths")" class="nav-link">
+                            <a href="@Url.Action("Index", "Healths")" class="nav-link">
                                 <i class="nav-icon fa fa-heartbeat"></i>
                                 <p>
                                     Здоровье
@@ -174,7 +178,7 @@
                             </a>
                             <ul class="nav nav-treeview" style="display: none;">
                                 <li class="nav-item">
-                                    <a href="@Url.Action("GetRewards","Rewards")" class="nav-link">
+                                    <a href="@Url.Action("GetRewards", "Rewards")" class="nav-link">
                                         <i class="nav-icon fa fa-trophy"></i>
                                         <p>
                                             Награды
@@ -182,7 +186,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="@Url.Action("GetKarma","Karma")" class="nav-link">
+                                    <a href="@Url.Action("GetKarma", "Karma")" class="nav-link">
                                         <i class="nav-icon fa fa-yin-yang"></i>
                                         <p>
                                             Карма
@@ -190,7 +194,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="@Url.Action("GetAchievements","Achievements")" class="nav-link">
+                                    <a href="@Url.Action("GetAchievements", "Achievements")" class="nav-link">
                                         <i class="nav-icon fa fa-award"></i>
                                         <p>
                                             Достижения
@@ -198,7 +202,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="@Url.Action("GetAtributes","Atributes")" class="nav-link">
+                                    <a href="@Url.Action("GetAtributes", "Atributes")" class="nav-link">
                                         <i class="nav-icon fa fa-user"></i>
                                         <p>
                                             Характеристики
@@ -218,7 +222,7 @@
                             </a>
                             <ul class="nav nav-treeview" style="display: none;">
                                 <li class="nav-item">
-                                    <a href="@Url.Action("StatMoods","Moods")" class="nav-link">
+                                    <a href="@Url.Action("StatMoods", "Moods")" class="nav-link">
                                         <i class="nav-icon fa fa-theater-masks"></i>
                                         <p>
                                             Настроения
@@ -226,7 +230,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="@Url.Action("StatGoals","Goals")" class="nav-link">
+                                    <a href="@Url.Action("StatGoals", "Goals")" class="nav-link">
                                         <i class="nav-icon fa fa-tasks"></i>
                                         <p>
                                             Задачи
@@ -246,7 +250,7 @@
                             </a>
                             <ul class="nav nav-treeview" style="display: none;">
                                 <li class="nav-item">
-                                    <a href="@Url.Action("GetKarmaForUsers","Users")" class="nav-link">
+                                    <a href="@Url.Action("GetKarmaForUsers", "Users")" class="nav-link">
                                         <i class="nav-icon fa fa-yin-yang"></i>
                                         <p>
                                             Рейтинг кармы
@@ -254,7 +258,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="@Url.Action("GetGoalsForUsers","Users")" class="nav-link">
+                                    <a href="@Url.Action("GetGoalsForUsers", "Users")" class="nav-link">
                                         <i class="nav-icon fa fa-tasks"></i>
                                         <p>
                                             Рейтинг задач
@@ -265,6 +269,22 @@
                         </li>
 
                         @await Component.InvokeAsync("Catalogs")
+
+                        <li class="nav-header text-center mt-4"><h6>Поддержать проект</h6></li>
+                        <li class="nav-item text-center">
+                            <ul class="list-inline mb-0">
+                                <li class="list-inline-item">
+                                    <a class="btn btn-outline-light btn-social text-center" href="https://vk.com/evolveme">
+                                        <i class="fab fa-vk"></i>
+                                    </a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a class="btn btn-outline-light btn-social text-center" href="https://github.com/eugenenoize/TaskProject">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
@@ -278,15 +298,14 @@
             <div class="content-header">
                 <div class="container-fluid">
                     <div class="row mb-2">
-                        <div class="col-sm-6">
-                            <h1 class="m-0 text-dark">@ViewBag.Breadcrumb</h1>
-                        </div><!-- /.col -->
-                        <div class="col-sm-6">
+                    
+                        <div class="col-sm-12">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="@Url.Action("GameRoom","Home")">Главная</a></li>
+                                <li class="breadcrumb-item"><a href="@Url.Action("GameRoom","Home")"><i class="fa fa-home" style="color:slategray"></i></a></li>
                                 <li class="breadcrumb-item active">@ViewBag.Breadcrumb</li>
                             </ol>
                         </div><!-- /.col -->
+
                     </div><!-- /.row -->
                 </div><!-- /.container-fluid -->
             </div>
@@ -296,14 +315,14 @@
         </div>
         <!-- /.content-wrapper -->
 
-        <footer class="main-footer">
+        @*<footer class="main-footer">
             <div class="row">
                 <div class="col-8">
                     <strong>Copyright &copy; 2018 Evolve Me!</strong>
                     Все права защищены.
                 </div>
                 <div class="col-4">
-                    <h5 class="text-bold">Подписка на новости</h5>
+                    <h5 class="text-bold d-none d-md-inline-block">Подписка на новости</h5>
                     <ul class="list-inline mb-0">
                         <li class="list-inline-item">
                             <a class="btn btn-outline-dark btn-social text-center" href="https://vk.com/evolveme">
@@ -315,26 +334,11 @@
                                 <i class="fab fa-github"></i>
                             </a>
                         </li>
-                        @*<li class="list-inline-item">
-                                <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
-                                    <i class="fa fa-fw fa-twitter"></i>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
-                                    <i class="fa fa-fw fa-linkedin"></i>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
-                                    <i class="fa fa-fw fa-dribbble"></i>
-                                </a>
-                            </li>*@
                     </ul>
                 </div>
             </div>
 
-        </footer>
+        </footer>*@
 
     </div>
     <!-- ./wrapper -->

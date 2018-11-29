@@ -80,14 +80,14 @@ namespace TaskProject.Controllers
                 userhealth.UserListGrowth.Add(new UserGrowth()
                 {
                     Value = (float)view.Growth,
-                    Date = DateTime.Now,
+                    Date = TimeZoneInfo.ConvertTimeToUtc(DateTime.Now),
                     HealthId = userhealth.HealthId
                 });
 
                 userhealth.UserListWeight.Add(new UserWeight()
                 {
                     Value = (float)view.Weight,
-                    Date = DateTime.Now,
+                    Date = TimeZoneInfo.ConvertTimeToUtc(DateTime.Now),
                     HealthId = userhealth.HealthId
                 });
 
@@ -297,7 +297,7 @@ namespace TaskProject.Controllers
                 user.Notifications.Add(new Notification()
                 {
                     Name = "Пользователь заполнил анкету",
-                    DateCreate = DateTime.Now
+                    DateCreate = TimeZoneInfo.ConvertTimeToUtc(DateTime.Now)
                 });
 
                 await db.SaveChangesAsync();
@@ -334,13 +334,13 @@ namespace TaskProject.Controllers
             health.UserListGrowth.Add(new UserGrowth()
             {
                 Value = growth,
-                Date = DateTime.Now
+                Date = TimeZoneInfo.ConvertTimeToUtc(DateTime.Now)
             });
 
             health.UserListWeight.Add(new UserWeight()
             {
                 Value = weight,
-                Date = DateTime.Now
+                Date = TimeZoneInfo.ConvertTimeToUtc(DateTime.Now)
             });
 
             await db.SaveChangesAsync();

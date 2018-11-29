@@ -1,19 +1,12 @@
 ﻿@model IEnumerable<TaskProject.Models.Note>
 
-
-@section Css{
-    <!--DateTable-->
-
-    <link rel="stylesheet" href="~/plugins/datatables/dataTables.bootstrap4.css" />
-}
-
 <section class="content">
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
                 <div class="card">
                     <div class="card-header text-center">
-                        <a class="btn btn-info addnote" href="@Url.Action("AddNote", new {catalogid = ViewBag.CatalogId })">Добавить новую заметку</a>
+                        <a class="btn btn-dark addnote" href="@Url.Action("AddNote", new {catalogid = ViewBag.CatalogId })">Добавить новую заметку</a>
                     </div>
                     <div class="card-body">
                         <table class="sw_datatable table">
@@ -33,17 +26,18 @@
                                 {
                                     <tr id="note-@note.NoteId">
                                         <td>
-                                            @Html.DisplayFor(modelnote => note.Theme)
+                                            <span class="cell-span"> @note.Theme</span>
+                                           
                                         </td>
                                         <td>
                                             @note.DateCreate.Value.ToShortDateString()
                                         </td>
                                         <td>
-                                            <div class="pull-right">
-                                                <a class="btn btn-info d-inline-block" href="@Url.Action("ShowNote","Notes",new {id = note.NoteId })"><i class="fa fa-edit"></i></a>
+                                            <div class="pull-right btn-group">
+                                                <a class="btn btn-sm btn-primary" href="@Url.Action("ShowNote","Notes",new {id = note.NoteId })"><i class="fa fa-edit"></i></a>
                                                 <form asp-action="DeleteNote" asp-controller="Notes" class="d-inline-block">
                                                     <input type="hidden" name="Id" value="@note.NoteId"/>
-                                                    <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                                    <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
                                                 </form>
                                             </div>
                                         </td>
@@ -60,10 +54,6 @@
 
 @section Scripts{
 
-    <!-- Datetable-->
-    <script src="~/plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="~/plugins/datatables/dataTables.bootstrap4.js"></script>
-
     <script>
         $(document).ready(function () {
             $('.sw_datatable').DataTable({
@@ -76,7 +66,8 @@
                 language: {
                     processing: "Выполняется обработка...",
                     search: "Поиск&nbsp;:",
-                    lengthMenu: "Показать _MENU_ заметок",
+                    //lengthMenu: "Показать _MENU_ заметок",
+                    lengthMenu: "",
                     info: "Отображены с _START_ по _END_ из _TOTAL_ заметок",
                     infoEmpty: "Нет заметок",
                     infoFiltered: "(Поиск из _MAX_ заметок)",

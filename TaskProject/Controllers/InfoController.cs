@@ -1,5 +1,6 @@
 ﻿using TaskProject.Models;
 using System;
+using System.Globalization;
 using Microsoft.AspNetCore.Mvc;
 using TaskProject.Services;
 using TaskProject;
@@ -44,7 +45,7 @@ namespace TaskProject.Controllers
             }
 
             model.Theme = "Report";
-            model.DateCreate = DateTime.Now.ToString();
+            model.DateCreate = TimeZoneInfo.ConvertTimeToUtc(DateTime.Now).ToString(CultureInfo.CurrentCulture);
 
             EmailSender sender = new EmailSender(configuration);
             await sender.SendEmailToOwnerAsync(model.Email, model.Theme, model.Body);
@@ -70,7 +71,7 @@ namespace TaskProject.Controllers
                 return View(model);
             }
             model.Theme = "QuestionAndSuggestion";
-            model.DateCreate = DateTime.Now.ToString();
+            model.DateCreate = TimeZoneInfo.ConvertTimeToUtc(DateTime.Now).ToString(CultureInfo.CurrentCulture);
 
             EmailSender sender = new EmailSender(configuration);
             await sender.SendEmailToOwnerAsync(model.Email, model.Theme, model.Body);

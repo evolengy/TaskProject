@@ -71,7 +71,7 @@ namespace TaskProject.Controllers
                 ViewBag.TodayMood = todaymood;
             }
 
-            Note todaynote = user.Notes.SingleOrDefault(n => n.DateCreate.Value.Date == DateTime.Now.Date);
+            Note todaynote = user.Notes.SingleOrDefault(n => n.DateCreate.Value.Date == TimeZoneInfo.ConvertTimeToUtc(DateTime.Now).Date);
             if (todaynote == null)
             {
                 ViewBag.TodayNote = null;

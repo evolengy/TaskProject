@@ -38,7 +38,7 @@
             </div>
 
             <div class="input-group date" id="GoalStart" data-target-input="nearest">
-                <input type="text" name="GoalStart" class="form-control datetimepicker-input" data-target="#GoalStart" value="@Model.GoalStart.Value.ToString("dd.MM.yyyy HH:mm")"/>
+                <input type="text" name="GoalStart" class="form-control datetimepicker-input" data-target="#GoalStart" value="@Model.GoalStart.Value.ToLocalTime().ToString("dd.MM.yyyy HH:mm")"/>
                 <div class="input-group-append" data-target="#GoalStart" data-toggle="datetimepicker">
                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                 </div>
@@ -52,7 +52,7 @@
             <div class="input-group date" id="GoalEnd" data-target-input="nearest">
                 @if (Model.GoalEnd.HasValue)
                 {
-                    <input type="text" name="GoalEnd" class="form-control datetimepicker-input" data-target="#GoalEnd" value="@Model.GoalEnd.Value.ToString("dd.MM.yyyy HH:mm")"/>
+                    <input type="text" name="GoalEnd" class="form-control datetimepicker-input" data-target="#GoalEnd" value="@Model.GoalEnd.Value.ToLocalTime().ToString("dd.MM.yyyy HH:mm")"/>
                 }
                 else
                 {

@@ -15,30 +15,30 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header text-center">
-                        <a class="btn btn-info js-addgoal" href="@Url.Action("AddGoal", new {catalogid = ViewBag.CatalogId })">Добавить новую задачу</a>
+                        <a class="btn btn-dark js-addgoal" href="@Url.Action("AddGoal", new {catalogid = ViewBag.CatalogId })">Добавить</a>
                         @if (ViewBag.Complete)
                         {
-                            <a class="btn btn-default" href="@Url.Action("GetGoals", new {catalogid = ViewBag.CatalogId,iscomplete = false })">Скрыть завершенные задачи</a>
+                            <a class="btn btn-default" href="@Url.Action("GetGoals", new {catalogid = ViewBag.CatalogId,iscomplete = false })">Скрыть завершенные</a>
                         }
                         else
                         {
-                            <a class="btn btn-default" href="@Url.Action("GetGoals", new {catalogid = ViewBag.CatalogId,iscomplete = true })">Показать завершенные задачи</a>
+                            <a class="btn btn-default" href="@Url.Action("GetGoals", new {catalogid = ViewBag.CatalogId,iscomplete = true })">Показать завершенные</a>
                         }
                     </div>
                     <div class="card-body">
-                        <table class="js-datatable table table-responsive-lg">
+                        <table class="js-datatable table  table-responsive">
                             <thead>
                                 <tr>
-                                    <th>
+                                    <th class="w-100">
                                         @Html.DisplayNameFor(model => model.Name)
                                     </th>
-                                    <th style="width:250px;">
+                                    <th style="width:250px;" class="d-none d-md-table-cell">
                                         @Html.DisplayNameFor(model => model.Skill.Name)
                                     </th>
-                                    <th style="width:85px;">
+                                    <th style="width:85px;" class="d-none d-md-table-cell">
                                         @Html.DisplayNameFor(model => model.Complication.Name)
                                     </th>
-                                    <th style="width:30px;">
+                                    <th style="width:30px;" class="d-none d-md-table-cell">
                                         Окончание
                                     </th>
                                     <th style="width:10px"></th>
@@ -50,48 +50,60 @@
                                     <tr id="goal-@goal.GoalId">
                                         @if (goal.IsComplete)
                                         {
-                                            <td class="td-name">
-                                                <div class="row">
-                                                    <a class="btn btn-xs btn-light js-restoregoal" href="@Url.Action("RestoreGoal","Goals",new { id = goal.GoalId})"><i class=" fa fa-calendar-plus"></i></a>
-                                                    <span class="text" style="max-width: 800px; margin-left:20px;margin-right:20px;">
-                                                        @Html.DisplayFor(modelgoal => goal.Name)
-                                                        <small class="badge badge-secondary"><i class="fa fa-clock-o"></i> Завершена</small>
-                                                    </span>
-                                                    
+                                            <td>
+
+                                                <div class="float-left pr-2 h-100">
+                                                    <a class="btn btn-xs btn-default js-restoregoal" href="@Url.Action("RestoreGoal", "Goals", new {id = goal.GoalId})"><i class=" fa fa-undo"></i></a>
                                                 </div>
-                                               
+                                                <span class="cell-span">
+                                                    @Html.DisplayFor(modelgoal => goal.Name)
+                                                    <small class="badge badge-secondary"><i class="fa fa-clock-o"></i> Завершена</small>
+                                                </span>
                                             </td>
                                         }
                                         else
                                         {
-                                            <td class="td-name">
+                                            <td>
                                                 <div class="row">
-                                                    <a class="btn btn-xs btn-light js-completegoal" href="@Url.Action("CompleteGoal","Goals",new { id = goal.GoalId})"><i class=" fa fa-calendar-check"></i></a>
-                                                    <span class="text" style="max-width:800px; margin-left:20px;margin-right:20px;">
-                                                        @Html.DisplayFor(modelgoal => goal.Name) <br />
-                                                        <span style="color:#85898C">@Html.DisplayFor(modelgoal => goal.Description)</span>
-                                                    </span>
+                                                    <div class="col-12">
+                                                        <div class="float-left pr-2 h-100">
+                                                            <a class="btn btn-xs btn-success js-completegoal" href="@Url.Action("CompleteGoal", "Goals", new {id = goal.GoalId})"><i class=" fa fa-plus"></i></a>
+                                                        </div>
+                                                        <span class="cell-span-task">
+
+                                                            @if (goal.Name.Length <= 50)
+                                                            {
+                                                                @goal.Name
+                                                            }
+                                                            else
+                                                            {
+                                                                string cutstring = goal.Name.Substring(0, 15) + "..";
+                                                                @cutstring
+                                                            }
+                                                            <span style="color: #85898C">@Html.DisplayFor(modelgoal => goal.Description)</span>
+                                                        </span>
+                                                    </div>
                                                 </div>
                                             </td>
                                         }
-                                        <td>
+                                        <td class="d-none d-md-table-cell">
                                             @Html.DisplayFor(modelgoal => goal.Skill.Name)
                                         </td>
-                                        <td>
+                                        <td class="d-none d-md-table-cell">
                                             @Html.DisplayFor(modelgoal => goal.Complication.Name)
                                         </td>
-                                        <td>
+                                        <td class="d-none d-md-table-cell">
                                             @if (goal.GoalEnd == null)
                                             {
                                                 <small class="badge badge-success"><i class="fa fa-clock-o"></i> Без срока</small>
                                             }
-                                            else if (DateTime.Now - goal.GoalEnd > TimeSpan.FromDays(1))
+                                            else if (TimeZoneInfo.ConvertTimeToUtc(DateTime.Now) - goal.GoalEnd.Value > TimeSpan.FromDays(1))
                                             {
-                                                <small class="badge badge-danger"><i class="fa fa-clock-o"></i> @goal.GoalEnd.Value.ToShortDateString()</small>
+                                                <small class="badge badge-danger"><i class="fa fa-clock-o"></i> @goal.GoalEnd.Value.ToLocalTime().ToShortDateString()</small>
                                             }
                                             else
                                             {
-                                                <small class="badge badge-success"><i class="fa fa-clock-o"></i> @goal.GoalEnd.Value.ToShortDateString()</small>
+                                                <small class="badge badge-success"><i class="fa fa-clock-o"></i> @goal.GoalEnd.Value.ToLocalTime().ToShortDateString()</small>
 
                                             }
                                         </td>
@@ -127,30 +139,30 @@
                 "info": false,
                 "autoWidth": false,
                 language:
+                {
+                    processing: "Выполняется обработка...",
+                    search: "Поиск&nbsp;:",
+                    lengthMenu: "Показать _MENU_ задач",
+                    info: "Отображены с _START_ по _END_ из _TOTAL_ задач",
+                    infoEmpty: "Нет задач",
+                    infoFiltered: "(Поиск из _MAX_ задач)",
+                    infoPostFix: "",
+                    loadingRecords: "Идет загрузка...",
+                    zeroRecords: "Задач не найдено",
+                    emptyTable: "Нет задач",
+                    paginate:
                     {
-                        processing: "Выполняется обработка...",
-                        search: "Поиск&nbsp;:",
-                        lengthMenu: "Показать _MENU_ задач",
-                        info: "Отображены с _START_ по _END_ из _TOTAL_ задач",
-                        infoEmpty: "Нет задач",
-                        infoFiltered: "(Поиск из _MAX_ задач)",
-                        infoPostFix: "",
-                        loadingRecords: "Идет загрузка...",
-                        zeroRecords: "Задач не найдено",
-                        emptyTable: "Нет задач",
-                        paginate:
-                            {
-                                first: "К первой",
-                                previous: "Предыдущие",
-                                next: "Следующие",
-                                last: "К последней"
-                            },
-                        aria:
-                            {
-                                sortAscending: ": Сортировка в порядке возрастания",
-                                sortDescending: ": Сортировка в порядке убывания"
-                            }
+                        first: "К первой",
+                        previous: "Предыдущие",
+                        next: "Следующие",
+                        last: "К последней"
+                    },
+                    aria:
+                    {
+                        sortAscending: ": Сортировка в порядке возрастания",
+                        sortDescending: ": Сортировка в порядке убывания"
                     }
+                }
             });
         });
     </script>
