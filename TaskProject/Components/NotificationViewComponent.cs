@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ViewComponents;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -10,7 +9,7 @@ using TaskProject.Models;
 
 namespace TaskProject.Components
 {
-    public class Notifications : ViewComponent
+	public class Notifications : ViewComponent
     {
         private ApplicationDbContext db;
         private readonly UserManager<ApplicationUser> usermanager;

@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace TaskProject.Models.AccountViewModels
 {
-    public class NickNameViewModel
+	public class NickNameViewModel
     {
         [Required(ErrorMessage = "Неверно набран ник")]
         [DataType(DataType.Text)]

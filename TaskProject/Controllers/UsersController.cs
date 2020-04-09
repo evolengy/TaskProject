@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -10,7 +8,7 @@ using TaskProject.Models.RatingViewModels;
 
 namespace TaskProject.Controllers
 {
-    public class UsersController : Controller
+	public class UsersController : Controller
     {
         private ApplicationDbContext db;
         private readonly UserManager<ApplicationUser> usermanager;

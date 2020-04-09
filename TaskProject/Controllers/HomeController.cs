@@ -1,21 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using TaskProject;
 using TaskProject.Models;
 using TaskProject.Models.AccountViewModels;
 
 namespace TaskProject.Controllers
 {
-    public class HomeController : Controller
+	public class HomeController : Controller
     {
         private readonly ApplicationDbContext db;
         private readonly UserManager<ApplicationUser> usermanager;

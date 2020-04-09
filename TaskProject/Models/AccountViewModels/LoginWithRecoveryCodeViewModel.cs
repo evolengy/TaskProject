@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace TaskProject.Models.AccountViewModels
 {
-    public class LoginWithRecoveryCodeViewModel
+	public class LoginWithRecoveryCodeViewModel
     {
             [Required(ErrorMessage = "Введите код восстановления")]
             [DataType(DataType.Text)]

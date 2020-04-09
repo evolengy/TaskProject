@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TaskProject.Models.DateTimeModels
 {
-    [NotMapped]
+	[NotMapped]
     public class Month
     {
         public int MonthId { get; set; }

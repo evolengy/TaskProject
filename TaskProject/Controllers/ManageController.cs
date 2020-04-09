@@ -9,13 +9,12 @@ using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using TaskProject.Models;
 using TaskProject.Models.ManageViewModels;
-using TaskProject.Services;
 using TaskProject.Services.EmailSender;
 using TaskProject.Services.UriHelper;
 
 namespace TaskProject.Controllers
 {
-    [Authorize]
+	[Authorize]
     [Route("[controller]/[action]")]
     public class ManageController : Controller
     {

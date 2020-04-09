@@ -1,16 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using Hangfire;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using TaskProject.Models;
-using TaskProject.Services.BackgroundJob;
 using TaskProject.Services.EmailSender;
 
 namespace TaskProject
@@ -35,9 +28,9 @@ namespace TaskProject
                     context.Initialize();
 
                     // Отправляем пользователям список задач, которые скоро закончатся
-                    RecurringJob.AddOrUpdate(
-                        () => new BackgroundEmailSender(context,emailSender).CheckUserGoalsAsync(),
-                        Cron.MinuteInterval(15));
+                    //RecurringJob.AddOrUpdate(
+                    //    () => new BackgroundEmailSender(context,emailSender).CheckUserGoalsAsync(),
+	                // Cron.MinuteInterval(15));
                 }
                 catch (Exception ex)
                 {

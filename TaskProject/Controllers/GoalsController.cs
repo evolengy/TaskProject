@@ -1,20 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
-using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using TaskProject;
 using TaskProject.Models;
 using TaskProject.Models.GoalModels;
 
 namespace TaskProject.Controllers
 {
-    public class GoalsController : Controller
+	public class GoalsController : Controller
     {
         private ApplicationDbContext db;
         private readonly UserManager<ApplicationUser> usermanager;

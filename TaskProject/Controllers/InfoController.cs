@@ -2,15 +2,13 @@
 using System;
 using System.Globalization;
 using Microsoft.AspNetCore.Mvc;
-using TaskProject.Services;
-using TaskProject;
 using Microsoft.Extensions.Configuration;
 using System.Threading.Tasks;
 using TaskProject.Services.EmailSender;
 
 namespace TaskProject.Controllers
 {
-    public class InfoController : Controller
+	public class InfoController : Controller
     {
         private readonly ApplicationDbContext db;
         private readonly IConfiguration configuration;

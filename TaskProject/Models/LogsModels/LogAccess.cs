@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace TaskProject.Models.LogsModels
 {
-    public class LogAccess
+	public class LogAccess
     {
         public int LogAccessId { get; set; }
         public string UserName { get; set; }

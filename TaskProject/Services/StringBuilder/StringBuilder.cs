@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace TaskProject.Services.StringBuilder
+﻿namespace TaskProject.Services.StringBuilder
 {
-    public static class StringBuilder
+	public static class StringBuilder
     {
         /// <summary>
         /// Обрезать строку

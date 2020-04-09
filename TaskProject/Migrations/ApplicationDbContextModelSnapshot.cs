@@ -519,7 +519,8 @@ namespace TaskProject.Migrations
 
                     b.Property<string>("Text");
 
-                    b.Property<string>("Theme");
+                    b.Property<string>("Theme")
+                        .HasMaxLength(50);
 
                     b.Property<string>("UserId");
 

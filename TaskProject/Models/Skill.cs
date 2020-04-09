@@ -1,13 +1,11 @@
-﻿ using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
- using TaskProject.Models.GoalModels;
+using TaskProject.Models.GoalModels;
 
 namespace TaskProject.Models
 {
-    public class Skill
+	public class Skill
     {
         public Skill()
         {

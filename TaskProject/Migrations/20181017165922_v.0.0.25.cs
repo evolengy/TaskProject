@@ -1,11 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using System;
-using System.Collections.Generic;
 
 namespace TaskProject.Migrations
 {
-    public partial class v0025 : Migration
+	public partial class v0025 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

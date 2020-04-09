@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace TaskProject.Models.DateTimeModels
 {
-    [NotMapped]
+	[NotMapped]
     public class Year
     {
         public List<Month> Months { get; private set; }

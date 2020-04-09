@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace TaskProject.Models.ManageViewModels
+﻿namespace TaskProject.Models.ManageViewModels
 {
-    public class ShowRecoveryCodesViewModel
+	public class ShowRecoveryCodesViewModel
     {
         public string[] RecoveryCodes { get; set; }
     }

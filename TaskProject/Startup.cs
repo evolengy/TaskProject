@@ -10,9 +10,7 @@ using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Logging;
 using System;
 using System.IO;
-using Hangfire;
 using Microsoft.AspNetCore.DataProtection;
-using StackExchange.Redis;
 using TaskProject.Models;
 using TaskProject.Services.EmailSender;
 
@@ -46,7 +44,7 @@ namespace TaskProject
              options.UseSqlServer(Configuration.GetConnectionString("DbConnection")));
 
             // Запуск фоновых процессов с помощью Hangfire
-            services.AddHangfire(configuration => configuration.UseSqlServerStorage(Configuration.GetConnectionString("DbConnection")));
+            //services.AddHangfire(configuration => configuration.UseSqlServerStorage(Configuration.GetConnectionString("DbConnection")));
 
             // Идентификация пароля
             services.AddIdentity<ApplicationUser, IdentityRole>(options => options.Password = new PasswordOptions()
@@ -88,12 +86,12 @@ namespace TaskProject
             loggerFactory.AddFile($"Logs\\ErrorLog-{TimeZoneInfo.ConvertTimeToUtc(DateTime.Now).Date.ToString("dd-MM-yyyy")}.txt");
 
             // Подключаем базы данных Hangfire
-            app.UseHangfireServer();          
+           // app.UseHangfireServer();          
 
             if (env.IsDevelopment())
             {
                 // Подключаем админку Hangire
-                app.UseHangfireDashboard();
+              //  app.UseHangfireDashboard();
 
                 app.UseBrowserLink();
 

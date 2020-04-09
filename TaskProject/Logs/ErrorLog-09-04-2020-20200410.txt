@@ -1,0 +1,1614 @@
+2020-04-10T01:26:12.7409273+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2020-04-10T01:26:23.4622483+05:00  [ERR] An error occurred using the connection to database '"aspnet-TaskProject-DC56C0F5-5383-411F-B6C2-269D9ED53EB7"' on server '"(localdb)\mssqllocaldb"'. (5fc3407c)
+System.Data.SqlClient.SqlException (0x80131904): Cannot open database "aspnet-TaskProject-DC56C0F5-5383-411F-B6C2-269D9ED53EB7" requested by the login. The login failed.
+Login failed for user 'FILESERVER\evpet'.
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, Object providerInfo, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.Open(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.BufferlessMoveNext(Boolean buffer)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+   at Microsoft.EntityFrameworkCore.Query.QueryMethodProvider.GetResult[TResult](IEnumerable`1 valueBuffers, Boolean throwOnNullResult)
+   at lambda_method(Closure , QueryContext )
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.<>c__DisplayClass17_1`1.<CompileQueryCore>b__0(QueryContext qc)
+ClientConnectionId:cdf743dc-6674-4c59-a7a3-693f7b0df34d
+Error Number:4060,State:1,Class:11
+2020-04-10T01:27:23.6268181+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2020-04-10T01:27:34.0168079+05:00  [ERR] An error occurred using the connection to database '"aspnet-TaskProject-DC56C0F5-5383-411F-B6C2-269D9ED53EB7"' on server '"(localdb)\mssqllocaldb"'. (5fc3407c)
+System.Data.SqlClient.SqlException (0x80131904): Cannot open database "aspnet-TaskProject-DC56C0F5-5383-411F-B6C2-269D9ED53EB7" requested by the login. The login failed.
+Login failed for user 'FILESERVER\evpet'.
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, Object providerInfo, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.Open(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.BufferlessMoveNext(Boolean buffer)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+   at Microsoft.EntityFrameworkCore.Query.QueryMethodProvider.GetResult[TResult](IEnumerable`1 valueBuffers, Boolean throwOnNullResult)
+   at lambda_method(Closure , QueryContext )
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.<>c__DisplayClass17_1`1.<CompileQueryCore>b__0(QueryContext qc)
+ClientConnectionId:4f1fd4c7-79a2-47c5-a524-0381daae564d
+Error Number:4060,State:1,Class:11
+2020-04-10T01:30:38.9114350+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2020-04-10T01:31:15.9290756+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2020-04-10T01:31:26.4420973+05:00  [INF] Executed DbCommand ("345"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""CREATE DATABASE [aspnet-TaskProject-DC56C0F5-5383-411F-B6C2-269D9ED53EB7];" (0723d8ff)
+2020-04-10T01:31:26.5175805+05:00  [INF] Executed DbCommand ("74"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""IF SERVERPROPERTY('EngineEdition') <> 5 EXEC(N'ALTER DATABASE [aspnet-TaskProject-DC56C0F5-5383-411F-B6C2-269D9ED53EB7] SET READ_COMMITTED_SNAPSHOT ON;');" (0723d8ff)
+2020-04-10T01:31:26.5649172+05:00  [INF] Executed DbCommand ("8"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [__EFMigrationsHistory] (
+    [MigrationId] nvarchar(150) NOT NULL,
+    [ProductVersion] nvarchar(32) NOT NULL,
+    CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+);" (0723d8ff)
+2020-04-10T01:31:26.5710468+05:00  [INF] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'__EFMigrationsHistory');" (0723d8ff)
+2020-04-10T01:31:26.5725488+05:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];" (0723d8ff)
+2020-04-10T01:31:26.5823091+05:00  [INF] Applying migration '"20181017165922_v.0.0.25"'. (0e2ac64d)
+2020-04-10T01:31:26.7920412+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Achievements] (
+    [AchievementId] int NOT NULL IDENTITY,
+    [AchievementType] int NOT NULL,
+    [Description] nvarchar(max) NULL,
+    [LinkImg] nvarchar(max) NULL,
+    [Name] nvarchar(max) NULL,
+    CONSTRAINT [PK_Achievements] PRIMARY KEY ([AchievementId])
+);" (0723d8ff)
+2020-04-10T01:31:26.7934011+05:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Aligments] (
+    [AligmentId] int NOT NULL,
+    [Description] nvarchar(max) NULL,
+    [Name] nvarchar(max) NULL,
+    CONSTRAINT [PK_Aligments] PRIMARY KEY ([AligmentId])
+);" (0723d8ff)
+2020-04-10T01:31:26.7958619+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [AspNetRoles] (
+    [Id] nvarchar(450) NOT NULL,
+    [ConcurrencyStamp] nvarchar(max) NULL,
+    [Name] nvarchar(256) NULL,
+    [NormalizedName] nvarchar(256) NULL,
+    CONSTRAINT [PK_AspNetRoles] PRIMARY KEY ([Id])
+);" (0723d8ff)
+2020-04-10T01:31:26.7974911+05:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Complications] (
+    [ComplicationId] int NOT NULL,
+    [Damage] int NOT NULL,
+    [Exp] int NOT NULL,
+    [Gold] int NOT NULL,
+    [Name] nvarchar(max) NULL,
+    CONSTRAINT [PK_Complications] PRIMARY KEY ([ComplicationId])
+);" (0723d8ff)
+2020-04-10T01:31:26.7993073+05:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Hobbies] (
+    [HobbyId] int NOT NULL IDENTITY,
+    [Description] nvarchar(max) NULL,
+    [Name] nvarchar(max) NULL,
+    CONSTRAINT [PK_Hobbies] PRIMARY KEY ([HobbyId])
+);" (0723d8ff)
+2020-04-10T01:31:26.8013163+05:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [LogAccess] (
+    [LogAccessId] int NOT NULL IDENTITY,
+    [Date] datetime2 NOT NULL,
+    [Log] nvarchar(max) NULL,
+    [UserAgent] nvarchar(max) NULL,
+    [UserName] nvarchar(max) NULL,
+    CONSTRAINT [PK_LogAccess] PRIMARY KEY ([LogAccessId])
+);" (0723d8ff)
+2020-04-10T01:31:27.4943517+05:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [LogEvents] (
+    [LogEventId] int NOT NULL IDENTITY,
+    [Date] datetime2 NOT NULL,
+    [EventId] int NOT NULL,
+    [LogLevel] nvarchar(max) NULL,
+    [Message] nvarchar(max) NULL,
+    CONSTRAINT [PK_LogEvents] PRIMARY KEY ([LogEventId])
+);" (0723d8ff)
+2020-04-10T01:31:27.4959955+05:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Messages] (
+    [Id] int NOT NULL IDENTITY,
+    [Body] nvarchar(max) NOT NULL,
+    [DateCreate] nvarchar(max) NULL,
+    [Email] nvarchar(max) NOT NULL,
+    [Name] nvarchar(max) NOT NULL,
+    [Theme] nvarchar(max) NULL,
+    CONSTRAINT [PK_Messages] PRIMARY KEY ([Id])
+);" (0723d8ff)
+2020-04-10T01:31:27.4974016+05:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Moods] (
+    [MoodId] int NOT NULL IDENTITY,
+    [LinkImg] nvarchar(max) NULL,
+    [Name] nvarchar(max) NOT NULL,
+    CONSTRAINT [PK_Moods] PRIMARY KEY ([MoodId])
+);" (0723d8ff)
+2020-04-10T01:31:27.5023069+05:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Ratings] (
+    [RatingId] int NOT NULL,
+    [Name] nvarchar(max) NULL,
+    CONSTRAINT [PK_Ratings] PRIMARY KEY ([RatingId])
+);" (0723d8ff)
+2020-04-10T01:31:27.5049095+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Repeats] (
+    [RepeatId] int NOT NULL,
+    [Name] nvarchar(max) NULL,
+    CONSTRAINT [PK_Repeats] PRIMARY KEY ([RepeatId])
+);" (0723d8ff)
+2020-04-10T01:31:28.8722279+05:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [AspNetUsers] (
+    [Id] nvarchar(450) NOT NULL,
+    [AccessFailedCount] int NOT NULL,
+    [AligmentId] int NULL,
+    [ConcurrencyStamp] nvarchar(max) NULL,
+    [CurrentExp] bigint NOT NULL,
+    [CurrentGold] int NOT NULL,
+    [CurrentKarma] int NOT NULL,
+    [CurrentLevel] int NOT NULL,
+    [Email] nvarchar(256) NULL,
+    [EmailConfirmed] bit NOT NULL,
+    [HealthId] int NULL,
+    [IsSetDefaultValues] bit NOT NULL,
+    [LockoutEnabled] bit NOT NULL,
+    [LockoutEnd] datetimeoffset NULL,
+    [MaxExp] bigint NOT NULL,
+    [NickName] nvarchar(max) NULL,
+    [NormalizedEmail] nvarchar(256) NULL,
+    [NormalizedUserName] nvarchar(256) NULL,
+    [PasswordHash] nvarchar(max) NULL,
+    [PhoneNumber] nvarchar(max) NULL,
+    [PhoneNumberConfirmed] bit NOT NULL,
+    [Photo] varbinary(max) NULL,
+    [SecurityStamp] nvarchar(max) NULL,
+    [TwoFactorEnabled] bit NOT NULL,
+    [UserName] nvarchar(256) NULL,
+    CONSTRAINT [PK_AspNetUsers] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_AspNetUsers_Aligments_AligmentId] FOREIGN KEY ([AligmentId]) REFERENCES [Aligments] ([AligmentId]) ON DELETE NO ACTION
+);" (0723d8ff)
+2020-04-10T01:31:28.8737923+05:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [AspNetRoleClaims] (
+    [Id] int NOT NULL IDENTITY,
+    [ClaimType] nvarchar(max) NULL,
+    [ClaimValue] nvarchar(max) NULL,
+    [RoleId] nvarchar(450) NOT NULL,
+    CONSTRAINT [PK_AspNetRoleClaims] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_AspNetRoleClaims_AspNetRoles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [AspNetRoles] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2020-04-10T01:31:28.8757083+05:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [AspNetUserClaims] (
+    [Id] int NOT NULL IDENTITY,
+    [ClaimType] nvarchar(max) NULL,
+    [ClaimValue] nvarchar(max) NULL,
+    [UserId] nvarchar(450) NOT NULL,
+    CONSTRAINT [PK_AspNetUserClaims] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_AspNetUserClaims_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2020-04-10T01:31:32.3202689+05:00  [INF] Executed DbCommand ("8"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [AspNetUserLogins] (
+    [LoginProvider] nvarchar(450) NOT NULL,
+    [ProviderKey] nvarchar(450) NOT NULL,
+    [ProviderDisplayName] nvarchar(max) NULL,
+    [UserId] nvarchar(450) NOT NULL,
+    CONSTRAINT [PK_AspNetUserLogins] PRIMARY KEY ([LoginProvider], [ProviderKey]),
+    CONSTRAINT [FK_AspNetUserLogins_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2020-04-10T01:31:32.3228114+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [AspNetUserRoles] (
+    [UserId] nvarchar(450) NOT NULL,
+    [RoleId] nvarchar(450) NOT NULL,
+    CONSTRAINT [PK_AspNetUserRoles] PRIMARY KEY ([UserId], [RoleId]),
+    CONSTRAINT [FK_AspNetUserRoles_AspNetRoles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [AspNetRoles] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_AspNetUserRoles_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2020-04-10T01:31:32.3254341+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [AspNetUserTokens] (
+    [UserId] nvarchar(450) NOT NULL,
+    [LoginProvider] nvarchar(450) NOT NULL,
+    [Name] nvarchar(450) NOT NULL,
+    [Value] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetUserTokens] PRIMARY KEY ([UserId], [LoginProvider], [Name]),
+    CONSTRAINT [FK_AspNetUserTokens_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2020-04-10T01:31:34.2682083+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Atributes] (
+    [AtributeId] int NOT NULL IDENTITY,
+    [CurrentExp] int NOT NULL,
+    [Description] nvarchar(max) NULL,
+    [Lvl] int NOT NULL,
+    [MaxExp] int NOT NULL,
+    [Name] nvarchar(max) NULL,
+    [UserId] nvarchar(450) NULL,
+    CONSTRAINT [PK_Atributes] PRIMARY KEY ([AtributeId]),
+    CONSTRAINT [FK_Atributes_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2020-04-10T01:31:34.2704196+05:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Catalogs] (
+    [CatalogId] int NOT NULL IDENTITY,
+    [Name] nvarchar(30) NOT NULL,
+    [UserId] nvarchar(450) NULL,
+    CONSTRAINT [PK_Catalogs] PRIMARY KEY ([CatalogId]),
+    CONSTRAINT [FK_Catalogs_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2020-04-10T01:31:34.2720725+05:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Healths] (
+    [HealthId] int NOT NULL IDENTITY,
+    [DateBirth] datetime2 NULL,
+    [DateDeath] datetime2 NULL,
+    [IsDead] bit NOT NULL,
+    [IsSetValue] bit NOT NULL,
+    [Sex] nvarchar(max) NULL,
+    [UserId] nvarchar(450) NULL,
+    CONSTRAINT [PK_Healths] PRIMARY KEY ([HealthId]),
+    CONSTRAINT [FK_Healths_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2020-04-10T01:31:35.6118118+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Karma] (
+    [KarmaId] int NOT NULL IDENTITY,
+    [Date] datetime2 NOT NULL,
+    [IsGood] bit NOT NULL,
+    [Name] nvarchar(max) NOT NULL,
+    [UserId] nvarchar(450) NULL,
+    CONSTRAINT [PK_Karma] PRIMARY KEY ([KarmaId]),
+    CONSTRAINT [FK_Karma_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2020-04-10T01:31:35.6141067+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Notes] (
+    [NoteId] int NOT NULL IDENTITY,
+    [DateCreate] datetime2 NOT NULL,
+    [Text] nvarchar(max) NULL,
+    [Theme] nvarchar(max) NULL,
+    [UserId] nvarchar(450) NULL,
+    CONSTRAINT [PK_Notes] PRIMARY KEY ([NoteId]),
+    CONSTRAINT [FK_Notes_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2020-04-10T01:31:35.6170198+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Notifications] (
+    [NotificationID] int NOT NULL IDENTITY,
+    [DateCreate] datetime2 NOT NULL,
+    [Name] nvarchar(max) NULL,
+    [UserId] nvarchar(450) NULL,
+    CONSTRAINT [PK_Notifications] PRIMARY KEY ([NotificationID]),
+    CONSTRAINT [FK_Notifications_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2020-04-10T01:31:35.6202842+05:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [UserAchievements] (
+    [UserAchievementId] int NOT NULL IDENTITY,
+    [AchievementId] int NOT NULL,
+    [IsOpen] bit NOT NULL,
+    [SetDate] datetime2 NULL,
+    [UserId] nvarchar(450) NULL,
+    CONSTRAINT [PK_UserAchievements] PRIMARY KEY ([UserAchievementId]),
+    CONSTRAINT [FK_UserAchievements_Achievements_AchievementId] FOREIGN KEY ([AchievementId]) REFERENCES [Achievements] ([AchievementId]) ON DELETE CASCADE,
+    CONSTRAINT [FK_UserAchievements_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2020-04-10T01:31:38.3262971+05:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [UserMoods] (
+    [UserMoodId] int NOT NULL IDENTITY,
+    [Comment] nvarchar(max) NULL,
+    [Date] datetime2 NOT NULL,
+    [MoodId] int NOT NULL,
+    [UserId] nvarchar(450) NULL,
+    CONSTRAINT [PK_UserMoods] PRIMARY KEY ([UserMoodId]),
+    CONSTRAINT [FK_UserMoods_Moods_MoodId] FOREIGN KEY ([MoodId]) REFERENCES [Moods] ([MoodId]) ON DELETE CASCADE,
+    CONSTRAINT [FK_UserMoods_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2020-04-10T01:31:38.3296600+05:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [UserRewards] (
+    [UserRewardId] int NOT NULL IDENTITY,
+    [Cost] int NULL,
+    [Description] nvarchar(max) NULL,
+    [Name] nvarchar(max) NOT NULL,
+    [UserId] nvarchar(450) NULL,
+    CONSTRAINT [PK_UserRewards] PRIMARY KEY ([UserRewardId]),
+    CONSTRAINT [FK_UserRewards_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE NO ACTION
+);" (0723d8ff)
+2020-04-10T01:31:38.3332007+05:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Skills] (
+    [SkillId] int NOT NULL IDENTITY,
+    [AtributeId] int NOT NULL,
+    [CurrentExp] int NOT NULL,
+    [Lvl] int NOT NULL,
+    [MaxExp] int NOT NULL,
+    [Name] nvarchar(max) NOT NULL,
+    [RatingId] int NOT NULL,
+    [UserId] nvarchar(450) NULL,
+    CONSTRAINT [PK_Skills] PRIMARY KEY ([SkillId]),
+    CONSTRAINT [FK_Skills_Atributes_AtributeId] FOREIGN KEY ([AtributeId]) REFERENCES [Atributes] ([AtributeId]) ON DELETE CASCADE,
+    CONSTRAINT [FK_Skills_Ratings_RatingId] FOREIGN KEY ([RatingId]) REFERENCES [Ratings] ([RatingId]) ON DELETE CASCADE,
+    CONSTRAINT [FK_Skills_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE NO ACTION
+);" (0723d8ff)
+2020-04-10T01:31:39.2084740+05:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [UserGrowth] (
+    [UserGrowthId] int NOT NULL IDENTITY,
+    [Date] datetime2 NOT NULL,
+    [HealthId] int NOT NULL,
+    [Value] real NOT NULL,
+    CONSTRAINT [PK_UserGrowth] PRIMARY KEY ([UserGrowthId]),
+    CONSTRAINT [FK_UserGrowth_Healths_HealthId] FOREIGN KEY ([HealthId]) REFERENCES [Healths] ([HealthId]) ON DELETE CASCADE
+);" (0723d8ff)
+2020-04-10T01:31:39.2189572+05:00  [INF] Executed DbCommand ("10"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [UserWeight] (
+    [UserWeightId] int NOT NULL IDENTITY,
+    [Date] datetime2 NOT NULL,
+    [HealthId] int NOT NULL,
+    [Value] real NOT NULL,
+    CONSTRAINT [PK_UserWeight] PRIMARY KEY ([UserWeightId]),
+    CONSTRAINT [FK_UserWeight_Healths_HealthId] FOREIGN KEY ([HealthId]) REFERENCES [Healths] ([HealthId]) ON DELETE CASCADE
+);" (0723d8ff)
+2020-04-10T01:31:39.2245353+05:00  [INF] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Goals] (
+    [GoalId] int NOT NULL IDENTITY,
+    [CatalogId] int NOT NULL,
+    [ComplicationId] int NOT NULL,
+    [Description] nvarchar(250) NULL,
+    [FinishCount] int NOT NULL,
+    [GoalEnd] datetime2 NULL,
+    [GoalStart] datetime2 NOT NULL,
+    [IsComplete] bit NOT NULL,
+    [Name] nvarchar(50) NOT NULL,
+    [PassCount] int NOT NULL,
+    [RepeatId] int NOT NULL,
+    [SeriesCount] int NOT NULL,
+    [SkillId] int NULL,
+    [UserId] nvarchar(450) NULL,
+    CONSTRAINT [PK_Goals] PRIMARY KEY ([GoalId]),
+    CONSTRAINT [FK_Goals_Catalogs_CatalogId] FOREIGN KEY ([CatalogId]) REFERENCES [Catalogs] ([CatalogId]) ON DELETE CASCADE,
+    CONSTRAINT [FK_Goals_Complications_ComplicationId] FOREIGN KEY ([ComplicationId]) REFERENCES [Complications] ([ComplicationId]) ON DELETE CASCADE,
+    CONSTRAINT [FK_Goals_Repeats_RepeatId] FOREIGN KEY ([RepeatId]) REFERENCES [Repeats] ([RepeatId]) ON DELETE CASCADE,
+    CONSTRAINT [FK_Goals_Skills_SkillId] FOREIGN KEY ([SkillId]) REFERENCES [Skills] ([SkillId]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Goals_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE NO ACTION
+);" (0723d8ff)
+2020-04-10T01:31:40.7053026+05:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_AspNetRoleClaims_RoleId] ON [AspNetRoleClaims] ([RoleId]);" (0723d8ff)
+2020-04-10T01:31:40.7066006+05:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE UNIQUE INDEX [RoleNameIndex] ON [AspNetRoles] ([NormalizedName]) WHERE [NormalizedName] IS NOT NULL;" (0723d8ff)
+2020-04-10T01:31:40.7074838+05:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_AspNetUserClaims_UserId] ON [AspNetUserClaims] ([UserId]);" (0723d8ff)
+2020-04-10T01:31:40.7083721+05:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_AspNetUserLogins_UserId] ON [AspNetUserLogins] ([UserId]);" (0723d8ff)
+2020-04-10T01:31:41.9431735+05:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_AspNetUserRoles_RoleId] ON [AspNetUserRoles] ([RoleId]);" (0723d8ff)
+2020-04-10T01:31:41.9442319+05:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_AspNetUsers_AligmentId] ON [AspNetUsers] ([AligmentId]);" (0723d8ff)
+2020-04-10T01:31:41.9453293+05:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [EmailIndex] ON [AspNetUsers] ([NormalizedEmail]);" (0723d8ff)
+2020-04-10T01:31:41.9519409+05:00  [INF] Executed DbCommand ("6"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE UNIQUE INDEX [UserNameIndex] ON [AspNetUsers] ([NormalizedUserName]) WHERE [NormalizedUserName] IS NOT NULL;" (0723d8ff)
+2020-04-10T01:31:41.9530657+05:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Atributes_UserId] ON [Atributes] ([UserId]);" (0723d8ff)
+2020-04-10T01:31:41.9540050+05:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Catalogs_UserId] ON [Catalogs] ([UserId]);" (0723d8ff)
+2020-04-10T01:31:41.9550396+05:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Goals_CatalogId] ON [Goals] ([CatalogId]);" (0723d8ff)
+2020-04-10T01:31:41.9559664+05:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Goals_ComplicationId] ON [Goals] ([ComplicationId]);" (0723d8ff)
+2020-04-10T01:31:41.9568555+05:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Goals_RepeatId] ON [Goals] ([RepeatId]);" (0723d8ff)
+2020-04-10T01:31:41.9577195+05:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Goals_SkillId] ON [Goals] ([SkillId]);" (0723d8ff)
+2020-04-10T01:31:43.2682980+05:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Goals_UserId] ON [Goals] ([UserId]);" (0723d8ff)
+2020-04-10T01:31:43.2697502+05:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE UNIQUE INDEX [IX_Healths_UserId] ON [Healths] ([UserId]) WHERE [UserId] IS NOT NULL;" (0723d8ff)
+2020-04-10T01:31:43.2707737+05:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Karma_UserId] ON [Karma] ([UserId]);" (0723d8ff)
+2020-04-10T01:31:43.2717052+05:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Notes_UserId] ON [Notes] ([UserId]);" (0723d8ff)
+2020-04-10T01:31:43.2726510+05:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Notifications_UserId] ON [Notifications] ([UserId]);" (0723d8ff)
+2020-04-10T01:31:43.2735444+05:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Skills_AtributeId] ON [Skills] ([AtributeId]);" (0723d8ff)
+2020-04-10T01:31:43.2744435+05:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Skills_RatingId] ON [Skills] ([RatingId]);" (0723d8ff)
+2020-04-10T01:31:43.2753867+05:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Skills_UserId] ON [Skills] ([UserId]);" (0723d8ff)
+2020-04-10T01:31:43.2762681+05:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_UserAchievements_AchievementId] ON [UserAchievements] ([AchievementId]);" (0723d8ff)
+2020-04-10T01:31:43.2772424+05:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_UserAchievements_UserId] ON [UserAchievements] ([UserId]);" (0723d8ff)
+2020-04-10T01:31:43.2780619+05:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_UserGrowth_HealthId] ON [UserGrowth] ([HealthId]);" (0723d8ff)
+2020-04-10T01:31:44.8630945+05:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_UserMoods_MoodId] ON [UserMoods] ([MoodId]);" (0723d8ff)
+2020-04-10T01:31:44.8640473+05:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_UserMoods_UserId] ON [UserMoods] ([UserId]);" (0723d8ff)
+2020-04-10T01:31:44.8654117+05:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_UserRewards_UserId] ON [UserRewards] ([UserId]);" (0723d8ff)
+2020-04-10T01:31:44.8714646+05:00  [INF] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_UserWeight_HealthId] ON [UserWeight] ([HealthId]);" (0723d8ff)
+2020-04-10T01:31:44.8737163+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20181017165922_v.0.0.25', N'2.0.3-rtm-10026');" (0723d8ff)
+2020-04-10T01:31:44.8761019+05:00  [INF] Applying migration '"20200409203039_v.0.0.20"'. (0e2ac64d)
+2020-04-10T01:31:45.0627493+05:00  [INF] Executed DbCommand ("126"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""DECLARE @var0 sysname;
+SELECT @var0 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'Notes') AND [c].[name] = N'Theme');
+IF @var0 IS NOT NULL EXEC(N'ALTER TABLE [Notes] DROP CONSTRAINT [' + @var0 + '];');
+ALTER TABLE [Notes] ALTER COLUMN [Theme] nvarchar(50) NULL;" (0723d8ff)
+2020-04-10T01:31:45.0633959+05:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20200409203039_v.0.0.20', N'2.0.3-rtm-10026');" (0723d8ff)
+2020-04-10T01:33:51.7464290+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2020-04-10T01:33:52.1641741+05:00  [INF] Executed DbCommand ("25"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Repeats] AS [r])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2020-04-10T01:33:52.2367542+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Complications] AS [c])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2020-04-10T01:33:52.2578016+05:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Ratings] AS [r])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2020-04-10T01:33:52.2765452+05:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Aligments] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2020-04-10T01:33:52.3018606+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Moods] AS [m])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2020-04-10T01:33:52.3332773+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Achievements] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2020-04-10T01:33:52.3528874+05:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Hobbies] AS [h])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2020-04-10T01:33:52.5582902+05:00  [INF] Executed DbCommand ("118"ms) [Parameters=["@p0='?', @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?', @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?', @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?' (Size = 4000), @p12='?', @p13='?' (Size = 4000), @p14='?' (Size = 4000), @p15='?' (Size = 4000), @p16='?', @p17='?' (Size = 4000), @p18='?' (Size = 4000), @p19='?' (Size = 4000), @p20='?', @p21='?' (Size = 4000), @p22='?' (Size = 4000), @p23='?' (Size = 4000), @p24='?', @p25='?' (Size = 4000), @p26='?' (Size = 4000), @p27='?' (Size = 4000), @p28='?', @p29='?' (Size = 4000), @p30='?' (Size = 4000), @p31='?' (Size = 4000), @p32='?', @p33='?' (Size = 4000), @p34='?' (Size = 4000), @p35='?' (Size = 4000), @p36='?', @p37='?' (Size = 4000), @p38='?' (Size = 4000), @p39='?' (Size = 4000), @p40='?', @p41='?' (Size = 4000), @p42='?' (Size = 4000), @p43='?' (Size = 4000), @p44='?', @p45='?' (Size = 4000), @p46='?' (Size = 4000), @p47='?' (Size = 4000), @p48='?', @p49='?' (Size = 4000), @p50='?' (Size = 4000), @p51='?' (Size = 4000), @p52='?', @p53='?' (Size = 4000), @p54='?' (Size = 4000), @p55='?' (Size = 4000), @p56='?', @p57='?' (Size = 4000), @p58='?' (Size = 4000), @p59='?' (Size = 4000), @p60='?', @p61='?' (Size = 4000), @p62='?' (Size = 4000), @p63='?' (Size = 4000), @p64='?', @p65='?' (Size = 4000), @p66='?' (Size = 4000), @p67='?' (Size = 4000), @p68='?', @p69='?' (Size = 4000), @p70='?' (Size = 4000), @p71='?' (Size = 4000), @p72='?', @p73='?' (Size = 4000), @p74='?' (Size = 4000), @p75='?' (Size = 4000), @p76='?', @p77='?' (Size = 4000), @p78='?' (Size = 4000), @p79='?' (Size = 4000), @p80='?', @p81='?' (Size = 4000), @p82='?' (Size = 4000), @p83='?' (Size = 4000), @p84='?', @p85='?' (Size = 4000), @p86='?' (Size = 4000), @p87='?' (Size = 4000), @p88='?', @p89='?' (Size = 4000), @p90='?' (Size = 4000), @p91='?' (Size = 4000), @p92='?', @p93='?' (Size = 4000), @p94='?' (Size = 4000), @p95='?' (Size = 4000), @p96='?', @p97='?' (Size = 4000), @p98='?' (Size = 4000), @p99='?' (Size = 4000), @p100='?', @p101='?' (Size = 4000), @p102='?' (Size = 4000), @p103='?', @p104='?' (Size = 4000), @p105='?' (Size = 4000), @p106='?', @p107='?' (Size = 4000), @p108='?' (Size = 4000), @p109='?', @p110='?' (Size = 4000), @p111='?' (Size = 4000), @p112='?', @p113='?' (Size = 4000), @p114='?' (Size = 4000), @p115='?', @p116='?' (Size = 4000), @p117='?' (Size = 4000), @p118='?', @p119='?' (Size = 4000), @p120='?' (Size = 4000), @p121='?', @p122='?' (Size = 4000), @p123='?' (Size = 4000), @p124='?', @p125='?' (Size = 4000), @p126='?' (Size = 4000), @p127='?', @p128='?', @p129='?', @p130='?', @p131='?' (Size = 4000), @p132='?', @p133='?', @p134='?', @p135='?', @p136='?' (Size = 4000), @p137='?', @p138='?', @p139='?', @p140='?', @p141='?' (Size = 4000), @p142='?' (Size = 4000), @p143='?' (Size = 4000), @p144='?' (Size = 4000), @p145='?' (Size = 4000), @p146='?' (Size = 4000), @p147='?' (Size = 4000), @p148='?' (Size = 4000), @p149='?' (Size = 4000), @p150='?' (Size = 4000), @p151='?' (Size = 4000), @p152='?' (Size = 4000), @p153='?' (Size = 4000), @p154='?' (Size = 4000), @p155='?' (Size = 4000), @p156='?' (Size = 4000), @p157='?' (Size = 4000), @p158='?' (Size = 4000), @p159='?' (Size = 4000), @p160='?' (Size = 4000), @p161='?' (Size = 4000), @p162='?' (Size = 4000), @p163='?' (Size = 4000), @p164='?' (Size = 4000), @p165='?' (Size = 4000), @p166='?' (Size = 4000), @p167='?' (Size = 4000), @p168='?' (Size = 4000), @p169='?' (Size = 4000), @p170='?' (Size = 4000), @p171='?' (Size = 4000), @p172='?' (Size = 4000), @p173='?' (Size = 4000), @p174='?' (Size = 4000), @p175='?' (Size = 4000), @p176='?' (Size = 4000), @p177='?' (Size = 4000), @p178='?' (Size = 4000), @p179='?' (Size = 4000), @p180='?' (Size = 4000), @p181='?' (Size = 4000), @p182='?' (Size = 4000), @p183='?' (Size = 4000), @p184='?' (Size = 4000), @p185='?' (Size = 4000), @p186='?' (Size = 4000), @p187='?' (Size = 4000), @p188='?' (Size = 4000), @p189='?' (Size = 4000), @p190='?' (Size = 4000), @p191='?' (Size = 4000), @p192='?' (Size = 4000), @p193='?' (Size = 4000), @p194='?' (Size = 4000), @p195='?' (Size = 4000), @p196='?' (Size = 4000), @p197='?' (Size = 4000), @p198='?' (Size = 4000), @p199='?' (Size = 4000), @p200='?' (Size = 4000), @p201='?' (Size = 4000), @p202='?' (Size = 4000), @p203='?' (Size = 4000), @p204='?' (Size = 4000), @p205='?' (Size = 4000), @p206='?' (Size = 4000), @p207='?' (Size = 4000), @p208='?' (Size = 4000), @p209='?' (Size = 4000), @p210='?' (Size = 4000), @p211='?' (Size = 4000), @p212='?' (Size = 4000), @p213='?' (Size = 4000), @p214='?' (Size = 4000), @p215='?' (Size = 4000), @p216='?' (Size = 4000), @p217='?' (Size = 4000), @p218='?' (Size = 4000), @p219='?' (Size = 4000), @p220='?' (Size = 4000), @p221='?' (Size = 4000), @p222='?' (Size = 4000), @p223='?' (Size = 4000), @p224='?' (Size = 4000), @p225='?' (Size = 4000), @p226='?' (Size = 4000), @p227='?' (Size = 4000), @p228='?' (Size = 4000), @p229='?' (Size = 4000), @p230='?' (Size = 4000), @p231='?' (Size = 4000), @p232='?' (Size = 4000), @p233='?' (Size = 4000), @p234='?' (Size = 4000), @p235='?' (Size = 4000), @p236='?' (Size = 4000), @p237='?' (Size = 4000), @p238='?' (Size = 4000), @p239='?' (Size = 4000), @p240='?' (Size = 4000), @p241='?' (Size = 4000), @p242='?' (Size = 4000), @p243='?' (Size = 4000), @p244='?' (Size = 4000), @p245='?' (Size = 4000), @p246='?' (Size = 4000), @p247='?' (Size = 4000), @p248='?' (Size = 4000), @p249='?' (Size = 4000), @p250='?' (Size = 4000), @p251='?' (Size = 4000), @p252='?' (Size = 4000), @p253='?' (Size = 4000), @p254='?' (Size = 4000), @p255='?' (Size = 4000), @p256='?' (Size = 4000), @p257='?' (Size = 4000), @p258='?' (Size = 4000), @p259='?' (Size = 4000), @p260='?' (Size = 4000), @p261='?' (Size = 4000), @p262='?' (Size = 4000), @p263='?' (Size = 4000), @p264='?' (Size = 4000), @p265='?' (Size = 4000), @p266='?' (Size = 4000), @p267='?' (Size = 4000), @p268='?' (Size = 4000), @p269='?' (Size = 4000), @p270='?' (Size = 4000), @p271='?' (Size = 4000), @p272='?' (Size = 4000), @p273='?' (Size = 4000), @p274='?' (Size = 4000), @p275='?' (Size = 4000), @p276='?' (Size = 4000), @p277='?' (Size = 4000), @p278='?' (Size = 4000), @p279='?' (Size = 4000), @p280='?' (Size = 4000), @p281='?' (Size = 4000), @p282='?' (Size = 4000), @p283='?' (Size = 4000), @p284='?' (Size = 4000), @p285='?' (Size = 4000), @p286='?' (Size = 4000), @p287='?' (Size = 4000), @p288='?' (Size = 4000), @p289='?' (Size = 4000), @p290='?' (Size = 4000), @p291='?' (Size = 4000), @p292='?' (Size = 4000), @p293='?' (Size = 4000), @p294='?' (Size = 4000), @p295='?' (Size = 4000), @p296='?' (Size = 4000), @p297='?' (Size = 4000), @p298='?' (Size = 4000), @p299='?' (Size = 4000), @p300='?' (Size = 4000), @p301='?' (Size = 4000), @p302='?' (Size = 4000), @p303='?' (Size = 4000), @p304='?', @p305='?' (Size = 4000), @p306='?', @p307='?' (Size = 4000), @p308='?', @p309='?' (Size = 4000), @p310='?', @p311='?' (Size = 4000), @p312='?', @p313='?' (Size = 4000), @p314='?', @p315='?' (Size = 4000), @p316='?', @p317='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+DECLARE @inserted0 TABLE ([AchievementId] int, [_Position] [int]);
+MERGE [Achievements] USING (
+VALUES (@p0, @p1, @p2, @p3, 0),
+(@p4, @p5, @p6, @p7, 1),
+(@p8, @p9, @p10, @p11, 2),
+(@p12, @p13, @p14, @p15, 3),
+(@p16, @p17, @p18, @p19, 4),
+(@p20, @p21, @p22, @p23, 5),
+(@p24, @p25, @p26, @p27, 6),
+(@p28, @p29, @p30, @p31, 7),
+(@p32, @p33, @p34, @p35, 8),
+(@p36, @p37, @p38, @p39, 9),
+(@p40, @p41, @p42, @p43, 10),
+(@p44, @p45, @p46, @p47, 11),
+(@p48, @p49, @p50, @p51, 12),
+(@p52, @p53, @p54, @p55, 13),
+(@p56, @p57, @p58, @p59, 14),
+(@p60, @p61, @p62, @p63, 15),
+(@p64, @p65, @p66, @p67, 16),
+(@p68, @p69, @p70, @p71, 17),
+(@p72, @p73, @p74, @p75, 18),
+(@p76, @p77, @p78, @p79, 19),
+(@p80, @p81, @p82, @p83, 20),
+(@p84, @p85, @p86, @p87, 21),
+(@p88, @p89, @p90, @p91, 22),
+(@p92, @p93, @p94, @p95, 23),
+(@p96, @p97, @p98, @p99, 24)) AS i ([AchievementType], [Description], [LinkImg], [Name], _Position) ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([AchievementType], [Description], [LinkImg], [Name])
+VALUES (i.[AchievementType], i.[Description], i.[LinkImg], i.[Name])
+OUTPUT INSERTED.[AchievementId], i._Position
+INTO @inserted0;
+
+SELECT [t].[AchievementId] FROM [Achievements] t
+INNER JOIN @inserted0 i ON ([t].[AchievementId] = [i].[AchievementId])
+ORDER BY [i].[_Position];
+
+INSERT INTO [Aligments] ([AligmentId], [Description], [Name])
+VALUES (@p100, @p101, @p102),
+(@p103, @p104, @p105),
+(@p106, @p107, @p108),
+(@p109, @p110, @p111),
+(@p112, @p113, @p114),
+(@p115, @p116, @p117),
+(@p118, @p119, @p120),
+(@p121, @p122, @p123),
+(@p124, @p125, @p126);
+INSERT INTO [Complications] ([ComplicationId], [Damage], [Exp], [Gold], [Name])
+VALUES (@p127, @p128, @p129, @p130, @p131),
+(@p132, @p133, @p134, @p135, @p136),
+(@p137, @p138, @p139, @p140, @p141);
+DECLARE @inserted37 TABLE ([HobbyId] int, [_Position] [int]);
+MERGE [Hobbies] USING (
+VALUES (@p142, @p143, 0),
+(@p144, @p145, 1),
+(@p146, @p147, 2),
+(@p148, @p149, 3),
+(@p150, @p151, 4),
+(@p152, @p153, 5),
+(@p154, @p155, 6),
+(@p156, @p157, 7),
+(@p158, @p159, 8),
+(@p160, @p161, 9),
+(@p162, @p163, 10),
+(@p164, @p165, 11),
+(@p166, @p167, 12),
+(@p168, @p169, 13),
+(@p170, @p171, 14),
+(@p172, @p173, 15),
+(@p174, @p175, 16),
+(@p176, @p177, 17),
+(@p178, @p179, 18),
+(@p180, @p181, 19),
+(@p182, @p183, 20),
+(@p184, @p185, 21),
+(@p186, @p187, 22),
+(@p188, @p189, 23),
+(@p190, @p191, 24),
+(@p192, @p193, 25),
+(@p194, @p195, 26),
+(@p196, @p197, 27),
+(@p198, @p199, 28),
+(@p200, @p201, 29),
+(@p202, @p203, 30),
+(@p204, @p205, 31),
+(@p206, @p207, 32),
+(@p208, @p209, 33),
+(@p210, @p211, 34),
+(@p212, @p213, 35),
+(@p214, @p215, 36),
+(@p216, @p217, 37),
+(@p218, @p219, 38),
+(@p220, @p221, 39),
+(@p222, @p223, 40),
+(@p224, @p225, 41),
+(@p226, @p227, 42),
+(@p228, @p229, 43),
+(@p230, @p231, 44),
+(@p232, @p233, 45),
+(@p234, @p235, 46),
+(@p236, @p237, 47),
+(@p238, @p239, 48),
+(@p240, @p241, 49),
+(@p242, @p243, 50),
+(@p244, @p245, 51),
+(@p246, @p247, 52),
+(@p248, @p249, 53),
+(@p250, @p251, 54),
+(@p252, @p253, 55),
+(@p254, @p255, 56),
+(@p256, @p257, 57),
+(@p258, @p259, 58),
+(@p260, @p261, 59),
+(@p262, @p263, 60),
+(@p264, @p265, 61),
+(@p266, @p267, 62),
+(@p268, @p269, 63),
+(@p270, @p271, 64),
+(@p272, @p273, 65),
+(@p274, @p275, 66),
+(@p276, @p277, 67),
+(@p278, @p279, 68),
+(@p280, @p281, 69),
+(@p282, @p283, 70),
+(@p284, @p285, 71),
+(@p286, @p287, 72),
+(@p288, @p289, 73),
+(@p290, @p291, 74),
+(@p292, @p293, 75)) AS i ([Description], [Name], _Position) ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([Description], [Name])
+VALUES (i.[Description], i.[Name])
+OUTPUT INSERTED.[HobbyId], i._Position
+INTO @inserted37;
+
+SELECT [t].[HobbyId] FROM [Hobbies] t
+INNER JOIN @inserted37 i ON ([t].[HobbyId] = [i].[HobbyId])
+ORDER BY [i].[_Position];
+
+DECLARE @inserted113 TABLE ([MoodId] int, [_Position] [int]);
+MERGE [Moods] USING (
+VALUES (@p294, @p295, 0),
+(@p296, @p297, 1),
+(@p298, @p299, 2),
+(@p300, @p301, 3),
+(@p302, @p303, 4)) AS i ([LinkImg], [Name], _Position) ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([LinkImg], [Name])
+VALUES (i.[LinkImg], i.[Name])
+OUTPUT INSERTED.[MoodId], i._Position
+INTO @inserted113;
+
+SELECT [t].[MoodId] FROM [Moods] t
+INNER JOIN @inserted113 i ON ([t].[MoodId] = [i].[MoodId])
+ORDER BY [i].[_Position];
+
+INSERT INTO [Ratings] ([RatingId], [Name])
+VALUES (@p304, @p305),
+(@p306, @p307),
+(@p308, @p309);
+INSERT INTO [Repeats] ([RepeatId], [Name])
+VALUES (@p310, @p311),
+(@p312, @p313),
+(@p314, @p315),
+(@p316, @p317);" (0723d8ff)
+2020-04-10T01:33:53.6350767+05:00 0HLUSOL8M0A8S:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:1282/   (ca22a1cb)
+2020-04-10T01:33:54.6138751+05:00 0HLUSOL8M0A8S:00000001 [INF] Executing action method "TaskProject.Controllers.HomeController.Index (TaskProject)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2020-04-10T01:33:59.6770192+05:00 0HLUSOL8M0A8S:00000001 [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2020-04-10T01:34:00.3959816+05:00 0HLUSOL8M0A8S:00000001 [INF] Executed action "TaskProject.Controllers.HomeController.Index (TaskProject)" in 5808.5959ms (afa2e885)
+2020-04-10T01:34:00.4119512+05:00 0HLUSOL8M0A8S:00000001 [INF] Request finished in 6812.7897ms 200 text/html; charset=utf-8 (791a596a)
+2020-04-10T01:34:00.4708632+05:00 0HLUSOL8M0A8T:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/font-awesome/css/font-awesome.min.css?v=gg4WnOJIJAZtmXP9S2Vhqunc1tvvZDXakF1aHWSCmXw   (ca22a1cb)
+2020-04-10T01:34:00.4929073+05:00 0HLUSOL8M0A8S:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/bootstrap/css/bootstrap.min.css?v=EhLyj_n-S3gp4xYzswxnu7Egns0ae7kV-WtuDu2vAqQ   (ca22a1cb)
+2020-04-10T01:34:00.4976797+05:00 0HLUSOL8M0A8U:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/magnific-popup/magnific-popup.css?v=EVWYHoGTYi9YVT7tC7ovpDUSrzYqPVTe3vZMRpcLs3E   (ca22a1cb)
+2020-04-10T01:34:00.5144986+05:00 0HLUSOL8M0A8V:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:1282/css/landing.min.css?v=Ajow1nwpqP9wgNp9mSznoDMue9rHC50sVdvS5cYV4eA   (ca22a1cb)
+2020-04-10T01:34:00.5204249+05:00 0HLUSOL8M0A90:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:1282/img/primary/inferno.svg?v=84s98G84N9Rit0HESujGaQCsxBWamHAIwyq9YcUHVmQ   (ca22a1cb)
+2020-04-10T01:34:00.5250254+05:00 0HLUSOL8M0A91:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:1282/img/primary/gamepad.png?v=cbUq5_YluyPeGIk7fhV1aRa2iieA54ip2ns4s6F8ax4   (ca22a1cb)
+2020-04-10T01:34:00.5375810+05:00 0HLUSOL8M0A8V:00000001 [INF] Sending file. Request path: '"/css/landing.min.css"'. Physical path: '"D:\Work\Git\EvolveMe\TaskProject\wwwroot\css\landing.min.css"' (27b0a520)
+2020-04-10T01:34:00.5523150+05:00 0HLUSOL8M0A8S:00000002 [INF] Sending file. Request path: '"/plugins/bootstrap/css/bootstrap.min.css"'. Physical path: '"D:\Work\Git\EvolveMe\TaskProject\wwwroot\plugins\bootstrap\css\bootstrap.min.css"' (27b0a520)
+2020-04-10T01:34:00.5554102+05:00 0HLUSOL8M0A8U:00000001 [INF] Sending file. Request path: '"/plugins/magnific-popup/magnific-popup.css"'. Physical path: '"D:\Work\Git\EvolveMe\TaskProject\wwwroot\plugins\magnific-popup\magnific-popup.css"' (27b0a520)
+2020-04-10T01:34:00.5586295+05:00 0HLUSOL8M0A8T:00000001 [INF] Sending file. Request path: '"/plugins/font-awesome/css/font-awesome.min.css"'. Physical path: '"D:\Work\Git\EvolveMe\TaskProject\wwwroot\plugins\font-awesome\css\font-awesome.min.css"' (27b0a520)
+2020-04-10T01:34:00.6128748+05:00 0HLUSOL8M0A91:00000001 [INF] Sending file. Request path: '"/img/primary/gamepad.png"'. Physical path: '"D:\Work\Git\EvolveMe\TaskProject\wwwroot\img\primary\gamepad.png"' (27b0a520)
+2020-04-10T01:34:00.6192210+05:00 0HLUSOL8M0A8U:00000001 [INF] Request finished in 113.5458ms 200 text/css (791a596a)
+2020-04-10T01:34:00.6324411+05:00 0HLUSOL8M0A90:00000001 [INF] Sending file. Request path: '"/img/primary/inferno.svg"'. Physical path: '"D:\Work\Git\EvolveMe\TaskProject\wwwroot\img\primary\inferno.svg"' (27b0a520)
+2020-04-10T01:34:00.6368889+05:00 0HLUSOL8M0A8T:00000001 [INF] Request finished in 181.6992ms 200 text/css (791a596a)
+2020-04-10T01:34:00.6698181+05:00 0HLUSOL8M0A8S:00000002 [INF] Request finished in 141.4503ms 200 text/css (791a596a)
+2020-04-10T01:34:00.6739302+05:00 0HLUSOL8M0A91:00000001 [INF] Request finished in 136.8091ms 200 image/png (791a596a)
+2020-04-10T01:34:00.6986091+05:00 0HLUSOL8M0A8U:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/bootstrap/js/bootstrap.bundle.min.js?v=wCmnDOP669NpAOzrS-wDlWtV1ZlVR14AWOnDW3Mcim4   (ca22a1cb)
+2020-04-10T01:34:00.7223773+05:00 0HLUSOL8M0A8V:00000001 [INF] Request finished in 92.7545ms 200 text/css (791a596a)
+2020-04-10T01:34:00.7347247+05:00 0HLUSOL8M0A90:00000001 [INF] Request finished in 158.6363ms 200 image/svg+xml (791a596a)
+2020-04-10T01:34:00.7425731+05:00 0HLUSOL8M0A8T:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/jquery-easing/jquery.easing.1.3.umd.min.js?v=9zpDdKL2kGqrijGsTvwrE4GU3HnJTLpHrMRGyDNRkgw   (ca22a1cb)
+2020-04-10T01:34:00.7748310+05:00 0HLUSOL8M0A8U:00000002 [INF] Sending file. Request path: '"/plugins/bootstrap/js/bootstrap.bundle.min.js"'. Physical path: '"D:\Work\Git\EvolveMe\TaskProject\wwwroot\plugins\bootstrap\js\bootstrap.bundle.min.js"' (27b0a520)
+2020-04-10T01:34:00.7853374+05:00 0HLUSOL8M0A91:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:1282/js/landing.min.js?v=k_VFoXsbBgu3dlx5BT0aFRGKwAPs3NGo9O3C-0Pf2vs   (ca22a1cb)
+2020-04-10T01:34:00.8127444+05:00 0HLUSOL8M0A8T:00000002 [INF] Sending file. Request path: '"/plugins/jquery-easing/jquery.easing.1.3.umd.min.js"'. Physical path: '"D:\Work\Git\EvolveMe\TaskProject\wwwroot\plugins\jquery-easing\jquery.easing.1.3.umd.min.js"' (27b0a520)
+2020-04-10T01:34:00.8362800+05:00 0HLUSOL8M0A8S:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/magnific-popup/jquery.magnific-popup.min.js?v=sKRc1a7Wbie9juhh0OO3gsjnmEm94y-Q8Hi58kUaNvI   (ca22a1cb)
+2020-04-10T01:34:00.8641797+05:00 0HLUSOL8M0A90:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:1282/img/primary/calendar.png?v=5TCodzqhXRs-voY0UwV6713U9YHQscNLSYdK4Ii1y3E   (ca22a1cb)
+2020-04-10T01:34:00.8785150+05:00 0HLUSOL8M0A91:00000002 [INF] Sending file. Request path: '"/js/landing.min.js"'. Physical path: '"D:\Work\Git\EvolveMe\TaskProject\wwwroot\js\landing.min.js"' (27b0a520)
+2020-04-10T01:34:00.8965050+05:00 0HLUSOL8M0A8S:00000003 [INF] Sending file. Request path: '"/plugins/magnific-popup/jquery.magnific-popup.min.js"'. Physical path: '"D:\Work\Git\EvolveMe\TaskProject\wwwroot\plugins\magnific-popup\jquery.magnific-popup.min.js"' (27b0a520)
+2020-04-10T01:34:00.9174560+05:00 0HLUSOL8M0A8U:00000002 [INF] Request finished in 166.0706ms 200 application/javascript (791a596a)
+2020-04-10T01:34:00.9271890+05:00 0HLUSOL8M0A8T:00000002 [INF] Request finished in 186.3948ms 200 application/javascript (791a596a)
+2020-04-10T01:34:00.9440951+05:00 0HLUSOL8M0A90:00000002 [INF] Sending file. Request path: '"/img/primary/calendar.png"'. Physical path: '"D:\Work\Git\EvolveMe\TaskProject\wwwroot\img\primary\calendar.png"' (27b0a520)
+2020-04-10T01:34:00.9729100+05:00 0HLUSOL8M0A8V:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/jquery/jquery.min.js?v=T-aPohYXbm0fRYDpJLr-zJ9RmYTswGsahAoIsNiMld4   (ca22a1cb)
+2020-04-10T01:34:00.9780159+05:00 0HLUSOL8M0A91:00000002 [INF] Request finished in 180.5928ms 200 application/javascript (791a596a)
+2020-04-10T01:34:01.0136639+05:00 0HLUSOL8M0A8S:00000003 [INF] Request finished in 178.8001ms 200 application/javascript (791a596a)
+2020-04-10T01:34:01.0346300+05:00 0HLUSOL8M0A8T:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:1282/img/primary/theater.png?v=fVsx1S0TwKnNHYDvM7Jp0hIbQKj9ttrj32XMqjMioX4   (ca22a1cb)
+2020-04-10T01:34:01.0536542+05:00 0HLUSOL8M0A8U:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:1282/img/primary/heart.png?v=GwKYOH96CmxmBsayFJ_AM8ipD3jUJGAoary8tnypvw0   (ca22a1cb)
+2020-04-10T01:34:01.0605112+05:00 0HLUSOL8M0A8V:00000002 [INF] Sending file. Request path: '"/plugins/jquery/jquery.min.js"'. Physical path: '"D:\Work\Git\EvolveMe\TaskProject\wwwroot\plugins\jquery\jquery.min.js"' (27b0a520)
+2020-04-10T01:34:01.0725120+05:00 0HLUSOL8M0A90:00000002 [INF] Request finished in 232.3458ms 200 image/png (791a596a)
+2020-04-10T01:34:01.1056541+05:00 0HLUSOL8M0A91:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:1282/img/primary/test.png?v=S3bhBN4umDCMdOiKWYgbKOAzPTm-jIezf3IkxdgY6mE   (ca22a1cb)
+2020-04-10T01:34:01.1095881+05:00 0HLUSOL8M0A8T:00000003 [INF] Sending file. Request path: '"/img/primary/theater.png"'. Physical path: '"D:\Work\Git\EvolveMe\TaskProject\wwwroot\img\primary\theater.png"' (27b0a520)
+2020-04-10T01:34:01.1300559+05:00 0HLUSOL8M0A8U:00000003 [INF] Sending file. Request path: '"/img/primary/heart.png"'. Physical path: '"D:\Work\Git\EvolveMe\TaskProject\wwwroot\img\primary\heart.png"' (27b0a520)
+2020-04-10T01:34:01.1474694+05:00 0HLUSOL8M0A8V:00000002 [INF] Request finished in 250.9612ms 200 application/javascript (791a596a)
+2020-04-10T01:34:01.1698452+05:00 0HLUSOL8M0A8S:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:1282/img/primary/cup.png?v=BLalt2WMsx0fZvMwnq4qBv8dnB3cgrox_lowXU4K3wo   (ca22a1cb)
+2020-04-10T01:34:01.1778396+05:00 0HLUSOL8M0A91:00000003 [INF] Sending file. Request path: '"/img/primary/test.png"'. Physical path: '"D:\Work\Git\EvolveMe\TaskProject\wwwroot\img\primary\test.png"' (27b0a520)
+2020-04-10T01:34:01.1864454+05:00 0HLUSOL8M0A8S:00000004 [INF] Sending file. Request path: '"/img/primary/cup.png"'. Physical path: '"D:\Work\Git\EvolveMe\TaskProject\wwwroot\img\primary\cup.png"' (27b0a520)
+2020-04-10T01:34:01.1973834+05:00 0HLUSOL8M0A90:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/font-awesome/fonts/fontawesome-webfont.woff2?v=4.7.0   (ca22a1cb)
+2020-04-10T01:34:01.2028655+05:00 0HLUSOL8M0A91:00000003 [INF] Request finished in 190.0385ms 200 image/png (791a596a)
+2020-04-10T01:34:01.2114271+05:00 0HLUSOL8M0A8U:00000003 [INF] Request finished in 156.7031ms 200 image/png (791a596a)
+2020-04-10T01:34:01.2373538+05:00 0HLUSOL8M0A90:00000003 [INF] Sending file. Request path: '"/plugins/font-awesome/fonts/fontawesome-webfont.woff2"'. Physical path: '"D:\Work\Git\EvolveMe\TaskProject\wwwroot\plugins\font-awesome\fonts\fontawesome-webfont.woff2"' (27b0a520)
+2020-04-10T01:34:01.2411703+05:00 0HLUSOL8M0A8S:00000004 [INF] Request finished in 152.5717ms 200 image/png (791a596a)
+2020-04-10T01:34:01.2423759+05:00 0HLUSOL8M0A8T:00000003 [INF] Request finished in 163.773ms 200 image/png (791a596a)
+2020-04-10T01:34:01.2761729+05:00 0HLUSOL8M0A90:00000003 [INF] Request finished in 135.0307ms 200 font/woff2 (791a596a)
+2020-04-10T01:34:02.3500031+05:00 0HLUSOL8M0A90:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:1282/img/primary/inferno.png?v=HKmnMcCIdx-lQB86HVO9eCdk9AKxPelcr306Pk5ITXI   (ca22a1cb)
+2020-04-10T01:34:02.3561904+05:00 0HLUSOL8M0A90:00000004 [INF] Sending file. Request path: '"/img/primary/inferno.png"'. Physical path: '"D:\Work\Git\EvolveMe\TaskProject\wwwroot\img\primary\inferno.png"' (27b0a520)
+2020-04-10T01:34:02.3651356+05:00 0HLUSOL8M0A90:00000004 [INF] Request finished in 18.6248ms 200 image/png (791a596a)
+2020-04-10T01:34:03.2183364+05:00 0HLUSOL8M0A90:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:1282/Account/Login   (ca22a1cb)
+2020-04-10T01:34:03.3001721+05:00 0HLUSOL8M0A90:00000005 [INF] Executing action method "TaskProject.Controllers.AccountController.Login (TaskProject)" with arguments ([""]) - ModelState is Valid (ba7f4ac2)
+2020-04-10T01:34:03.3120718+05:00 0HLUSOL8M0A90:00000005 [INF] AuthenticationScheme: "Identity.External" signed out. (d3f50c8d)
+2020-04-10T01:34:04.5312704+05:00 0HLUSOL8M0A90:00000005 [INF] Executing ViewResult, running view at path "/Views/Account/Login.cshtml". (9707eebe)
+2020-04-10T01:34:05.6909423+05:00 0HLUSOL8M0A90:00000005 [INF] Executed action "TaskProject.Controllers.AccountController.Login (TaskProject)" in 2420.545ms (afa2e885)
+2020-04-10T01:34:05.6974529+05:00 0HLUSOL8M0A90:00000005 [INF] Request finished in 2480.0893ms 200 text/html; charset=utf-8 (791a596a)
+2020-04-10T01:34:05.8088161+05:00 0HLUSOL8M0A90:00000006 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/iCheck/flat/blue.css?v=VaAWoLBz22AoPJaacfp5sBi3ZKnyQF2PtS_XBMLUv2Q   (ca22a1cb)
+2020-04-10T01:34:05.8378118+05:00 0HLUSOL8M0A8V:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/bootstrap/js/bootstrap.bundle.min.js   (ca22a1cb)
+2020-04-10T01:34:05.8604785+05:00 0HLUSOL8M0A91:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/datatables/dataTables.bootstrap4.css   (ca22a1cb)
+2020-04-10T01:34:05.8838665+05:00 0HLUSOL8M0A8U:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:1282/css/main.min.css   (ca22a1cb)
+2020-04-10T01:34:05.9078338+05:00 0HLUSOL8M0A8T:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/jquery/jquery.min.js   (ca22a1cb)
+2020-04-10T01:34:05.9124110+05:00 0HLUSOL8M0A8S:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/select2/select2.min.css?v=Zlen06xFBs47DKkjTfT2O2v_jpTpLyH513khsWb8aSU   (ca22a1cb)
+2020-04-10T01:34:05.9697573+05:00 0HLUSOL8M0A91:00000004 [INF] Sending file. Request path: '"/plugins/datatables/dataTables.bootstrap4.css"'. Physical path: '"D:\Work\Git\EvolveMe\TaskProject\wwwroot\plugins\datatables\dataTables.bootstrap4.css"' (27b0a520)
+2020-04-10T01:34:05.9766508+05:00 0HLUSOL8M0A8V:00000003 [INF] Sending file. Request path: '"/plugins/bootstrap/js/bootstrap.bundle.min.js"'. Physical path: '"D:\Work\Git\EvolveMe\TaskProject\wwwroot\plugins\bootstrap\js\bootstrap.bundle.min.js"' (27b0a520)
+2020-04-10T01:34:05.9853028+05:00 0HLUSOL8M0A8T:00000004 [INF] Sending file. Request path: '"/plugins/jquery/jquery.min.js"'. Physical path: '"D:\Work\Git\EvolveMe\TaskProject\wwwroot\plugins\jquery\jquery.min.js"' (27b0a520)
+2020-04-10T01:34:05.9970612+05:00 0HLUSOL8M0A90:00000006 [INF] Sending file. Request path: '"/plugins/iCheck/flat/blue.css"'. Physical path: '"D:\Work\Git\EvolveMe\TaskProject\wwwroot\plugins\iCheck\flat\blue.css"' (27b0a520)
+2020-04-10T01:34:05.9996800+05:00 0HLUSOL8M0A8U:00000004 [INF] Sending file. Request path: '"/css/main.min.css"'. Physical path: '"D:\Work\Git\EvolveMe\TaskProject\wwwroot\css\main.min.css"' (27b0a520)
+2020-04-10T01:34:06.0199960+05:00 0HLUSOL8M0A91:00000004 [INF] Request finished in 232.1548ms 200 text/css (791a596a)
+2020-04-10T01:34:06.0363592+05:00 0HLUSOL8M0A8S:00000005 [INF] Sending file. Request path: '"/plugins/select2/select2.min.css"'. Physical path: '"D:\Work\Git\EvolveMe\TaskProject\wwwroot\plugins\select2\select2.min.css"' (27b0a520)
+2020-04-10T01:34:06.0403675+05:00 0HLUSOL8M0A8T:00000004 [INF] Request finished in 241.9266ms 200 application/javascript (791a596a)
+2020-04-10T01:34:06.0517344+05:00 0HLUSOL8M0A8V:00000003 [INF] Request finished in 234.2176ms 200 application/javascript (791a596a)
+2020-04-10T01:34:06.0682313+05:00 0HLUSOL8M0A8S:00000005 [INF] Request finished in 308.6065ms 200 text/css (791a596a)
+2020-04-10T01:34:06.1189791+05:00 0HLUSOL8M0A8U:00000004 [INF] Request finished in 303.7703ms 200 text/css (791a596a)
+2020-04-10T01:34:06.1437851+05:00 0HLUSOL8M0A90:00000006 [INF] Request finished in 273.8927ms 200 text/css (791a596a)
+2020-04-10T01:34:06.1867696+05:00 0HLUSOL8M0A8V:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:1282/js/main.min.js   (ca22a1cb)
+2020-04-10T01:34:06.1946089+05:00 0HLUSOL8M0A8V:00000004 [INF] Sending file. Request path: '"/js/main.min.js"'. Physical path: '"D:\Work\Git\EvolveMe\TaskProject\wwwroot\js\main.min.js"' (27b0a520)
+2020-04-10T01:34:06.2419665+05:00 0HLUSOL8M0A8V:00000004 [INF] Request finished in 167.7775ms 200 application/javascript (791a596a)
+2020-04-10T01:34:08.2053560+05:00 0HLUSOL8M0A8V:00000005 [INF] Request starting HTTP/1.1 POST http://localhost:1282/Account/ExternalLogin application/x-www-form-urlencoded 198 (ca22a1cb)
+2020-04-10T01:34:08.2509041+05:00 0HLUSOL8M0A8V:00000005 [INF] Executing action method "TaskProject.Controllers.AccountController.ExternalLogin (TaskProject)" with arguments (["Google", ""]) - ModelState is Valid (ba7f4ac2)
+2020-04-10T01:34:08.2628220+05:00 0HLUSOL8M0A8V:00000005 [INF] Executing ChallengeResult with authentication schemes (["Google"]). (f3dca807)
+2020-04-10T01:34:08.2826813+05:00 0HLUSOL8M0A8V:00000005 [INF] AuthenticationScheme: "Google" was challenged. (d45f1f38)
+2020-04-10T01:34:08.2875726+05:00 0HLUSOL8M0A8V:00000005 [INF] Executed action "TaskProject.Controllers.AccountController.ExternalLogin (TaskProject)" in 72.8547ms (afa2e885)
+2020-04-10T01:34:08.2958014+05:00 0HLUSOL8M0A8V:00000005 [INF] Request finished in 91.1022ms 302  (791a596a)
+2020-04-10T02:04:07.8041413+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2020-04-10T02:04:08.0216823+05:00  [INF] Executed DbCommand ("16"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'__EFMigrationsHistory');" (0723d8ff)
+2020-04-10T02:04:08.0243570+05:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'__EFMigrationsHistory');" (0723d8ff)
+2020-04-10T02:04:08.0290849+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];" (0723d8ff)
+2020-04-10T02:04:08.0380250+05:00  [INF] No migrations were applied. The database is already up to date. (503cba9d)
+2020-04-10T02:13:04.5401260+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2020-04-10T02:13:04.9464562+05:00  [INF] Executed DbCommand ("26"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Repeats] AS [r])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2020-04-10T02:13:04.9746067+05:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Complications] AS [c])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2020-04-10T02:13:04.9852119+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Ratings] AS [r])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2020-04-10T02:13:04.9953604+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Aligments] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2020-04-10T02:13:05.0064147+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Moods] AS [m])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2020-04-10T02:13:05.0177128+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Achievements] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2020-04-10T02:13:05.0286557+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Hobbies] AS [h])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2020-04-10T02:13:06.0218828+05:00 0HLUSPB5NVB3B:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:1282/   (ca22a1cb)
+2020-04-10T02:13:06.4426058+05:00 0HLUSPB5NVB3B:00000001 [INF] Executing action method "TaskProject.Controllers.HomeController.Index (TaskProject)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2020-04-10T02:13:11.3403824+05:00 0HLUSPB5NVB3B:00000001 [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2020-04-10T02:13:11.6765011+05:00 0HLUSPB5NVB3B:00000001 [INF] Executed action "TaskProject.Controllers.HomeController.Index (TaskProject)" in 5250.885ms (afa2e885)
+2020-04-10T02:13:11.7009254+05:00 0HLUSPB5NVB3B:00000001 [INF] Request finished in 5711.6767ms 200 text/html; charset=utf-8 (791a596a)
+2020-04-10T02:13:11.7537982+05:00 0HLUSPB5NVB3C:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/font-awesome/css/font-awesome.min.css?v=gg4WnOJIJAZtmXP9S2Vhqunc1tvvZDXakF1aHWSCmXw   (ca22a1cb)
+2020-04-10T02:13:11.7631539+05:00 0HLUSPB5NVB3F:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:1282/img/primary/gamepad.png?v=cbUq5_YluyPeGIk7fhV1aRa2iieA54ip2ns4s6F8ax4   (ca22a1cb)
+2020-04-10T02:13:11.7896049+05:00 0HLUSPB5NVB3E:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:1282/img/primary/inferno.svg?v=84s98G84N9Rit0HESujGaQCsxBWamHAIwyq9YcUHVmQ   (ca22a1cb)
+2020-04-10T02:13:11.8170283+05:00 0HLUSPB5NVB3G:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:1282/css/landing.min.css?v=Ajow1nwpqP9wgNp9mSznoDMue9rHC50sVdvS5cYV4eA   (ca22a1cb)
+2020-04-10T02:13:11.8952531+05:00 0HLUSPB5NVB3B:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/bootstrap/css/bootstrap.min.css?v=EhLyj_n-S3gp4xYzswxnu7Egns0ae7kV-WtuDu2vAqQ   (ca22a1cb)
+2020-04-10T02:13:11.9086531+05:00 0HLUSPB5NVB3G:00000001 [INF] The file "/css/landing.min.css" was not modified (f1f8d725)
+2020-04-10T02:13:11.9130780+05:00 0HLUSPB5NVB3C:00000001 [INF] The file "/plugins/font-awesome/css/font-awesome.min.css" was not modified (f1f8d725)
+2020-04-10T02:13:11.9158891+05:00 0HLUSPB5NVB3F:00000001 [INF] The file "/img/primary/gamepad.png" was not modified (f1f8d725)
+2020-04-10T02:13:11.9242818+05:00 0HLUSPB5NVB3E:00000001 [INF] The file "/img/primary/inferno.svg" was not modified (f1f8d725)
+2020-04-10T02:13:11.9549444+05:00 0HLUSPB5NVB3B:00000002 [INF] The file "/plugins/bootstrap/css/bootstrap.min.css" was not modified (f1f8d725)
+2020-04-10T02:13:11.9634279+05:00 0HLUSPB5NVB3D:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/magnific-popup/magnific-popup.css?v=EVWYHoGTYi9YVT7tC7ovpDUSrzYqPVTe3vZMRpcLs3E   (ca22a1cb)
+2020-04-10T02:13:11.9676181+05:00 0HLUSPB5NVB3E:00000001 [INF] Request finished in 180.3512ms 304 image/svg+xml (791a596a)
+2020-04-10T02:13:11.9705321+05:00 0HLUSPB5NVB3B:00000002 [INF] Request finished in 207.3967ms 304 text/css (791a596a)
+2020-04-10T02:13:11.9740818+05:00 0HLUSPB5NVB3G:00000001 [INF] Request finished in 174.3209ms 304 text/css (791a596a)
+2020-04-10T02:13:11.9967868+05:00 0HLUSPB5NVB3F:00000001 [INF] Request finished in 180.3591ms 304 image/png (791a596a)
+2020-04-10T02:13:12.0015271+05:00 0HLUSPB5NVB3C:00000001 [INF] Request finished in 192.3887ms 304 text/css (791a596a)
+2020-04-10T02:13:12.0457135+05:00 0HLUSPB5NVB3D:00000001 [INF] The file "/plugins/magnific-popup/magnific-popup.css" was not modified (f1f8d725)
+2020-04-10T02:13:12.0678394+05:00 0HLUSPB5NVB3E:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/bootstrap/js/bootstrap.bundle.min.js?v=wCmnDOP669NpAOzrS-wDlWtV1ZlVR14AWOnDW3Mcim4   (ca22a1cb)
+2020-04-10T02:13:12.0906161+05:00 0HLUSPB5NVB3G:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/jquery/jquery.min.js?v=T-aPohYXbm0fRYDpJLr-zJ9RmYTswGsahAoIsNiMld4   (ca22a1cb)
+2020-04-10T02:13:12.0991620+05:00 0HLUSPB5NVB3F:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/magnific-popup/jquery.magnific-popup.min.js?v=sKRc1a7Wbie9juhh0OO3gsjnmEm94y-Q8Hi58kUaNvI   (ca22a1cb)
+2020-04-10T02:13:12.1041412+05:00 0HLUSPB5NVB3E:00000002 [INF] The file "/plugins/bootstrap/js/bootstrap.bundle.min.js" was not modified (f1f8d725)
+2020-04-10T02:13:12.1164268+05:00 0HLUSPB5NVB3C:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/jquery-easing/jquery.easing.1.3.umd.min.js?v=9zpDdKL2kGqrijGsTvwrE4GU3HnJTLpHrMRGyDNRkgw   (ca22a1cb)
+2020-04-10T02:13:12.1247789+05:00 0HLUSPB5NVB3B:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:1282/js/landing.min.js?v=k_VFoXsbBgu3dlx5BT0aFRGKwAPs3NGo9O3C-0Pf2vs   (ca22a1cb)
+2020-04-10T02:13:12.1333362+05:00 0HLUSPB5NVB3E:00000002 [INF] Request finished in 95.1377ms 304 application/javascript (791a596a)
+2020-04-10T02:13:12.1356797+05:00 0HLUSPB5NVB3D:00000001 [INF] Request finished in 305.3759ms 304 text/css (791a596a)
+2020-04-10T02:13:12.1657625+05:00 0HLUSPB5NVB3F:00000002 [INF] The file "/plugins/magnific-popup/jquery.magnific-popup.min.js" was not modified (f1f8d725)
+2020-04-10T02:13:12.1737667+05:00 0HLUSPB5NVB3B:00000003 [INF] The file "/js/landing.min.js" was not modified (f1f8d725)
+2020-04-10T02:13:12.1808612+05:00 0HLUSPB5NVB3G:00000002 [INF] The file "/plugins/jquery/jquery.min.js" was not modified (f1f8d725)
+2020-04-10T02:13:12.1886945+05:00 0HLUSPB5NVB3C:00000002 [INF] The file "/plugins/jquery-easing/jquery.easing.1.3.umd.min.js" was not modified (f1f8d725)
+2020-04-10T02:13:12.2076812+05:00 0HLUSPB5NVB3F:00000002 [INF] Request finished in 149.3213ms 304 application/javascript (791a596a)
+2020-04-10T02:13:12.2210711+05:00 0HLUSPB5NVB3B:00000003 [INF] Request finished in 158.1136ms 304 application/javascript (791a596a)
+2020-04-10T02:13:12.2268143+05:00 0HLUSPB5NVB3E:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:1282/img/primary/theater.png?v=fVsx1S0TwKnNHYDvM7Jp0hIbQKj9ttrj32XMqjMioX4   (ca22a1cb)
+2020-04-10T02:13:12.2495977+05:00 0HLUSPB5NVB3D:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:1282/img/primary/calendar.png?v=5TCodzqhXRs-voY0UwV6713U9YHQscNLSYdK4Ii1y3E   (ca22a1cb)
+2020-04-10T02:13:12.2827831+05:00 0HLUSPB5NVB3C:00000002 [INF] Request finished in 137.6759ms 304 application/javascript (791a596a)
+2020-04-10T02:13:12.2878160+05:00 0HLUSPB5NVB3G:00000002 [INF] Request finished in 175.565ms 304 application/javascript (791a596a)
+2020-04-10T02:13:12.3554335+05:00 0HLUSPB5NVB3F:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:1282/img/primary/heart.png?v=GwKYOH96CmxmBsayFJ_AM8ipD3jUJGAoary8tnypvw0   (ca22a1cb)
+2020-04-10T02:13:12.3598811+05:00 0HLUSPB5NVB3E:00000003 [INF] The file "/img/primary/theater.png" was not modified (f1f8d725)
+2020-04-10T02:13:12.3688502+05:00 0HLUSPB5NVB3D:00000002 [INF] The file "/img/primary/calendar.png" was not modified (f1f8d725)
+2020-04-10T02:13:12.3776772+05:00 0HLUSPB5NVB3C:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/font-awesome/fonts/fontawesome-webfont.woff2?v=4.7.0   (ca22a1cb)
+2020-04-10T02:13:12.4074983+05:00 0HLUSPB5NVB3F:00000003 [INF] The file "/img/primary/heart.png" was not modified (f1f8d725)
+2020-04-10T02:13:12.4427684+05:00 0HLUSPB5NVB3B:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:1282/img/primary/test.png?v=S3bhBN4umDCMdOiKWYgbKOAzPTm-jIezf3IkxdgY6mE   (ca22a1cb)
+2020-04-10T02:13:12.4472362+05:00 0HLUSPB5NVB3E:00000003 [INF] Request finished in 181.7355ms 304 image/png (791a596a)
+2020-04-10T02:13:12.4579259+05:00 0HLUSPB5NVB3D:00000002 [INF] Request finished in 184.1049ms 304 image/png (791a596a)
+2020-04-10T02:13:12.4821644+05:00 0HLUSPB5NVB3F:00000003 [INF] Request finished in 150.8759ms 304 image/png (791a596a)
+2020-04-10T02:13:12.4865776+05:00 0HLUSPB5NVB3G:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:1282/img/primary/cup.png?v=BLalt2WMsx0fZvMwnq4qBv8dnB3cgrox_lowXU4K3wo   (ca22a1cb)
+2020-04-10T02:13:12.4885806+05:00 0HLUSPB5NVB3C:00000003 [INF] The file "/plugins/font-awesome/fonts/fontawesome-webfont.woff2" was not modified (f1f8d725)
+2020-04-10T02:13:12.5223081+05:00 0HLUSPB5NVB3B:00000004 [INF] The file "/img/primary/test.png" was not modified (f1f8d725)
+2020-04-10T02:13:12.5326269+05:00 0HLUSPB5NVB3G:00000003 [INF] The file "/img/primary/cup.png" was not modified (f1f8d725)
+2020-04-10T02:13:12.5374503+05:00 0HLUSPB5NVB3C:00000003 [INF] Request finished in 150.9886ms 304 font/woff2 (791a596a)
+2020-04-10T02:13:12.5645978+05:00 0HLUSPB5NVB3B:00000004 [INF] Request finished in 194.4867ms 304 image/png (791a596a)
+2020-04-10T02:13:12.5715199+05:00 0HLUSPB5NVB3G:00000003 [INF] Request finished in 162.7458ms 304 image/png (791a596a)
+2020-04-10T02:13:15.3978600+05:00 0HLUSPB5NVB3G:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:1282/Account/Login   (ca22a1cb)
+2020-04-10T02:13:15.4924230+05:00 0HLUSPB5NVB3G:00000004 [INF] Executing action method "TaskProject.Controllers.AccountController.Login (TaskProject)" with arguments ([""]) - ModelState is Valid (ba7f4ac2)
+2020-04-10T02:13:15.5262431+05:00 0HLUSPB5NVB3G:00000004 [INF] AuthenticationScheme: "Identity.External" signed out. (d3f50c8d)
+2020-04-10T02:13:16.7206918+05:00 0HLUSPB5NVB3G:00000004 [INF] Executing ViewResult, running view at path "/Views/Account/Login.cshtml". (9707eebe)
+2020-04-10T02:13:18.1381923+05:00 0HLUSPB5NVB3G:00000004 [INF] Executed action "TaskProject.Controllers.AccountController.Login (TaskProject)" in 2679.1953ms (afa2e885)
+2020-04-10T02:13:18.2418544+05:00 0HLUSPB5NVB3G:00000004 [INF] Request finished in 2747.1503ms 200 text/html; charset=utf-8 (791a596a)
+2020-04-10T02:13:18.3349569+05:00 0HLUSPB5NVB3F:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:1282/css/main.min.css   (ca22a1cb)
+2020-04-10T02:13:18.3419055+05:00 0HLUSPB5NVB3B:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/select2/select2.min.css?v=Zlen06xFBs47DKkjTfT2O2v_jpTpLyH513khsWb8aSU   (ca22a1cb)
+2020-04-10T02:13:18.3574068+05:00 0HLUSPB5NVB3D:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/jquery/jquery.min.js   (ca22a1cb)
+2020-04-10T02:13:18.3606128+05:00 0HLUSPB5NVB3C:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/datatables/dataTables.bootstrap4.css   (ca22a1cb)
+2020-04-10T02:13:18.3854816+05:00 0HLUSPB5NVB3E:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/bootstrap/js/bootstrap.bundle.min.js   (ca22a1cb)
+2020-04-10T02:13:18.3855930+05:00 0HLUSPB5NVB3B:00000005 [INF] The file "/plugins/select2/select2.min.css" was not modified (f1f8d725)
+2020-04-10T02:13:18.4024646+05:00 0HLUSPB5NVB3F:00000004 [INF] The file "/css/main.min.css" was not modified (f1f8d725)
+2020-04-10T02:13:18.4260479+05:00 0HLUSPB5NVB3C:00000004 [INF] The file "/plugins/datatables/dataTables.bootstrap4.css" was not modified (f1f8d725)
+2020-04-10T02:13:18.4408955+05:00 0HLUSPB5NVB3G:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/iCheck/flat/blue.css?v=VaAWoLBz22AoPJaacfp5sBi3ZKnyQF2PtS_XBMLUv2Q   (ca22a1cb)
+2020-04-10T02:13:18.4576532+05:00 0HLUSPB5NVB3D:00000003 [INF] The file "/plugins/jquery/jquery.min.js" was not modified (f1f8d725)
+2020-04-10T02:13:18.4744567+05:00 0HLUSPB5NVB3B:00000005 [INF] Request finished in 164.3318ms 304 text/css (791a596a)
+2020-04-10T02:13:18.4808634+05:00 0HLUSPB5NVB3F:00000004 [INF] Request finished in 181.1666ms 304 text/css (791a596a)
+2020-04-10T02:13:18.4852523+05:00 0HLUSPB5NVB3E:00000004 [INF] The file "/plugins/bootstrap/js/bootstrap.bundle.min.js" was not modified (f1f8d725)
+2020-04-10T02:13:18.4930184+05:00 0HLUSPB5NVB3G:00000005 [INF] The file "/plugins/iCheck/flat/blue.css" was not modified (f1f8d725)
+2020-04-10T02:13:18.5028780+05:00 0HLUSPB5NVB3C:00000004 [INF] Request finished in 204.983ms 304 text/css (791a596a)
+2020-04-10T02:13:18.5441696+05:00 0HLUSPB5NVB3E:00000004 [INF] Request finished in 261.5017ms 304 application/javascript (791a596a)
+2020-04-10T02:13:18.5691902+05:00 0HLUSPB5NVB3G:00000005 [INF] Request finished in 154.1864ms 304 text/css (791a596a)
+2020-04-10T02:13:18.5731633+05:00 0HLUSPB5NVB3D:00000003 [INF] Request finished in 251.7765ms 304 application/javascript (791a596a)
+2020-04-10T02:13:18.5813862+05:00 0HLUSPB5NVB3B:00000006 [INF] Request starting HTTP/1.1 GET http://localhost:1282/js/main.min.js   (ca22a1cb)
+2020-04-10T02:13:18.6177182+05:00 0HLUSPB5NVB3B:00000006 [INF] The file "/js/main.min.js" was not modified (f1f8d725)
+2020-04-10T02:13:18.6283045+05:00 0HLUSPB5NVB3B:00000006 [INF] Request finished in 108.9531ms 304 application/javascript (791a596a)
+2020-04-10T02:13:22.1054635+05:00 0HLUSPB5NVB3B:00000007 [INF] Request starting HTTP/1.1 POST http://localhost:1282/Account/Login application/x-www-form-urlencoded 205 (ca22a1cb)
+2020-04-10T02:13:22.1879431+05:00 0HLUSPB5NVB3B:00000007 [INF] Executing action method "TaskProject.Controllers.AccountController.Login (TaskProject)" with arguments (["TaskProject.Models.AccountViewModels.LoginViewModel", ""]) - ModelState is Invalid (ba7f4ac2)
+2020-04-10T02:13:22.2051064+05:00 0HLUSPB5NVB3B:00000007 [INF] Executing ViewResult, running view at path "/Views/Account/Login.cshtml". (9707eebe)
+2020-04-10T02:13:22.2148067+05:00 0HLUSPB5NVB3B:00000007 [INF] Executed action "TaskProject.Controllers.AccountController.Login (TaskProject)" in 86.5134ms (afa2e885)
+2020-04-10T02:13:22.2260599+05:00 0HLUSPB5NVB3B:00000007 [INF] Request finished in 116.9958ms 200 text/html; charset=utf-8 (791a596a)
+2020-04-10T02:13:28.0378508+05:00 0HLUSPB5NVB3B:00000008 [INF] Request starting HTTP/1.1 GET http://localhost:1282/Account/Register   (ca22a1cb)
+2020-04-10T02:13:28.0479931+05:00 0HLUSPB5NVB3B:00000008 [INF] Executing action method "TaskProject.Controllers.AccountController.Register (TaskProject)" with arguments ([""]) - ModelState is Valid (ba7f4ac2)
+2020-04-10T02:13:28.4372212+05:00 0HLUSPB5NVB3B:00000008 [INF] Executing ViewResult, running view at path "/Views/Account/Register.cshtml". (9707eebe)
+2020-04-10T02:13:28.4823946+05:00 0HLUSPB5NVB3B:00000008 [INF] Executed action "TaskProject.Controllers.AccountController.Register (TaskProject)" in 433.7586ms (afa2e885)
+2020-04-10T02:13:28.4888124+05:00 0HLUSPB5NVB3B:00000008 [INF] Request finished in 454.4036ms 200 text/html; charset=utf-8 (791a596a)
+2020-04-10T02:13:40.3502770+05:00 0HLUSPB5NVB3B:00000009 [INF] Request starting HTTP/1.1 POST http://localhost:1282/Account/Register application/x-www-form-urlencoded 240 (ca22a1cb)
+2020-04-10T02:13:40.3714865+05:00 0HLUSPB5NVB3B:00000009 [INF] Executing action method "TaskProject.Controllers.AccountController.Register (TaskProject)" with arguments (["TaskProject.Models.AccountViewModels.RegisterViewModel", ""]) - ModelState is Valid (ba7f4ac2)
+2020-04-10T02:13:40.4100798+05:00 0HLUSPB5NVB3B:00000009 [WRN] User "2d69664d-5cf9-4bf3-9d00-989c5cf0eb7c" password validation failed: "PasswordTooShort". (2f223212)
+2020-04-10T02:13:40.4164415+05:00 0HLUSPB5NVB3B:00000009 [INF] Executing ViewResult, running view at path "/Views/Account/Register.cshtml". (9707eebe)
+2020-04-10T02:13:40.4245501+05:00 0HLUSPB5NVB3B:00000009 [INF] Executed action "TaskProject.Controllers.AccountController.Register (TaskProject)" in 56.6864ms (afa2e885)
+2020-04-10T02:13:40.4295310+05:00 0HLUSPB5NVB3B:00000009 [INF] Request finished in 81.8668ms 200 text/html; charset=utf-8 (791a596a)
+2020-04-10T02:13:47.2512869+05:00 0HLUSPB5NVB3B:0000000A [INF] Request starting HTTP/1.1 POST http://localhost:1282/Account/Register application/x-www-form-urlencoded 246 (ca22a1cb)
+2020-04-10T02:13:47.2575161+05:00 0HLUSPB5NVB3B:0000000A [INF] Executing action method "TaskProject.Controllers.AccountController.Register (TaskProject)" with arguments (["TaskProject.Models.AccountViewModels.RegisterViewModel", ""]) - ModelState is Valid (ba7f4ac2)
+2020-04-10T02:13:47.3304193+05:00 0HLUSPB5NVB3B:0000000A [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2020-04-10T02:13:47.4916757+05:00 0HLUSPB5NVB3B:0000000A [INF] Executed DbCommand ("65"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[AligmentId], [u].[ConcurrencyStamp], [u].[CurrentExp], [u].[CurrentGold], [u].[CurrentKarma], [u].[CurrentLevel], [u].[Email], [u].[EmailConfirmed], [u].[HealthId], [u].[IsSetDefaultValues], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[MaxExp], [u].[NickName], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[Photo], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0" (0723d8ff)
+2020-04-10T02:13:47.7225783+05:00 0HLUSPB5NVB3B:0000000A [INF] Executed DbCommand ("6"ms) [Parameters=["@p0='?' (Size = 450), @p1='?', @p2='?', @p3='?' (Size = 4000), @p4='?', @p5='?', @p6='?', @p7='?', @p8='?' (Size = 256), @p9='?', @p10='?', @p11='?', @p12='?', @p13='?', @p14='?', @p15='?' (Size = 4000), @p16='?' (Size = 256), @p17='?' (Size = 256), @p18='?' (Size = 4000), @p19='?' (Size = 4000), @p20='?', @p21='?' (Size = 8000), @p22='?' (Size = 4000), @p23='?', @p24='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [AspNetUsers] ([Id], [AccessFailedCount], [AligmentId], [ConcurrencyStamp], [CurrentExp], [CurrentGold], [CurrentKarma], [CurrentLevel], [Email], [EmailConfirmed], [HealthId], [IsSetDefaultValues], [LockoutEnabled], [LockoutEnd], [MaxExp], [NickName], [NormalizedEmail], [NormalizedUserName], [PasswordHash], [PhoneNumber], [PhoneNumberConfirmed], [Photo], [SecurityStamp], [TwoFactorEnabled], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20, @p21, @p22, @p23, @p24);" (0723d8ff)
+2020-04-10T02:13:47.7943119+05:00 0HLUSPB5NVB3B:0000000A [INF] Executed DbCommand ("4"ms) [Parameters=["@p0='?', @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [LogAccess] ([Date], [Log], [UserAgent], [UserName])
+VALUES (@p0, @p1, @p2, @p3);
+SELECT [LogAccessId]
+FROM [LogAccess]
+WHERE @@ROWCOUNT = 1 AND [LogAccessId] = scope_identity();" (0723d8ff)
+2020-04-10T02:13:50.1510378+05:00 0HLUSPB5NVB3B:0000000A [INF] Executed DbCommand ("2"ms) [Parameters=["@__user_Id_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AspNetUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0" (0723d8ff)
+2020-04-10T02:13:50.2259329+05:00 0HLUSPB5NVB3B:0000000A [INF] Executed DbCommand ("4"ms) [Parameters=["@__userId_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2020-04-10T02:13:50.2384156+05:00 0HLUSPB5NVB3B:0000000A [INF] AuthenticationScheme: "Identity.Application" signed in. (c66dd7e7)
+2020-04-10T02:13:50.2464570+05:00 0HLUSPB5NVB3B:0000000A [INF] Executing RedirectResult, redirecting to "/". (d98d540e)
+2020-04-10T02:13:50.2523572+05:00 0HLUSPB5NVB3B:0000000A [INF] Executed action "TaskProject.Controllers.AccountController.Register (TaskProject)" in 2995.4114ms (afa2e885)
+2020-04-10T02:13:50.2578393+05:00 0HLUSPB5NVB3B:0000000A [INF] Request finished in 3008.9711ms 302  (791a596a)
+2020-04-10T02:13:50.2650390+05:00 0HLUSPB5NVB3B:0000000B [INF] Request starting HTTP/1.1 GET http://localhost:1282/   (ca22a1cb)
+2020-04-10T02:13:50.2782486+05:00 0HLUSPB5NVB3B:0000000B [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2020-04-10T02:13:50.2838186+05:00 0HLUSPB5NVB3B:0000000B [INF] Executing action method "TaskProject.Controllers.HomeController.Index (TaskProject)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2020-04-10T02:13:50.2891418+05:00 0HLUSPB5NVB3B:0000000B [INF] Executing RedirectResult, redirecting to "/Home/GameRoom". (d98d540e)
+2020-04-10T02:13:50.2942143+05:00 0HLUSPB5NVB3B:0000000B [INF] Executed action "TaskProject.Controllers.HomeController.Index (TaskProject)" in 10.479ms (afa2e885)
+2020-04-10T02:13:50.3008257+05:00 0HLUSPB5NVB3B:0000000B [INF] Request finished in 34.0199ms 302  (791a596a)
+2020-04-10T02:13:50.3087858+05:00 0HLUSPB5NVB3B:0000000C [INF] Request starting HTTP/1.1 GET http://localhost:1282/Home/GameRoom   (ca22a1cb)
+2020-04-10T02:13:50.3155581+05:00 0HLUSPB5NVB3B:0000000C [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2020-04-10T02:13:50.3287931+05:00 0HLUSPB5NVB3B:0000000C [INF] Executing action method "TaskProject.Controllers.HomeController.GameRoom (TaskProject)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2020-04-10T02:13:50.3515092+05:00 0HLUSPB5NVB3B:0000000C [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2020-04-10T02:13:50.3770798+05:00 0HLUSPB5NVB3B:0000000C [INF] Executed DbCommand ("2"ms) [Parameters=["@__get_Item_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[AligmentId], [e].[ConcurrencyStamp], [e].[CurrentExp], [e].[CurrentGold], [e].[CurrentKarma], [e].[CurrentLevel], [e].[Email], [e].[EmailConfirmed], [e].[HealthId], [e].[IsSetDefaultValues], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[MaxExp], [e].[NickName], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[Photo], [e].[SecurityStamp], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AspNetUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0" (0723d8ff)
+2020-04-10T02:13:50.6707852+05:00 0HLUSPB5NVB3B:0000000C [INF] Executed DbCommand ("47"ms) [Parameters=["@p1='?' (Size = 450), @p2='?' (Size = 4000), @p0='?', @p3='?', @p4='?' (Size = 4000), @p5='?', @p6='?', @p7='?' (Size = 4000), @p8='?' (Size = 450), @p9='?', @p10='?' (Size = 4000), @p11='?', @p12='?', @p13='?' (Size = 4000), @p14='?' (Size = 450), @p15='?', @p16='?' (Size = 4000), @p17='?', @p18='?', @p19='?' (Size = 4000), @p20='?' (Size = 450), @p21='?', @p22='?' (Size = 4000), @p23='?', @p24='?', @p25='?' (Size = 4000), @p26='?' (Size = 450), @p27='?', @p28='?' (Size = 4000), @p29='?', @p30='?', @p31='?' (Size = 4000), @p32='?' (Size = 450), @p33='?', @p34='?' (Size = 4000), @p35='?', @p36='?', @p37='?' (Size = 4000), @p38='?' (Size = 450), @p39='?', @p40='?' (Size = 4000), @p41='?', @p42='?', @p43='?' (Size = 4000), @p44='?' (Size = 450), @p45='?' (Size = 30), @p46='?' (Size = 450), @p47='?', @p48='?', @p49='?', @p50='?', @p51='?' (Size = 4000), @p52='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [AspNetUsers] SET [IsSetDefaultValues] = @p0
+WHERE [Id] = @p1 AND [ConcurrencyStamp] = @p2;
+SELECT @@ROWCOUNT;
+
+DECLARE @inserted1 TABLE ([AtributeId] int, [_Position] [int]);
+MERGE [Atributes] USING (
+VALUES (@p3, @p4, @p5, @p6, @p7, @p8, 0),
+(@p9, @p10, @p11, @p12, @p13, @p14, 1),
+(@p15, @p16, @p17, @p18, @p19, @p20, 2),
+(@p21, @p22, @p23, @p24, @p25, @p26, 3),
+(@p27, @p28, @p29, @p30, @p31, @p32, 4),
+(@p33, @p34, @p35, @p36, @p37, @p38, 5),
+(@p39, @p40, @p41, @p42, @p43, @p44, 6)) AS i ([CurrentExp], [Description], [Lvl], [MaxExp], [Name], [UserId], _Position) ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([CurrentExp], [Description], [Lvl], [MaxExp], [Name], [UserId])
+VALUES (i.[CurrentExp], i.[Description], i.[Lvl], i.[MaxExp], i.[Name], i.[UserId])
+OUTPUT INSERTED.[AtributeId], i._Position
+INTO @inserted1;
+
+SELECT [t].[AtributeId] FROM [Atributes] t
+INNER JOIN @inserted1 i ON ([t].[AtributeId] = [i].[AtributeId])
+ORDER BY [i].[_Position];
+
+INSERT INTO [Catalogs] ([Name], [UserId])
+VALUES (@p45, @p46);
+SELECT [CatalogId]
+FROM [Catalogs]
+WHERE @@ROWCOUNT = 1 AND [CatalogId] = scope_identity();
+
+INSERT INTO [Healths] ([DateBirth], [DateDeath], [IsDead], [IsSetValue], [Sex], [UserId])
+VALUES (@p47, @p48, @p49, @p50, @p51, @p52);
+SELECT [HealthId]
+FROM [Healths]
+WHERE @@ROWCOUNT = 1 AND [HealthId] = scope_identity();" (0723d8ff)
+2020-04-10T02:13:50.7327043+05:00 0HLUSPB5NVB3B:0000000C [INF] Executed DbCommand ("33"ms) [Parameters=["@p53='?', @p54='?', @p55='?' (Size = 250), @p56='?', @p57='?', @p58='?', @p59='?', @p60='?' (Size = 50), @p61='?', @p62='?', @p63='?', @p64='?', @p65='?' (Size = 450), @p66='?', @p67='?', @p68='?', @p69='?', @p70='?' (Size = 4000), @p71='?', @p72='?' (Size = 450), @p73='?', @p74='?', @p75='?', @p76='?', @p77='?' (Size = 4000), @p78='?', @p79='?' (Size = 450), @p80='?', @p81='?', @p82='?', @p83='?', @p84='?' (Size = 4000), @p85='?', @p86='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [Goals] ([CatalogId], [ComplicationId], [Description], [FinishCount], [GoalEnd], [GoalStart], [IsComplete], [Name], [PassCount], [RepeatId], [SeriesCount], [SkillId], [UserId])
+VALUES (@p53, @p54, @p55, @p56, @p57, @p58, @p59, @p60, @p61, @p62, @p63, @p64, @p65);
+SELECT [GoalId]
+FROM [Goals]
+WHERE @@ROWCOUNT = 1 AND [GoalId] = scope_identity();
+
+DECLARE @inserted1 TABLE ([SkillId] int, [_Position] [int]);
+MERGE [Skills] USING (
+VALUES (@p66, @p67, @p68, @p69, @p70, @p71, @p72, 0),
+(@p73, @p74, @p75, @p76, @p77, @p78, @p79, 1),
+(@p80, @p81, @p82, @p83, @p84, @p85, @p86, 2)) AS i ([AtributeId], [CurrentExp], [Lvl], [MaxExp], [Name], [RatingId], [UserId], _Position) ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([AtributeId], [CurrentExp], [Lvl], [MaxExp], [Name], [RatingId], [UserId])
+VALUES (i.[AtributeId], i.[CurrentExp], i.[Lvl], i.[MaxExp], i.[Name], i.[RatingId], i.[UserId])
+OUTPUT INSERTED.[SkillId], i._Position
+INTO @inserted1;
+
+SELECT [t].[SkillId] FROM [Skills] t
+INNER JOIN @inserted1 i ON ([t].[SkillId] = [i].[SkillId])
+ORDER BY [i].[_Position];" (0723d8ff)
+2020-04-10T02:13:50.7458694+05:00 0HLUSPB5NVB3B:0000000C [INF] Executed DbCommand ("6"ms) [Parameters=["@p87='?', @p88='?', @p89='?' (Size = 250), @p90='?', @p91='?', @p92='?', @p93='?', @p94='?' (Size = 50), @p95='?', @p96='?', @p97='?', @p98='?', @p99='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [Goals] ([CatalogId], [ComplicationId], [Description], [FinishCount], [GoalEnd], [GoalStart], [IsComplete], [Name], [PassCount], [RepeatId], [SeriesCount], [SkillId], [UserId])
+VALUES (@p87, @p88, @p89, @p90, @p91, @p92, @p93, @p94, @p95, @p96, @p97, @p98, @p99);
+SELECT [GoalId]
+FROM [Goals]
+WHERE @@ROWCOUNT = 1 AND [GoalId] = scope_identity();" (0723d8ff)
+2020-04-10T02:13:51.0098172+05:00 0HLUSPB5NVB3B:0000000C [INF] Executed DbCommand ("7"ms) [Parameters=["@__userId_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [u].[Id], [u].[AccessFailedCount], [u].[AligmentId], [u].[ConcurrencyStamp], [u].[CurrentExp], [u].[CurrentGold], [u].[CurrentKarma], [u].[CurrentLevel], [u].[Email], [u].[EmailConfirmed], [u].[HealthId], [u].[IsSetDefaultValues], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[MaxExp], [u].[NickName], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[Photo], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName], [u.Aligment].[AligmentId], [u.Aligment].[Description], [u.Aligment].[Name]
+FROM [AspNetUsers] AS [u]
+LEFT JOIN [Aligments] AS [u.Aligment] ON [u].[AligmentId] = [u.Aligment].[AligmentId]
+WHERE [u].[Id] = @__userId_0
+ORDER BY [u].[Id]" (0723d8ff)
+2020-04-10T02:13:51.0594557+05:00 0HLUSPB5NVB3B:0000000C [INF] Executed DbCommand ("5"ms) [Parameters=["@__userId_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [u.Catalogs].[CatalogId], [u.Catalogs].[Name], [u.Catalogs].[UserId]
+FROM [Catalogs] AS [u.Catalogs]
+INNER JOIN (
+    SELECT DISTINCT [t].*
+    FROM (
+        SELECT TOP(1) [u0].[Id]
+        FROM [AspNetUsers] AS [u0]
+        LEFT JOIN [Aligments] AS [u.Aligment0] ON [u0].[AligmentId] = [u.Aligment0].[AligmentId]
+        WHERE [u0].[Id] = @__userId_0
+        ORDER BY [u0].[Id]
+    ) AS [t]
+) AS [t0] ON [u.Catalogs].[UserId] = [t0].[Id]
+ORDER BY [t0].[Id]" (0723d8ff)
+2020-04-10T02:13:51.0751107+05:00 0HLUSPB5NVB3B:0000000C [INF] Executed DbCommand ("6"ms) [Parameters=["@__userId_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [u.Goals].[GoalId], [u.Goals].[CatalogId], [u.Goals].[ComplicationId], [u.Goals].[Description], [u.Goals].[FinishCount], [u.Goals].[GoalEnd], [u.Goals].[GoalStart], [u.Goals].[IsComplete], [u.Goals].[Name], [u.Goals].[PassCount], [u.Goals].[RepeatId], [u.Goals].[SeriesCount], [u.Goals].[SkillId], [u.Goals].[UserId]
+FROM [Goals] AS [u.Goals]
+INNER JOIN (
+    SELECT DISTINCT [t1].*
+    FROM (
+        SELECT TOP(1) [u1].[Id]
+        FROM [AspNetUsers] AS [u1]
+        LEFT JOIN [Aligments] AS [u.Aligment1] ON [u1].[AligmentId] = [u.Aligment1].[AligmentId]
+        WHERE [u1].[Id] = @__userId_0
+        ORDER BY [u1].[Id]
+    ) AS [t1]
+) AS [t2] ON [u.Goals].[UserId] = [t2].[Id]
+ORDER BY [t2].[Id]" (0723d8ff)
+2020-04-10T02:13:51.0889853+05:00 0HLUSPB5NVB3B:0000000C [INF] Executed DbCommand ("6"ms) [Parameters=["@__userId_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [u.Skills].[SkillId], [u.Skills].[AtributeId], [u.Skills].[CurrentExp], [u.Skills].[Lvl], [u.Skills].[MaxExp], [u.Skills].[Name], [u.Skills].[RatingId], [u.Skills].[UserId]
+FROM [Skills] AS [u.Skills]
+INNER JOIN (
+    SELECT DISTINCT [t3].*
+    FROM (
+        SELECT TOP(1) [u2].[Id]
+        FROM [AspNetUsers] AS [u2]
+        LEFT JOIN [Aligments] AS [u.Aligment2] ON [u2].[AligmentId] = [u.Aligment2].[AligmentId]
+        WHERE [u2].[Id] = @__userId_0
+        ORDER BY [u2].[Id]
+    ) AS [t3]
+) AS [t4] ON [u.Skills].[UserId] = [t4].[Id]
+ORDER BY [t4].[Id]" (0723d8ff)
+2020-04-10T02:13:51.1027742+05:00 0HLUSPB5NVB3B:0000000C [INF] Executed DbCommand ("5"ms) [Parameters=["@__userId_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [u.Atributes].[AtributeId], [u.Atributes].[CurrentExp], [u.Atributes].[Description], [u.Atributes].[Lvl], [u.Atributes].[MaxExp], [u.Atributes].[Name], [u.Atributes].[UserId]
+FROM [Atributes] AS [u.Atributes]
+INNER JOIN (
+    SELECT DISTINCT [t5].*
+    FROM (
+        SELECT TOP(1) [u3].[Id]
+        FROM [AspNetUsers] AS [u3]
+        LEFT JOIN [Aligments] AS [u.Aligment3] ON [u3].[AligmentId] = [u.Aligment3].[AligmentId]
+        WHERE [u3].[Id] = @__userId_0
+        ORDER BY [u3].[Id]
+    ) AS [t5]
+) AS [t6] ON [u.Atributes].[UserId] = [t6].[Id]
+ORDER BY [t6].[Id]" (0723d8ff)
+2020-04-10T02:13:51.1157560+05:00 0HLUSPB5NVB3B:0000000C [INF] Executed DbCommand ("4"ms) [Parameters=["@__userId_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [u.UserMoods].[UserMoodId], [u.UserMoods].[Comment], [u.UserMoods].[Date], [u.UserMoods].[MoodId], [u.UserMoods].[UserId]
+FROM [UserMoods] AS [u.UserMoods]
+INNER JOIN (
+    SELECT DISTINCT [t7].*
+    FROM (
+        SELECT TOP(1) [u4].[Id]
+        FROM [AspNetUsers] AS [u4]
+        LEFT JOIN [Aligments] AS [u.Aligment4] ON [u4].[AligmentId] = [u.Aligment4].[AligmentId]
+        WHERE [u4].[Id] = @__userId_0
+        ORDER BY [u4].[Id]
+    ) AS [t7]
+) AS [t8] ON [u.UserMoods].[UserId] = [t8].[Id]
+ORDER BY [t8].[Id]" (0723d8ff)
+2020-04-10T02:13:51.1271975+05:00 0HLUSPB5NVB3B:0000000C [INF] Executed DbCommand ("3"ms) [Parameters=["@__userId_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [u.Notes].[NoteId], [u.Notes].[DateCreate], [u.Notes].[Text], [u.Notes].[Theme], [u.Notes].[UserId]
+FROM [Notes] AS [u.Notes]
+INNER JOIN (
+    SELECT DISTINCT [t9].*
+    FROM (
+        SELECT TOP(1) [u5].[Id]
+        FROM [AspNetUsers] AS [u5]
+        LEFT JOIN [Aligments] AS [u.Aligment5] ON [u5].[AligmentId] = [u.Aligment5].[AligmentId]
+        WHERE [u5].[Id] = @__userId_0
+        ORDER BY [u5].[Id]
+    ) AS [t9]
+) AS [t10] ON [u.Notes].[UserId] = [t10].[Id]
+ORDER BY [t10].[Id]" (0723d8ff)
+2020-04-10T02:13:51.1393963+05:00 0HLUSPB5NVB3B:0000000C [INF] Executed DbCommand ("4"ms) [Parameters=["@__userId_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [u.UserAchievements].[UserAchievementId], [u.UserAchievements].[AchievementId], [u.UserAchievements].[IsOpen], [u.UserAchievements].[SetDate], [u.UserAchievements].[UserId]
+FROM [UserAchievements] AS [u.UserAchievements]
+INNER JOIN (
+    SELECT DISTINCT [t11].*
+    FROM (
+        SELECT TOP(1) [u6].[Id]
+        FROM [AspNetUsers] AS [u6]
+        LEFT JOIN [Aligments] AS [u.Aligment6] ON [u6].[AligmentId] = [u.Aligment6].[AligmentId]
+        WHERE [u6].[Id] = @__userId_0
+        ORDER BY [u6].[Id]
+    ) AS [t11]
+) AS [t12] ON [u.UserAchievements].[UserId] = [t12].[Id]
+ORDER BY [t12].[Id]" (0723d8ff)
+2020-04-10T02:13:51.1791423+05:00 0HLUSPB5NVB3B:0000000C [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [m].[MoodId], [m].[LinkImg], [m].[Name]
+FROM [Moods] AS [m]" (0723d8ff)
+2020-04-10T02:13:51.7449433+05:00 0HLUSPB5NVB3B:0000000C [INF] Executing ViewResult, running view at path "/Views/Home/GameRoom.cshtml". (9707eebe)
+2020-04-10T02:13:52.3938568+05:00 0HLUSPB5NVB3B:0000000C [INF] Executed DbCommand ("2"ms) [Parameters=["@__userid_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [c].[NotificationID], [c].[DateCreate], [c].[Name], [c].[UserId]
+FROM [Notifications] AS [c]
+WHERE [c].[UserId] = @__userid_0
+ORDER BY [c].[DateCreate] DESC" (0723d8ff)
+2020-04-10T02:13:52.7279698+05:00 0HLUSPB5NVB3B:0000000C [INF] Executed DbCommand ("2"ms) [Parameters=["@__userId_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [u].[Id], [u].[AccessFailedCount], [u].[AligmentId], [u].[ConcurrencyStamp], [u].[CurrentExp], [u].[CurrentGold], [u].[CurrentKarma], [u].[CurrentLevel], [u].[Email], [u].[EmailConfirmed], [u].[HealthId], [u].[IsSetDefaultValues], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[MaxExp], [u].[NickName], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[Photo], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[Id] = @__userId_0" (0723d8ff)
+2020-04-10T02:13:53.1510823+05:00 0HLUSPB5NVB3B:0000000C [INF] Executed DbCommand ("2"ms) [Parameters=["@__userid_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [c].[CatalogId], [c].[Name], [c].[UserId]
+FROM [Catalogs] AS [c]
+WHERE [c].[UserId] = @__userid_0" (0723d8ff)
+2020-04-10T02:13:54.2104728+05:00 0HLUSPB5NVB3B:0000000C [INF] Executed action "TaskProject.Controllers.HomeController.GameRoom (TaskProject)" in 3881.4082ms (afa2e885)
+2020-04-10T02:13:54.2208532+05:00 0HLUSPB5NVB3B:0000000C [INF] Request finished in 3907.1463ms 200 text/html; charset=utf-8 (791a596a)
+2020-04-10T02:13:54.3176550+05:00 0HLUSPB5NVB3B:0000000D [INF] Request starting HTTP/1.1 GET http://localhost:1282/img/notify-trash.png   (ca22a1cb)
+2020-04-10T02:13:54.3190871+05:00 0HLUSPB5NVB3G:00000006 [INF] Request starting HTTP/1.1 GET http://localhost:1282/img/primary/inferno.svg   (ca22a1cb)
+2020-04-10T02:13:54.3616967+05:00 0HLUSPB5NVB3B:0000000D [INF] Sending file. Request path: '"/img/notify-trash.png"'. Physical path: '"D:\Work\Git\EvolveMe\TaskProject\wwwroot\img\notify-trash.png"' (27b0a520)
+2020-04-10T02:13:54.3666385+05:00 0HLUSPB5NVB3G:00000006 [INF] Sending file. Request path: '"/img/primary/inferno.svg"'. Physical path: '"D:\Work\Git\EvolveMe\TaskProject\wwwroot\img\primary\inferno.svg"' (27b0a520)
+2020-04-10T02:13:54.4142476+05:00 0HLUSPB5NVB3D:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/fastclick/fastclick.min.js?v=MsmDpLO4fY9-r6QIQMh5E1Glk8hpowKdi3NWqM9tKpQ   (ca22a1cb)
+2020-04-10T02:13:54.4475803+05:00 0HLUSPB5NVB3F:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/input-mask/jquery.inputmask.js?v=mgrU_rE6DSHh_MMF64iheeBwc1mLdHc4zZd7NnTwZ8U   (ca22a1cb)
+2020-04-10T02:13:54.4539985+05:00 0HLUSPB5NVB3E:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/slimScroll/jquery.slimscroll.min.js?v=91NKPpYtpwjHuKO18SJmnkaIocF_hun9sbJoTtyk81E   (ca22a1cb)
+2020-04-10T02:13:54.4570861+05:00 0HLUSPB5NVB3C:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/select2/select2.full.min.js?v=RcR9nsz3hezKa3J1pu3_tSVG7Sb1y2oXPxT2Poq_TAQ   (ca22a1cb)
+2020-04-10T02:13:54.4717428+05:00 0HLUSPB5NVB3B:0000000D [INF] Request finished in 114.44ms 200 image/png (791a596a)
+2020-04-10T02:13:54.4781420+05:00 0HLUSPB5NVB3D:00000004 [INF] Sending file. Request path: '"/plugins/fastclick/fastclick.min.js"'. Physical path: '"D:\Work\Git\EvolveMe\TaskProject\wwwroot\plugins\fastclick\fastclick.min.js"' (27b0a520)
+2020-04-10T02:13:54.4947893+05:00 0HLUSPB5NVB3F:00000005 [INF] Sending file. Request path: '"/plugins/input-mask/jquery.inputmask.js"'. Physical path: '"D:\Work\Git\EvolveMe\TaskProject\wwwroot\plugins\input-mask\jquery.inputmask.js"' (27b0a520)
+2020-04-10T02:13:54.5091155+05:00 0HLUSPB5NVB3G:00000006 [INF] Request finished in 135.4774ms 200 image/svg+xml (791a596a)
+2020-04-10T02:13:54.5242841+05:00 0HLUSPB5NVB3C:00000005 [INF] Sending file. Request path: '"/plugins/select2/select2.full.min.js"'. Physical path: '"D:\Work\Git\EvolveMe\TaskProject\wwwroot\plugins\select2\select2.full.min.js"' (27b0a520)
+2020-04-10T02:13:54.5378462+05:00 0HLUSPB5NVB3D:00000004 [INF] Request finished in 114.6835ms 200 application/javascript (791a596a)
+2020-04-10T02:13:54.5531348+05:00 0HLUSPB5NVB3E:00000005 [INF] Sending file. Request path: '"/plugins/slimScroll/jquery.slimscroll.min.js"'. Physical path: '"D:\Work\Git\EvolveMe\TaskProject\wwwroot\plugins\slimScroll\jquery.slimscroll.min.js"' (27b0a520)
+2020-04-10T02:13:54.5592161+05:00 0HLUSPB5NVB3G:00000007 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/input-mask/jquery.inputmask.numeric.extensions.js?v=THTaTAgpvMDh7Pj8figKDcyuNgtz1Ziq9MUl1wSQyfM   (ca22a1cb)
+2020-04-10T02:13:54.5841376+05:00 0HLUSPB5NVB3B:0000000E [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/input-mask/jquery.inputmask.date.extensions.js?v=XorZ2HYnxjz4UC1ylQ8rX7F5EGRor7Kqux73YXs-9u8   (ca22a1cb)
+2020-04-10T02:13:54.5842019+05:00 0HLUSPB5NVB3F:00000005 [INF] Request finished in 134.8122ms 200 application/javascript (791a596a)
+2020-04-10T02:13:54.5911588+05:00 0HLUSPB5NVB3E:00000005 [INF] Request finished in 201.5206ms 200 application/javascript (791a596a)
+2020-04-10T02:13:54.6175635+05:00 0HLUSPB5NVB3C:00000005 [INF] Request finished in 170.5018ms 200 application/javascript (791a596a)
+2020-04-10T02:13:54.6667646+05:00 0HLUSPB5NVB3G:00000007 [INF] Sending file. Request path: '"/plugins/input-mask/jquery.inputmask.numeric.extensions.js"'. Physical path: '"D:\Work\Git\EvolveMe\TaskProject\wwwroot\plugins\input-mask\jquery.inputmask.numeric.extensions.js"' (27b0a520)
+2020-04-10T02:13:54.6981113+05:00 0HLUSPB5NVB3D:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/input-mask/jquery.inputmask.regex.extensions.js?v=c4ZOcKUAe6iGxBPdV91uSixXtVHD68c2ztjRUaiOT98   (ca22a1cb)
+2020-04-10T02:13:54.7009266+05:00 0HLUSPB5NVB3B:0000000E [INF] Sending file. Request path: '"/plugins/input-mask/jquery.inputmask.date.extensions.js"'. Physical path: '"D:\Work\Git\EvolveMe\TaskProject\wwwroot\plugins\input-mask\jquery.inputmask.date.extensions.js"' (27b0a520)
+2020-04-10T02:13:54.7251419+05:00 0HLUSPB5NVB3G:00000007 [INF] Request finished in 163.8076ms 200 application/javascript (791a596a)
+2020-04-10T02:13:54.7277103+05:00 0HLUSPB5NVB3F:00000006 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/datatables/jquery.dataTables.min.js   (ca22a1cb)
+2020-04-10T02:13:54.7348582+05:00 0HLUSPB5NVB3E:00000006 [INF] Request starting HTTP/1.1 GET http://localhost:1282/img/user.png   (ca22a1cb)
+2020-04-10T02:13:54.7439253+05:00 0HLUSPB5NVB3C:00000006 [INF] Request starting HTTP/1.1 GET http://localhost:1282/plugins/datatables/dataTables.bootstrap4.js   (ca22a1cb)
+2020-04-10T02:13:54.7663327+05:00 0HLUSPB5NVB3G:00000008 [INF] Request starting HTTP/1.1 GET http://localhost:1282/img/moods/laughing.svg?v=3I1JwqLUqTIbkrYWQ-7Rq3DK7awDP2WS6GXAXVz78vI   (ca22a1cb)
+2020-04-10T02:13:54.7885282+05:00 0HLUSPB5NVB3D:00000005 [INF] Sending file. Request path: '"/plugins/input-mask/jquery.inputmask.regex.extensions.js"'. Physical path: '"D:\Work\Git\EvolveMe\TaskProject\wwwroot\plugins\input-mask\jquery.inputmask.regex.extensions.js"' (27b0a520)
+2020-04-10T02:13:54.7919731+05:00 0HLUSPB5NVB3B:0000000E [INF] Request finished in 209.5885ms 200 application/javascript (791a596a)
+2020-04-10T02:13:54.8085652+05:00 0HLUSPB5NVB3F:00000006 [INF] Sending file. Request path: '"/plugins/datatables/jquery.dataTables.min.js"'. Physical path: '"D:\Work\Git\EvolveMe\TaskProject\wwwroot\plugins\datatables\jquery.dataTables.min.js"' (27b0a520)
+2020-04-10T02:13:54.8304559+05:00 0HLUSPB5NVB3D:00000005 [INF] Request finished in 223.5232ms 200 application/javascript (791a596a)
+2020-04-10T02:13:54.8505638+05:00 0HLUSPB5NVB3C:00000006 [INF] Sending file. Request path: '"/plugins/datatables/dataTables.bootstrap4.js"'. Physical path: '"D:\Work\Git\EvolveMe\TaskProject\wwwroot\plugins\datatables\dataTables.bootstrap4.js"' (27b0a520)
+2020-04-10T02:13:54.8841170+05:00 0HLUSPB5NVB3G:00000008 [INF] Sending file. Request path: '"/img/moods/laughing.svg"'. Physical path: '"D:\Work\Git\EvolveMe\TaskProject\wwwroot\img\moods\laughing.svg"' (27b0a520)
+2020-04-10T02:13:54.9488322+05:00 0HLUSPB5NVB3D:00000006 [INF] Request starting HTTP/1.1 GET http://localhost:1282/img/moods/sleepy.svg?v=q5VJ0bezgLuQxFKceT_KR_9FBw_9gqtB0JPry3L6meI   (ca22a1cb)
+2020-04-10T02:13:54.9528873+05:00 0HLUSPB5NVB3E:00000006 [INF] Sending file. Request path: '"/img/user.png"'. Physical path: '"D:\Work\Git\EvolveMe\TaskProject\wwwroot\img\user.png"' (27b0a520)
+2020-04-10T02:13:54.9702884+05:00 0HLUSPB5NVB3G:00000008 [INF] Request finished in 156.1897ms 200 image/svg+xml (791a596a)
+2020-04-10T02:13:54.9751417+05:00 0HLUSPB5NVB3C:00000006 [INF] Request finished in 207.1195ms 200 application/javascript (791a596a)
+2020-04-10T02:13:54.9816612+05:00 0HLUSPB5NVB3B:0000000F [INF] Request starting HTTP/1.1 GET http://localhost:1282/img/moods/happy.svg?v=ZFMznT0ez_luSwPTAFpWAIvYaCxova-PoDYTWrkFSP0   (ca22a1cb)
+2020-04-10T02:13:54.9943717+05:00 0HLUSPB5NVB3F:00000006 [INF] Request finished in 240.5603ms 200 application/javascript (791a596a)
+2020-04-10T02:13:55.0184611+05:00 0HLUSPB5NVB3E:00000006 [INF] Request finished in 263.117ms 200 image/png (791a596a)
+2020-04-10T02:13:55.0408060+05:00 0HLUSPB5NVB3B:0000000F [INF] Sending file. Request path: '"/img/moods/happy.svg"'. Physical path: '"D:\Work\Git\EvolveMe\TaskProject\wwwroot\img\moods\happy.svg"' (27b0a520)
+2020-04-10T02:13:55.0576125+05:00 0HLUSPB5NVB3D:00000006 [INF] Sending file. Request path: '"/img/moods/sleepy.svg"'. Physical path: '"D:\Work\Git\EvolveMe\TaskProject\wwwroot\img\moods\sleepy.svg"' (27b0a520)
+2020-04-10T02:13:55.0594652+05:00 0HLUSPB5NVB3C:00000007 [INF] Request starting HTTP/1.1 GET http://localhost:1282/img/moods/normal.svg?v=9G6rKkSvjslv5wKaDJkwLIk6NYms3Gr0wO7bFX-5ZQM   (ca22a1cb)
+2020-04-10T02:13:55.0720008+05:00 0HLUSPB5NVB3F:00000007 [INF] Request starting HTTP/1.1 GET http://localhost:1282/img/moods/crying.svg?v=oN1XGPIZT6so8DqAYcBl50oyUp0Ps5znSo3bWTTRALM   (ca22a1cb)
+2020-04-10T02:13:55.0735525+05:00 0HLUSPB5NVB3D:00000006 [INF] Request finished in 187.5899ms 200 image/svg+xml (791a596a)
+2020-04-10T02:13:55.0885061+05:00 0HLUSPB5NVB3C:00000007 [INF] Sending file. Request path: '"/img/moods/normal.svg"'. Physical path: '"D:\Work\Git\EvolveMe\TaskProject\wwwroot\img\moods\normal.svg"' (27b0a520)
+2020-04-10T02:13:55.1002795+05:00 0HLUSPB5NVB3F:00000007 [INF] Sending file. Request path: '"/img/moods/crying.svg"'. Physical path: '"D:\Work\Git\EvolveMe\TaskProject\wwwroot\img\moods\crying.svg"' (27b0a520)
+2020-04-10T02:13:55.1244225+05:00 0HLUSPB5NVB3B:0000000F [INF] Request finished in 223.1044ms 200 image/svg+xml (791a596a)
+2020-04-10T02:13:55.1497546+05:00 0HLUSPB5NVB3C:00000007 [INF] Request finished in 92.8864ms 200 image/svg+xml (791a596a)
+2020-04-10T02:13:55.1524326+05:00 0HLUSPB5NVB3F:00000007 [INF] Request finished in 105.7883ms 200 image/svg+xml (791a596a)
+2020-04-10T02:17:14.4412903+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2020-04-10T02:17:58.0569296+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2020-04-10T02:17:58.3547146+05:00  [INF] Executed DbCommand ("40"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'__EFMigrationsHistory');" (0723d8ff)
+2020-04-10T02:17:58.4284399+05:00  [INF] Executed DbCommand ("39"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [__EFMigrationsHistory] (
+    [MigrationId] nvarchar(150) NOT NULL,
+    [ProductVersion] nvarchar(32) NOT NULL,
+    CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+);" (0723d8ff)
+2020-04-10T02:17:58.4613179+05:00  [INF] Executed DbCommand ("32"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'__EFMigrationsHistory');" (0723d8ff)
+2020-04-10T02:17:58.4923135+05:00  [INF] Executed DbCommand ("30"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];" (0723d8ff)
+2020-04-10T02:17:58.5010166+05:00  [INF] Applying migration '"20181017165922_v.0.0.25"'. (0e2ac64d)
+2020-04-10T02:17:58.8133318+05:00  [INF] Executed DbCommand ("37"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Achievements] (
+    [AchievementId] int NOT NULL IDENTITY,
+    [AchievementType] int NOT NULL,
+    [Description] nvarchar(max) NULL,
+    [LinkImg] nvarchar(max) NULL,
+    [Name] nvarchar(max) NULL,
+    CONSTRAINT [PK_Achievements] PRIMARY KEY ([AchievementId])
+);" (0723d8ff)
+2020-04-10T02:17:58.8487884+05:00  [INF] Executed DbCommand ("35"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Aligments] (
+    [AligmentId] int NOT NULL,
+    [Description] nvarchar(max) NULL,
+    [Name] nvarchar(max) NULL,
+    CONSTRAINT [PK_Aligments] PRIMARY KEY ([AligmentId])
+);" (0723d8ff)
+2020-04-10T02:17:58.8843438+05:00  [INF] Executed DbCommand ("35"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [AspNetRoles] (
+    [Id] nvarchar(450) NOT NULL,
+    [ConcurrencyStamp] nvarchar(max) NULL,
+    [Name] nvarchar(256) NULL,
+    [NormalizedName] nvarchar(256) NULL,
+    CONSTRAINT [PK_AspNetRoles] PRIMARY KEY ([Id])
+);" (0723d8ff)
+2020-04-10T02:17:58.9203796+05:00  [INF] Executed DbCommand ("35"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Complications] (
+    [ComplicationId] int NOT NULL,
+    [Damage] int NOT NULL,
+    [Exp] int NOT NULL,
+    [Gold] int NOT NULL,
+    [Name] nvarchar(max) NULL,
+    CONSTRAINT [PK_Complications] PRIMARY KEY ([ComplicationId])
+);" (0723d8ff)
+2020-04-10T02:17:58.9565600+05:00  [INF] Executed DbCommand ("35"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Hobbies] (
+    [HobbyId] int NOT NULL IDENTITY,
+    [Description] nvarchar(max) NULL,
+    [Name] nvarchar(max) NULL,
+    CONSTRAINT [PK_Hobbies] PRIMARY KEY ([HobbyId])
+);" (0723d8ff)
+2020-04-10T02:17:58.9927034+05:00  [INF] Executed DbCommand ("35"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [LogAccess] (
+    [LogAccessId] int NOT NULL IDENTITY,
+    [Date] datetime2 NOT NULL,
+    [Log] nvarchar(max) NULL,
+    [UserAgent] nvarchar(max) NULL,
+    [UserName] nvarchar(max) NULL,
+    CONSTRAINT [PK_LogAccess] PRIMARY KEY ([LogAccessId])
+);" (0723d8ff)
+2020-04-10T02:17:59.0285363+05:00  [INF] Executed DbCommand ("35"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [LogEvents] (
+    [LogEventId] int NOT NULL IDENTITY,
+    [Date] datetime2 NOT NULL,
+    [EventId] int NOT NULL,
+    [LogLevel] nvarchar(max) NULL,
+    [Message] nvarchar(max) NULL,
+    CONSTRAINT [PK_LogEvents] PRIMARY KEY ([LogEventId])
+);" (0723d8ff)
+2020-04-10T02:17:59.3852205+05:00  [INF] Executed DbCommand ("37"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Messages] (
+    [Id] int NOT NULL IDENTITY,
+    [Body] nvarchar(max) NOT NULL,
+    [DateCreate] nvarchar(max) NULL,
+    [Email] nvarchar(max) NOT NULL,
+    [Name] nvarchar(max) NOT NULL,
+    [Theme] nvarchar(max) NULL,
+    CONSTRAINT [PK_Messages] PRIMARY KEY ([Id])
+);" (0723d8ff)
+2020-04-10T02:17:59.4205349+05:00  [INF] Executed DbCommand ("35"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Moods] (
+    [MoodId] int NOT NULL IDENTITY,
+    [LinkImg] nvarchar(max) NULL,
+    [Name] nvarchar(max) NOT NULL,
+    CONSTRAINT [PK_Moods] PRIMARY KEY ([MoodId])
+);" (0723d8ff)
+2020-04-10T02:17:59.4529706+05:00  [INF] Executed DbCommand ("32"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Ratings] (
+    [RatingId] int NOT NULL,
+    [Name] nvarchar(max) NULL,
+    CONSTRAINT [PK_Ratings] PRIMARY KEY ([RatingId])
+);" (0723d8ff)
+2020-04-10T02:17:59.4855755+05:00  [INF] Executed DbCommand ("32"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Repeats] (
+    [RepeatId] int NOT NULL,
+    [Name] nvarchar(max) NULL,
+    CONSTRAINT [PK_Repeats] PRIMARY KEY ([RepeatId])
+);" (0723d8ff)
+2020-04-10T02:17:59.5348205+05:00  [INF] Executed DbCommand ("48"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [AspNetUsers] (
+    [Id] nvarchar(450) NOT NULL,
+    [AccessFailedCount] int NOT NULL,
+    [AligmentId] int NULL,
+    [ConcurrencyStamp] nvarchar(max) NULL,
+    [CurrentExp] bigint NOT NULL,
+    [CurrentGold] int NOT NULL,
+    [CurrentKarma] int NOT NULL,
+    [CurrentLevel] int NOT NULL,
+    [Email] nvarchar(256) NULL,
+    [EmailConfirmed] bit NOT NULL,
+    [HealthId] int NULL,
+    [IsSetDefaultValues] bit NOT NULL,
+    [LockoutEnabled] bit NOT NULL,
+    [LockoutEnd] datetimeoffset NULL,
+    [MaxExp] bigint NOT NULL,
+    [NickName] nvarchar(max) NULL,
+    [NormalizedEmail] nvarchar(256) NULL,
+    [NormalizedUserName] nvarchar(256) NULL,
+    [PasswordHash] nvarchar(max) NULL,
+    [PhoneNumber] nvarchar(max) NULL,
+    [PhoneNumberConfirmed] bit NOT NULL,
+    [Photo] varbinary(max) NULL,
+    [SecurityStamp] nvarchar(max) NULL,
+    [TwoFactorEnabled] bit NOT NULL,
+    [UserName] nvarchar(256) NULL,
+    CONSTRAINT [PK_AspNetUsers] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_AspNetUsers_Aligments_AligmentId] FOREIGN KEY ([AligmentId]) REFERENCES [Aligments] ([AligmentId]) ON DELETE NO ACTION
+);" (0723d8ff)
+2020-04-10T02:18:00.5055280+05:00  [INF] Executed DbCommand ("39"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [AspNetRoleClaims] (
+    [Id] int NOT NULL IDENTITY,
+    [ClaimType] nvarchar(max) NULL,
+    [ClaimValue] nvarchar(max) NULL,
+    [RoleId] nvarchar(450) NOT NULL,
+    CONSTRAINT [PK_AspNetRoleClaims] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_AspNetRoleClaims_AspNetRoles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [AspNetRoles] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2020-04-10T02:18:00.5407894+05:00  [INF] Executed DbCommand ("34"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [AspNetUserClaims] (
+    [Id] int NOT NULL IDENTITY,
+    [ClaimType] nvarchar(max) NULL,
+    [ClaimValue] nvarchar(max) NULL,
+    [UserId] nvarchar(450) NOT NULL,
+    CONSTRAINT [PK_AspNetUserClaims] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_AspNetUserClaims_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2020-04-10T02:18:00.5810678+05:00  [INF] Executed DbCommand ("40"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [AspNetUserLogins] (
+    [LoginProvider] nvarchar(450) NOT NULL,
+    [ProviderKey] nvarchar(450) NOT NULL,
+    [ProviderDisplayName] nvarchar(max) NULL,
+    [UserId] nvarchar(450) NOT NULL,
+    CONSTRAINT [PK_AspNetUserLogins] PRIMARY KEY ([LoginProvider], [ProviderKey]),
+    CONSTRAINT [FK_AspNetUserLogins_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2020-04-10T02:18:01.9426101+05:00  [INF] Executed DbCommand ("43"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [AspNetUserRoles] (
+    [UserId] nvarchar(450) NOT NULL,
+    [RoleId] nvarchar(450) NOT NULL,
+    CONSTRAINT [PK_AspNetUserRoles] PRIMARY KEY ([UserId], [RoleId]),
+    CONSTRAINT [FK_AspNetUserRoles_AspNetRoles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [AspNetRoles] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_AspNetUserRoles_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2020-04-10T02:18:01.9821674+05:00  [INF] Executed DbCommand ("39"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [AspNetUserTokens] (
+    [UserId] nvarchar(450) NOT NULL,
+    [LoginProvider] nvarchar(450) NOT NULL,
+    [Name] nvarchar(450) NOT NULL,
+    [Value] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetUserTokens] PRIMARY KEY ([UserId], [LoginProvider], [Name]),
+    CONSTRAINT [FK_AspNetUserTokens_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2020-04-10T02:18:02.0259255+05:00  [INF] Executed DbCommand ("43"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Atributes] (
+    [AtributeId] int NOT NULL IDENTITY,
+    [CurrentExp] int NOT NULL,
+    [Description] nvarchar(max) NULL,
+    [Lvl] int NOT NULL,
+    [MaxExp] int NOT NULL,
+    [Name] nvarchar(max) NULL,
+    [UserId] nvarchar(450) NULL,
+    CONSTRAINT [PK_Atributes] PRIMARY KEY ([AtributeId]),
+    CONSTRAINT [FK_Atributes_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2020-04-10T02:18:02.5704223+05:00  [INF] Executed DbCommand ("38"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Catalogs] (
+    [CatalogId] int NOT NULL IDENTITY,
+    [Name] nvarchar(30) NOT NULL,
+    [UserId] nvarchar(450) NULL,
+    CONSTRAINT [PK_Catalogs] PRIMARY KEY ([CatalogId]),
+    CONSTRAINT [FK_Catalogs_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2020-04-10T02:18:02.6138177+05:00  [INF] Executed DbCommand ("43"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Healths] (
+    [HealthId] int NOT NULL IDENTITY,
+    [DateBirth] datetime2 NULL,
+    [DateDeath] datetime2 NULL,
+    [IsDead] bit NOT NULL,
+    [IsSetValue] bit NOT NULL,
+    [Sex] nvarchar(max) NULL,
+    [UserId] nvarchar(450) NULL,
+    CONSTRAINT [PK_Healths] PRIMARY KEY ([HealthId]),
+    CONSTRAINT [FK_Healths_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2020-04-10T02:18:02.6488385+05:00  [INF] Executed DbCommand ("34"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Karma] (
+    [KarmaId] int NOT NULL IDENTITY,
+    [Date] datetime2 NOT NULL,
+    [IsGood] bit NOT NULL,
+    [Name] nvarchar(max) NOT NULL,
+    [UserId] nvarchar(450) NULL,
+    CONSTRAINT [PK_Karma] PRIMARY KEY ([KarmaId]),
+    CONSTRAINT [FK_Karma_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2020-04-10T02:18:03.4541367+05:00  [INF] Executed DbCommand ("37"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Notes] (
+    [NoteId] int NOT NULL IDENTITY,
+    [DateCreate] datetime2 NOT NULL,
+    [Text] nvarchar(max) NULL,
+    [Theme] nvarchar(max) NULL,
+    [UserId] nvarchar(450) NULL,
+    CONSTRAINT [PK_Notes] PRIMARY KEY ([NoteId]),
+    CONSTRAINT [FK_Notes_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2020-04-10T02:18:03.4944747+05:00  [INF] Executed DbCommand ("40"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Notifications] (
+    [NotificationID] int NOT NULL IDENTITY,
+    [DateCreate] datetime2 NOT NULL,
+    [Name] nvarchar(max) NULL,
+    [UserId] nvarchar(450) NULL,
+    CONSTRAINT [PK_Notifications] PRIMARY KEY ([NotificationID]),
+    CONSTRAINT [FK_Notifications_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2020-04-10T02:18:03.5389778+05:00  [INF] Executed DbCommand ("44"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [UserAchievements] (
+    [UserAchievementId] int NOT NULL IDENTITY,
+    [AchievementId] int NOT NULL,
+    [IsOpen] bit NOT NULL,
+    [SetDate] datetime2 NULL,
+    [UserId] nvarchar(450) NULL,
+    CONSTRAINT [PK_UserAchievements] PRIMARY KEY ([UserAchievementId]),
+    CONSTRAINT [FK_UserAchievements_Achievements_AchievementId] FOREIGN KEY ([AchievementId]) REFERENCES [Achievements] ([AchievementId]) ON DELETE CASCADE,
+    CONSTRAINT [FK_UserAchievements_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2020-04-10T02:18:03.5833993+05:00  [INF] Executed DbCommand ("44"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [UserMoods] (
+    [UserMoodId] int NOT NULL IDENTITY,
+    [Comment] nvarchar(max) NULL,
+    [Date] datetime2 NOT NULL,
+    [MoodId] int NOT NULL,
+    [UserId] nvarchar(450) NULL,
+    CONSTRAINT [PK_UserMoods] PRIMARY KEY ([UserMoodId]),
+    CONSTRAINT [FK_UserMoods_Moods_MoodId] FOREIGN KEY ([MoodId]) REFERENCES [Moods] ([MoodId]) ON DELETE CASCADE,
+    CONSTRAINT [FK_UserMoods_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2020-04-10T02:18:04.4062718+05:00  [INF] Executed DbCommand ("40"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [UserRewards] (
+    [UserRewardId] int NOT NULL IDENTITY,
+    [Cost] int NULL,
+    [Description] nvarchar(max) NULL,
+    [Name] nvarchar(max) NOT NULL,
+    [UserId] nvarchar(450) NULL,
+    CONSTRAINT [PK_UserRewards] PRIMARY KEY ([UserRewardId]),
+    CONSTRAINT [FK_UserRewards_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE NO ACTION
+);" (0723d8ff)
+2020-04-10T02:18:04.4514046+05:00  [INF] Executed DbCommand ("44"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Skills] (
+    [SkillId] int NOT NULL IDENTITY,
+    [AtributeId] int NOT NULL,
+    [CurrentExp] int NOT NULL,
+    [Lvl] int NOT NULL,
+    [MaxExp] int NOT NULL,
+    [Name] nvarchar(max) NOT NULL,
+    [RatingId] int NOT NULL,
+    [UserId] nvarchar(450) NULL,
+    CONSTRAINT [PK_Skills] PRIMARY KEY ([SkillId]),
+    CONSTRAINT [FK_Skills_Atributes_AtributeId] FOREIGN KEY ([AtributeId]) REFERENCES [Atributes] ([AtributeId]) ON DELETE CASCADE,
+    CONSTRAINT [FK_Skills_Ratings_RatingId] FOREIGN KEY ([RatingId]) REFERENCES [Ratings] ([RatingId]) ON DELETE CASCADE,
+    CONSTRAINT [FK_Skills_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE NO ACTION
+);" (0723d8ff)
+2020-04-10T02:18:04.4903992+05:00  [INF] Executed DbCommand ("38"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [UserGrowth] (
+    [UserGrowthId] int NOT NULL IDENTITY,
+    [Date] datetime2 NOT NULL,
+    [HealthId] int NOT NULL,
+    [Value] real NOT NULL,
+    CONSTRAINT [PK_UserGrowth] PRIMARY KEY ([UserGrowthId]),
+    CONSTRAINT [FK_UserGrowth_Healths_HealthId] FOREIGN KEY ([HealthId]) REFERENCES [Healths] ([HealthId]) ON DELETE CASCADE
+);" (0723d8ff)
+2020-04-10T02:18:05.3061354+05:00  [INF] Executed DbCommand ("39"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [UserWeight] (
+    [UserWeightId] int NOT NULL IDENTITY,
+    [Date] datetime2 NOT NULL,
+    [HealthId] int NOT NULL,
+    [Value] real NOT NULL,
+    CONSTRAINT [PK_UserWeight] PRIMARY KEY ([UserWeightId]),
+    CONSTRAINT [FK_UserWeight_Healths_HealthId] FOREIGN KEY ([HealthId]) REFERENCES [Healths] ([HealthId]) ON DELETE CASCADE
+);" (0723d8ff)
+2020-04-10T02:18:05.3606095+05:00  [INF] Executed DbCommand ("54"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Goals] (
+    [GoalId] int NOT NULL IDENTITY,
+    [CatalogId] int NOT NULL,
+    [ComplicationId] int NOT NULL,
+    [Description] nvarchar(250) NULL,
+    [FinishCount] int NOT NULL,
+    [GoalEnd] datetime2 NULL,
+    [GoalStart] datetime2 NOT NULL,
+    [IsComplete] bit NOT NULL,
+    [Name] nvarchar(50) NOT NULL,
+    [PassCount] int NOT NULL,
+    [RepeatId] int NOT NULL,
+    [SeriesCount] int NOT NULL,
+    [SkillId] int NULL,
+    [UserId] nvarchar(450) NULL,
+    CONSTRAINT [PK_Goals] PRIMARY KEY ([GoalId]),
+    CONSTRAINT [FK_Goals_Catalogs_CatalogId] FOREIGN KEY ([CatalogId]) REFERENCES [Catalogs] ([CatalogId]) ON DELETE CASCADE,
+    CONSTRAINT [FK_Goals_Complications_ComplicationId] FOREIGN KEY ([ComplicationId]) REFERENCES [Complications] ([ComplicationId]) ON DELETE CASCADE,
+    CONSTRAINT [FK_Goals_Repeats_RepeatId] FOREIGN KEY ([RepeatId]) REFERENCES [Repeats] ([RepeatId]) ON DELETE CASCADE,
+    CONSTRAINT [FK_Goals_Skills_SkillId] FOREIGN KEY ([SkillId]) REFERENCES [Skills] ([SkillId]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Goals_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE NO ACTION
+);" (0723d8ff)
+2020-04-10T02:18:06.3129487+05:00  [INF] Executed DbCommand ("30"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_AspNetRoleClaims_RoleId] ON [AspNetRoleClaims] ([RoleId]);" (0723d8ff)
+2020-04-10T02:18:06.3453085+05:00  [INF] Executed DbCommand ("32"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE UNIQUE INDEX [RoleNameIndex] ON [AspNetRoles] ([NormalizedName]) WHERE [NormalizedName] IS NOT NULL;" (0723d8ff)
+2020-04-10T02:18:06.3764407+05:00  [INF] Executed DbCommand ("30"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_AspNetUserClaims_UserId] ON [AspNetUserClaims] ([UserId]);" (0723d8ff)
+2020-04-10T02:18:06.4080882+05:00  [INF] Executed DbCommand ("31"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_AspNetUserLogins_UserId] ON [AspNetUserLogins] ([UserId]);" (0723d8ff)
+2020-04-10T02:18:06.4398836+05:00  [INF] Executed DbCommand ("31"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_AspNetUserRoles_RoleId] ON [AspNetUserRoles] ([RoleId]);" (0723d8ff)
+2020-04-10T02:18:06.4720991+05:00  [INF] Executed DbCommand ("31"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_AspNetUsers_AligmentId] ON [AspNetUsers] ([AligmentId]);" (0723d8ff)
+2020-04-10T02:18:06.5042825+05:00  [INF] Executed DbCommand ("31"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [EmailIndex] ON [AspNetUsers] ([NormalizedEmail]);" (0723d8ff)
+2020-04-10T02:18:06.5369505+05:00  [INF] Executed DbCommand ("32"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE UNIQUE INDEX [UserNameIndex] ON [AspNetUsers] ([NormalizedUserName]) WHERE [NormalizedUserName] IS NOT NULL;" (0723d8ff)
+2020-04-10T02:18:07.4723665+05:00  [INF] Executed DbCommand ("32"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Atributes_UserId] ON [Atributes] ([UserId]);" (0723d8ff)
+2020-04-10T02:18:07.5047208+05:00  [INF] Executed DbCommand ("32"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Catalogs_UserId] ON [Catalogs] ([UserId]);" (0723d8ff)
+2020-04-10T02:18:07.5371175+05:00  [INF] Executed DbCommand ("32"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Goals_CatalogId] ON [Goals] ([CatalogId]);" (0723d8ff)
+2020-04-10T02:18:07.5681713+05:00  [INF] Executed DbCommand ("30"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Goals_ComplicationId] ON [Goals] ([ComplicationId]);" (0723d8ff)
+2020-04-10T02:18:07.6010491+05:00  [INF] Executed DbCommand ("32"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Goals_RepeatId] ON [Goals] ([RepeatId]);" (0723d8ff)
+2020-04-10T02:18:07.6332411+05:00  [INF] Executed DbCommand ("31"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Goals_SkillId] ON [Goals] ([SkillId]);" (0723d8ff)
+2020-04-10T02:18:07.6645006+05:00  [INF] Executed DbCommand ("31"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Goals_UserId] ON [Goals] ([UserId]);" (0723d8ff)
+2020-04-10T02:18:07.6967431+05:00  [INF] Executed DbCommand ("32"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE UNIQUE INDEX [IX_Healths_UserId] ON [Healths] ([UserId]) WHERE [UserId] IS NOT NULL;" (0723d8ff)
+2020-04-10T02:18:07.7288422+05:00  [INF] Executed DbCommand ("31"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Karma_UserId] ON [Karma] ([UserId]);" (0723d8ff)
+2020-04-10T02:18:07.7611976+05:00  [INF] Executed DbCommand ("32"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Notes_UserId] ON [Notes] ([UserId]);" (0723d8ff)
+2020-04-10T02:18:08.0405516+05:00  [INF] Executed DbCommand ("32"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Notifications_UserId] ON [Notifications] ([UserId]);" (0723d8ff)
+2020-04-10T02:18:08.0726918+05:00  [INF] Executed DbCommand ("31"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Skills_AtributeId] ON [Skills] ([AtributeId]);" (0723d8ff)
+2020-04-10T02:18:08.1042877+05:00  [INF] Executed DbCommand ("31"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Skills_RatingId] ON [Skills] ([RatingId]);" (0723d8ff)
+2020-04-10T02:18:08.1365605+05:00  [INF] Executed DbCommand ("32"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Skills_UserId] ON [Skills] ([UserId]);" (0723d8ff)
+2020-04-10T02:18:08.1686341+05:00  [INF] Executed DbCommand ("31"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_UserAchievements_AchievementId] ON [UserAchievements] ([AchievementId]);" (0723d8ff)
+2020-04-10T02:18:08.2004147+05:00  [INF] Executed DbCommand ("31"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_UserAchievements_UserId] ON [UserAchievements] ([UserId]);" (0723d8ff)
+2020-04-10T02:18:08.2325261+05:00  [INF] Executed DbCommand ("31"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_UserGrowth_HealthId] ON [UserGrowth] ([HealthId]);" (0723d8ff)
+2020-04-10T02:18:08.2645072+05:00  [INF] Executed DbCommand ("31"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_UserMoods_MoodId] ON [UserMoods] ([MoodId]);" (0723d8ff)
+2020-04-10T02:18:08.2964804+05:00  [INF] Executed DbCommand ("31"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_UserMoods_UserId] ON [UserMoods] ([UserId]);" (0723d8ff)
+2020-04-10T02:18:08.3288044+05:00  [INF] Executed DbCommand ("32"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_UserRewards_UserId] ON [UserRewards] ([UserId]);" (0723d8ff)
+2020-04-10T02:18:08.3606895+05:00  [INF] Executed DbCommand ("31"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_UserWeight_HealthId] ON [UserWeight] ([HealthId]);" (0723d8ff)
+2020-04-10T02:18:08.8808198+05:00  [INF] Executed DbCommand ("35"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20181017165922_v.0.0.25', N'2.0.3-rtm-10026');" (0723d8ff)
+2020-04-10T02:18:08.9155144+05:00  [INF] Applying migration '"20200409203039_v.0.0.20"'. (0e2ac64d)
+2020-04-10T02:18:09.0803919+05:00  [INF] Executed DbCommand ("68"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""DECLARE @var0 sysname;
+SELECT @var0 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'Notes') AND [c].[name] = N'Theme');
+IF @var0 IS NOT NULL EXEC(N'ALTER TABLE [Notes] DROP CONSTRAINT [' + @var0 + '];');
+ALTER TABLE [Notes] ALTER COLUMN [Theme] nvarchar(50) NULL;" (0723d8ff)
+2020-04-10T02:18:09.1116442+05:00  [INF] Executed DbCommand ("30"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20200409203039_v.0.0.20', N'2.0.3-rtm-10026');" (0723d8ff)
+2020-04-10T02:19:59.7075019+05:00  [INF] Entity Framework Core "2.0.3-rtm-10026" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None" (9958f5bb)
+2020-04-10T02:19:59.9442300+05:00  [INF] Executed DbCommand ("17"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'__EFMigrationsHistory');" (0723d8ff)
+2020-04-10T02:19:59.9466396+05:00  [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'__EFMigrationsHistory');" (0723d8ff)
+2020-04-10T02:19:59.9517686+05:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];" (0723d8ff)
+2020-04-10T02:19:59.9600364+05:00  [INF] No migrations were applied. The database is already up to date. (503cba9d)

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
@@ -10,7 +9,7 @@ using TaskProject.Models;
 
 namespace TaskProject.Controllers
 {
-    public class SkillsController : Controller
+	public class SkillsController : Controller
     {
         private readonly ApplicationDbContext db;
         private readonly UserManager<ApplicationUser> usermanager;

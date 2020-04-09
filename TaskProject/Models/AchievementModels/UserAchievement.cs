@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace TaskProject.Models.AchievementModels
 {
-    public class UserAchievement
+	public class UserAchievement
     {
         public UserAchievement()
         {

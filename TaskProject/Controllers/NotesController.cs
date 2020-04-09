@@ -4,13 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using TaskProject.Models;
 
 namespace TaskProject.Controllers
 {
-    public class NotesController : Controller
+	public class NotesController : Controller
     {
         private readonly ApplicationDbContext db;
         private readonly UserManager<ApplicationUser> userManager;
